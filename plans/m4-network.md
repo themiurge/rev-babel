@@ -98,8 +98,9 @@ makes it cheap, and use them for different things:
 
 If Path A proves unreliable on the actual phone, falling back to Path B +
 Tailscale in the classroom is a real option — but it is a decision with
-consequences for `docs/architecture.md`, so record it. → *ADR 0016: the
-audio ingress path, and what happens to ADR 0003/0004 if Path B wins.*
+consequences for `docs/architecture.md`, so record it. → *needs a decision
+record: the audio ingress path, and what happens to ADR 0003/0004 if Path B
+wins.*
 
 ## The output leg
 

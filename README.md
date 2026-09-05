@@ -15,9 +15,9 @@ this one course, not a general-purpose product.
 
 ## Status
 
-Scaffolding only. Nothing runs yet — see [`docs/roadmap.md`](docs/roadmap.md)
-for the build sequence and [`plans/README.md`](plans/README.md) for the
-milestone-by-milestone implementation plan.
+Scaffolding only. The network layer is built and verified; Eco itself is
+not. [`ROADMAP.md`](ROADMAP.md) is the savepoint — where the project is
+right now, what is in flight, and what is next.
 
 ## Repository layout
 
@@ -32,7 +32,11 @@ rev-babel/
 ├── infra/              deployment configuration (compose, tunnel)
 ├── scripts/            operational scripts
 ├── plans/              implementation plans — start at plans/README.md
-└── docs/               documentation — start at docs/README.md
+├── scratchpad/         verified blueprints from throwaway experiments
+├── docs/               documentation — start at docs/README.md
+│   ├── decisions/      architecture decision records
+│   └── issues/         the atomic backlog, one file per issue
+└── ROADMAP.md          the savepoint — where the project is right now
 ```
 
 ## Getting started
@@ -47,7 +51,9 @@ make test      # pytest
 
 ## Documentation
 
-Start at [`docs/README.md`](docs/README.md) — in particular
+Start at [`ROADMAP.md`](ROADMAP.md) if you are resuming after a gap: it
+says where the project is right now, what is in flight and what is next.
+Otherwise start at [`docs/README.md`](docs/README.md) — in particular
 [`docs/overview.md`](docs/overview.md) for the teaching context and
 [`docs/data-and-privacy.md`](docs/data-and-privacy.md) for what this
 repository must never contain.

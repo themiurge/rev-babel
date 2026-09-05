@@ -20,8 +20,8 @@ only has to replace where the samples come from.
 3. **Speaker gate.** `docs/eco.md` leaves the mechanism open. For lesson 1
    the honest answer is the cheap one: the lavalier on the teacher is the
    only audio source, so the gate *is* the microphone. Voice-embedding
-   gating is real work and is not on the critical path. → *ADR 0013: the
-   audio source is the speaker gate.* Revisit if the lavalier turns out to
+   gating is real work and is not on the critical path. → *needs a decision
+   record: the audio source is the speaker gate* (issue 0011). Revisit if the lavalier turns out to
    pick up the room; note that `docs/data-and-privacy.md` requires
    incidental student audio to be discarded, which a single-source gate
    satisfies only as well as the microphone's pickup pattern does. Worth
@@ -46,8 +46,8 @@ only has to replace where the samples come from.
    text, so segmentation can be tested and tuned in CI without a GPU.
 2. faster-whisper backend behind an `Transcriber` protocol; model choice
    configured, not hard-coded.
-3. Benchmark harness: WER, real-time factor, VRAM, cold start. → *ADR
-   0014: the transcription model and quantisation.*
+3. Benchmark harness: WER, real-time factor, VRAM, cold start. → *needs a
+   decision record: the transcription model and quantisation* (issue 0010).
 4. Language identification and the `mixed` label.
 5. `rev-babel-asr transcribe FILE > segments.jsonl`, plus `--vad-only` (to
    inspect segmentation without transcribing) and `--bench`.
@@ -77,7 +77,7 @@ Record both numbers. The second is the one to trust.
   (decode + VAD + transcribe), on the 4080 SUPER, model resident.
 - No segment exceeds 15 s; no segment boundary falls inside a word on the
   read-aloud corpus.
-- WER on the read-aloud corpus recorded in ADR 0014, with the failure
+- WER on the read-aloud corpus recorded in the decision record, with the failure
   cases listed rather than averaged away.
 - Same file in twice → byte-identical segments out.
 - `make test` passes CPU-only, with the `null` backend.

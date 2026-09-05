@@ -58,8 +58,8 @@ segmenter misbehaves the failure names itself.
 
 1. **Contracts and codec.** `Segment`, `Caption`, JSONL read/write, order
    and shape validation, tests. Pydantic v2, since `apps/web` will carry
-   it anyway. → *ADR 0011: the segment/caption contract and its JSONL wire
-   format.*
+   it anyway. → *needs a decision record: the segment/caption contract and
+   its JSONL wire format* (issue 0005).
 2. **Skeleton and CLI.** A `Translator` protocol
    (`translate(segment, targets) -> list[Caption]`), a bounded async
    queue, and `rev-babel-mt --targets en,fr,ar [--backend X] < in.jsonl >
@@ -96,8 +96,8 @@ segmenter misbehaves the failure names itself.
    makes the caption describe a button she cannot find. Rendered in
    quotes, verified by a fixture.
 7. **Choose and record.** Run the eval across backends and languages, pick
-   the default, write the numbers down. → *ADR 0012: the translation model
-   and why.*
+   the default, write the numbers down. → *needs a decision record: the
+   translation model and why* (issue 0007).
 8. **Cache and batch.** LRU on `(source_text, target_lang)` — teaching
    repeats itself, and "avete capito?" should not cost a forward pass
    every time. One segment × N languages goes in as one batch.
@@ -124,7 +124,7 @@ This does not answer the open question — it prepares for either answer.
 - p95 fan-out latency ≤ 600 ms for three languages with the model
   resident, measured on the RTX 4080 SUPER.
 - chrF++ recorded for it→{en,fr,ar} on both corpora, for every backend
-  tried, and quoted in ADR 0012.
+  tried, and quoted in the decision record.
 - Glossary fixture: protected terms preserved verbatim in 20/20 cases.
 - Injected timeouts produce `degraded` captions; no exception escapes the
   translator.

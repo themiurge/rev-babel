@@ -13,9 +13,9 @@ that a single process boundary should own the VRAM. Systemd units inside
 WSL2, with the models loaded in one process, is likely simpler and easier
 to reason about than containers sharing a card.
 
-Decide it rather than drift into it. → *ADR 0018: how the stack is
-supervised (systemd units vs. compose), and what happens to
-`infra/compose.yaml`.*
+Decide it rather than drift into it. → *needs a decision record: how the
+stack is supervised (systemd units vs. compose), and what happens to
+`infra/compose.yaml`* (issue 0019).
 
 Either way: `make up` starts everything, `make down` stops it, models are
 warmed at start so lesson 1 does not spend its first two minutes loading
@@ -63,7 +63,7 @@ write down:
 4. One log stream for the whole stack; a per-lesson metrics summary
    written on stop.
 5. `docs/operations.md` rewritten with no TODOs left.
-6. `docs/eco.md`, `docs/architecture.md`, `docs/roadmap.md` updated from
+6. `docs/eco.md`, `docs/architecture.md` and `ROADMAP.md` updated from
    "as designed" to what exists.
 7. `docs/open-questions.md` pruned: every entry these milestones resolved
    is replaced by a decision and an ADR, not deleted silently.
@@ -85,5 +85,5 @@ write down:
 ## After this
 
 Play (`services/llm`) is week 2 or later, and `services/encoder` later
-still — `docs/roadmap.md` explains why, and the VRAM numbers recorded here
+still — `ROADMAP.md` explains why, and the VRAM numbers recorded here
 are what make that sequencing decidable rather than hopeful.

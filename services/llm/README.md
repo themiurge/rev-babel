@@ -1,7 +1,7 @@
 # services/llm
 
 The conversational model behind Play. Not needed until later in the course
-— see `docs/roadmap.md` for why Eco is sequenced first and does not depend
+— see `ROADMAP.md` for why Eco is sequenced first and does not depend
 on this service.
 
 ## What belongs here

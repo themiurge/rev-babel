@@ -100,8 +100,9 @@ Across lessons — "what did we do last week" — requires persistence, which
 Proposed, to be confirmed: segments of the teacher's speech are retained
 for the lesson plus 24 hours by a purge job, with the teacher able to mark
 a lesson to keep. Student audio is never transcribed or stored at all,
-which the single-source speaker gate (ADR 0013) already provides. → *ADR
-0017: user identity, preferences, and lesson history storage*, which also
+which the single-source speaker gate already provides (see
+[`m2-speech-to-text.md`](m2-speech-to-text.md)). → *needs a decision record:
+user identity, preferences, and lesson history storage* (issue 0018), which also
 records why preferences live server-side while the session cookie stays
 per-lesson.
 

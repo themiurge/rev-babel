@@ -26,7 +26,8 @@ corresponding doc is updated and the plan step is ticked, not deleted.
 The course starts **Thursday 17 September 2026** — twelve days from the
 date this plan was written (5 September 2026). Ten lessons, Thursdays,
 16:30–18:00, through 19 November. Eco is needed from lesson 1
-(`docs/roadmap.md`), so the plan below is sequenced against that date, not
+([`../ROADMAP.md`](../ROADMAP.md)), so the plan below is sequenced against
+that date, not
 against an ideal build order.
 
 Milestones 1–4 are on the critical path for lesson 1. Milestone 5 is not,

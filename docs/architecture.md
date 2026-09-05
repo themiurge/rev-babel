@@ -30,7 +30,7 @@
   rather than shared with Play's chat model
   ([ADR 0006](decisions/0006-dedicated-translation-model.md)).
 - **`services/llm`** — the conversational model behind Play. Not needed
-  until later in the course — see `roadmap.md`.
+  until later in the course — see `../ROADMAP.md`.
 - **`services/encoder`** — placeholder for later; whether it is served at
   all is an open question (see `open-questions.md`).
 - **`packages/contracts`** — the data shapes passed between services (e.g.
@@ -43,7 +43,7 @@ Every model shares one RTX 4080 SUPER (16 GB VRAM). This is the single
 tightest resource in the system and drives sequencing: Eco's models
 (voice activity detection, transcription, translation) are comparatively
 small and needed from lesson 1. Play's chat model is not needed until later
-in the term, and the encoder later still — see `roadmap.md` for why that
+in the term, and the encoder later still — see `../ROADMAP.md` for why that
 order is what makes the budget workable at all. Concrete sizing (which
 model, what quantisation) is not yet decided — see `open-questions.md`.
 

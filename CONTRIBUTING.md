@@ -30,6 +30,19 @@ renumbered), Context/Decision/Consequences/Status/Date, under a page. If it
 supersedes an earlier ADR, add a new one and update the old one's status to
 `superseded`, linking to the new one.
 
+## Tracking work
+
+Work items are markdown files in [`docs/issues/`](docs/issues/README.md),
+not a tracker — see [ADR 0011](docs/decisions/0011-roadmap-savepoint.md).
+[`ROADMAP.md`](ROADMAP.md) is the savepoint: it holds priority and current
+state, the issues hold detail, and the plans in [`plans/`](plans/README.md)
+hold the how.
+
+Every working session closes by refreshing the roadmap's **Where we are
+now** and adding a revision log entry — including a session that changed
+nothing, which says so. Closing an issue updates the roadmap in the same
+commit.
+
 ## Before you start
 
 Read [`docs/data-and-privacy.md`](docs/data-and-privacy.md) first. Its
