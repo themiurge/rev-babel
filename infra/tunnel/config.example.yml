@@ -1,0 +1,34 @@
+# Cloudflare Tunnel configuration for rev-babel.
+#
+# Copy to config.yml and replace <TUNNEL-UUID> with the id printed by
+# `cloudflared tunnel create rev-babel`. Neither the id nor the hostnames
+# are secret; the credentials JSON this points at is, and never enters
+# this repository (see docs/data-and-privacy.md).
+#
+# Run with:
+#   cloudflared tunnel --config infra/tunnel/config.yml run rev-babel
+
+tunnel: rev-babel
+credentials-file: /home/emilio/.cloudflared/<TUNNEL-UUID>.json
+
+# No metrics port is exposed publicly; this binds to loopback only.
+metrics: 127.0.0.1:2000
+
+ingress:
+  # Student caption pages. Open — a classroom machine reaches this with
+  # nothing to type (ADR 0010).
+  - hostname: rev-babel.emiliovicari.com
+    service: http://127.0.0.1:8000
+
+  # The teacher's capture page. Same origin app, different hostname, so
+  # that Cloudflare Access can protect this one and not the other. It
+  # opens a microphone; see plans/m4-network.md.
+  - hostname: mic.emiliovicari.com
+    service: http://127.0.0.1:8000
+
+  # Everything else is refused rather than quietly proxied.
+  - service: http_status:404
+
+# WebSockets need no configuration here — cloudflared proxies them by
+# default, which is what both the audio ingress and the caption fan-out
+# depend on.

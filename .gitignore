@@ -9,6 +9,8 @@ data/*
 *.webm
 models/
 *.db
+cert.pem
+infra/tunnel/*.json
 
 # Python
 __pycache__/

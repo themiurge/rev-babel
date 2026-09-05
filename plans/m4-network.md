@@ -85,7 +85,10 @@ carry no microphone and can stay behind an unguessable path.
 ## Steps
 
 1. `cloudflared` installed in WSL2; tunnel created; credentials stored
-   outside the repository (`docs/data-and-privacy.md`).
+   outside the repository (`docs/data-and-privacy.md`). Step-by-step in
+   [`infra/tunnel/README.md`](../infra/tunnel/README.md), including a
+   smoke test that proves DNS, TLS and the tunnel before `apps/web`
+   exists.
 2. DNS records for the chosen hostnames; HTTPS verified from a phone on
    cellular data, not just from the LAN.
 3. `apps/web`: caption WebSocket endpoint + a minimal page; the M3
