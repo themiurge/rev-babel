@@ -16,7 +16,8 @@ this one course, not a general-purpose product.
 ## Status
 
 Scaffolding only. Nothing runs yet — see [`docs/roadmap.md`](docs/roadmap.md)
-for the build sequence.
+for the build sequence and [`plans/README.md`](plans/README.md) for the
+milestone-by-milestone implementation plan.
 
 ## Repository layout
 
@@ -30,6 +31,7 @@ rev-babel/
 ├── packages/contracts/ shared data shapes passed between services
 ├── infra/              deployment configuration (compose, tunnel)
 ├── scripts/            operational scripts
+├── plans/              implementation plans — start at plans/README.md
 └── docs/               documentation — start at docs/README.md
 ```
 

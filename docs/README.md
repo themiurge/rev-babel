@@ -7,5 +7,6 @@
 - [`data-and-privacy.md`](data-and-privacy.md) — what is stored, where, for how long, and what is deliberately not stored. Read this before touching anything.
 - [`operations.md`](operations.md) — the runbook: starting and stopping the stack, known failure modes, fallbacks.
 - [`roadmap.md`](roadmap.md) — build sequence, by course calendar.
+- [`../plans/README.md`](../plans/README.md) — implementation plans: what gets built in what order, and how we know it works. The roadmap says which module comes first; the plans say how each one is built.
 - [`open-questions.md`](open-questions.md) — unresolved decisions. No invented answers.
 - [`decisions/`](decisions/README.md) — architecture decision records (ADRs).
