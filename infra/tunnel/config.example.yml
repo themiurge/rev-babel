@@ -1,4 +1,7 @@
-# Cloudflare Tunnel configuration for rev-babel.
+# Cloudflare Tunnel configuration for rev-babel — the LOCALLY-MANAGED
+# alternative. Not in use: the tunnel is currently managed from the
+# Cloudflare dashboard, which holds these ingress rules itself. See
+# README.md.
 #
 # Copy to config.yml and replace <TUNNEL-UUID> with the id printed by
 # `cloudflared tunnel create rev-babel`. Neither the id nor the hostnames

@@ -84,9 +84,10 @@ carry no microphone and can stay behind an unguessable path.
 
 ## Steps
 
-1. `cloudflared` installed in WSL2; tunnel created; credentials stored
-   outside the repository (`docs/data-and-privacy.md`). Step-by-step in
-   [`infra/tunnel/README.md`](../infra/tunnel/README.md), including a
+1. Tunnel created and both hostnames routed to `http://127.0.0.1:8000`
+   — done, from the Cloudflare dashboard. Details and the connector's
+   place in WSL2 are in
+   [`infra/tunnel/README.md`](../infra/tunnel/README.md), along with a
    smoke test that proves DNS, TLS and the tunnel before `apps/web`
    exists.
 2. DNS records for the chosen hostnames; HTTPS verified from a phone on
@@ -109,12 +110,13 @@ carry no microphone and can stay behind an unguessable path.
       Cloudflare, which requires its own nameservers and creates the zone.
 - [x] **Hostname scheme** — `rev-babel.emiliovicari.com` for students,
       `mic.emiliovicari.com` for the capture page.
-- [ ] **Create the tunnel** and route both hostnames to it
-      (`cloudflared tunnel route dns <name> rev-babel.emiliovicari.com`,
-      and again for `mic.`). Note where the credentials file lives on the
-      server — not in the repo, and not in `data/` if `data/` is ever
-      copied around. Its path goes in `.env` as `CF_TUNNEL_CREDENTIALS`;
-      the file itself never does.
+- [x] **Create the tunnel** and route both hostnames to it — done from
+      the Cloudflare dashboard, so the routing lives there rather than in
+      this repository. The connector token is a secret and stays in the
+      systemd unit `cloudflared service install` writes.
+- [ ] **Smoke-test it from cellular data** before `apps/web` exists, per
+      [`infra/tunnel/README.md`](../infra/tunnel/README.md). This is the
+      cheapest proof of ADR 0003 available, and it is available now.
 - [ ] **Cloudflare Access on `mic.emiliovicari.com`** — decide yes/no,
       and if yes, which email address receives the one-time PIN. Free for
       a single seat. Leave `rev-babel.emiliovicari.com` open, since a

@@ -4,87 +4,58 @@ Cloudflare Tunnel configuration for exposing the web app without forwarding
 ports on the home router — see
 [ADR 0003](../../docs/decisions/0003-cloudflare-tunnel.md).
 
-## Hostnames
+## Hostnames and origin service
 
-| Hostname | Serves |
-|----------|--------|
-| `rev-babel.emiliovicari.com` | student caption pages, open to the classroom |
-| `mic.emiliovicari.com` | the teacher's capture page, protected |
+The tunnel is **managed from the Cloudflare dashboard**, so its ingress
+rules live in Cloudflare rather than in this repository. Both public
+hostnames point at the same local app, which distinguishes them by `Host`
+header:
 
-Both are CNAMEs to the same tunnel and both route to the same local app on
-`127.0.0.1:8000`, which distinguishes them by `Host` header. They are
-separate names so that the one which opens a microphone can be put behind
-Cloudflare Access while the one students use stays free of anything to
-type.
+| Public hostname | Type | URL | Serves |
+|-----------------|------|-----|--------|
+| `rev-babel.emiliovicari.com` | HTTP | `127.0.0.1:8000` | student caption pages, open to the classroom |
+| `mic.emiliovicari.com` | HTTP | `127.0.0.1:8000` | the teacher's capture page, protected |
 
-## Setting it up
+Two names rather than one path prefix, so that Cloudflare Access can
+protect the host which opens a microphone while the host students use
+stays free of anything to read or type (ADR 0010).
 
-Everything runs inside WSL2 ([ADR 0002](../../docs/decisions/0002-run-everything-in-wsl2.md)).
-Steps 1 and 2 need a password and a browser respectively, so they are
-yours to run; the rest is scriptable.
+Two things about that URL that are easy to get wrong:
 
-### 1. Install `cloudflared` (needs sudo)
+- **HTTP, not HTTPS.** TLS is terminated at Cloudflare's edge; the hop
+  from `cloudflared` to the app never leaves the machine. Pointing at
+  `https://` fails the origin handshake unless TLS verification is also
+  disabled, which is complexity bought for nothing.
+- **`127.0.0.1`, not `localhost`.** `localhost` may resolve to `::1`,
+  and an app bound only to IPv4 then refuses a connection that looks, from
+  the dashboard, like a tunnel fault.
 
-```sh
-sudo mkdir -p --mode=0755 /usr/share/keyrings
-curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg \
-  | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
-echo "deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared $(lsb_release -cs) main" \
-  | sudo tee /etc/apt/sources.list.d/cloudflared.list
-sudo apt-get update && sudo apt-get install -y cloudflared
-```
+WebSockets need no configuration — `cloudflared` proxies them by default,
+which is what both the audio ingress and the caption fan-out depend on.
 
-The apt repository rather than a downloaded `.deb`, because this daemon is
-the single path in from the internet and should get security updates with
-everything else on the machine.
+## The connector
 
-### 2. Authenticate (needs a browser)
-
-```sh
-cloudflared tunnel login
-```
-
-It prints a URL. Open it in Windows, pick the `emiliovicari.com` zone, and
-authorise. This writes `~/.cloudflared/cert.pem`, which is what lets the
-next two steps create a tunnel and write DNS records. It is an account
-credential: it stays in `~/.cloudflared/`, never in this repository.
-
-### 3. Create the tunnel
+The connector runs inside WSL2
+([ADR 0002](../../docs/decisions/0002-run-everything-in-wsl2.md)),
+installed with the token from the dashboard's connector command:
 
 ```sh
-cloudflared tunnel create rev-babel
+sudo cloudflared service install <TOKEN>
 ```
 
-Prints a UUID and writes `~/.cloudflared/<UUID>.json` — the tunnel's own
-credentials. Also a secret, also never committed. Put its path in `.env`
-as `CF_TUNNEL_CREDENTIALS`.
+That token authenticates the tunnel. It is a secret: it belongs in the
+systemd unit the installer writes, never in this repository, and never
+pasted anywhere it might be logged (see
+[`docs/data-and-privacy.md`](../../docs/data-and-privacy.md)).
 
-### 4. Point both hostnames at it
+Check it with `systemctl status cloudflared` and in the dashboard, where a
+healthy tunnel shows its connector as active.
 
-```sh
-cloudflared tunnel route dns rev-babel rev-babel.emiliovicari.com
-cloudflared tunnel route dns rev-babel mic.emiliovicari.com
-```
-
-Each creates a proxied CNAME in the `emiliovicari.com` zone. Verify with
-`cloudflared tunnel list` and in the Cloudflare dashboard's DNS tab.
-
-### 5. Write the config
-
-```sh
-cp infra/tunnel/config.example.yml infra/tunnel/config.yml
-# then replace <TUNNEL-UUID> with the id from step 3
-```
-
-### 6. Run it
-
-```sh
-cloudflared tunnel --config infra/tunnel/config.yml run rev-babel
-```
-
-Foreground, for now. Running it as a systemd unit that survives a reboot
-is part of milestone 6, where how the whole stack is supervised gets
-decided — see [`plans/m6-end-to-end.md`](../../plans/m6-end-to-end.md).
+**WSL2 does not start on Windows boot by itself**, so a reboot takes the
+tunnel down until something starts the guest — a real failure mode for a
+lesson that begins at 16:30. Fixing it properly belongs with the rest of
+the supervision decision in
+[`plans/m6-end-to-end.md`](../../plans/m6-end-to-end.md).
 
 ## Smoke test, before any of the app exists
 
@@ -94,11 +65,7 @@ code, so that when something breaks later there is one fewer layer to
 suspect.
 
 ```sh
-# terminal 1 — stand in for apps/web
-python3 -m http.server 8000
-
-# terminal 2
-cloudflared tunnel --config infra/tunnel/config.yml run rev-babel
+python3 -m http.server 8000    # stands in for apps/web
 ```
 
 Then open `https://rev-babel.emiliovicari.com` **from a phone on cellular
@@ -106,13 +73,22 @@ data**, not from the LAN — the point is to prove the path in from the
 internet, and a phone on the house wifi may reach the machine without the
 tunnel being involved at all.
 
-You should get a directory listing over HTTPS with a valid certificate. If
-you do, ADR 0003 is proven and milestone 4's remaining risk is entirely
-the classroom's network, which cannot be tested from here.
+A directory listing over valid HTTPS means ADR 0003 is proven end to end,
+and milestone 4's remaining risk is entirely the classroom's network,
+which cannot be tested from here.
 
 ## Status
 
-Domain registered and hostnames chosen. The tunnel itself is not created
-yet; follow the steps above. Credentials are referenced from `.env` by
-path and are never committed — see
-[`docs/data-and-privacy.md`](../../docs/data-and-privacy.md).
+Domain registered, tunnel created and managed from the dashboard, both
+hostnames routed. `apps/web` does not exist yet, so `127.0.0.1:8000`
+answers only when something is put there by hand.
+
+## If this ever moves back into version control
+
+`config.example.yml` is the same routing expressed as a locally-managed
+tunnel: ingress rules in a file here, credentials in a JSON file
+referenced by path. It is unused while the dashboard owns the tunnel, and
+is kept because a config in version control is easier for a future reader
+to audit than a dashboard nobody else can see. Switching would mean
+recreating the tunnel with `cloudflared tunnel create`; the two management
+modes are not interchangeable for one tunnel.
