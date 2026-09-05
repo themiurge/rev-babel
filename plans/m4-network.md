@@ -24,6 +24,47 @@ pricing. Tunnel, DNS, Universal SSL, WebSockets and Zero Trust Access for
 under fifty users are all on the free tier. The remaining external steps
 are in "What is needed from you" below.
 
+## What is already proven (5 September 2026)
+
+Measured against a throwaway FastAPI server on `127.0.0.1:8000`, reached
+from outside the house:
+
+- **HTTPS through the tunnel**, on both hostnames.
+- **The `Host` header arrives intact**, so one app on one port can tell
+  caption traffic from capture traffic — the assumption the two-hostname
+  split rests on.
+- **`CF-Connecting-IP` is preserved**, so the app can distinguish
+  classroom machines later.
+- **WebSockets open and hold** on both hostnames. This was the one result
+  that could have invalidated the design outright: a tunnel that carried
+  HTTP but not WebSockets would take both the audio ingress and the
+  caption fan-out with it.
+- **From a phone on cellular data**, in *poor* reception: round trip
+  median 250 ms, max 650 ms, no drops over several minutes.
+
+That last figure is the one worth keeping. The phone leg contributes
+roughly 325 ms one-way at its worst against a budget
+([ADR 0005](../docs/decisions/0005-segment-level-transcription.md)) that
+already accepts 2–3 seconds, and a 2.6× median-to-max spread is a
+well-behaved link rather than a congested one — a bad cell shows as
+order-of-magnitude spikes, not this. Recorded as a pessimistic baseline:
+it was measured on a connection that was performing badly at the time.
+
+What it does **not** prove, and what remains open below: sustained upload
+of a continuous audio stream rather than 2-second pings; ninety minutes
+rather than several; a teacher walking around a room, which forces cell
+handovers a stationary phone never exercises; and the classroom's own
+network, which cannot be tested from here.
+
+Two consequences for the capture page:
+
+- **Buffer roughly 500 ms on the phone before uploading.** ADR 0005
+  already trades latency for stability, and buffering converts link jitter
+  into a bounded, predictable delay instead of a gap in the audio.
+- **Prefer the classroom wifi over cellular** if the room has any. It
+  takes the mobile network off the critical path for free — worth
+  checking during the on-site network test either way.
+
 ## A fork to settle first: how audio gets in
 
 Two paths, and the plan should not pretend they are the same one.
@@ -96,8 +137,9 @@ carry no microphone and can stay behind an unguessable path.
    pipeline publishes into it.
 4. Path B: `module-null-sink` on the server, a phone streaming to it over
    the LAN, `DeviceSource` reading the monitor. Rehearse with this.
-5. Path A: capture page, WebSocket audio ingress, Wake Lock, reconnect
-   with backoff, `WebSocketSource` feeding the pipeline.
+5. Path A: capture page, WebSocket audio ingress, ~500 ms send buffer,
+   Wake Lock, reconnect with backoff, `WebSocketSource` feeding the
+   pipeline.
 6. Access control on the capture endpoint.
 7. A 90-minute soak: phone streaming, captions rendering, tunnel restarted
    mid-run to prove recovery.
