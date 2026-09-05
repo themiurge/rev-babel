@@ -3,6 +3,7 @@ name = "rev-babel-encoder"
 version = "0.1.0"
 description = "Placeholder for a future encoder service."
 requires-python = ">=3.12"
+license = "Apache-2.0"
 dependencies = []
 
 [build-system]

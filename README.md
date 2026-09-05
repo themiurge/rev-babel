@@ -52,4 +52,4 @@ repository must never contain.
 
 ## License
 
-TODO: owner to choose. See [`LICENSE`](LICENSE).
+Apache License 2.0. See [`LICENSE`](LICENSE).

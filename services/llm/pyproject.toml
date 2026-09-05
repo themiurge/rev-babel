@@ -3,6 +3,7 @@ name = "rev-babel-llm"
 version = "0.1.0"
 description = "Conversational model serving Play. Placeholder — not needed until later in the course."
 requires-python = ">=3.12"
+license = "Apache-2.0"
 dependencies = []
 
 [build-system]
