@@ -14,7 +14,8 @@ should come up with a single command once implemented.
 ## Before a lesson
 
 TODO: a pre-lesson checklist (tunnel reachable, GPU free, phone paired and
-charged, photo tiles present) belongs here once the system exists to check.
+charged, avatar claims intact) belongs here once the system exists to
+check.
 
 ## Known failure modes and fallbacks
 

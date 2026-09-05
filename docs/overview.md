@@ -42,7 +42,8 @@ group typing is itself a barrier separate from the language being practised.
 - **No login picker, no typed input for Play** — several students cannot be
   assumed fluent with a mouse, let alone a keyboard, and reading fluency
   cannot be assumed even in their own language. Every interaction is
-  designed around recognition (a photo, a spoken sentence) rather than
+  designed around recognition (an avatar she chose, a spoken sentence)
+  rather than
   typing or reading dense text.
 - **Small and self-hosted, not cloud-deployed** — the entire system exists to
   serve one course, on hardware the teacher already owns. It is not built to

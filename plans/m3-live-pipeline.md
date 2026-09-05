@@ -63,7 +63,7 @@ period as undecided. It cannot stay undecided once the thing runs.
 Proposed default, to be confirmed and recorded: run logs are written to
 gitignored `data/runs/<lesson_id>/` and deleted when the process exits,
 unless `--keep` is passed for a session being debugged. Nothing is
-retained by default; retention becomes opt-in and deliberate. → *ADR 0014:
+retained by default; retention becomes opt-in and deliberate. → *ADR 0015:
 Eco transcript retention.* Whatever is decided, update
 `docs/data-and-privacy.md` and remove the TODO rather than leaving both.
 

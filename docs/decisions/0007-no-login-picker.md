@@ -1,6 +1,6 @@
 # 0007. No login — a grid of photo tiles, one per user
 
-- **Status:** accepted
+- **Status:** superseded by [ADR 0010](0010-avatar-picker.md)
 - **Date:** 2026-09-05
 
 ## Context

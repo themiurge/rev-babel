@@ -12,10 +12,14 @@ not negotiable — see `overview.md` for the full teaching context.
 
 ## What is stored, where, for how long
 
-- **Login photos** — the login picker uses one photo per user (see
-  [ADR 0007](decisions/0007-no-login-picker.md)). These live in a
-  gitignored directory on the server (`data/`), never in the repository,
-  and are never committed under any circumstance.
+- **Avatars** — the picker uses a preset collection of ready-made
+  avatars, claimed by each user on first use (see
+  [ADR 0010](decisions/0010-avatar-picker.md), which supersedes
+  [ADR 0007](decisions/0007-no-login-picker.md)). They depict nobody real,
+  so the art itself is not personal data and lives in the repository like
+  any other static asset. What is stored per user is a user id, the
+  avatar claimed against it, and a language preference — no name, and no
+  photograph of anyone.
 - **Eco transcripts** — TODO: retention period not yet decided. Whatever is
   decided, transcripts are of the teacher's speech only (see below), and
   none belong in this repository as sample or fixture data.
@@ -35,7 +39,10 @@ not negotiable — see `overview.md` for the full teaching context.
 
 - No recordings of any kind, of anyone, beyond what a fallback mechanism
   requires transiently (if any — TODO, see `operations.md`).
-- No photograph anywhere in version control.
+- No photograph anywhere in version control. Since
+  [ADR 0010](decisions/0010-avatar-picker.md) the system holds no
+  photograph of any user at all, on the server or off it — this rule now
+  describes the design rather than restraining it.
 - No transcript, real or sample, in this repository.
 
 ## Repository rules (binding on every future contributor)

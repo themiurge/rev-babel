@@ -13,7 +13,7 @@ that a single process boundary should own the VRAM. Systemd units inside
 WSL2, with the models loaded in one process, is likely simpler and easier
 to reason about than containers sharing a card.
 
-Decide it rather than drift into it. → *ADR 0017: how the stack is
+Decide it rather than drift into it. → *ADR 0018: how the stack is
 supervised (systemd units vs. compose), and what happens to
 `infra/compose.yaml`.*
 
@@ -42,7 +42,8 @@ write down:
 - Starting and stopping the stack — from the supervision decision above.
 - **A pre-lesson checklist**: tunnel reachable from outside, GPU free,
   models warm, phone charged and paired, capture page authenticated,
-  caption page loads on a classroom machine, photo tiles present. Written
+  caption page loads on a classroom machine, avatar claims intact.
+  Written
   so it can be run in five minutes before 16:30.
 - Home internet down — the TA delivers the lesson without Eco. Already the
   design's standing fallback; state it as the procedure it is.

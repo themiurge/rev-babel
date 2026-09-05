@@ -12,7 +12,7 @@ architectural) rather than deleting it silently.
   `overview.md`) change.
 - **Whether classroom machines are shared or assigned per student** —
   affects session/login design beyond what
-  [ADR 0007](decisions/0007-no-login-picker.md) already settles.
+  [ADR 0010](decisions/0010-avatar-picker.md) already settles.
 - **Chat model size and quantisation for Play** — affects whether it fits
   alongside Eco's models in the 16 GB VRAM budget (see `architecture.md`).
 - **Whether the encoder is worth serving through Triton**, or whether a

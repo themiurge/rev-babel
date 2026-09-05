@@ -4,8 +4,8 @@ The FastAPI app: serves pages, manages lesson sessions, and fans out
 caption updates to connected student browsers over WebSocket.
 
 This is what a student's or teacher's browser talks to directly. It hosts
-the login-picker page
-([ADR 0007](../../docs/decisions/0007-no-login-picker.md)), receives the
+the avatar picker
+([ADR 0010](../../docs/decisions/0010-avatar-picker.md)), receives the
 teacher's audio stream, and delivers Eco captions and Play conversation
 turns to the right connected clients.
 

@@ -1,6 +1,6 @@
 # apps/web/templates
 
-Server-rendered page templates for the login picker, Eco captions, and
+Server-rendered page templates for the avatar picker, Eco captions, and
 Play.
 
 ## Status

@@ -5,24 +5,52 @@ student is recognised, sees her own language, and can catch up on what she
 missed. Most of this is *after* lesson 1 — see the cut line in
 [`README.md`](README.md).
 
-## "Accounts", given ADR 0007
+## "Accounts", given ADR 0010
 
-ADR 0007 rules out usernames and passwords: users pick themselves from a
-grid of photo tiles, and the selection lives in a signed cookie scoped to
-a lesson id so each lesson starts clean. Nothing here reverses that. What
-"accounts" means in this milestone is:
+[ADR 0010](../docs/decisions/0010-avatar-picker.md) rules out usernames
+and passwords, and replaces ADR 0007's photographs with a preset
+collection of ready-made avatars. What "accounts" means in this milestone
+is therefore:
 
 - a stable user id per person, server-side;
-- a photo tile, stored in gitignored `data/` and never committed
-  (`docs/data-and-privacy.md`);
+- the avatar she claimed, referenced by id — the art is a static asset in
+  the repository, not personal data, and nothing about a user is stored
+  beyond her id, her avatar and her language;
 - preferences attached to the id, not to the browser.
 
-That last point matters: ADR 0007's cookie is deliberately per-lesson, so
-a language preference stored in the cookie would be forgotten every week.
-Storing preferences server-side against the user id keeps ADR 0007 intact
-and still means a student picks her language once, in lesson 1, and never
-again. No ADR reversal needed — but the reasoning is worth one line in the
-new ADR below so a future reader does not "fix" it.
+That last point matters: the session cookie is deliberately scoped to a
+lesson id so each lesson starts clean, so a language preference stored in
+the cookie would be forgotten every week. Storing preferences server-side
+against the user id leaves the cookie's per-lesson scope intact and still
+means a student picks her language once, in lesson 1, and never again.
+Worth a line in the ADR below so a future reader does not "fix" it.
+
+### The claim flow
+
+Two states, and the picker has to handle both:
+
+- **First use (lesson 1).** The grid shows the unclaimed avatars. She taps
+  one; it becomes hers and leaves the pool. There is no name to type, no
+  list to find herself in, and nothing to prepare before she arrives — the
+  claim *is* the enrolment.
+- **Every lesson after.** The grid shows the claimed avatars. She taps
+  hers.
+
+Details that decide whether this works in a room rather than on paper:
+
+- Offer meaningfully more avatars than users — twelve to sixteen for six
+  people — so the choice is a choice. The art itself is out of scope here;
+  what this milestone needs is a manifest (`id`, file, background colour)
+  and a folder of assets under `apps/web/static/avatars/`.
+- Tapping the wrong tile is recoverable and cheap: it shows the wrong
+  caption language, nothing more. Make it obviously undoable — her avatar
+  is displayed on the caption screen, so a mistake is visible immediately,
+  and a "not me" control returns her to the grid.
+- The teacher's control page can release a claim, for the lesson-1 case
+  where two people reach for the same avatar or someone claims by
+  accident.
+- A claim is exclusive within the course, enforced server-side; two
+  browsers claiming simultaneously must not both win.
 
 An open question sits underneath all of this: whether classroom machines
 are shared or assigned per student (`docs/open-questions.md`). Shared
@@ -33,23 +61,26 @@ not.
 
 ## Pages
 
-- **Picker** — the photo grid. Mouse only, no reading required, tiles
-  large enough to hit without fine motor control.
+- **Picker** — the avatar grid, in its unclaimed and claimed states.
+  Mouse only, no reading required, tiles large enough to hit without fine
+  motor control, and distinguishable at a glance by silhouette and
+  background colour rather than by detail.
 - **Student captions** — Italian and the student's language together (ADR
   0008), scrollback (ADR 0009), large type with a size control, high
   contrast, correct RTL rendering and a real Arabic font. Nothing else on
   screen.
 - **Language choice** — flags or scripts, not language names in text, for
-  the same reason the login is photos.
+  the same reason the picker is pictures.
 - **Teacher control** — start/stop a lesson, see which students are
   connected and which languages are live, see the pipeline's health. This
   is what tells the teacher that Eco has stopped before a student has to.
 
 ## Backend
 
-- FastAPI, SQLite (`*.db` is already gitignored). Users, photo references,
+- FastAPI, SQLite (`*.db` is already gitignored). Users, avatar claims,
   language preferences, lessons, and — subject to the retention decision —
-  segments.
+  segments. A user row is an id, an avatar id and a language: no name, no
+  photograph, nothing that identifies a person outside the classroom.
 - Fan-out: one publisher per lesson, subscriber groups per language,
   heartbeat and reconnect with backoff, and a replay of the last N
   segments on connect so a reconnecting client catches up rather than
@@ -69,17 +100,19 @@ Across lessons — "what did we do last week" — requires persistence, which
 Proposed, to be confirmed: segments of the teacher's speech are retained
 for the lesson plus 24 hours by a purge job, with the teacher able to mark
 a lesson to keep. Student audio is never transcribed or stored at all,
-which the single-source speaker gate (ADR 0012) already provides. → *ADR
-0016: user identity, preferences, and lesson history storage*, which also
+which the single-source speaker gate (ADR 0013) already provides. → *ADR
+0017: user identity, preferences, and lesson history storage*, which also
 records why preferences live server-side while the session cookie stays
 per-lesson.
 
 ## Steps
 
-1. Data model and migrations; user ids, prefs, lessons.
+1. Data model and migrations; user ids, avatar claims (exclusive), prefs,
+   lessons.
 2. Fan-out with reconnect and replay, replacing M4's minimal endpoint.
 3. Student caption page: typography, RTL, scrollback, size control.
-4. Picker and language choice.
+4. Avatar manifest and static assets; picker in both states, claim and
+   release, language choice.
 5. Teacher control page and health surface.
 6. Pre-translated failure messages for every supported language.
 7. Retention job and the ADR.
@@ -90,15 +123,19 @@ per-lesson.
   segments.
 - A client that loses network for 60 s and returns has no gap in its
   scrollback.
-- The whole student flow — pick a tile, see captions — is completable with
-  a mouse alone, no keyboard, no reading of Latin text beyond recognising
-  a photo.
+- The whole student flow — claim an avatar in lesson 1, tap it in lesson
+  2, see captions — is completable with a mouse alone, no keyboard, and no
+  reading of Latin text beyond recognising a picture.
+- Two browsers claiming the same avatar at once: exactly one wins, the
+  other is offered the remaining pool.
+- The teacher can release a claim and the student can re-claim, without a
+  restart.
 - Arabic renders right-to-left, correctly shaped, at a size legible from a
   classroom seat.
 - MT killed mid-lesson: captions continue in Italian, no blank screen, no
   error dialog.
-- Nothing in `data/` is reachable from the repository or from a URL that
-  is not authenticated.
+- The database holds no name and no photograph — assert it in a test, so
+  a future change that adds one has to argue with CI first.
 
 ## Risks
 
@@ -107,5 +144,13 @@ per-lesson.
   premise weakens — and that will only be known after lesson 1. Keep the
   page simple enough that a change of direction (larger type, fewer lines,
   one language at a time) is a CSS change, not a rewrite.
-- **Photos are the most sensitive data in the system.** Every step that
-  touches `data/` deserves a second look before it is committed.
+- **A student forgets which avatar she chose.** The failure ADR 0010
+  accepts in exchange for holding no photographs. It costs one wrong
+  language and one tap to fix, provided the "not me" control and the
+  teacher's release exist — so treat those as part of the picker, not as
+  polish to add later.
+- **The avatars themselves carry risk the code cannot fix.** Six tiles
+  that look alike at thumbnail size defeat the whole recognition premise,
+  and art that reads as caricature would land badly with this group in
+  particular. Review them at actual tile size, on a classroom machine,
+  before lesson 1.

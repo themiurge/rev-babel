@@ -18,7 +18,7 @@ corresponding doc is updated and the plan step is ticked, not deleted.
 | 2 | [Speech to text](m2-speech-to-text.md) | audio file in → segment stream out | contracts from M1 |
 | 3 | [Live pipeline](m3-live-pipeline.md) | live audio → transcript → translation → console | M1, M2 |
 | 4 | [Network setup](m4-network.md) | phone mic in, caption page out, over the internet | M3 |
-| 5 | [Frontend and backend](m5-frontend-backend.md) | picker, per-user language, lesson history | M4 |
+| 5 | [Frontend and backend](m5-frontend-backend.md) | avatar picker, per-user language, lesson history | M4 |
 | 6 | [End to end](m6-end-to-end.md) | one command, a runbook, a dress rehearsal | all |
 
 ## The calendar problem
@@ -46,7 +46,7 @@ identity and preferences arriving in weeks 2–4.
   an honest message — the teaching assistant translating live remains the
   standing human fallback (`docs/operations.md`).
 
-Anything past that line — the photo picker, saved language preferences,
+Anything past that line — the avatar picker, saved language preferences,
 cross-lesson history, Play — is week 2 or later.
 
 ### Suggested schedule
@@ -62,6 +62,10 @@ cross-lesson history, Play — is week 2 or later.
 | 16 Sep | M6 (cut-down) — start script, pre-lesson checklist, dress rehearsal |
 | 17 Sep | **Lesson 1**, TA fallback ready |
 | Weeks 2–4 | M5 in full, M6 hardening, then Play |
+
+The avatar art is a parallel, non-blocking track: it is needed for the
+picker in week 2, not for lesson 1, and it is produced outside this
+repository (see [ADR 0010](../docs/decisions/0010-avatar-picker.md)).
 
 If a milestone slips, the cut line is what to protect. Shipping M1–M3 and
 running lesson 1 from the teacher's own laptop screen in the classroom is
