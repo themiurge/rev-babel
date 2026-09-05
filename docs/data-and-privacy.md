@@ -52,7 +52,11 @@ not negotiable — see `overview.md` for the full teaching context.
 - **No photographs** committed anywhere in the repository's history.
 - **No transcripts or recordings**, real or sample, anywhere in the
   repository.
-- **No `.env`** — only `.env.example`, with empty values.
+- **No `.env`** — only `.env.example`, and in it every secret is left
+  empty: tunnel credentials, cookie signing keys, bearer tokens, API
+  keys. Non-secret configuration — hostnames, ports, paths, model names —
+  may carry its real value there, since there is nothing to protect and a
+  wrong one costs a lesson.
 - **Nothing identifying the course provider, venue, or address.**
 - `.gitignore` blocks `data/`, `.env`, `*.wav`, `*.mp3`, `*.ogg`, `*.webm`,
   `models/`, and `*.db`. If a change needs a new category of local or

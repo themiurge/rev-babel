@@ -5,10 +5,24 @@ and the caption stream reaches a browser in the classroom. Everything
 before this milestone runs on one machine; this is where the system
 becomes reachable.
 
-**Start the external steps today.** Domain registration, nameserver
-changes and DNS propagation run on their own clock. Everything in "What is
-needed from you" below should be in flight before M1 is finished, not
-after M3.
+**Domain: done.** `emiliovicari.com` is registered at Cloudflare
+Registrar (5 September 2026), which puts the zone on Cloudflare
+nameservers as part of registration — so the step with the propagation
+delay is already behind us. The hostnames are settled:
+
+| Hostname | Serves | Protected |
+|----------|--------|-----------|
+| `rev-babel.emiliovicari.com` | student caption pages | unguessable lesson id only |
+| `mic.emiliovicari.com` | the teacher's capture page | yes — it opens a microphone |
+
+Two names rather than one path prefix, so the capture host can sit behind
+Cloudflare Access while the caption host stays open to a classroom machine
+with no credentials to type (which is the whole premise of ADR 0010).
+
+Recurring cost is the domain alone, ~$10.44/year at Cloudflare's at-cost
+pricing. Tunnel, DNS, Universal SSL, WebSockets and Zero Trust Access for
+under fifty users are all on the free tier. The remaining external steps
+are in "What is needed from you" below.
 
 ## A fork to settle first: how audio gets in
 
@@ -54,9 +68,10 @@ console becomes a second subscriber to the same stream rather than a
 separate code path — one publisher, several subscribers, which is what M5
 then builds accounts and history on top of.
 
-For lesson 1 this can be one URL per language
-(`/lesson/<id>/captions?lang=ar`), unguessable lesson id, no picker. That
-is the cut line from [`README.md`](README.md).
+For lesson 1 this can be one URL per language —
+`https://rev-babel.emiliovicari.com/lesson/<id>/captions?lang=ar` — with an
+unguessable lesson id and no picker. That is the cut line from
+[`README.md`](README.md).
 
 ## Security note, worth stating plainly
 
@@ -85,20 +100,24 @@ carry no microphone and can stay behind an unguessable path.
 
 ## What is needed from you (external, cannot be scripted)
 
-- [ ] **Choose and register a domain**, or pick a subdomain of one you
-      already own.
-- [ ] **Cloudflare account**, domain added, nameservers pointed at
-      Cloudflare. This is the step with a propagation delay — do it first.
-- [ ] **Decide the hostname scheme** — e.g. `eco.<domain>` for students,
-      `mic.<domain>` for the capture page. Two names make it possible to
-      protect one and not the other.
-- [ ] **Create the tunnel** and note where the credentials file lives on
-      the server (not in the repo, not in `data/` if `data/` is ever
-      copied around).
-- [ ] **Decide on Cloudflare Access** for the capture page, and if yes,
-      which email address receives the PIN.
+- [x] **Register a domain** — `emiliovicari.com`, Cloudflare Registrar,
+      5 September 2026.
+- [x] **Cloudflare account and nameservers** — done by registering at
+      Cloudflare, which requires its own nameservers and creates the zone.
+- [x] **Hostname scheme** — `rev-babel.emiliovicari.com` for students,
+      `mic.emiliovicari.com` for the capture page.
+- [ ] **Create the tunnel** and route both hostnames to it
+      (`cloudflared tunnel route dns <name> rev-babel.emiliovicari.com`,
+      and again for `mic.`). Note where the credentials file lives on the
+      server — not in the repo, and not in `data/` if `data/` is ever
+      copied around. Its path goes in `.env` as `CF_TUNNEL_CREDENTIALS`;
+      the file itself never does.
+- [ ] **Cloudflare Access on `mic.emiliovicari.com`** — decide yes/no,
+      and if yes, which email address receives the one-time PIN. Free for
+      a single seat. Leave `rev-babel.emiliovicari.com` open, since a
+      student cannot be asked to read an email and type a code.
 - [ ] **Check the classroom network** before lesson 1: does its wifi or
-      firewall allow WebSockets to an arbitrary HTTPS host? Some
+      firewall allow WebSockets to `rev-babel.emiliovicari.com`? Some
       institutional networks do not. Test from the actual room, on the
       actual machines, ideally the week before.
 - [ ] **Phone side**: which phone, whether the lavalier pairs and stays
