@@ -1,0 +1,18 @@
+[tool.uv.workspace]
+members = ["apps/*", "services/*", "packages/*"]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8",
+    "ruff>=0.6",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["apps", "services", "packages"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

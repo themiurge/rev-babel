@@ -1,0 +1,10 @@
+[project]
+name = "rev-babel-asr"
+version = "0.1.0"
+description = "Voice activity detection, speaker gating, and transcription for Eco. Placeholder — no pipeline implemented yet."
+requires-python = ">=3.12"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -1,0 +1,10 @@
+[project]
+name = "rev-babel-contracts"
+version = "0.1.0"
+description = "Shared data shapes passed between rev-babel's services. Placeholder — no shapes defined yet."
+requires-python = ">=3.12"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

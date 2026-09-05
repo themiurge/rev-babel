@@ -1,0 +1,10 @@
+[project]
+name = "rev-babel-web"
+version = "0.1.0"
+description = "FastAPI app: pages, sessions, and WebSocket fan-out. Placeholder — no routes implemented yet."
+requires-python = ">=3.12"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

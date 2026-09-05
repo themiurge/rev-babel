@@ -1,0 +1,21 @@
+# Personal data — never commit
+data/*
+!data/.gitkeep
+!data/README.md
+.env
+*.wav
+*.mp3
+*.ogg
+*.webm
+models/
+*.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/

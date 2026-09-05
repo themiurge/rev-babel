@@ -1,0 +1,21 @@
+# Placeholder. No service here is runnable yet — see docs/architecture.md
+# for the intended topology. Ports, images, and volumes are not yet
+# decided.
+
+services:
+  # web:
+  #   build: ../apps/web
+  #   ports:
+  #     - "TODO"
+  #
+  # asr:
+  #   build: ../services/asr
+  #
+  # mt:
+  #   build: ../services/mt
+  #
+  # llm:
+  #   build: ../services/llm
+  #
+  # encoder:
+  #   build: ../services/encoder
