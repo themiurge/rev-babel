@@ -196,8 +196,10 @@ async def audio_ingest(ws: WebSocket):
                 mime = (meta.get("mime") or "audio/webm").split(";")[0]
                 path = CAPTURES / f"capture-{stamp}{EXT.get(mime.split('/')[-1], '.bin')}"
                 fh = path.open("wb")
-                print(f"[audio] open  mime={meta.get('mime')} "
-                      f"sr={meta.get('sampleRate')} mic={meta.get('label')!r}")
+                print(
+                    f"[audio] open  mime={meta.get('mime')} "
+                    f"sr={meta.get('sampleRate')} mic={meta.get('label')!r}"
+                )
                 print(f"[audio] ua={meta.get('ua')}")
                 print(f"[audio] writing {path.name}")
                 continue
@@ -213,8 +215,10 @@ async def audio_ingest(ws: WebSocket):
                     fh.flush()
                 if chunks % 20 == 0:
                     secs = now - started
-                    print(f"[audio] {chunks} chunks · {bytes_in/1024:.1f} KiB · "
-                          f"{bytes_in*8/secs/1000:.1f} kbps · {secs:.0f}s")
+                    print(
+                        f"[audio] {chunks} chunks · {bytes_in/1024:.1f} KiB · "
+                        f"{bytes_in*8/secs/1000:.1f} kbps · {secs:.0f}s"
+                    )
     except (WebSocketDisconnect, asyncio.CancelledError, RuntimeError):
         pass
     finally:
@@ -222,10 +226,12 @@ async def audio_ingest(ws: WebSocket):
             fh.close()
         secs = max(time.monotonic() - started, 0.001)
         gaps_sorted = sorted(gaps)
-        med = gaps_sorted[len(gaps_sorted)//2] if gaps_sorted else 0
-        print(f"[audio] CLOSED {chunks} chunks · {bytes_in/1024:.1f} KiB · "
-              f"{secs:.1f}s · {bytes_in*8/secs/1000:.1f} kbps · "
-              f"chunk gap median {med*1000:.0f} ms max {max(gaps or [0])*1000:.0f} ms")
+        med = gaps_sorted[len(gaps_sorted) // 2] if gaps_sorted else 0
+        print(
+            f"[audio] CLOSED {chunks} chunks · {bytes_in/1024:.1f} KiB · "
+            f"{secs:.1f}s · {bytes_in*8/secs/1000:.1f} kbps · "
+            f"chunk gap median {med*1000:.0f} ms max {max(gaps or [0])*1000:.0f} ms"
+        )
         if path:
             print(f"[audio] saved {path}")
 
@@ -238,12 +244,15 @@ async def listen_page(t: str = ""):
     if t != TOKEN:
         return HTMLResponse("<p>bad token</p>", status_code=403)
     files = sorted(LISTEN.glob("*.ogg")) + sorted(LISTEN.glob("*.webm"))
-    rows = "".join(
-        f"<div class=card><div class=n>{f.name} — {f.stat().st_size/1024:.0f} KiB</div>"
-        f"<audio controls preload=none style='width:100%' "
-        f"src='/audio-file/{f.name}?t={t}'></audio></div>"
-        for f in files
-    ) or "<p>no captures yet</p>"
+    rows = (
+        "".join(
+            f"<div class=card><div class=n>{f.name} — {f.stat().st_size/1024:.0f} KiB</div>"
+            f"<audio controls preload=none style='width:100%' "
+            f"src='/audio-file/{f.name}?t={t}'></audio></div>"
+            for f in files
+        )
+        or "<p>no captures yet</p>"
+    )
     return HTMLResponse(
         "<!doctype html><meta charset=utf-8>"
         "<meta name=viewport content='width=device-width,initial-scale=1'>"

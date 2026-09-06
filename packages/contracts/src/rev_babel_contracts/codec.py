@@ -18,7 +18,7 @@ def parse_jsonl(lines: Iterable[str], model: type[M]) -> Iterator[M]:
     """Parse a JSON Lines stream into `model` instances.
 
     Blank lines are skipped. Anything else that fails to parse or fails the
-    model's own shape validation raises `ContractViolation` immediately —
+    model's own shape validation raises `ContractViolation` immediately:
     a malformed stream fails loudly rather than silently dropping the line.
     """
     for lineno, line in enumerate(lines, start=1):

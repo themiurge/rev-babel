@@ -14,7 +14,7 @@ def validate_segment_stream(segments: Iterable[Segment]) -> Iterator[Segment]:
     gapless and in order, and no segment exceeds the hard duration cap.
 
     Raises `ContractViolation` on the first violation, rather than skipping
-    or reordering — an out-of-order stream is a bug upstream, not a case to
+    or reordering: an out-of-order stream is a bug upstream, not a case to
     paper over here.
     """
     expected_seq: int | None = None
@@ -39,7 +39,7 @@ def validate_segment_stream(segments: Iterable[Segment]) -> Iterator[Segment]:
 
 
 def validate_caption_stream(captions: Iterable[Caption]) -> Iterator[Caption]:
-    """Assert `seq` is gapless and in order within each `target_lang` — a
+    """Assert `seq` is gapless and in order within each `target_lang`: a
     caption stream fans one segment stream out per language (docs/eco.md),
     so each language's sub-stream must independently satisfy the same
     ordering guarantee as the segments it was translated from.

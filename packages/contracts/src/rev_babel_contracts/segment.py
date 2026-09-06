@@ -7,7 +7,7 @@ SourceLang = Literal["it", "en", "mixed", "und"]
 
 class Segment(BaseModel):
     """A transcribed segment of teacher speech, committed on a voice-activity
-    pause (ADR 0005) — never a partial re-decode.
+    pause (ADR 0005), never a partial re-decode.
     """
 
     lesson_id: str
@@ -29,7 +29,7 @@ class Segment(BaseModel):
     def text_not_blank(cls, v: str) -> str:
         if not v.strip():
             raise ValueError(
-                "Segment.text must not be blank — a committed segment always carries text"
+                "Segment.text must not be blank: a committed segment always carries text"
             )
         return v
 
