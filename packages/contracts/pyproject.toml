@@ -1,10 +1,10 @@
 [project]
 name = "rev-babel-contracts"
 version = "0.1.0"
-description = "Shared data shapes passed between rev-babel's services. Placeholder — no shapes defined yet."
+description = "Shared data shapes passed between rev-babel's services: Segment and Caption, over JSON Lines."
 requires-python = ">=3.12"
 license = "Apache-2.0"
-dependencies = []
+dependencies = ["pydantic>=2"]
 
 [build-system]
 requires = ["hatchling"]

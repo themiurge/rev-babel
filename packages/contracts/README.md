@@ -16,4 +16,7 @@ Any business logic. This package defines shapes, not behaviour.
 
 ## Status
 
-Placeholder. No shapes are defined yet.
+`Segment` and `Caption` are defined (pydantic v2), with a JSON Lines codec
+and stream validators asserting the ordering guarantees `services/asr` and
+`services/mt` must hold. See
+[ADR 0012](../../docs/decisions/0012-segment-and-caption-contract.md).

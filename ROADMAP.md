@@ -35,7 +35,7 @@ screen. Ten lessons, six users, and then it stops. It is not a product and
 does not scale past this room; see
 [`docs/overview.md`](docs/overview.md).
 
-## Where we are now  *(2026-09-05)*
+## Where we are now  *(2026-09-06)*
 
 **Twelve days before lesson 1** (Thursday 17 September 2026). Ten lessons,
 Thursdays 16:30–18:00, through 19 November.
@@ -66,13 +66,15 @@ Thursdays 16:30–18:00, through 19 November.
   would defeat voice-activity segmentation — and suggests segments will
   land comfortably inside the 15 s cap. Not yet confirmed at teaching pace
   with an audience, which is a different thing from reading aloud.
-- **Nothing of Eco itself exists.** `services/asr`, `services/mt`,
-  `services/llm`, `services/encoder`, `packages/contracts` and `apps/web`
-  are all placeholders — module docstrings and a passing placeholder test.
-  No model has been downloaded, no segment has been transcribed, no word
-  has been translated. The tunnel currently answers only when something is
-  put behind it by hand.
-- **Eleven decisions recorded**, of which one is superseded:
+- **Eco's first piece exists: the segment/caption contract.** `Segment` and
+  `Caption` are real pydantic v2 models in `packages/contracts` now, not a
+  placeholder — a JSON Lines codec and stream validators enforcing gapless,
+  in-order `seq` and the 15 s segment cap, 30 tests passing. `services/asr`,
+  `services/mt`, `services/llm`, `services/encoder` and `apps/web` are
+  otherwise still placeholders. No model has been downloaded, no segment
+  has been transcribed, no word has been translated. The tunnel currently
+  answers only when something is put behind it by hand.
+- **Twelve decisions recorded**, of which one is superseded:
   [ADR 0010](docs/decisions/0010-avatar-picker.md) replaced login
   photographs with a preset avatar collection claimed on first use, which
   removed the only category of personal data the system held. A user row is
@@ -108,12 +110,12 @@ are ordinary code dependencies.
   the one that would break everything on the day. Wants doing the week
   before, not the morning of. `scratchpad/tunnel_smoke_server.py` does it
   without any of Eco existing.
-- 💻 **[0005](docs/issues/0005-segment-and-caption-contract.md) The segment
-  and caption contract**, then
-  **[0006](docs/issues/0006-the-invented-classroom-corpus.md) the invented
-  classroom corpus.** Milestone 1 starts here. The corpus is the highest-
-  value artefact in it: real transcripts can never be used, and public
-  benchmarks look nothing like a lesson.
+- ✅ ~~[0005](docs/issues/0005-segment-and-caption-contract.md) The segment
+  and caption contract~~ — done 2026-09-06.
+- 💻 **[0006](docs/issues/0006-the-invented-classroom-corpus.md) The
+  invented classroom corpus.** Milestone 1's highest-value artefact: real
+  transcripts can never be used, and public benchmarks look nothing like a
+  lesson.
 - 💻 **[0007](docs/issues/0007-choose-the-translation-model.md) Choose the
   translation model**, with
   **[0008](docs/issues/0008-check-coverage-for-sorani-and-kurmanji.md)**
@@ -205,6 +207,11 @@ Lead times and physical presence, which is why they are listed apart.
 
 ## Revision log
 
+- **v0.2 — 2026-09-06** — Closed issue 0005: `Segment` and `Caption` land in
+  `packages/contracts` as pydantic v2 models, with a JSON Lines codec and
+  stream validators for gapless/in-order `seq` and the 15 s segment cap.
+  Recorded as [ADR 0012](docs/decisions/0012-segment-and-caption-contract.md).
+  Milestone 1's next item is issue 0006, the invented classroom corpus.
 - **v0.1 — 2026-09-05** — Initial savepoint. Adopts the roadmap convention
   from a sibling project of the maintainer's per ADR 0011, with issues as
   markdown files rather than a tracker and no autonomous implementing
