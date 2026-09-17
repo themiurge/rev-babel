@@ -32,5 +32,14 @@ Lesson 1's two games (mouse, keyboard) live under
 `postMessage` on completion; each posts its score to `/api/scores`, which
 shows the student's own personal best and last attempt only — no
 leaderboard, per `docs/data-and-privacy.md` ("progress is visible to the
-teacher only, never to other students"). No WebSocket handling, no avatar
-picker yet.
+teacher only, never to other students"). No avatar picker yet.
+
+**Slide Sync Lite** ([ADR 0014](../../docs/decisions/0014-slide-sync-lite.md))
+syncs one integer — the current Google Slides index — from a presenter page
+to every connected student over SSE. `/present` and `/admin/api/live/*`
+are the teacher surface, gated on the `Host` header being
+`mic.emiliovicari.com` with no further auth; `/follow` is the student
+surface, behind the same name-capture session as the rest of the course.
+Live state lives in `rev_babel_web/live.py`, in one process's memory
+(mirrored to `data/live_state.json`), which only works with a single
+uvicorn worker.

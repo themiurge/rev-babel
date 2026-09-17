@@ -6,17 +6,18 @@ avatar picker (ADR 0010) that is meant to replace it.
 
 from __future__ import annotations
 
+import json
 import os
 import time
 
 from fastapi import FastAPI, Form, HTTPException, Request
-from fastapi.responses import JSONResponse, RedirectResponse
+from fastapi.responses import JSONResponse, RedirectResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
 from starlette.middleware.sessions import SessionMiddleware
 
-from rev_babel_web import db
+from rev_babel_web import db, live
 
 _HERE = os.path.dirname(__file__)
 _WEB_ROOT = os.path.abspath(os.path.join(_HERE, "..", ".."))
@@ -70,6 +71,36 @@ def _format_score(unit: str, value: float | None) -> str:
 class ScoreIn(BaseModel):
     game: str
     value: float = Field(gt=0)
+
+
+# Slide Sync Lite's admin surface (/present, /admin/api/live/*) is gated on
+# the Host header being the teacher-only capture host, with no further
+# auth — a deliberate stopgap for today, same accepted risk as issue 0001
+# (the capture host itself is still unprotected). See ADR 0014.
+CAPTURE_HOST = os.environ.get("ECO_CAPTURE_HOST")
+
+
+def _require_capture_host(request: Request) -> None:
+    host = request.headers.get("host", "").split(":")[0]
+    if CAPTURE_HOST and host != CAPTURE_HOST:
+        raise HTTPException(
+            status_code=403,
+            detail=f"This page is only served on {CAPTURE_HOST}.",
+        )
+
+
+class LiveStartIn(BaseModel):
+    file_id_or_url: str
+    title: str
+    slide_count: int = Field(gt=0)
+
+
+class LiveGotoIn(BaseModel):
+    index: int
+
+
+class LiveStatusIn(BaseModel):
+    status: str
 
 
 SESSION_MAX_AGE_SECONDS = 24 * 60 * 60
@@ -175,6 +206,73 @@ def lesson_game(request: Request, lesson_slug: str, game_slug: str):
 def logout(request: Request):
     request.session.clear()
     return RedirectResponse("/", status_code=303)
+
+
+@app.get("/follow")
+def follow(request: Request):
+    name = _current_name(request)
+    if name is None:
+        return RedirectResponse("/", status_code=303)
+    return templates.TemplateResponse(request, "follow.html", {"name": name, "lessons": LESSONS})
+
+
+@app.get("/api/live")
+def live_state(request: Request):
+    if _current_name(request) is None:
+        raise HTTPException(status_code=401)
+    return JSONResponse(live.get_state())
+
+
+@app.get("/api/live/stream")
+def live_stream(request: Request):
+    if _current_name(request) is None:
+        raise HTTPException(status_code=401)
+    return StreamingResponse(
+        live.sse_events(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
+
+
+@app.get("/present")
+def present(request: Request):
+    _require_capture_host(request)
+    return templates.TemplateResponse(
+        request, "present.html", {"state_json": json.dumps(live.get_state())}
+    )
+
+
+@app.post("/admin/api/live/start")
+def admin_live_start(request: Request, body: LiveStartIn):
+    _require_capture_host(request)
+    return JSONResponse(live.start(body.file_id_or_url, body.title, body.slide_count))
+
+
+@app.post("/admin/api/live/goto")
+def admin_live_goto(request: Request, body: LiveGotoIn):
+    _require_capture_host(request)
+    return JSONResponse(live.goto(body.index))
+
+
+@app.post("/admin/api/live/status")
+def admin_live_status(request: Request, body: LiveStatusIn):
+    _require_capture_host(request)
+    try:
+        return JSONResponse(live.set_status(body.status))
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
+@app.post("/admin/api/live/end")
+def admin_live_end(request: Request):
+    _require_capture_host(request)
+    return JSONResponse(live.end())
+
+
+@app.get("/admin/api/live/count")
+def admin_live_count(request: Request):
+    _require_capture_host(request)
+    return JSONResponse({"count": live.subscriber_count()})
 
 
 @app.post("/api/scores")

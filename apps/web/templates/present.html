@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>rev-babel — presenter</title>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: #111;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+    }
+    .topbar {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 0.6rem 1rem;
+      background: #1c1c1c;
+      border-bottom: 1px solid #333;
+      font-size: 0.95rem;
+    }
+    .dot { width: 0.7rem; height: 0.7rem; border-radius: 50%; background: #666; display: inline-block; }
+    .dot.ok { background: #22c55e; }
+    .dot.warn { background: #eab308; }
+    .dot.bad { background: #ef4444; }
+    .topbar button {
+      background: #2c2c2c;
+      color: #eee;
+      border: 1px solid #444;
+      border-radius: 6px;
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+    }
+    .topbar button:hover { background: #3a3a3a; }
+    .spacer { flex: 1 1 auto; }
+    main { flex: 1 1 auto; position: relative; }
+    iframe { width: 100%; height: 100%; border: none; pointer-events: none; display: block; }
+    #setup {
+      max-width: 28rem;
+      margin: 10vh auto;
+      background: #1c1c1c;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    #setup h1 { margin-top: 0; font-size: 1.3rem; }
+    #setup label { display: block; margin-top: 0.8rem; font-size: 0.9rem; color: #aaa; }
+    #setup input {
+      width: 100%; box-sizing: border-box; padding: 0.5rem; margin-top: 0.3rem;
+      background: #111; color: #eee; border: 1px solid #444; border-radius: 6px;
+    }
+    #setup button {
+      margin-top: 1.2rem; padding: 0.6rem 1.2rem; background: #22c55e; color: #041014;
+      border: none; border-radius: 8px; font-weight: 700; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar" id="topbar">
+    <span class="dot ok" id="dot"></span>
+    <span id="counter">—</span>
+    <span id="title"></span>
+    <span class="spacer"></span>
+    <span id="viewers">0 collegati</span>
+    <button id="blank-btn" hidden>Pausa (B)</button>
+    <button id="end-btn" hidden>Termina</button>
+  </div>
+  <main>
+    <div id="setup">
+      <h1>Avvia la presentazione</h1>
+      <form id="setup-form">
+        <label>Link di Google Slides
+          <input type="text" name="url" required placeholder="https://docs.google.com/presentation/d/...">
+        </label>
+        <label>Titolo
+          <input type="text" name="title" required>
+        </label>
+        <label>Numero di slide
+          <input type="number" name="slide_count" min="1" required>
+        </label>
+        <button type="submit">Inizia</button>
+      </form>
+    </div>
+    <iframe id="frame" hidden></iframe>
+  </main>
+
+  <script>
+    let state = {{ state_json | safe }};
+    let lastPostAt = Date.now();
+
+    function embedUrl(fileId, index) {
+      return `https://docs.google.com/presentation/d/${fileId}/embed`
+        + `?rm=minimal&start=false&loop=false&slide=${index}`;
+    }
+
+    function render() {
+      const setup = document.getElementById("setup");
+      const frame = document.getElementById("frame");
+      const blankBtn = document.getElementById("blank-btn");
+      const endBtn = document.getElementById("end-btn");
+      const ended = state.status === "ended";
+
+      setup.hidden = !ended;
+      frame.hidden = ended;
+      blankBtn.hidden = ended;
+      endBtn.hidden = ended;
+      if (ended) return;
+
+      document.getElementById("counter").textContent = `${state.index} / ${state.slide_count}`;
+      document.getElementById("title").textContent = state.title || "";
+      blankBtn.textContent = state.status === "blank" ? "Riprendi (B)" : "Pausa (B)";
+      frame.src = embedUrl(state.file_id, state.index);
+    }
+    render();
+
+    async function post(path, body) {
+      const dot = document.getElementById("dot");
+      try {
+        const response = await fetch("/admin/api/live" + path, {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(body || {}),
+        });
+        if (!response.ok) throw new Error(await response.text());
+        lastPostAt = Date.now();
+        dot.className = "dot ok";
+        return await response.json();
+      } catch (e) {
+        dot.className = "dot bad";
+        throw e;
+      }
+    }
+
+    setInterval(() => {
+      const dot = document.getElementById("dot");
+      if (dot.className === "dot bad") return;
+      dot.className = Date.now() - lastPostAt > 5000 ? "dot warn" : "dot ok";
+    }, 1000);
+
+    function goto(index) {
+      if (state.status === "ended") return;
+      const clamped = Math.max(1, Math.min(index, state.slide_count));
+      if (clamped === state.index) return;
+      state.index = clamped;
+      render();
+      post("/goto", {index: clamped}).catch(() => {});
+    }
+
+    document.getElementById("setup-form").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const form = new FormData(event.target);
+      try {
+        state = await post("/start", {
+          file_id_or_url: form.get("url"),
+          title: form.get("title"),
+          slide_count: parseInt(form.get("slide_count"), 10),
+        });
+        render();
+      } catch (e) {
+        alert("Impossibile avviare: " + e.message);
+      }
+    });
+
+    document.getElementById("blank-btn").addEventListener("click", async () => {
+      const next = state.status === "blank" ? "live" : "blank";
+      state.status = next;
+      render();
+      await post("/status", {status: next}).catch(() => {});
+    });
+
+    document.getElementById("end-btn").addEventListener("click", async () => {
+      if (!confirm("Terminare la sessione live?")) return;
+      await post("/end", {}).catch(() => {});
+      state.status = "ended";
+      render();
+    });
+
+    window.addEventListener("keydown", (event) => {
+      const tag = document.activeElement.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA") return;
+      if (state.status === "ended") return;
+      switch (event.key) {
+        case "ArrowRight": case "ArrowDown": case " ": case "PageDown":
+          event.preventDefault(); goto(state.index + 1); break;
+        case "ArrowLeft": case "ArrowUp": case "PageUp":
+          event.preventDefault(); goto(state.index - 1); break;
+        case "Home":
+          event.preventDefault(); goto(1); break;
+        case "End":
+          event.preventDefault(); goto(state.slide_count); break;
+        case "b": case "B":
+          event.preventDefault(); document.getElementById("blank-btn").click(); break;
+      }
+    });
+
+    setInterval(async () => {
+      try {
+        const response = await fetch("/admin/api/live/count");
+        const data = await response.json();
+        document.getElementById("viewers").textContent = `${data.count} collegati`;
+      } catch (e) {
+        // leave the last known count showing
+      }
+    }, 5000);
+  </script>
+</body>
+</html>

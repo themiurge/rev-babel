@@ -1,0 +1,128 @@
+import asyncio
+
+from fastapi.testclient import TestClient
+from rev_babel_web import live
+from rev_babel_web.main import app
+
+client = TestClient(app)
+CAPTURE_HEADERS = {"Host": "mic.test"}
+
+
+def _login(name: str) -> TestClient:
+    student = TestClient(app)
+    student.post("/welcome", data={"name": name})
+    return student
+
+
+def test_extract_file_id_from_url_and_bare_id() -> None:
+    url = "https://docs.google.com/presentation/d/1AbC-XYZ/edit?usp=sharing"
+    assert live.extract_file_id(url) == "1AbC-XYZ"
+    assert live.extract_file_id("1AbC-XYZ") == "1AbC-XYZ"
+
+
+def test_goto_clamps_and_is_idempotent() -> None:
+    live.start("1AbC", "Test deck", 10)
+    first = live.goto(999)
+    assert first["index"] == 10
+    revision = first["revision"]
+    same = live.goto(10)
+    assert same["revision"] == revision
+    live.end()
+
+
+def test_sse_events_yields_retry_hint_then_initial_state() -> None:
+    live.start("1AbC", "Test deck", 5)
+
+    async def read_two_chunks() -> tuple[str, str]:
+        events = live.sse_events()
+        first = await events.__anext__()
+        second = await events.__anext__()
+        await events.aclose()
+        return first, second
+
+    first, second = asyncio.run(read_two_chunks())
+    assert first == "retry: 3000\n\n"
+    assert second.startswith("event: state\ndata: ")
+    live.end()
+
+
+def test_present_is_blocked_off_the_capture_host() -> None:
+    response = client.get("/present")
+    assert response.status_code == 403
+
+
+def test_present_is_served_on_the_capture_host() -> None:
+    response = client.get("/present", headers=CAPTURE_HEADERS)
+    assert response.status_code == 200
+    assert "Avvia la presentazione" in response.text
+
+
+def test_admin_endpoints_are_blocked_off_the_capture_host() -> None:
+    response = client.post(
+        "/admin/api/live/start",
+        json={"file_id_or_url": "abc123", "title": "T", "slide_count": 5},
+    )
+    assert response.status_code == 403
+
+
+def test_start_goto_status_and_end_flow_over_http() -> None:
+    start = client.post(
+        "/admin/api/live/start",
+        headers=CAPTURE_HEADERS,
+        json={
+            "file_id_or_url": "https://docs.google.com/presentation/d/1AbC-XYZ/edit",
+            "title": "Riconoscere le truffe online",
+            "slide_count": 24,
+        },
+    )
+    assert start.status_code == 200
+    state = start.json()
+    assert state["file_id"] == "1AbC-XYZ"
+    assert state["index"] == 1
+    assert state["status"] == "live"
+
+    goto = client.post("/admin/api/live/goto", headers=CAPTURE_HEADERS, json={"index": 9})
+    assert goto.json()["index"] == 9
+
+    clamped = client.post("/admin/api/live/goto", headers=CAPTURE_HEADERS, json={"index": 999})
+    assert clamped.json()["index"] == 24
+
+    blanked = client.post(
+        "/admin/api/live/status", headers=CAPTURE_HEADERS, json={"status": "blank"}
+    )
+    assert blanked.json()["status"] == "blank"
+
+    bad_status = client.post(
+        "/admin/api/live/status", headers=CAPTURE_HEADERS, json={"status": "nope"}
+    )
+    assert bad_status.status_code == 400
+
+    ended = client.post("/admin/api/live/end", headers=CAPTURE_HEADERS)
+    assert ended.json()["status"] == "ended"
+
+
+def test_api_live_requires_a_student_session() -> None:
+    anonymous = TestClient(app)
+    response = anonymous.get("/api/live")
+    assert response.status_code == 401
+
+
+def test_follow_requires_a_student_session() -> None:
+    anonymous = TestClient(app)
+    response = anonymous.get("/follow", follow_redirects=False)
+    assert response.status_code == 303
+    assert response.headers["location"] == "/"
+
+
+def test_follow_page_renders_for_a_logged_in_student() -> None:
+    student = _login("Follow Test")
+    response = student.get("/follow")
+    assert response.status_code == 200
+    assert 'id="frame"' in response.text
+
+
+def test_api_live_returns_current_state_for_a_logged_in_student() -> None:
+    student = _login("State Reader")
+    response = student.get("/api/live")
+    assert response.status_code == 200
+    assert "revision" in response.json()

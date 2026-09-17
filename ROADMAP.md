@@ -57,6 +57,17 @@ November.
   something for today rather than waiting on the avatar picker (issues
   0016, 0017). It stores a real name, never committed but present on the
   teacher's machine, and is meant to be replaced, not built on.
+- **Slide Sync Lite** ([ADR 0014](docs/decisions/0014-slide-sync-lite.md))
+  syncs one integer — the live Google Slides index — from `/present` to
+  every student's `/follow` page over SSE, with a JSON-file-backed
+  in-memory state that only works as a single uvicorn worker (already
+  true). `/present` and `/admin/api/live/*` are gated on the `Host` header
+  being `mic.emiliovicari.com`, with **no other auth** — the same accepted
+  risk as issue 0001, now extended to slide control, which makes that
+  issue more urgent, not less. `slide=N` numbering (1-based vs 0-based)
+  is unverified against the real deck — no browser available to check it
+  here — so the teacher should confirm it visually in the first seconds of
+  using `/present` today.
 
 - **The network layer is done and proved, ahead of everything else.**
   `emiliovicari.com` registered at Cloudflare Registrar; a
@@ -225,6 +236,16 @@ Lead times and physical presence, which is why they are listed apart.
 
 ## Revision log
 
+- **v0.6 — 2026-09-17** — Added Slide Sync Lite
+  ([ADR 0014](docs/decisions/0014-slide-sync-lite.md)): `/present`
+  (teacher, `mic.emiliovicari.com` only, no auth) drives one live slide
+  index; `/follow` (student, linked from the lesson page) renders it via
+  the Google Slides embed and stays live over SSE with a polling
+  fallback. State is in-process memory mirrored to
+  `data/live_state.json`; requires staying on a single uvicorn worker.
+  Host-gating, start/goto/status/end, and clamping verified over HTTP;
+  the `slide=N` 1-based-vs-0-based numbering the spec calls out is
+  **not yet verified against the real deck** — no browser available here.
 - **v0.5 — 2026-09-17** — Reworked the lesson UI: the lesson pane no
   longer embeds both games inline (too small); it now just lists them,
   and each opens its own full-window page (`/course/lezione-1/<game>`)

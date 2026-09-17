@@ -1,0 +1,185 @@
+{% extends "_base.html" %}
+{% block main %}
+<main class="game-page">
+  <div class="game-topbar">
+    <span class="pill" id="pill">—</span>
+    <div class="topbar-right">
+      <a href="#" id="view-link" target="_blank" rel="noopener" hidden></a>
+      <button id="back-btn" hidden></button>
+      <span class="lang-picker">
+        <button data-lang="it">IT</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="fr">FR</button>
+      </span>
+    </div>
+  </div>
+  <div id="reconnecting" class="strip" hidden></div>
+  <p id="waiting" class="waiting" hidden></p>
+  <div id="viewer" hidden>
+    <iframe id="frame" class="game-frame-full"></iframe>
+    <div id="blank-screen" class="blank-screen" hidden></div>
+  </div>
+</main>
+<script>
+  const STRINGS = {
+    it: {
+      live: "In diretta", browsing: "Stai guardando un'altra slide", back: "Torna al vivo",
+      waiting: "La lezione non è ancora iniziata.", reconnecting: "Riconnessione…",
+      viewLink: "Vedi su Google Slides",
+    },
+    en: {
+      live: "Live", browsing: "Viewing another slide", back: "Back to live",
+      waiting: "The lesson hasn't started yet.", reconnecting: "Reconnecting…",
+      viewLink: "View on Google Slides",
+    },
+    fr: {
+      live: "En direct", browsing: "Vous regardez une autre diapositive", back: "Revenir au direct",
+      waiting: "Le cours n'a pas encore commencé.", reconnecting: "Reconnexion…",
+      viewLink: "Voir sur Google Slides",
+    },
+  };
+
+  let lang = "it";
+  try { lang = localStorage.getItem("followLang") || "it"; } catch (e) {}
+
+  let mode = "live";
+  let state = null;
+  let browsingIndex = 1;
+  let lastRevision = -1;
+  let lastAppliedIndex = null;
+  let sseFailures = 0;
+  let pollTimer = null;
+  let es = null;
+
+  function t(key) { return (STRINGS[lang] || STRINGS.it)[key]; }
+
+  function embedUrl(fileId, index) {
+    return `https://docs.google.com/presentation/d/${fileId}/embed`
+      + `?rm=minimal&start=false&loop=false&slide=${index}`;
+  }
+
+  function applyStrings() {
+    document.getElementById("pill").textContent = mode === "live" ? t("live") : t("browsing");
+    document.getElementById("back-btn").textContent = t("back");
+    document.getElementById("waiting").textContent = t("waiting");
+    document.getElementById("reconnecting").textContent = t("reconnecting");
+    document.getElementById("view-link").textContent = t("viewLink");
+  }
+
+  function render() {
+    const waiting = document.getElementById("waiting");
+    const viewer = document.getElementById("viewer");
+    const viewLink = document.getElementById("view-link");
+    const backBtn = document.getElementById("back-btn");
+    const frame = document.getElementById("frame");
+    const blankScreen = document.getElementById("blank-screen");
+
+    if (!state || state.status === "ended") {
+      viewer.hidden = true;
+      viewLink.hidden = true;
+      backBtn.hidden = true;
+      waiting.hidden = false;
+      return;
+    }
+    waiting.hidden = true;
+    viewer.hidden = false;
+    viewLink.hidden = false;
+    viewLink.href = `https://docs.google.com/presentation/d/${state.file_id}/edit`;
+    backBtn.hidden = mode === "live";
+
+    document.getElementById("pill").textContent = mode === "live" ? t("live") : t("browsing");
+
+    if (state.status === "blank") {
+      frame.hidden = true;
+      blankScreen.hidden = false;
+      return;
+    }
+    blankScreen.hidden = true;
+    frame.hidden = false;
+
+    const targetIndex = mode === "live" ? state.index : browsingIndex;
+    if (targetIndex !== lastAppliedIndex) {
+      frame.src = embedUrl(state.file_id, targetIndex);
+      lastAppliedIndex = targetIndex;
+    }
+  }
+
+  function applyState(newState) {
+    if (!newState || newState.revision <= lastRevision) return;
+    lastRevision = newState.revision;
+    state = newState;
+    if (mode === "live") browsingIndex = state.index;
+    render();
+  }
+
+  function goBrowsing(delta) {
+    if (!state || state.status === "ended") return;
+    mode = "browsing";
+    browsingIndex = Math.max(1, Math.min(browsingIndex + delta, state.slide_count));
+    render();
+  }
+
+  document.getElementById("back-btn").addEventListener("click", () => {
+    mode = "live";
+    if (state) browsingIndex = state.index;
+    render();
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (["ArrowRight", "ArrowDown", " ", "PageDown"].includes(e.key)) {
+      e.preventDefault();
+      goBrowsing(1);
+    } else if (["ArrowLeft", "ArrowUp", "PageUp"].includes(e.key)) {
+      e.preventDefault();
+      goBrowsing(-1);
+    }
+  });
+
+  function showReconnecting(show) {
+    document.getElementById("reconnecting").hidden = !show;
+  }
+
+  function startPolling() {
+    if (pollTimer) return;
+    pollTimer = setInterval(async () => {
+      try {
+        const response = await fetch("/api/live");
+        applyState(await response.json());
+        showReconnecting(false);
+      } catch (e) {
+        showReconnecting(true);
+      }
+    }, 3000);
+  }
+
+  function connectSSE() {
+    es = new EventSource("/api/live/stream");
+    es.addEventListener("state", (event) => {
+      sseFailures = 0;
+      showReconnecting(false);
+      applyState(JSON.parse(event.data));
+    });
+    es.onerror = () => {
+      sseFailures++;
+      showReconnecting(true);
+      if (sseFailures >= 2) {
+        es.close();
+        startPolling();
+        setTimeout(() => { sseFailures = 0; connectSSE(); }, 10000);
+      }
+    };
+  }
+
+  document.querySelectorAll(".lang-picker button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      lang = btn.dataset.lang;
+      try { localStorage.setItem("followLang", lang); } catch (e) {}
+      applyStrings();
+    });
+  });
+
+  applyStrings();
+  render();
+  connectSSE();
+</script>
+{% endblock %}
