@@ -68,6 +68,16 @@ November.
   is unverified against the real deck — no browser available to check it
   here — so the teacher should confirm it visually in the first seconds of
   using `/present` today.
+- **Two bugs found and fixed from a real screenshot during lesson 1
+  itself.** (1) `.waiting` and `#viewer` on the follow page each set their
+  own `display: flex`, which beat the browser's built-in `[hidden]` rule
+  on specificity, so `el.hidden = true` silently stopped hiding either —
+  both rendered at once, each getting half the viewport from flexbox.
+  Fixed with a global `[hidden] { display: none !important }`. (2) The
+  slide iframe had no `pointer-events: none`, so a student's click
+  reached the Google Slides embed directly and advanced it locally, out
+  of sync with everyone else — the spec's own warning, missed on first
+  build. Both verified live through the tunnel.
 
 - **The network layer is done and proved, ahead of everything else.**
   `emiliovicari.com` registered at Cloudflare Registrar; a
@@ -236,6 +246,14 @@ Lead times and physical presence, which is why they are listed apart.
 
 ## Revision log
 
+- **v0.7 — 2026-09-17** — Two follow-page bugs fixed from live use during
+  lesson 1: (1) `[hidden]` on `.waiting`/`#viewer` was being overridden by
+  their own `display: flex`, so both the "waiting" message and the slide
+  rendered at once, each squeezed into half the viewport — fixed with a
+  global `[hidden] { display: none !important }`. (2) the slide iframe
+  had no `pointer-events: none`, so a student's click advanced the
+  Google Slides embed locally, out of sync with everyone else. Both
+  verified live through the tunnel.
 - **v0.6 — 2026-09-17** — Added Slide Sync Lite
   ([ADR 0014](docs/decisions/0014-slide-sync-lite.md)): `/present`
   (teacher, `mic.emiliovicari.com` only, no auth) drives one live slide
