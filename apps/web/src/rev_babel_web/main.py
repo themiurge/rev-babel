@@ -7,6 +7,7 @@ avatar picker (ADR 0010) that is meant to replace it.
 from __future__ import annotations
 
 import os
+import time
 
 from fastapi import FastAPI, Form, HTTPException, Request
 from fastapi.responses import JSONResponse, RedirectResponse
@@ -81,6 +82,9 @@ app.add_middleware(
 )
 app.mount("/static", StaticFiles(directory=os.path.join(_WEB_ROOT, "static")), name="static")
 templates = Jinja2Templates(directory=os.path.join(_WEB_ROOT, "templates"))
+# Busts the browser's cache for /static/style.css on every restart, so a CSS
+# edit during a live session doesn't get served stale from cache.
+templates.env.globals["static_version"] = str(int(time.time()))
 
 
 def _current_name(request: Request) -> str | None:
