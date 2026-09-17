@@ -159,6 +159,14 @@ body {
   border: none;
 }
 
+/* The follow page's slide iframe must never take clicks: the Google
+   Slides embed advances on click by default, locally and out of sync
+   with everyone else. The game pages' iframes are the opposite - they
+   need real pointer events - so this targets #frame specifically. */
+#frame {
+  pointer-events: none;
+}
+
 .pill {
   background: #e6f4ea;
   color: #1e7a3c;
