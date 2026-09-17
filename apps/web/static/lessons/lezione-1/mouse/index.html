@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz del Mouse — versione intuitiva</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #0b1221;
+      --ink: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #22c55e;
+      --accent-2: #14b8a6;
+      --brand: #60a5fa;
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at 10% 20%, #1e293b 0%, #020617 80%);
+      text-align: center;
+      user-select: none;
+    }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 20px;
+      background: rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .logo {
+      font-size: 1.6rem;
+    }
+    .screen { display: none; padding: 24px; }
+    .visible { display: block; }
+    button {
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      padding: 10px 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 8px;
+    }
+    button:hover {
+      background: var(--accent-2);
+    }
+    .small { font-size: 0.9rem; padding: 6px 10px; }
+    .ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1px dashed rgba(255,255,255,0.3);
+    }
+    /* Main layout */
+    .task-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .action-illustr {
+      width: 220px;
+      height: 220px;
+      border-radius: 20px;
+      background: #0b1221;
+      border: 2px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      margin-bottom: 20px;
+    }
+    .action-illustr img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .action-illustr .fallback {
+      font-size: 3rem;
+      opacity: 0.8;
+    }
+    .pulse { animation: pulse 1s ease-out 2; }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(96,165,250,0.4); }
+      100% { box-shadow: 0 0 0 25px rgba(96,165,250,0); }
+    }
+    .action-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    .action-sub {
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .instructions {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .progress {
+      margin: 24px auto 8px;
+      height: 10px;
+      width: 240px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      overflow: hidden;
+    }
+    .progress > div {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--brand), var(--accent));
+      transition: width 0.3s ease;
+    }
+    #feedback {
+      position: fixed;
+      left: 50%;
+      top: 20%;
+      transform: translateX(-50%);
+      padding: 12px 20px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #041014;
+      font-weight: 700;
+      box-shadow: 0 8px 30px rgba(34,197,94,0.4);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    #feedback.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">🖱️ Quiz del Mouse</div>
+    <button class="small ghost" onclick="goHome()">Cambia lingua</button>
+  </header>
+
+  <!-- STARTUP -->
+  <section id="startup" class="screen visible">
+    <h1>Scegli la lingua di supporto</h1>
+    <p style="color:var(--muted)">L’italiano resta la lingua principale del gioco.</p>
+    <div>
+      <button onclick="selectLang('en')">🇬🇧 English</button>
+      <button onclick="selectLang('fr')">🇫🇷 Français</button>
+      <button onclick="selectLang('ar')">🇸🇦 العربية</button>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="screen">
+    <div class="task-area">
+      <div class="action-illustr pulse" id="illustr">
+        <img id="image" alt="Illustrazione azione">
+        <div class="fallback" id="fallback" hidden>🖱️</div>
+      </div>
+      <div class="action-title" id="task">—</div>
+      <div class="action-sub" id="task-sub">—</div>
+
+      <div class="progress"><div id="progbar"></div></div>
+      <div style="font-size:0.9rem;color:var(--muted)" id="progress">Attività 0/0</div>
+
+      <div class="instructions">
+        <div><span style="font-weight:600">Istruzioni:</span> esegui l’azione richiesta ovunque nella pagina.</div>
+        <div id="translation"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPLETE -->
+  <section id="complete" class="screen">
+    <h2>Ben fatto! 🎉</h2>
+    <p id="score"></p>
+    <button onclick="restart()">Ricomincia</button>
+    <button class="ghost" onclick="goHome()">Torna alla lingua</button>
+  </section>
+
+  <div id="feedback">✅ Corretto!</div>
+
+  <script>
+    const translations = {
+      en: { click:"left click", dblclick:"double click", rightclick:"right click", wheelup:"scroll up", wheeldown:"scroll down" },
+      fr: { click:"clic gauche", dblclick:"double clic", rightclick:"clic droit", wheelup:"molette vers le haut", wheeldown:"molette vers le bas" },
+      ar: { click:"نقرة يسار", dblclick:"نقرة مزدوجة", rightclick:"نقرة يمين", wheelup:"تمرير لأعلى", wheeldown:"تمرير لأسفل" }
+    };
+    const italianLabels = {
+      click:"Clic sinistro", dblclick:"Doppio clic", rightclick:"Clic destro", wheelup:"Rotella su", wheeldown:"Rotella giù"
+    };
+    const tasksBase = ["click","dblclick","rightclick","wheelup","wheeldown"];
+    let lang="en", shuffledTasks=[], currentTaskIndex=0, startTime=0, times=[], isActive=false;
+
+    const screens = {
+      startup:document.getElementById("startup"),
+      quiz:document.getElementById("quiz"),
+      complete:document.getElementById("complete")
+    };
+    const taskEl=document.getElementById("task"),
+          taskSub=document.getElementById("task-sub"),
+          imgEl=document.getElementById("image"),
+          fallbackEl=document.getElementById("fallback"),
+          transEl=document.getElementById("translation"),
+          progressEl=document.getElementById("progress"),
+          progbar=document.getElementById("progbar"),
+          feedback=document.getElementById("feedback"),
+          illustr=document.getElementById("illustr");
+
+    function showScreen(id){ Object.values(screens).forEach(s=>s.classList.remove("visible")); screens[id].classList.add("visible"); }
+    function goHome(){ isActive=false; teardownEventListeners(); showScreen("startup"); }
+    function generateTaskList(){ const arr=[]; tasksBase.forEach(t=>{for(let i=0;i<4;i++)arr.push(t)}); return shuffle(arr); }
+
+    function selectLang(selected){
+      lang=selected||"en";
+      shuffledTasks=generateTaskList();
+      currentTaskIndex=0; times=[]; isActive=true;
+      document.documentElement.dir = (lang==="ar")?"rtl":"ltr";
+      showScreen("quiz");
+      showTask();
+    }
+    function showTask(){
+      if(currentTaskIndex>=shuffledTasks.length){finish();return;}
+      const task=shuffledTasks[currentTaskIndex];
+      taskEl.textContent=italianLabels[task];
+      taskSub.textContent=translations[lang][task];
+      transEl.textContent={
+        en:"Perform the requested action anywhere on the page.",
+        fr:"Effectuez l’action demandée n’importe où sur la page.",
+        ar:"نفّذ الإجراء المطلوب في أي مكان على الصفحة."
+      }[lang]||"";
+      fallbackEl.hidden=true;
+      imgEl.removeAttribute("hidden");
+      imgEl.src=`images/${task}.png`;
+      imgEl.onerror=()=>{imgEl.hidden=true;fallbackEl.hidden=false;};
+      progressEl.textContent=`Attività: ${currentTaskIndex+1}/${shuffledTasks.length}`;
+      progbar.style.width=Math.round((currentTaskIndex/shuffledTasks.length)*100)+"%";
+      illustr.classList.remove("pulse");
+      requestAnimationFrame(()=>illustr.classList.add("pulse"));
+      setupEventListeners();
+      startTime=Date.now();
+    }
+    function completeTask(){
+      if(!isActive)return;
+      times.push(Date.now()-startTime);
+      toast("✅ Corretto!");
+      teardownEventListeners();
+      setTimeout(()=>{currentTaskIndex++;showTask();},700);
+    }
+    function finish(){
+      isActive=false; teardownEventListeners(); showScreen("complete");
+      const avg=Math.round(times.reduce((a,b)=>a+b,0)/times.length);
+      document.getElementById("score").textContent=`Tempo medio: ${avg} ms per attività`;
+      if(window.parent!==window){
+        window.parent.postMessage({type:"rev-babel-score", game:"mouse", value:avg, unit:"ms"}, window.location.origin);
+      }
+    }
+    function restart(){ times=[];currentTaskIndex=0;isActive=false;showScreen("startup"); }
+    function toast(msg){ feedback.textContent=msg; feedback.classList.add("show"); setTimeout(()=>feedback.classList.remove("show"),500); }
+
+    function setupEventListeners(){
+      document.addEventListener("click", handleClick);
+      document.addEventListener("dblclick", handleDoubleClick);
+      document.addEventListener("contextmenu", handleRightClick);
+      document.addEventListener("wheel", handleWheel, {passive:false});
+    }
+    function teardownEventListeners(){
+      document.removeEventListener("click", handleClick);
+      document.removeEventListener("dblclick", handleDoubleClick);
+      document.removeEventListener("contextmenu", handleRightClick);
+      document.removeEventListener("wheel", handleWheel);
+    }
+    function handleClick(e){if(e.target.tagName==="BUTTON")return;check("click");}
+    function handleDoubleClick(e){if(e.target.tagName==="BUTTON")return;check("dblclick");}
+    function handleRightClick(e){e.preventDefault();if(e.target.tagName==="BUTTON")return;check("rightclick");}
+    function handleWheel(e){e.preventDefault();if(e.deltaY<0)check("wheelup");else if(e.deltaY>0)check("wheeldown");}
+    function check(action){ if(!isActive||currentTaskIndex>=shuffledTasks.length)return; const current=shuffledTasks[currentTaskIndex]; if(current===action)completeTask(); }
+    function shuffle(a){const s=[...a];for(let i=s.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[s[i],s[j]]=[s[j],s[i]];}return s;}
+  </script>
+</body>
+</html>

@@ -8,10 +8,11 @@ from __future__ import annotations
 
 import os
 
-from fastapi import FastAPI, Form, Request
-from fastapi.responses import RedirectResponse
+from fastapi import FastAPI, Form, HTTPException, Request
+from fastapi.responses import JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from pydantic import BaseModel, Field
 from starlette.middleware.sessions import SessionMiddleware
 
 from rev_babel_web import db
@@ -31,6 +32,21 @@ MAX_NAME_LENGTH = 60
 LESSONS = [
     {"slug": "lezione-1", "title": "Lezione 1", "long_title": "La Tastiera e il Mouse"},
 ]
+
+# Per-game sanity bounds on a reported score, so a stray or malicious
+# postMessage can't write nonsense into the database. Not a leaderboard —
+# see ADR 0013's follow-up note in ROADMAP.md: progress stays personal,
+# per docs/data-and-privacy.md.
+GAMES = {
+    "mouse": {"unit": "ms", "max_value": 60_000},
+    "keyboard": {"unit": "s", "max_value": 3_600},
+}
+
+
+class ScoreIn(BaseModel):
+    game: str
+    value: float = Field(gt=0)
+
 
 app = FastAPI()
 app.add_middleware(
@@ -84,10 +100,38 @@ def course(request: Request):
     name = _current_name(request)
     if name is None:
         return RedirectResponse("/", status_code=303)
-    return templates.TemplateResponse(request, "course.html", {"name": name, "lessons": LESSONS})
+    student_id = request.session["student_id"]
+    scores = {
+        game: {
+            "best": db.personal_best(student_id, game),
+            "last": db.last_score(student_id, game),
+            "unit": info["unit"],
+        }
+        for game, info in GAMES.items()
+    }
+    return templates.TemplateResponse(
+        request, "course.html", {"name": name, "lessons": LESSONS, "scores": scores}
+    )
 
 
 @app.get("/logout")
 def logout(request: Request):
     request.session.clear()
     return RedirectResponse("/", status_code=303)
+
+
+@app.post("/api/scores")
+def submit_score(request: Request, score: ScoreIn):
+    student_id = request.session.get("student_id")
+    if student_id is None or db.get_student_name(student_id) is None:
+        raise HTTPException(status_code=401, detail="No active session.")
+    game_info = GAMES.get(score.game)
+    if game_info is None or score.value > game_info["max_value"]:
+        raise HTTPException(status_code=400, detail="Unknown game or implausible score.")
+    db.record_score(student_id, score.game, score.value)
+    return JSONResponse(
+        {
+            "best": db.personal_best(student_id, score.game),
+            "last": db.last_score(student_id, score.game),
+        }
+    )

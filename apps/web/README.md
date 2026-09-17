@@ -23,5 +23,9 @@ Any model inference (transcription, translation, chat) — those live in
 
 A welcome screen (typed name, ADR 0013 — a temporary stand-in for the
 avatar picker), a minimal SQLite session store, and a course page with a
-hardcoded "Lezione 1" sidebar showing its title, "La Tastiera e il
-Mouse". No WebSocket handling, no lesson content, no avatar picker yet.
+hardcoded "Lezione 1". Lesson 1 embeds two standalone HTML games (mouse
+and keyboard, under `static/lessons/lezione-1/`) in iframes; each posts
+its score to `/api/scores` and the page shows the student's own personal
+best and last attempt only — no leaderboard, per `docs/data-and-privacy.md`
+("progress is visible to the teacher only, never to other students"). No
+WebSocket handling, no avatar picker yet.

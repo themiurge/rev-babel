@@ -23,6 +23,13 @@ CREATE TABLE IF NOT EXISTS students (
     name TEXT NOT NULL,
     created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
+CREATE TABLE IF NOT EXISTS game_scores (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    student_id TEXT NOT NULL REFERENCES students(id),
+    game TEXT NOT NULL,
+    value REAL NOT NULL,
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
 """
 
 
@@ -31,7 +38,7 @@ def connect() -> Iterator[sqlite3.Connection]:
     DB_PATH.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
     try:
-        conn.execute(_SCHEMA)
+        conn.executescript(_SCHEMA)
         yield conn
         conn.commit()
     finally:
@@ -51,4 +58,31 @@ def create_student(name: str) -> str:
 def get_student_name(student_id: str) -> str | None:
     with connect() as conn:
         row = conn.execute("SELECT name FROM students WHERE id = ?", (student_id,)).fetchone()
+    return row[0] if row else None
+
+
+def record_score(student_id: str, game: str, value: float) -> None:
+    with connect() as conn:
+        conn.execute(
+            "INSERT INTO game_scores (student_id, game, value) VALUES (?, ?, ?)",
+            (student_id, game, value),
+        )
+
+
+def personal_best(student_id: str, game: str) -> float | None:
+    with connect() as conn:
+        row = conn.execute(
+            "SELECT MIN(value) FROM game_scores WHERE student_id = ? AND game = ?",
+            (student_id, game),
+        ).fetchone()
+    return row[0] if row and row[0] is not None else None
+
+
+def last_score(student_id: str, game: str) -> float | None:
+    with connect() as conn:
+        row = conn.execute(
+            "SELECT value FROM game_scores WHERE student_id = ? AND game = ? "
+            "ORDER BY id DESC LIMIT 1",
+            (student_id, game),
+        ).fetchone()
     return row[0] if row else None

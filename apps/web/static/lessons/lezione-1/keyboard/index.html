@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🦖 Salva il Dinosauro!</title>
+  <style>
+    :root { --bg1:#87CEEB; --bg2:#98FB98; --border:#2E8B57; --ground:#8B4513; }
+    body { margin:0; padding:20px; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif; background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%); display:flex; flex-direction:column; align-items:center; }
+    h1 { margin: 0 0 10px; }
+    .translation { font-size:.95rem; opacity:.85; margin-top:4px; font-style: italic; }
+    .lang-note { font-size:.9rem; opacity:.8; margin-top:8px; }
+
+    .screen { max-width: 1000px; width: 100%; }
+    .picker { background:#fff; border-radius:16px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,.15); margin-bottom:16px; }
+    .picker h2 { margin:0 0 6px; font-size:1.2rem; }
+    .lang-buttons { display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
+    .lang-btn { border:1px solid #ddd; background:#fff; padding:10px 14px; border-radius:10px; cursor:pointer; display:flex; align-items:center; gap:10px; font-weight:600; }
+    .lang-btn:hover { background:#f5f5f5; }
+
+    .scroll-wrapper { width: 1000px; max-width: 100%; overflow-x: auto; border-radius: 15px; }
+    .game-area { position: relative; width: 3000px; height: 400px; border: 4px solid var(--border); background: linear-gradient(to bottom, var(--bg1) 0%, #90EE90 100%); overflow: hidden; }
+    .ground { position: absolute; bottom: 0; width: 100%; height: 80px; background: var(--ground); }
+    .dino { position: absolute; transform: scale(-1, 1); left: 50px; bottom: 80px; width: 60px; height: 80px; font-size: 60px; transition: bottom 0.25s ease, left 0.25s ease; }
+    .dino.jumping { bottom: 200px; }
+    .obstacle { position: absolute; bottom: 80px; width: 50px; height: 80px; background: #654321; color: white; font-size: 32px; font-weight: bold; text-align: center; line-height: 80px; border-radius: 8px; }
+
+    .panel { background:#fff; border-radius:16px; padding:14px 16px; margin-top:12px; width: 1000px; max-width:100%; box-shadow:0 10px 30px rgba(0,0,0,.14); text-align:center; }
+    .stats { display:flex; gap:16px; align-items:baseline; font-size:1.05rem; flex-wrap:wrap; justify-content:center; }
+    .stats .label { opacity:.7; margin-right:4px; }
+    .btn { margin-top: 12px; padding: 10px 16px; font-size: 1rem; border: none; background: #2E8B57; color: white; border-radius: 10px; cursor: pointer; }
+    .btn:disabled { opacity:.6; cursor:not-allowed; }
+    .complete { font-size: 1.4rem; margin-top: 10px; color: #084c2e; font-weight: 700; }
+
+    [dir="rtl"] body, body[dir="rtl"] { direction: rtl; }
+    [dir="rtl"] .lang-buttons { justify-content: flex-end; }
+    [dir="rtl"] .stats { direction: rtl; }
+    [dir="rtl"] .game-area, [dir="rtl"] .scroll-wrapper { direction: ltr; }
+  </style>
+</head>
+<body>
+  <div class="screen picker" id="lang-screen">
+    <h1>🦖 Salva il Dinosauro!</h1>
+    <p><strong>Istruzioni (italiano):</strong> Premi sulla <strong>tastiera</strong> la <strong>lettera</strong> o il <strong>numero</strong> mostrato su ogni <strong>muro</strong> per far <strong>saltare</strong> il dinosauro e superarlo. Completa tutta la sequenza il più velocemente possibile.</p>
+    <p id="instr-translation" class="translation"></p>
+
+    <div class="lang-note">L'italiano resta la lingua principale. Scegli una <em>lingua di supporto</em> per vedere la traduzione delle istruzioni.</div>
+    <div class="lang-buttons" role="group" aria-label="Selettore lingua di supporto">
+      <button class="lang-btn" data-lang="en"><span>🇬🇧</span><span>English</span></button>
+      <button class="lang-btn" data-lang="fr"><span>🇫🇷</span><span>Français</span></button>
+      <button class="lang-btn" data-lang="ar"><span>🇸🇦</span><span>العربية</span></button>
+      <button class="lang-btn" data-lang="ur"><span>🇵🇰</span><span>اردو</span></button>
+    </div>
+
+    <button id="startBtn" class="btn">Inizia</button>
+  </div>
+
+  <div class="scroll-wrapper" id="game-wrapper" style="display:none;">
+    <div class="game-area" id="game-area">
+      <div class="ground"></div>
+      <div class="dino" id="dino">🦖</div>
+    </div>
+  </div>
+
+  <div class="panel" id="hud" style="display:none;">
+    <div class="stats">
+      <div><span class="label">Lettere/numeri rimasti:</span><span id="letters-left">0</span></div>
+      <div>•</div>
+      <div><span class="label">Tempo:</span><span id="timer">0:00</span></div>
+    </div>
+    <div class="complete" id="complete"></div>
+    <button id="restartBtn" class="btn" style="display:none;">🔁 Ricomincia</button>
+  </div>
+
+  <script>
+    const supportTranslations = {
+      en: "Press on your keyboard the LETTER or NUMBER shown on each wall to make the dinosaur jump over it. Finish the whole sequence as fast as you can.",
+      fr: "Appuie sur la LETTRE ou le CHIFFRE affiché sur chaque mur pour faire sauter le dinosaure. Termine toute la séquence le plus vite possible.",
+      ar: "اضغط على لوحة المفاتيح الحرف أو الرقم المعروض على كل جدار ليقفز الديناصور فوقه. أكمِل التسلسل بالكامل بأسرع ما يمكن.",
+      ur: "کی بورڈ پر وہ حرف یا عدد دبائیں جو ہر دیوار پر دکھایا گیا ہے تاکہ ڈایناسور اس پر سے چھلانگ لگا سکے۔ پوری ترتیب کو جتنی جلدی ہو سکے مکمل کریں۔"
+    };
+
+    const RTL = new Set(["ar", "ur"]);
+
+    const dino = document.getElementById('dino');
+    const gameArea = document.getElementById('game-area');
+    const scrollWrapper = document.getElementById('game-wrapper');
+    const lettersLeft = document.getElementById('letters-left');
+    const timerEl = document.getElementById('timer');
+    const completeMsg = document.getElementById('complete');
+    const langScreen = document.getElementById('lang-screen');
+    const hud = document.getElementById('hud');
+    const instrTranslation = document.getElementById('instr-translation');
+    const restartBtn = document.getElementById('restartBtn');
+
+    let supportLang = null;
+    let sequence = [];
+    let currentIndex = 0;
+    let startTime = null;
+    let timerInterval = null;
+    const jumpDistance = 70;
+
+    function setSupportLang(code) {
+      supportLang = code;
+      const html = document.documentElement;
+      html.setAttribute('lang', RTL.has(code) ? code : 'it');
+      html.setAttribute('dir', RTL.has(code) ? 'rtl' : 'ltr');
+      instrTranslation.textContent = supportTranslations[code] || '';
+    }
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function buildSequence() { return shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('')); }
+
+    function startGame() {
+      sequence = buildSequence();
+      currentIndex = 0;
+      startTime = Date.now();
+      clearInterval(timerInterval);
+      updateTimer();
+      timerInterval = setInterval(updateTimer, 1000);
+
+      gameArea.querySelectorAll('.obstacle').forEach(el => el.remove());
+      dino.style.left = '50px';
+      dino.style.bottom = '80px';
+
+      for (let i = 0; i < sequence.length; i++) {
+        const ch = sequence[i];
+        const wall = document.createElement('div');
+        wall.className = 'obstacle';
+        wall.textContent = ch;
+        wall.style.left = `${150 + i * jumpDistance}px`;
+        wall.dataset.letter = ch;
+        gameArea.appendChild(wall);
+      }
+
+      lettersLeft.textContent = `${sequence.length - currentIndex}`;
+      scrollWrapper.scrollLeft = 0;
+      langScreen.style.display = 'none';
+      scrollWrapper.style.display = 'block';
+      hud.style.display = 'block';
+      restartBtn.style.display = 'none';
+      completeMsg.textContent = '';
+    }
+
+    function updateTimer() {
+      const elapsed = Math.floor((Date.now() - startTime) / 1000);
+      const min = Math.floor(elapsed / 60);
+      const sec = String(elapsed % 60).padStart(2, '0');
+      timerEl.textContent = `${min}:${sec}`;
+    }
+
+    function jump() {
+      dino.classList.add('jumping');
+      setTimeout(() => dino.classList.remove('jumping'), 300);
+    }
+
+    function moveDinoForward() {
+      const currentLeft = parseInt(dino.style.left || '50', 10);
+      const newLeft = currentLeft + jumpDistance;
+      dino.style.left = `${newLeft}px`;
+      scrollWrapper.scrollLeft = newLeft - 300;
+    }
+
+    function handleKey(e) {
+      if (!sequence.length || currentIndex >= sequence.length) return;
+      const expected = sequence[currentIndex];
+      const key = e.key.length === 1 ? e.key.toUpperCase() : e.key;
+      if (key === expected) {
+        jump();
+        const wall = gameArea.querySelector(`.obstacle[data-letter='${expected}']`);
+        if (wall) wall.remove();
+        currentIndex++;
+        lettersLeft.textContent = `${sequence.length - currentIndex}`;
+        moveDinoForward();
+        if (currentIndex === sequence.length) {
+          clearInterval(timerInterval);
+          completeMsg.textContent = '🎉 Ce l\'hai fatta! 🎉';
+          restartBtn.style.display = 'inline-block';
+          const seconds = (Date.now() - startTime) / 1000;
+          if (window.parent !== window) {
+            window.parent.postMessage({type: "rev-babel-score", game: "keyboard", value: seconds, unit: "s"}, window.location.origin);
+          }
+        }
+      }
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => setSupportLang(btn.dataset.lang)));
+    document.getElementById('startBtn').addEventListener('click', startGame);
+    restartBtn.addEventListener('click', startGame);
+    document.addEventListener('keydown', handleKey);
+
+    setSupportLang(null);
+  </script>
+</body>
+</html>

@@ -78,4 +78,28 @@ body {
 .content {
   flex-grow: 1;
   padding: 2rem;
+  min-width: 0;
+}
+
+.game-block {
+  margin-bottom: 2rem;
+}
+
+.game-block h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.game-frame {
+  width: 100%;
+  max-width: 1000px;
+  height: 560px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  display: block;
+}
+
+.game-score {
+  color: #555;
+  font-size: 0.95rem;
 }

@@ -43,10 +43,14 @@ November.
 - **`apps/web` is no longer a placeholder.** A welcome screen collects a
   typed name, a minimal SQLite store (`data/rev_babel.db`, gitignored)
   tracks it against a signed session cookie, and the course page shows a
-  hardcoded "Lezione 1" whose content is just its title, "La Tastiera e
-  il Mouse" — lesson content itself is still to come. Verified live
-  through `https://rev-babel.emiliovicari.com`, the real tunnel, not just
-  locally.
+  hardcoded "Lezione 1", "La Tastiera e il Mouse". Verified live through
+  `https://rev-babel.emiliovicari.com`, the real tunnel, not just locally.
+- **Lesson 1's content is two embedded games** (mouse and keyboard,
+  `apps/web/static/lessons/lezione-1/`), each posting its score to
+  `/api/scores`. The page shows only the current student's own personal
+  best and last attempt — deliberately no leaderboard, since
+  `docs/data-and-privacy.md` says progress is teacher-only and never
+  shown to other students.
 - **The typed name is a deliberate, temporary deviation from
   [ADR 0010](docs/decisions/0010-avatar-picker.md)**, recorded as
   [ADR 0013](docs/decisions/0013-typed-name-for-lesson-1.md): shipping
@@ -221,6 +225,14 @@ Lead times and physical presence, which is why they are listed apart.
 
 ## Revision log
 
+- **v0.4 — 2026-09-17** — Lesson 1's two games (mouse, keyboard) moved
+  into `apps/web/static/lessons/lezione-1/` and embedded in the course
+  page via iframe, unchanged apart from a `postMessage` on completion.
+  Scores post to `/api/scores` and SQLite tracks a personal best and last
+  attempt per student; the page shows only the current student's own,
+  deliberately no leaderboard, per `docs/data-and-privacy.md`. Verified
+  live through the tunnel: both games load, an unauthenticated score post
+  is rejected, an authenticated one updates the personal best.
 - **v0.3 — 2026-09-17** — `apps/web` gets a welcome screen, a minimal
   SQLite session store, and a course page with a hardcoded "Lezione 1"
   showing its title. Recorded as

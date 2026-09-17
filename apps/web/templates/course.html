@@ -25,7 +25,30 @@
       {% for lesson in lessons %}
       <section id="pane-{{ lesson.slug }}" class="pane" hidden>
         <h1>{{ lesson.long_title }}</h1>
+        {% if lesson.slug == "lezione-1" %}
+        <div class="game-block" data-game="mouse">
+          <h2>Il mouse</h2>
+          <iframe src="/static/lessons/lezione-1/mouse/index.html" class="game-frame"></iframe>
+          <p class="game-score">
+            Il tuo miglior tempo:
+            <span data-field="best">{{ "%.0f ms"|format(scores.mouse.best) if scores.mouse.best is not none else "—" }}</span>
+            &middot; ultimo tentativo:
+            <span data-field="last">{{ "%.0f ms"|format(scores.mouse.last) if scores.mouse.last is not none else "—" }}</span>
+          </p>
+        </div>
+        <div class="game-block" data-game="keyboard">
+          <h2>La tastiera</h2>
+          <iframe src="/static/lessons/lezione-1/keyboard/index.html" class="game-frame"></iframe>
+          <p class="game-score">
+            Il tuo miglior tempo:
+            <span data-field="best">{{ "%.1f s"|format(scores.keyboard.best) if scores.keyboard.best is not none else "—" }}</span>
+            &middot; ultimo tentativo:
+            <span data-field="last">{{ "%.1f s"|format(scores.keyboard.last) if scores.keyboard.last is not none else "—" }}</span>
+          </p>
+        </div>
+        {% else %}
         <p>Contenuti in arrivo.</p>
+        {% endif %}
       </section>
       {% endfor %}
     </main>
@@ -39,6 +62,29 @@
         });
         document.getElementById("pane-" + link.dataset.lesson).hidden = false;
       });
+    });
+
+    const scoreFormat = {mouse: (v) => Math.round(v) + " ms", keyboard: (v) => v.toFixed(1) + " s"};
+
+    window.addEventListener("message", function (event) {
+      if (event.origin !== window.location.origin) return;
+      const data = event.data;
+      if (!data || data.type !== "rev-babel-score") return;
+      const format = scoreFormat[data.game];
+      if (!format) return;
+      fetch("/api/scores", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({game: data.game, value: data.value}),
+      })
+        .then((response) => (response.ok ? response.json() : null))
+        .then((result) => {
+          if (!result) return;
+          const block = document.querySelector('.game-block[data-game="' + data.game + '"]');
+          if (!block) return;
+          block.querySelector('[data-field="best"]').textContent = format(result.best);
+          block.querySelector('[data-field="last"]').textContent = format(result.last);
+        });
     });
   </script>
 </body>
