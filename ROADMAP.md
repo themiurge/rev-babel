@@ -35,10 +35,24 @@ screen. Ten lessons, six users, and then it stops. It is not a product and
 does not scale past this room; see
 [`docs/overview.md`](docs/overview.md).
 
-## Where we are now  *(2026-09-06)*
+## Where we are now  *(2026-09-17)*
 
-**Twelve days before lesson 1** (Thursday 17 September 2026). Ten lessons,
-Thursdays 16:30–18:00, through 19 November.
+**Lesson 1, today.** Ten lessons, Thursdays 16:30–18:00, through 19
+November.
+
+- **`apps/web` is no longer a placeholder.** A welcome screen collects a
+  typed name, a minimal SQLite store (`data/rev_babel.db`, gitignored)
+  tracks it against a signed session cookie, and the course page shows a
+  hardcoded "Lezione 1" whose content is just its title, "La Tastiera e
+  il Mouse" — lesson content itself is still to come. Verified live
+  through `https://rev-babel.emiliovicari.com`, the real tunnel, not just
+  locally.
+- **The typed name is a deliberate, temporary deviation from
+  [ADR 0010](docs/decisions/0010-avatar-picker.md)**, recorded as
+  [ADR 0013](docs/decisions/0013-typed-name-for-lesson-1.md): shipping
+  something for today rather than waiting on the avatar picker (issues
+  0016, 0017). It stores a real name, never committed but present on the
+  teacher's machine, and is meant to be replaced, not built on.
 
 - **The network layer is done and proved, ahead of everything else.**
   `emiliovicari.com` registered at Cloudflare Registrar; a
@@ -207,6 +221,13 @@ Lead times and physical presence, which is why they are listed apart.
 
 ## Revision log
 
+- **v0.3 — 2026-09-17** — `apps/web` gets a welcome screen, a minimal
+  SQLite session store, and a course page with a hardcoded "Lezione 1"
+  showing its title. Recorded as
+  [ADR 0013](docs/decisions/0013-typed-name-for-lesson-1.md): a
+  deliberate, temporary deviation from ADR 0010's no-name design, to have
+  something working for lesson 1 today. Verified live through the real
+  tunnel hostname.
 - **v0.2 — 2026-09-06** — Closed issue 0005: `Segment` and `Caption` land in
   `packages/contracts` as pydantic v2 models, with a JSON Lines codec and
   stream validators for gapless/in-order `seq` and the 15 s segment cap.

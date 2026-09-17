@@ -21,5 +21,7 @@ Any model inference (transcription, translation, chat) — those live in
 
 ## Status
 
-Placeholder. No routes, no WebSocket handling, no templates beyond this
-README exist yet.
+A welcome screen (typed name, ADR 0013 — a temporary stand-in for the
+avatar picker), a minimal SQLite session store, and a course page with a
+hardcoded "Lezione 1" sidebar showing its title, "La Tastiera e il
+Mouse". No WebSocket handling, no lesson content, no avatar picker yet.

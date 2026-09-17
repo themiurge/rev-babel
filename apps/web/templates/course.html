@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>rev-babel</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>Lezioni</h2>
+      <ul>
+        {% for lesson in lessons %}
+        <li><a href="#" data-lesson="{{ lesson.slug }}" class="lesson-link">{{ lesson.title }}</a></li>
+        {% endfor %}
+      </ul>
+      <a href="/logout" class="logout">Non sei {{ name }}?</a>
+    </nav>
+    <main class="content">
+      <section id="pane-welcome" class="pane">
+        <h1>Benvenuta, {{ name }}!</h1>
+        <p>Scegli una lezione dal menu a sinistra per iniziare.</p>
+      </section>
+      {% for lesson in lessons %}
+      <section id="pane-{{ lesson.slug }}" class="pane" hidden>
+        <h1>{{ lesson.long_title }}</h1>
+        <p>Contenuti in arrivo.</p>
+      </section>
+      {% endfor %}
+    </main>
+  </div>
+  <script>
+    document.querySelectorAll(".lesson-link").forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        document.querySelectorAll(".pane").forEach(function (pane) {
+          pane.hidden = true;
+        });
+        document.getElementById("pane-" + link.dataset.lesson).hidden = false;
+      });
+    });
+  </script>
+</body>
+</html>

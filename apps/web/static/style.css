@@ -1,0 +1,81 @@
+:root {
+  color-scheme: light;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f7f5f2;
+  color: #222;
+}
+
+.welcome {
+  max-width: 24rem;
+  margin: 15vh auto;
+  text-align: center;
+}
+
+.welcome input {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  width: 80%;
+}
+
+.welcome button {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+}
+
+.error {
+  color: #b00020;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 14rem;
+  flex-shrink: 0;
+  background: #2c2c2c;
+  color: #fff;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.sidebar h2 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.sidebar a:hover {
+  background: #444;
+}
+
+.sidebar .logout {
+  position: fixed;
+  bottom: 1rem;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 2rem;
+}
