@@ -3,6 +3,13 @@
   font-family: system-ui, sans-serif;
 }
 
+/* Several rules below set `display` on a class/id selector with equal or
+   higher specificity than the browser's built-in [hidden] rule, which
+   would otherwise silently stop `el.hidden = true` from hiding anything. */
+[hidden] {
+  display: none !important;
+}
+
 html, body {
   height: 100%;
 }
@@ -161,8 +168,13 @@ body {
   font-weight: 600;
 }
 
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
 .topbar-right {
-  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 0.8rem;
