@@ -1,0 +1,11 @@
+{% extends "_base.html" %}
+{% block main %}
+<main class="content">
+  <h1>{{ lesson.long_title }}</h1>
+  <ul class="game-links">
+    {% for key, info in games.items() %}
+    <li><a href="/course/{{ lesson.slug }}/{{ key }}">{{ info.title }}</a></li>
+    {% endfor %}
+  </ul>
+</main>
+{% endblock %}

@@ -30,17 +30,40 @@ if not SESSION_SECRET:
 MAX_NAME_LENGTH = 60
 
 LESSONS = [
-    {"slug": "lezione-1", "title": "Lezione 1", "long_title": "La Tastiera e il Mouse"},
+    {
+        "slug": "lezione-1",
+        "title": "Lezione 1",
+        "long_title": "La Tastiera e il Mouse",
+        "url": "/course/lezione-1",
+    },
 ]
 
 # Per-game sanity bounds on a reported score, so a stray or malicious
 # postMessage can't write nonsense into the database. Not a leaderboard —
-# see ADR 0013's follow-up note in ROADMAP.md: progress stays personal,
-# per docs/data-and-privacy.md.
+# each student sees only their own numbers, per docs/data-and-privacy.md.
 GAMES = {
-    "mouse": {"unit": "ms", "max_value": 60_000},
-    "keyboard": {"unit": "s", "max_value": 3_600},
+    "mouse": {
+        "title": "Il mouse",
+        "unit": "ms",
+        "max_value": 60_000,
+        "src": "/static/lessons/lezione-1/mouse/index.html",
+    },
+    "keyboard": {
+        "title": "La tastiera",
+        "unit": "s",
+        "max_value": 3_600,
+        "src": "/static/lessons/lezione-1/keyboard/index.html",
+    },
 }
+
+# Which games belong to which lesson. Only lezione-1 has any today.
+LESSON_GAMES = {"lezione-1": GAMES}
+
+
+def _format_score(unit: str, value: float | None) -> str:
+    if value is None:
+        return "—"
+    return f"{round(value)} ms" if unit == "ms" else f"{value:.1f} s"
 
 
 class ScoreIn(BaseModel):
@@ -100,17 +123,44 @@ def course(request: Request):
     name = _current_name(request)
     if name is None:
         return RedirectResponse("/", status_code=303)
-    student_id = request.session["student_id"]
-    scores = {
-        game: {
-            "best": db.personal_best(student_id, game),
-            "last": db.last_score(student_id, game),
-            "unit": info["unit"],
-        }
-        for game, info in GAMES.items()
-    }
+    return templates.TemplateResponse(request, "course.html", {"name": name, "lessons": LESSONS})
+
+
+@app.get("/course/{lesson_slug}")
+def lesson_detail(request: Request, lesson_slug: str):
+    name = _current_name(request)
+    if name is None:
+        return RedirectResponse("/", status_code=303)
+    lesson = next((lesson for lesson in LESSONS if lesson["slug"] == lesson_slug), None)
+    if lesson is None:
+        raise HTTPException(status_code=404)
+    games = LESSON_GAMES.get(lesson_slug, {})
     return templates.TemplateResponse(
-        request, "course.html", {"name": name, "lessons": LESSONS, "scores": scores}
+        request, "lesson.html", {"name": name, "lessons": LESSONS, "lesson": lesson, "games": games}
+    )
+
+
+@app.get("/course/{lesson_slug}/{game_slug}")
+def lesson_game(request: Request, lesson_slug: str, game_slug: str):
+    name = _current_name(request)
+    if name is None:
+        return RedirectResponse("/", status_code=303)
+    info = LESSON_GAMES.get(lesson_slug, {}).get(game_slug)
+    if info is None:
+        raise HTTPException(status_code=404)
+    student_id = request.session["student_id"]
+    return templates.TemplateResponse(
+        request,
+        "game.html",
+        {
+            "name": name,
+            "lessons": LESSONS,
+            "lesson_slug": lesson_slug,
+            "game": game_slug,
+            "info": info,
+            "best_display": _format_score(info["unit"], db.personal_best(student_id, game_slug)),
+            "last_display": _format_score(info["unit"], db.last_score(student_id, game_slug)),
+        },
     )
 
 

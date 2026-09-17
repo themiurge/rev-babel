@@ -25,7 +25,7 @@ def test_submitting_a_name_reaches_the_course_page() -> None:
     response = client.post("/welcome", data={"name": "Fatima"}, follow_redirects=True)
     assert response.status_code == 200
     assert "Benvenuta, Fatima!" in response.text
-    assert "La Tastiera e il Mouse" in response.text
+    assert '<a href="/course/lezione-1">Lezione 1</a>' in response.text
 
 
 def test_blank_name_is_rejected() -> None:
@@ -34,11 +34,30 @@ def test_blank_name_is_rejected() -> None:
     assert "Scrivi il tuo nome" in response.text
 
 
-def test_course_page_embeds_both_games() -> None:
-    response = client.get("/course")
+def test_lesson_page_lists_both_games() -> None:
+    response = client.get("/course/lezione-1")
+    assert response.status_code == 200
+    assert "La Tastiera e il Mouse" in response.text
+    assert '<a href="/course/lezione-1/mouse">Il mouse</a>' in response.text
+    assert '<a href="/course/lezione-1/keyboard">La tastiera</a>' in response.text
+
+
+def test_unknown_lesson_is_a_404() -> None:
+    response = client.get("/course/lezione-9")
+    assert response.status_code == 404
+
+
+def test_game_page_embeds_the_full_size_iframe() -> None:
+    response = client.get("/course/lezione-1/mouse")
+    assert response.status_code == 200
     assert "/static/lessons/lezione-1/mouse/index.html" in response.text
-    assert "/static/lessons/lezione-1/keyboard/index.html" in response.text
-    assert "Il tuo miglior tempo" in response.text
+    assert "Miglior tempo" in response.text
+    assert 'href="/course/lezione-1"' in response.text  # back link
+
+
+def test_unknown_game_is_a_404() -> None:
+    response = client.get("/course/lezione-1/chess")
+    assert response.status_code == 404
 
 
 def test_score_submission_requires_a_session() -> None:

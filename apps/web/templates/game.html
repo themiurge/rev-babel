@@ -1,0 +1,36 @@
+{% extends "_base.html" %}
+{% block main %}
+<main class="game-page">
+  <div class="game-topbar">
+    <a href="/course/{{ lesson_slug }}" class="back-link">&larr; Indietro</a>
+    <div class="game-score" data-game="{{ game }}">
+      Miglior tempo: <span data-field="best">{{ best_display }}</span>
+      &middot; ultimo tentativo: <span data-field="last">{{ last_display }}</span>
+    </div>
+  </div>
+  <iframe src="{{ info.src }}" class="game-frame-full"></iframe>
+</main>
+<script>
+  (function () {
+    const unit = "{{ info.unit }}";
+    const format = (v) => (unit === "ms" ? Math.round(v) + " ms" : v.toFixed(1) + " s");
+    window.addEventListener("message", function (event) {
+      if (event.origin !== window.location.origin) return;
+      const data = event.data;
+      if (!data || data.type !== "rev-babel-score" || data.game !== "{{ game }}") return;
+      fetch("/api/scores", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({game: data.game, value: data.value}),
+      })
+        .then((response) => (response.ok ? response.json() : null))
+        .then((result) => {
+          if (!result) return;
+          const box = document.querySelector(".game-score");
+          box.querySelector('[data-field="best"]').textContent = format(result.best);
+          box.querySelector('[data-field="last"]').textContent = format(result.last);
+        });
+    });
+  })();
+</script>
+{% endblock %}

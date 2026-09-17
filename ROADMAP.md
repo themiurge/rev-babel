@@ -225,6 +225,13 @@ Lead times and physical presence, which is why they are listed apart.
 
 ## Revision log
 
+- **v0.5 — 2026-09-17** — Reworked the lesson UI: the lesson pane no
+  longer embeds both games inline (too small); it now just lists them,
+  and each opens its own full-window page (`/course/lezione-1/<game>`)
+  with the sidebar, a slim top bar (back link + personal record), and the
+  game filling the rest of the viewport. Introduced `_base.html` for the
+  shared sidebar chrome across `course.html`, `lesson.html`, `game.html`.
+  Verified live through the tunnel.
 - **v0.4 — 2026-09-17** — Lesson 1's two games (mouse, keyboard) moved
   into `apps/web/static/lessons/lezione-1/` and embedded in the course
   page via iframe, unchanged apart from a `postMessage` on completion.

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>rev-babel</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>Lezioni</h2>
+      <ul>
+        {% for lesson in lessons %}
+        <li><a href="{{ lesson.url }}">{{ lesson.title }}</a></li>
+        {% endfor %}
+      </ul>
+      <a href="/logout" class="logout">Non sei {{ name }}?</a>
+    </nav>
+    {% block main %}{% endblock %}
+  </div>
+</body>
+</html>
