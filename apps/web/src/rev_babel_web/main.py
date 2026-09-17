@@ -72,6 +72,8 @@ class ScoreIn(BaseModel):
     value: float = Field(gt=0)
 
 
+SESSION_MAX_AGE_SECONDS = 24 * 60 * 60
+
 app = FastAPI()
 app.add_middleware(
     SessionMiddleware,
@@ -79,6 +81,7 @@ app.add_middleware(
     session_cookie="rev_babel_session",
     same_site="lax",
     https_only=os.environ.get("WEB_COOKIE_SECURE", "true").lower() != "false",
+    max_age=SESSION_MAX_AGE_SECONDS,
 )
 app.mount("/static", StaticFiles(directory=os.path.join(_WEB_ROOT, "static")), name="static")
 templates = Jinja2Templates(directory=os.path.join(_WEB_ROOT, "templates"))
