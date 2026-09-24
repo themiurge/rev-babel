@@ -44,6 +44,25 @@ room. Ten lessons, Thursdays 16:30–18:00, through 19 November. **Lesson 2
 Google account, choosing and keeping a password safely, behaving on a
 shared computer.
 
+- **Lesson 2's third deck: a 12-question scam-recognition quiz**
+  (`lezione-2-truffe-quiz.json`, 24 slides, all five languages) — a
+  realistic SMS, email, or phone-call mockup per question, styled to
+  actually look like an SMS/email/call rather than quoted text (new
+  `.mock-phone`/`.mock-email`/`.mock-call`/`.verdict-badge` CSS,
+  duplicated in `present.html`'s own stylesheet as always). Each
+  question is **two slides, not one** — the bare message, then the same
+  message again with a 🚨/✅ verdict and explanation appended - faking an
+  animated reveal within Slide Sync Lite's plain index-sync model: the
+  presenter shows slide N alone and asks the class to answer together,
+  then advances to slide N+1 for the reveal. Adapted from the
+  maintainer's 12 message/verdict/explanation examples; protected
+  literals (sender names, `bit.ly/pacco-it`, the fabricated scam email
+  address, `SPID`, the verification code, all emoji) validated to
+  survive translation unchanged across all five languages and all 24
+  slides. No images were supplied for this one either - each message
+  type gets a distinct mockup style instead, which the deck's
+  translatable-HTML approach makes free to build once and reuse across
+  languages.
 - **Lesson 2's second real deck: "Attenzione alle truffe online"**
   (`lezione-2-truffe-online.json`, five slides, all five languages) —
   the maintainer revised the lesson plan to add a scams-awareness
@@ -345,6 +364,23 @@ Lead times and physical presence, which is why they are listed apart.
 
 ## Revision log
 
+- **v0.15 — 2026-09-24** — Added a 12-question scam-recognition quiz
+  deck ("Truffa o sicuro? Il quiz", 24 slides, five languages), lesson
+  2's third local deck. Each question renders as a realistic SMS, email,
+  or phone-call mockup (new `.mock-phone`/`.mock-email`/`.mock-call`/
+  `.verdict-badge` CSS) rather than quoted text - "make emails look like
+  emails," per the maintainer. Faked an animated reveal within Slide
+  Sync Lite's single-index model by duplicating each question across two
+  slides: bare message first (ask the class), then the same message
+  again with the verdict and explanation appended. Translated in 4
+  chunks of 6 lines per language (20 calls) rather than one large batch,
+  after earlier sessions showed long/complex prompts hang more often;
+  8 of the 20 still needed one or more retries, and the two most
+  stubborn were recovered by splitting down to individual lines, the
+  same trick that rescued a stuck translation earlier this session.
+  Validated programmatically: every sender name, URL, fabricated scam
+  email address, `SPID`, the verification code, and every emoji survives
+  translation unchanged across all five languages and all 24 slides.
 - **v0.14 — 2026-09-24** — Added "Attenzione alle truffe online", lesson
   2's second local deck (five slides, five languages), adapted from the
   maintainer's revised lesson plan and full teaching script: why scam

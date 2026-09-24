@@ -62,3 +62,27 @@ def test_scams_deck_preserves_protected_terms_and_emoji() -> None:
 
     slide1 = decks.get_slide("lezione-2-truffe-online", 1, "en")
     assert "🎣" in slide1["translated"]
+
+
+def test_list_decks_finds_the_quiz_deck() -> None:
+    found = {d["slug"]: d for d in decks.list_decks()}
+    assert "lezione-2-truffe-quiz" in found
+    assert found["lezione-2-truffe-quiz"]["slide_count"] == 24
+
+
+def test_quiz_deck_reveal_slides_preserve_protected_terms_and_emoji() -> None:
+    # Slide 1 is the bare question; slide 2 is the same message revealed
+    # with a verdict - this "duplicate the slide" trick fakes an
+    # animation within Slide Sync Lite's plain index-sync model.
+    bare = decks.get_slide("lezione-2-truffe-quiz", 1, "fr")
+    assert "❓" in bare["it"]
+    assert "verdict-badge" not in bare["it"]
+
+    revealed = decks.get_slide("lezione-2-truffe-quiz", 2, "fr")
+    assert "🚨" in revealed["translated"]
+    assert "Poste Italiane" in revealed["translated"]
+    assert "bit.ly/pacco-it" in revealed["translated"]
+    assert '<div class="verdict-badge scam">' in revealed["translated"]
+
+    email_slide = decks.get_slide("lezione-2-truffe-quiz", 15, "ar")
+    assert "agenziaentrate-rimborso@gmail.com" in email_slide["translated"]
