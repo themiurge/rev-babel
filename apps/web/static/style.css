@@ -223,6 +223,12 @@ body {
   text-decoration: underline;
 }
 
+.game-score-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 1rem;
+}
+
 .game-score {
   color: #555;
   font-size: 0.95rem;
@@ -310,16 +316,19 @@ body {
   border-left: 1px solid #ccc;
 }
 
+/* No forced 16:9 (or any other) aspect ratio here on purpose: a fixed
+   box height clipped actual slide content into an inner scrollbar,
+   which reads as broken rather than as a deliberate size limit. The box
+   just takes its natural content height, centered in its pane by
+   .slide-pane; if a slide is ever taller than the viewport the page
+   grows instead of scrolling inside a small box. */
 .slide-box {
   background: #fff;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  max-height: 100%;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
   border-radius: 6px;
   padding: 2rem 2.5rem;
   box-sizing: border-box;
-  overflow: auto;
   font-size: 1.3rem;
   line-height: 1.5;
 }

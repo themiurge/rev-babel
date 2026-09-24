@@ -4,10 +4,14 @@
 <a href="/course/{{ lesson_slug }}" class="back-link" {{ m.title_attr("Indietro") }}>&larr; Indietro</a>
 {% endblock %}
 {% block topbar_extra %}
-<div class="game-score" data-game="{{ game }}">
-  <span {{ m.title_attr("Miglior tempo") }}>Miglior tempo</span>: <span data-field="best">{{ best_display }}</span>
-  &middot;
-  <span {{ m.title_attr("ultimo tentativo") }}>ultimo tentativo</span>: <span data-field="last">{{ last_display }}</span>
+<div class="game-score-group">
+  {% for d in score_displays %}
+  <div class="game-score" data-game="{{ d.key }}">
+    {% if d.label %}<strong {{ m.title_attr(d.label) }}>{{ d.label }}</strong>: {% endif %}<span {{ m.title_attr("Miglior tempo") }}>Miglior tempo</span>: <span data-field="best">{{ d.best_display }}</span>
+    &middot;
+    <span {{ m.title_attr("ultimo tentativo") }}>ultimo tentativo</span>: <span data-field="last">{{ d.last_display }}</span>
+  </div>
+  {% endfor %}
 </div>
 {% endblock %}
 {% block main %}
@@ -19,7 +23,9 @@
     window.addEventListener("message", function (event) {
       if (event.origin !== window.location.origin) return;
       const data = event.data;
-      if (!data || data.type !== "rev-babel-score" || data.game !== "{{ game }}") return;
+      if (!data || data.type !== "rev-babel-score") return;
+      const box = document.querySelector(`.game-score[data-game="${data.game}"]`);
+      if (!box) return;
       fetch("/api/scores", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -28,7 +34,6 @@
         .then((response) => (response.ok ? response.json() : null))
         .then((result) => {
           if (!result) return;
-          const box = document.querySelector(".game-score");
           box.querySelector('[data-field="best"]').textContent = format(result.best);
           box.querySelector('[data-field="last"]').textContent = format(result.last);
         });

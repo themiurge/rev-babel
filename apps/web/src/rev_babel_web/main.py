@@ -72,13 +72,29 @@ LESSON2_GAMES = {
         "title": "Cifra la password",
         "unit": "s",
         "max_value": 3_600,
-        "src": "/static/lessons/lezione-2/cifra/index.html",
+        # A Jinja template, not a plain static file, so its own on-page
+        # text can carry hover translations like the rest of the app.
+        "src": "/games/cifra",
     },
 }
 
+# Games with more than one difficulty: each mode gets its own score key
+# (its own row in game_scores) so easy and hard are tracked separately,
+# but they still share one lesson-page entry and one iframe.
+GAME_MODES: dict[str, list[dict[str, str]]] = {
+    "cifra": [
+        {"key": "cifra_facile", "label": "Facile"},
+        {"key": "cifra_difficile", "label": "Difficile"},
+    ],
+}
+
 # Flat lookup across every lesson, for score validation - a game slug is
-# unique across the whole site, not just within its own lesson.
+# unique across the whole site, not just within its own lesson. Mode
+# keys validate against their base game's bounds.
 GAMES = {**LESSON1_GAMES, **LESSON2_GAMES}
+for _base_slug, _modes in GAME_MODES.items():
+    for _mode in _modes:
+        GAMES[_mode["key"]] = GAMES[_base_slug]
 
 # Which games belong to which lesson, for the lesson page's link list.
 LESSON_GAMES = {"lezione-1": LESSON1_GAMES, "lezione-2": LESSON2_GAMES}
@@ -283,16 +299,52 @@ def lesson_game(request: Request, lesson_slug: str, game_slug: str):
         raise HTTPException(status_code=404)
     student_id = request.session["student_id"]
     context = _base_context(request)
+    modes = GAME_MODES.get(game_slug)
+    if modes:
+        score_displays = [
+            {
+                "key": mode["key"],
+                "label": mode["label"],
+                "best_display": _format_score(
+                    info["unit"], db.personal_best(student_id, mode["key"])
+                ),
+                "last_display": _format_score(info["unit"], db.last_score(student_id, mode["key"])),
+            }
+            for mode in modes
+        ]
+    else:
+        score_displays = [
+            {
+                "key": game_slug,
+                "label": None,
+                "best_display": _format_score(
+                    info["unit"], db.personal_best(student_id, game_slug)
+                ),
+                "last_display": _format_score(info["unit"], db.last_score(student_id, game_slug)),
+            }
+        ]
     context.update(
         {
             "lesson_slug": lesson_slug,
             "game": game_slug,
             "info": info,
-            "best_display": _format_score(info["unit"], db.personal_best(student_id, game_slug)),
-            "last_display": _format_score(info["unit"], db.last_score(student_id, game_slug)),
+            "score_displays": score_displays,
         }
     )
     return templates.TemplateResponse(request, "game.html", context)
+
+
+@app.get("/games/cifra")
+def game_cifra(request: Request):
+    context = _base_context(request)
+    tr = context["tr"]
+    context["cifra_strings_json"] = json.dumps(
+        {
+            "wrong": tr("Non è corretto, riprova.") or "Non è corretto, riprova.",
+            "done": tr("Ce l'hai fatta!") or "Ce l'hai fatta!",
+        }
+    )
+    return templates.TemplateResponse(request, "games/cifra.html", context)
 
 
 @app.get("/logout")

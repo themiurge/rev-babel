@@ -166,5 +166,96 @@
     "ckb": "ناوەڕۆک بەم زووانە دێت.",
     "ar": "محتوى قادم قريباً.",
     "kmr": "Naverok di nêzîk de tê."
+  },
+  "Le vocali diventano numeri": {
+    "en": "Vowels become numbers",
+    "fr": "Les voyelles deviennent des chiffres",
+    "ckb": "پیتە دەنگدارەکان دەبن بە ژمارە",
+    "kmr": "Dengdêr dibin hejmar",
+    "ar": "تتحول حروف العلة إلى أرقام"
+  },
+  "Alla fine aggiungi sempre un punto esclamativo:": {
+    "en": "At the end, always add an exclamation mark:",
+    "fr": "À la fin, ajoute toujours un point d'exclamation :",
+    "ckb": "لە کۆتاییدا هەمیشە نیشانەیەکی سەرسوڕمان زیاد بکە:",
+    "kmr": "Di dawiyê de her tim nîşana bangê lê zêde bike:",
+    "ar": "في النهاية، أضف دائماً علامة تعجب:"
+  },
+  "Esempio:": {
+    "en": "Example:",
+    "fr": "Exemple :",
+    "ckb": "نموونە:",
+    "kmr": "Mînak:",
+    "ar": "مثال:"
+  },
+  "Scrivi la versione cifrata di ogni parola, più veloce che puoi.": {
+    "en": "Write the encrypted version of each word, as fast as you can.",
+    "fr": "Écris la version chiffrée de chaque mot, aussi vite que tu peux.",
+    "ckb": "وەشانی کۆدکراوی هەر وشەیەک بنووسە، تا دەتوانیت بە خێرایی.",
+    "kmr": "Guhertoya şîfrekirî ya her peyvê binivîse, herî zû ku dikarî.",
+    "ar": "اكتب النسخة المشفرة لكل كلمة، بأسرع ما يمكنك."
+  },
+  "Inizia": {
+    "en": "Start",
+    "fr": "Commencer",
+    "ckb": "دەست پێبکە",
+    "kmr": "Dest pê bike",
+    "ar": "ابدأ"
+  },
+  "Inizia (difficile!)": {
+    "en": "Start (hard!)",
+    "fr": "Commencer (difficile !)",
+    "ckb": "دەست پێبکە (قورس!)",
+    "kmr": "Dest pê bike (zehmet!)",
+    "ar": "ابدأ (صعب!)"
+  },
+  "Verifica": {
+    "en": "Check",
+    "fr": "Vérifier",
+    "ckb": "بپشکنە",
+    "kmr": "Kontrol bike",
+    "ar": "تحقق"
+  },
+  "Non è corretto, riprova.": {
+    "en": "That's not correct, try again.",
+    "fr": "Ce n'est pas correct, réessaie.",
+    "ckb": "ڕاست نییە، دووبارە هەوڵ بدەرەوە.",
+    "kmr": "Ne rast e, dîsa biceribîne.",
+    "ar": "غير صحيح، حاول مرة أخرى."
+  },
+  "Tempo:": {
+    "en": "Time:",
+    "fr": "Temps :",
+    "ckb": "کات:",
+    "kmr": "Dem:",
+    "ar": "الوقت:"
+  },
+  "Ce l'hai fatta!": {
+    "en": "You did it!",
+    "fr": "Tu as réussi !",
+    "ckb": "سەرکەوتوو بوویت!",
+    "kmr": "Te bi ser xist!",
+    "ar": "لقد نجحت!"
+  },
+  "Ricomincia": {
+    "en": "Start over",
+    "fr": "Recommencer",
+    "ckb": "دووبارە دەست پێبکەوە",
+    "kmr": "Ji nû ve dest pê bike",
+    "ar": "ابدأ من جديد"
+  },
+  "Facile": {
+    "en": "Easy",
+    "fr": "Facile",
+    "ckb": "ئاسان",
+    "kmr": "Hêsan",
+    "ar": "سهل"
+  },
+  "Difficile": {
+    "en": "Hard",
+    "fr": "Difficile",
+    "ckb": "قورس",
+    "kmr": "Zehmet",
+    "ar": "صعب"
   }
 }

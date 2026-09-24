@@ -44,17 +44,34 @@ room. Ten lessons, Thursdays 16:30–18:00, through 19 November. **Lesson 2
 Google account, choosing and keeping a password safely, behaving on a
 shared computer.
 
-- **Lesson 2 has its first practice game: "Cifra la password"**
-  (`/course/lezione-2/cifra`, `static/lessons/lezione-2/cifra/`). A
-  student types the encrypted form of a short practice word under a
-  timer; the rule reminder (vowel→digit tiles + "!") stays visible on
-  the page itself, and checking matches the exact spreadsheet formula
-  the maintainer supplied — lowercase `a→4, i→1, o→0, e→3`, then append
-  `!` — not a looser case-insensitive version, so typed answers must
-  match it exactly. Scored like the keyboard game: elapsed time, lower
-  is better, personal best only. `LESSONS`/`LESSON_GAMES` are now
-  properly per-lesson (previously a single shared `GAMES` dict would
-  have leaked lezione-2's game onto lezione-1's page).
+- **"Cifra la password" got hover translations, two difficulty modes,
+  and true word randomization** — three fixes from the maintainer's
+  first real playtest. It's now `templates/games/cifra.html` (a Jinja
+  template, not a plain static file, since the imported mouse/keyboard
+  games are the only ones meant to stay untouched — a game built from
+  scratch can be a real app page), so its rule reminder and buttons
+  carry hover translations like the rest of the app, reusing the deck's
+  own `.slide-box`/`.vowel-map` CSS instead of duplicating it. "Inizia"
+  (easy) and "Inizia (difficile!)" draw from two entirely different word
+  pools - short household words vs. longer computer/account vocabulary
+  - each round sampling a random subset rather than always the same
+  fixed list in shuffled order. Easy and hard track **separate personal
+  bests** (`cifra_facile`/`cifra_difficile`, two rows in `game_scores`),
+  shown side by side on the lesson page. Added `GAME_MODES`, a small
+  per-game mode registry, and generalized the score-display block in
+  `game.html` to render one or many mode scores from the same
+  `postMessage` → `/api/scores` flow. Checking still matches the exact
+  spreadsheet formula the maintainer supplied — lowercase
+  `a→4, i→1, o→0, e→3`, then append `!` — not a looser case-insensitive
+  version. `LESSONS`/`LESSON_GAMES` are properly per-lesson now
+  (previously a single shared `GAMES` dict would have leaked
+  lezione-2's game onto lezione-1's page).
+- **Split-screen slides no longer force a 16:9 box.** `.slide-box` had
+  `aspect-ratio: 16/9` with `overflow: auto`, so any slide taller than
+  that ratio rendered with an inner scrollbar - "totally fine that
+  slides aren't literally 16:9, but don't clip the student's view to
+  force it," per the maintainer. The box now just takes its natural
+  content height, centered in its pane.
 - **Lesson 2's first real local deck exists: "Scegliere una password
   sicura"** (`lezione-2-password-sicura.json`, three slides, all five
   languages), covering why the password matters, weak vs. strong
@@ -313,6 +330,20 @@ Lead times and physical presence, which is why they are listed apart.
 
 ## Revision log
 
+- **v0.13 — 2026-09-24** — Three fixes from the maintainer's first
+  playtest of "Cifra la password": (1) rewrote it as
+  `templates/games/cifra.html`, a real Jinja template instead of a
+  plain static file, so its rule reminder and buttons now carry hover
+  translations, reusing the deck's `.slide-box`/`.vowel-map` CSS
+  rather than duplicating it - 13 new UI strings machine-translated via
+  `agy`; (2) added a hard mode with its own word pool ("Inizia
+  (difficile!)"), each round now sampling a random subset of its pool
+  instead of always cycling the same fixed list, and easy/hard track
+  separate personal bests (`cifra_facile`/`cifra_difficile`) via a new
+  small `GAME_MODES` registry, shown side by side; (3) removed
+  `.slide-box`'s forced `aspect-ratio: 16/9` + `overflow: auto`, which
+  was clipping taller slides into an inner scrollbar on the student
+  side - it now just takes its natural content height.
 - **v0.12 — 2026-09-24** — Added lesson 2's first game, "Cifra la
   password" (`/course/lezione-2/cifra`): a timed practice round where a
   student types the encrypted form of a short word, checked against the

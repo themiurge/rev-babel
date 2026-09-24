@@ -97,12 +97,35 @@ def test_submitting_scores_tracks_personal_best() -> None:
 def test_cifra_game_page_embeds_the_iframe() -> None:
     response = client.get("/course/lezione-2/cifra")
     assert response.status_code == 200
-    assert "/static/lessons/lezione-2/cifra/index.html" in response.text
+    assert "/games/cifra" in response.text
     assert "Miglior tempo" in response.text
     assert 'href="/course/lezione-2"' in response.text  # back link
 
 
-def test_cifra_score_is_accepted_and_tracked() -> None:
-    response = client.post("/api/scores", json={"game": "cifra", "value": 12.5})
+def test_cifra_game_page_shows_separate_easy_and_hard_scores() -> None:
+    response = client.get("/course/lezione-2/cifra")
     assert response.status_code == 200
-    assert response.json() == {"best": 12.5, "last": 12.5}
+    assert 'data-game="cifra_facile"' in response.text
+    assert 'data-game="cifra_difficile"' in response.text
+
+
+def test_cifra_scores_are_tracked_separately_per_mode() -> None:
+    easy = client.post("/api/scores", json={"game": "cifra_facile", "value": 12.5})
+    assert easy.status_code == 200
+    assert easy.json() == {"best": 12.5, "last": 12.5}
+
+    hard = client.post("/api/scores", json={"game": "cifra_difficile", "value": 30.0})
+    assert hard.status_code == 200
+    assert hard.json() == {"best": 30.0, "last": 30.0}
+
+    # Improving the easy score must not touch the hard one, or vice versa.
+    easy_again = client.post("/api/scores", json={"game": "cifra_facile", "value": 8.0})
+    assert easy_again.json() == {"best": 8.0, "last": 8.0}
+
+
+def test_games_cifra_page_renders_with_both_start_buttons() -> None:
+    response = client.get("/games/cifra")
+    assert response.status_code == 200
+    assert 'id="startEasyBtn"' in response.text
+    assert 'id="startHardBtn"' in response.text
+    assert "vowel-pair" in response.text

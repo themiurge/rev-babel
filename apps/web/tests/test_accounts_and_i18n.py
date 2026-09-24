@@ -87,6 +87,18 @@ def test_game_page_shows_hover_translation_for_current_language() -> None:
     assert 'title="Best time"' in response.text
 
 
+def test_cifra_game_page_shows_hover_translation_for_current_language() -> None:
+    """Unlike the imported mouse/keyboard games, cifra is a Jinja template
+    (not a plain static file), so its own on-page text - not just the
+    surrounding app chrome - can carry hover translations too."""
+    setup = TestClient(app)
+    setup.post("/api/language", json={"language": "fr"})
+    setup.post("/welcome", data={"name": "French Speaker"})
+    response = setup.get("/games/cifra")
+    assert 'title="Commencer"' in response.text
+    assert 'title="Commencer (difficile !)"' in response.text
+
+
 def test_italian_default_has_no_hover_titles() -> None:
     setup = TestClient(app)
     setup.post("/welcome", data={"name": "Italian Default"})
