@@ -291,8 +291,6 @@ def follow(request: Request):
     tr = context["tr"]
     follow_strings = {
         "live": tr("In diretta") or "In diretta",
-        "browsing": tr("Stai guardando un'altra slide") or "Stai guardando un'altra slide",
-        "back": tr("Torna al vivo") or "Torna al vivo",
         "waiting": tr("La lezione non è ancora iniziata.") or "La lezione non è ancora iniziata.",
         "reconnecting": tr("Riconnessione…") or "Riconnessione…",
         "viewLink": tr("Vedi su Google Slides") or "Vedi su Google Slides",

@@ -44,6 +44,33 @@ room. Ten lessons, Thursdays 16:30–18:00, through 19 November. **Lesson 2
 Google account, choosing and keeping a password safely, behaving on a
 shared computer.
 
+- **Lesson 2's first real local deck exists: "Scegliere una password
+  sicura"** (`lezione-2-password-sicura.json`, three slides, all five
+  languages), covering why the password matters, weak vs. strong
+  examples, and the maintainer's own vowel-to-digit trick (A→4, E→3,
+  I→1, O→0). Content came from the maintainer's teaching script and a
+  reference image; the visuals (chips, weak/strong table, vowel tiles)
+  were recreated as translatable HTML/CSS rather than embedded as an
+  image, so the split screen actually shows translated labels instead
+  of baked-in Italian. Caught and fixed a real translation bug along the
+  way: an overly broad "never translate 'password'" instruction to the
+  `agy` CLI left the word untranslated in ordinary prose (not just the
+  literal weak-password example) for French, Sorani, and Kurmanji —
+  fixed per-slide, with a regression test now guarding it.
+- **Students can no longer browse away from the live slide.** The
+  `/follow` page's arrow-key "browsing" mode (view a different slide
+  than the presenter, with a "back to live" control) is removed —
+  students always see exactly what `/present` is showing, for both
+  Google Slides and local decks, per the maintainer's explicit call.
+- **Two admin-side bugs fixed, both found live.** `/present`'s own
+  inline stylesheet never got the same `[hidden] { display: none
+  !important }` fix `style.css` already carries, so the (empty) Google
+  Slides iframe stayed visually present and pushed local-deck content
+  off screen — invisible before because an empty iframe renders as
+  nothing, consequential the moment real content landed after it in the
+  DOM. Separately, `mic.emiliovicari.com`'s root path fell through to
+  the student login page since only `/present` and `/admin/*` checked
+  the `Host` header; it now redirects straight to `/present`.
 - **Slide Sync Lite now has a second source: locally-authored HTML decks**
   ([ADR 0016](docs/decisions/0016-local-slide-decks-and-split-screen-translation.md)),
   alongside the existing Google Slides embed. A deck is a JSON file
@@ -52,7 +79,7 @@ shared computer.
   screen — Italian and their own language, both visible at once, each
   boxed at 16:9 — rendered server-side per slide, not just a hover title.
   A three-slide sample (`lezione-2-account-demo.json`, all five
-  languages) proves the mechanism; lesson 2's real content is still to be
+  languages) proves the mechanism; the rest of lesson 2's content is still to be
   authored.
 - **Accounts are now permanent, not per-session** ([ADR
   0015](docs/decisions/0015-permanent-accounts-and-language-preference.md)).
@@ -275,6 +302,21 @@ Lead times and physical presence, which is why they are listed apart.
 
 ## Revision log
 
+- **v0.11 — 2026-09-24** — Lesson 2's first real local deck ("Scegliere
+  una password sicura", three slides, five languages) built from the
+  maintainer's own teaching script; the reference image's diagrams were
+  recreated as translatable HTML/CSS, not embedded as pictures, so the
+  split screen shows real translated labels. Fixed a real translation
+  bug caught in review: an overly broad "protect this literal string"
+  instruction to `agy` also blocked translating the ordinary word
+  "password" in prose for French/Sorani/Kurmanji, fixed per-slide with a
+  regression test. Removed the `/follow` page's arrow-key browsing mode
+  entirely — students always see exactly what the presenter shows, per
+  explicit instruction. Fixed two admin-side bugs found live: `/present`'s
+  own stylesheet was missing the `[hidden] !important` fix (an empty
+  iframe was pushing local-deck content off screen), and
+  `mic.emiliovicari.com`'s root path showed the student login page
+  instead of redirecting to `/present`.
 - **v0.10 — 2026-09-24** — Slide Sync Lite gained a second presentation
   source: locally-authored JSON slide decks, alongside Google Slides
   ([ADR 0016](docs/decisions/0016-local-slide-decks-and-split-screen-translation.md)).

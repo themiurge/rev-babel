@@ -6,7 +6,6 @@
 {% endblock %}
 {% block topbar_extra %}
 <a href="#" id="view-link" target="_blank" rel="noopener" hidden></a>
-<button id="back-btn" hidden></button>
 {% endblock %}
 {% block main %}
 <div id="reconnecting" class="strip" hidden></div>
@@ -29,9 +28,10 @@
   const IS_RTL = {{ "true" if is_rtl else "false" }};
   function t(key) { return STRINGS[key]; }
 
-  let mode = "live";
+  // Students only ever see whatever slide is live - no local browsing.
+  // Only the presenter drives the index, for both Google Slides and
+  // local decks alike; see ADR 0014.
   let state = null;
-  let browsingIndex = 1;
   let lastRevision = -1;
   let lastAppliedKey = null;
   let sseFailures = 0;
@@ -68,26 +68,20 @@
     const waiting = document.getElementById("waiting");
     const viewer = document.getElementById("viewer");
     const viewLink = document.getElementById("view-link");
-    const backBtn = document.getElementById("back-btn");
     const frame = document.getElementById("frame");
     const split = document.getElementById("split");
     const blankScreen = document.getElementById("blank-screen");
 
-    backBtn.textContent = t("back");
-
     if (!state || state.status === "ended") {
       viewer.hidden = true;
       viewLink.hidden = true;
-      backBtn.hidden = true;
       waiting.hidden = false;
       waiting.textContent = t("waiting");
       return;
     }
     waiting.hidden = true;
     viewer.hidden = false;
-    backBtn.hidden = mode === "live";
-
-    document.getElementById("pill").textContent = mode === "live" ? t("live") : t("browsing");
+    document.getElementById("pill").textContent = t("live");
 
     if (state.status === "blank") {
       frame.hidden = true;
@@ -97,7 +91,6 @@
     }
     blankScreen.hidden = true;
 
-    const targetIndex = mode === "live" ? state.index : browsingIndex;
     const isLocal = state.source === "local";
 
     viewLink.hidden = isLocal;
@@ -109,13 +102,13 @@
     frame.hidden = isLocal;
     split.hidden = !isLocal;
 
-    const key = `${state.source}:${targetIndex}`;
+    const key = `${state.source}:${state.index}`;
     if (key === lastAppliedKey) return;
     lastAppliedKey = key;
     if (isLocal) {
-      loadLocalSlide(targetIndex);
+      loadLocalSlide(state.index);
     } else {
-      frame.src = embedUrl(state.file_id, targetIndex);
+      frame.src = embedUrl(state.file_id, state.index);
     }
   }
 
@@ -123,32 +116,8 @@
     if (!newState || newState.revision <= lastRevision) return;
     lastRevision = newState.revision;
     state = newState;
-    if (mode === "live") browsingIndex = state.index;
     render();
   }
-
-  function goBrowsing(delta) {
-    if (!state || state.status === "ended") return;
-    mode = "browsing";
-    browsingIndex = Math.max(1, Math.min(browsingIndex + delta, state.slide_count));
-    render();
-  }
-
-  document.getElementById("back-btn").addEventListener("click", () => {
-    mode = "live";
-    if (state) browsingIndex = state.index;
-    render();
-  });
-
-  window.addEventListener("keydown", (e) => {
-    if (["ArrowRight", "ArrowDown", " ", "PageDown"].includes(e.key)) {
-      e.preventDefault();
-      goBrowsing(1);
-    } else if (["ArrowLeft", "ArrowUp", "PageUp"].includes(e.key)) {
-      e.preventDefault();
-      goBrowsing(-1);
-    }
-  });
 
   function showReconnecting(show) {
     const strip = document.getElementById("reconnecting");

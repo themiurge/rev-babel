@@ -133,6 +133,15 @@ def test_follow_page_renders_for_a_logged_in_student() -> None:
     assert 'id="frame"' in response.text
 
 
+def test_follow_page_has_no_student_navigation_controls() -> None:
+    """Students only ever see the live slide - only the presenter drives it."""
+    student = _login("No Nav Test")
+    response = student.get("/follow")
+    assert 'id="back-btn"' not in response.text
+    assert "goBrowsing" not in response.text
+    assert "keydown" not in response.text
+
+
 def test_api_live_returns_current_state_for_a_logged_in_student() -> None:
     student = _login("State Reader")
     response = student.get("/api/live")

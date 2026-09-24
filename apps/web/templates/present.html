@@ -75,6 +75,53 @@
       background: #fff; color: #111; padding: 3rem 4rem; font-size: 1.6rem; line-height: 1.5;
     }
     #local-slide h1 { margin-top: 0; }
+    /* Deck content vocabulary - kept in sync with the equivalent
+       .slide-box rules in static/style.css, since this page doesn't
+       load that stylesheet (its own dark theme would clash with it). */
+    #local-slide .lead { font-size: 1.05em; color: #555; }
+    #local-slide .note { font-size: 0.95em; color: #444; }
+    #local-slide .note.strong { font-weight: 700; color: #111; }
+    #local-slide .chip-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0; }
+    #local-slide .chip {
+      display: inline-block; padding: 0.4rem 0.9rem; border-radius: 999px;
+      font-weight: 600; font-size: 0.85em; border: 1px solid transparent;
+    }
+    #local-slide .chip-blue { background: #e8f0fe; color: #1a56c4; border-color: #c3d9fb; }
+    #local-slide .chip-green { background: #e6f4ea; color: #1e7a3c; border-color: #bfe3cb; }
+    #local-slide .chip-purple { background: #f1eafc; color: #6b3fc7; border-color: #ddccf7; }
+    #local-slide .chip-orange { background: #fdece6; color: #c0472b; border-color: #f8cdbc; }
+    #local-slide .compare-row { display: flex; gap: 1rem; margin: 1rem 0; }
+    #local-slide .compare-col {
+      flex: 1 1 0; min-width: 0; border-radius: 10px; padding: 0.8rem 1rem; box-sizing: border-box;
+    }
+    #local-slide .compare-col.weak { background: #fdf1f0; border: 1px solid #f3c9c4; }
+    #local-slide .compare-col.strong { background: #eef7ef; border: 1px solid #c3e3c8; }
+    #local-slide .compare-col h2 { font-size: 1em; margin: 0 0 0.5rem; }
+    #local-slide .pw-example {
+      font-family: ui-monospace, "SF Mono", Consolas, monospace; background: #fff;
+      border: 1px solid #ddd; border-radius: 6px; padding: 0.3rem 0.6rem;
+      margin: 0.3rem 0; font-size: 0.95em;
+    }
+    #local-slide .vowel-map { display: flex; flex-wrap: wrap; gap: 1.2rem 2.5rem; margin: 1rem 0; }
+    #local-slide .vowel-pair {
+      display: flex; align-items: center; gap: 0.5rem; font-weight: 700; font-size: 1.1em;
+    }
+    #local-slide .letter, #local-slide .digit {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 2rem; height: 2rem; border-radius: 6px;
+    }
+    #local-slide .letter { background: #f1eafc; color: #6b3fc7; }
+    #local-slide .digit { background: #5b3fc4; color: #fff; }
+    #local-slide .word-transform {
+      display: flex; align-items: center; gap: 0.4rem; margin: 1rem 0; flex-wrap: wrap;
+    }
+    #local-slide .tile {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 2.2rem; height: 2.2rem; border-radius: 6px; font-weight: 700;
+      background: #eee; color: #333;
+    }
+    #local-slide .tile-out { background: #d9f0e0; color: #1e7a3c; }
+    #local-slide .arrow { color: #888; font-weight: 700; }
   </style>
 </head>
 <body>
