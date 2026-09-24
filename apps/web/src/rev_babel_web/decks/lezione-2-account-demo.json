@@ -1,0 +1,29 @@
+{
+  "title": "Il proprio account (esempio)",
+  "slides": [
+    {
+      "it": "<h1>Il tuo account</h1><p>Un account è come una chiave personale: un nome utente e una password che ti permettono di accedere ai tuoi servizi online, come l'email, WhatsApp o la banca.</p>",
+      "en": "<h1>Your account</h1><p>An account is like a personal key: a username and a password that allow you to access your online services, such as email, WhatsApp, or the bank.</p>",
+      "fr": "<h1>Ton compte</h1><p>Un compte est comme une clé personnelle : un nom d'utilisateur et un mot de passe qui te permettent d'accéder à tes services en ligne, comme l'email, WhatsApp ou la banque.</p>",
+      "ckb": "<h1>هەژمارەکەت</h1><p>هەژمارێک وەک کلیلێکی کەسی وایە: ناوێکی بەکارهێنەر و وشەیەکی نهێنی کە ڕێگەت پێدەدەن بچیتە نێو خزمەتگوزارییە ئۆنلاینەکانتەوە، وەک ئیمەیڵ، واتسئەپ یان بانک.</p>",
+      "kmr": "<h1>Hesabê te</h1><p>Hesabek wekî kilîteke kesane ye: navekî bikarhêner û şîfreyek ku rê didin te têkevî xizmetên xwe yên serhêl, wekî e-name, WhatsApp an bankê.</p>",
+      "ar": "<h1>حسابك</h1><p>الحساب مثل مفتاح شخصي: اسم مستخدم وكلمة مرور يتيحان لك الوصول إلى خدماتك عبر الإنترنت، مثل البريد الإلكتروني أو واتساب أو البنك.</p>"
+    },
+    {
+      "it": "<h1>Creare un account Google</h1><ol><li>Vai su accounts.google.com</li><li>Scegli \"Crea account\"</li><li>Scrivi il tuo nome e cognome</li><li>Scegli un indirizzo email e una password sicura</li></ol>",
+      "en": "<h1>Create a Google account</h1><ol><li>Go to accounts.google.com</li><li>Choose \"Create account\"</li><li>Enter your first and last name</li><li>Choose an email address and a safe password</li></ol>",
+      "fr": "<h1>Créer un compte Google</h1><ol><li>Va sur accounts.google.com</li><li>Choisis \"Créer un compte\"</li><li>Écris ton nom et ton prénom</li><li>Choisis une adresse email et un mot de passe sécurisé</li></ol>",
+      "ckb": "<h1>دروستکردنی هەژمارێکی گووگڵ</h1><ol><li>بڕۆ بۆ accounts.google.com</li><li>\"دروستکردنی هەژمار\" هەڵبژێرە</li><li>ناو و پاشناوت بنووسە</li><li>ناونیشانێکی ئیمەیڵ و وشەیەکی نهێنیی پارێزراو هەڵبژێرە</li></ol>",
+      "kmr": "<h1>Çêkirina hesabekî Google</h1><ol><li>Here ser accounts.google.com</li><li>\"Hesab çêbike\" hilbijêre</li><li>Nav û paşnavê xwe binivîse</li><li>Navnîşaneke e-nameyê û şîfreyeke ewle hilbijêre</li></ol>",
+      "ar": "<h1>إنشاء حساب Google</h1><ol><li>انتقل إلى accounts.google.com</li><li>اختر \"إنشاء حساب\"</li><li>اكتب اسمك واسم عائلتك</li><li>اختر عنوان بريد إلكتروني وكلمة مرور آمنة</li></ol>"
+    },
+    {
+      "it": "<h1>La password e il computer condiviso</h1><ul><li>Usa una password lunga, difficile da indovinare, diversa dalle altre</li><li>Non scriverla su un foglio visibile a tutti</li><li>Su un computer condiviso, esci sempre (Disconnetti) dopo aver finito</li></ul>",
+      "en": "<h1>The password and the shared computer</h1><ul><li>Use a long password, difficult to guess, different from the others</li><li>Do not write it on a piece of paper visible to everyone</li><li>On a shared computer, always log out (Disconnect) after finishing</li></ul>",
+      "fr": "<h1>Le mot de passe et l'ordinateur partagé</h1><ul><li>Utilise un mot de passe long, difficile à deviner, différent des autres</li><li>Ne l'écris pas sur une feuille visible de tous</li><li>Sur un ordinateur partagé, déconnecte-toi toujours (Déconnexion) après avoir terminé</li></ul>",
+      "ckb": "<h1>وشەی نهێنی و کۆمپیوتەری هاوبەش</h1><ul><li>وشەیەکی نهێنیی درێژ بەکاربهێنە، کە پێشبینیکردنی سەخت بێت، و جیاواز بێت لەوانی تر</li><li>لەسەر کاغەزێک مەینووسە کە بۆ هەمووان دیار بێت</li><li>لەسەر کۆمپیوتەرێکی هاوبەش، هەمیشە دوای تەواوبوون بچۆ دەرەوە (چوونەدەرەوە)</li></ul>",
+      "kmr": "<h1>Şîfre û komputera hevpar</h1><ul><li>Şîfreyeke dirêj, ku texmînkirina wê dijwar be, ji yên din cuda bikar bîne</li><li>Wê li ser kaxizeke ku ji her kesî re xuya be nenivîse</li><li>Li ser komputereke hevpar, piştî ku karê te qediya, her tim derkeve (Qut bike)</li></ul>",
+      "ar": "<h1>كلمة المرور والكمبيوتر المشترك</h1><ul><li>استخدم كلمة مرور طويلة، يصعب تخمينها، ومختلفة عن غيرها</li><li>لا تكتبها على ورقة مرئية للجميع</li><li>على كمبيوتر مشترك، سجّل الخروج دائماً (تسجيل الخروج) بعد الانتهاء</li></ul>"
+    }
+  ]
+}

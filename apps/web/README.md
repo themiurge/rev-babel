@@ -51,11 +51,20 @@ one `agy` CLI batch per language; not yet reviewed by a native speaker of
 any of them.
 
 **Slide Sync Lite** ([ADR 0014](../../docs/decisions/0014-slide-sync-lite.md))
-syncs one integer — the current Google Slides index — from a presenter page
-to every connected student over SSE. `/present` and `/admin/api/live/*`
+syncs one integer — the current slide index — from a presenter page to
+every connected student over SSE. `/present` and `/admin/api/live/*`
 are the teacher surface, gated on the `Host` header being
 `mic.emiliovicari.com` with no further auth; `/follow` is the student
 surface, behind the same name-capture session as the rest of the course.
 Live state lives in `rev_babel_web/live.py`, in one process's memory
 (mirrored to `data/live_state.json`), which only works with a single
 uvicorn worker.
+
+**Local HTML slide decks** ([ADR 0016](../../docs/decisions/0016-local-slide-decks-and-split-screen-translation.md))
+are a second live-session source alongside Google Slides: JSON files
+under `rev_babel_web/decks/*.json`, picked by title on `/present`. A
+student following a local deck sees a real split screen — Italian and
+their own language, both visible, each boxed at 16:9 — rendered
+server-side per slide via `GET /api/live/slide`. A three-slide sample
+(`lezione-2-account-demo.json`) exercises the mechanism; it isn't lesson
+2's real content yet.

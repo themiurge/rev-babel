@@ -126,3 +126,90 @@ def test_api_live_returns_current_state_for_a_logged_in_student() -> None:
     response = student.get("/api/live")
     assert response.status_code == 200
     assert "revision" in response.json()
+
+
+def test_present_lists_local_decks_to_pick_from() -> None:
+    response = client.get("/present", headers=CAPTURE_HEADERS)
+    assert response.status_code == 200
+    assert "lezione-2-account-demo" in response.text
+    assert "Il proprio account (esempio)" in response.text
+
+
+def test_start_local_switches_the_live_source_to_a_deck() -> None:
+    start = client.post(
+        "/admin/api/live/start_local",
+        headers=CAPTURE_HEADERS,
+        json={"deck_slug": "lezione-2-account-demo"},
+    )
+    assert start.status_code == 200
+    state = start.json()
+    assert state["source"] == "local"
+    assert state["deck_slug"] == "lezione-2-account-demo"
+    assert state["slide_count"] == 3
+    assert state["index"] == 1
+
+    goto = client.post("/admin/api/live/goto", headers=CAPTURE_HEADERS, json={"index": 2})
+    assert goto.json()["index"] == 2
+    client.post("/admin/api/live/end", headers=CAPTURE_HEADERS)
+
+
+def test_start_local_rejects_an_unknown_deck() -> None:
+    response = client.post(
+        "/admin/api/live/start_local",
+        headers=CAPTURE_HEADERS,
+        json={"deck_slug": "does-not-exist"},
+    )
+    assert response.status_code == 404
+
+
+def test_admin_can_preview_a_deck_slide_without_a_live_session() -> None:
+    response = client.get(
+        "/admin/api/decks/lezione-2-account-demo/slides/1", headers=CAPTURE_HEADERS
+    )
+    assert response.status_code == 200
+    assert "Il tuo account" in response.json()["it"]
+
+
+def test_admin_deck_preview_is_blocked_off_the_capture_host() -> None:
+    response = client.get("/admin/api/decks/lezione-2-account-demo/slides/1")
+    assert response.status_code == 403
+
+
+def test_local_slide_endpoint_serves_italian_and_the_students_translation() -> None:
+    live.start_local("lezione-2-account-demo", "Il proprio account (esempio)", 3)
+    student = _login("Deck Reader")
+    student.post("/api/language", json={"language": "fr"})
+
+    response = student.get("/api/live/slide?index=1")
+    assert response.status_code == 200
+    body = response.json()
+    assert "Il tuo account" in body["it"]
+    assert "Ton compte" in body["translated"]
+    live.end()
+
+
+def test_local_slide_endpoint_has_no_translation_for_italian_speakers() -> None:
+    live.start_local("lezione-2-account-demo", "Il proprio account (esempio)", 3)
+    student = _login("Deck Reader Italian")
+
+    response = student.get("/api/live/slide?index=1")
+    assert response.json()["translated"] is None
+    live.end()
+
+
+def test_local_slide_endpoint_404s_when_the_live_source_is_google() -> None:
+    live.start("1AbC", "Test deck", 5)
+    student = _login("Google Source Reader")
+
+    response = student.get("/api/live/slide?index=1")
+    assert response.status_code == 404
+    live.end()
+
+
+def test_follow_page_renders_the_split_screen_container() -> None:
+    student = _login("Split Screen Reader")
+    response = student.get("/follow")
+    assert response.status_code == 200
+    assert 'id="split"' in response.text
+    assert 'id="slide-it"' in response.text
+    assert 'id="slide-translated"' in response.text

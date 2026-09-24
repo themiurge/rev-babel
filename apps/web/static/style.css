@@ -291,3 +291,49 @@ body {
   flex: 1 1 auto;
   background: #222;
 }
+
+/* Native (locally-authored) slide decks: Italian and the student's
+   translation shown side by side, each half kept at a 16:9 box so it
+   reads like a real slide even though the pane around it isn't 16:9
+   (sidebar + topbar eat into the window). When the translated pane is
+   hidden (Italian speakers, or a slide with no translation yet) the
+   remaining pane is the only flex child and fills the width on its own. */
+.split {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0;
+  background: #e9e6e0;
+}
+
+.slide-pane {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  box-sizing: border-box;
+}
+
+.slide-pane + .slide-pane {
+  border-left: 1px solid #ccc;
+}
+
+.slide-box {
+  background: #fff;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 100%;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  padding: 2rem 2.5rem;
+  box-sizing: border-box;
+  overflow: auto;
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.slide-box h1 {
+  margin-top: 0;
+  font-size: 1.8rem;
+}

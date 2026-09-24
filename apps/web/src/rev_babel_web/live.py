@@ -5,6 +5,12 @@ a JSON file so a restart mid-lesson recovers. This only works with a
 single uvicorn worker — the set of open SSE connections lives here, in
 process memory; a second worker would silently split students across two
 independent states. See docs/decisions/0014-slide-sync-lite.md.
+
+A session's ``source`` is either "google" (a Google Slides file, synced
+by index into an iframe embed) or "local" (a deck from ``decks.py``,
+rendered server-side per student language) — see ADR 0016. Either way
+this module only tracks *which* slide is current; it knows nothing about
+slide content, which is fetched separately by whoever is watching.
 """
 
 from __future__ import annotations
@@ -20,7 +26,9 @@ from typing import Any
 STATE_PATH = Path(os.environ.get("DATA_DIR", "data")) / "live_state.json"
 
 _DEFAULT_STATE: dict[str, Any] = {
+    "source": "google",
     "file_id": None,
+    "deck_slug": None,
     "title": "",
     "slide_count": 0,
     "index": 1,
@@ -77,7 +85,22 @@ def start(file_id_or_url: str, title: str, slide_count: int) -> dict[str, Any]:
     file_id = extract_file_id(file_id_or_url)
     slide_count = max(1, int(slide_count))
     return _commit(
+        source="google",
         file_id=file_id,
+        deck_slug=None,
+        title=title.strip(),
+        slide_count=slide_count,
+        index=1,
+        status="live",
+    )
+
+
+def start_local(deck_slug: str, title: str, slide_count: int) -> dict[str, Any]:
+    slide_count = max(1, int(slide_count))
+    return _commit(
+        source="local",
+        file_id=None,
+        deck_slug=deck_slug,
         title=title.strip(),
         slide_count=slide_count,
         index=1,

@@ -19,7 +19,7 @@ from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
 from starlette.middleware.sessions import SessionMiddleware
 
-from rev_babel_web import db, i18n, live
+from rev_babel_web import db, decks, i18n, live
 
 _HERE = os.path.dirname(__file__)
 _WEB_ROOT = os.path.abspath(os.path.join(_HERE, "..", ".."))
@@ -101,6 +101,10 @@ class LiveStartIn(BaseModel):
     file_id_or_url: str
     title: str
     slide_count: int = Field(gt=0)
+
+
+class LiveStartLocalIn(BaseModel):
+    deck_slug: str
 
 
 class LiveGotoIn(BaseModel):
@@ -288,6 +292,7 @@ def follow(request: Request):
         "viewLink": tr("Vedi su Google Slides") or "Vedi su Google Slides",
     }
     context["follow_strings_json"] = json.dumps(follow_strings)
+    context["is_rtl"] = context["lang"] in i18n.RTL_LANGUAGES
     return templates.TemplateResponse(request, "follow.html", context)
 
 
@@ -296,6 +301,19 @@ def live_state(request: Request):
     if _current_name(request) is None:
         raise HTTPException(status_code=401)
     return JSONResponse(live.get_state())
+
+
+@app.get("/api/live/slide")
+def live_local_slide(request: Request, index: int):
+    if _current_name(request) is None:
+        raise HTTPException(status_code=401)
+    state = live.get_state()
+    if state.get("source") != "local" or not state.get("deck_slug"):
+        raise HTTPException(status_code=404)
+    slide = decks.get_slide(state["deck_slug"], index, _current_lang(request))
+    if slide is None:
+        raise HTTPException(status_code=404)
+    return JSONResponse(slide)
 
 
 @app.get("/api/live/stream")
@@ -313,7 +331,9 @@ def live_stream(request: Request):
 def present(request: Request):
     _require_capture_host(request)
     return templates.TemplateResponse(
-        request, "present.html", {"state_json": json.dumps(live.get_state())}
+        request,
+        "present.html",
+        {"state_json": json.dumps(live.get_state()), "decks": decks.list_decks()},
     )
 
 
@@ -321,6 +341,26 @@ def present(request: Request):
 def admin_live_start(request: Request, body: LiveStartIn):
     _require_capture_host(request)
     return JSONResponse(live.start(body.file_id_or_url, body.title, body.slide_count))
+
+
+@app.post("/admin/api/live/start_local")
+def admin_live_start_local(request: Request, body: LiveStartLocalIn):
+    _require_capture_host(request)
+    deck = decks.get_deck(body.deck_slug)
+    if deck is None:
+        raise HTTPException(status_code=404, detail="Unknown deck.")
+    slide_count = len(deck.get("slides", []))
+    title = deck.get("title", body.deck_slug)
+    return JSONResponse(live.start_local(body.deck_slug, title, slide_count))
+
+
+@app.get("/admin/api/decks/{slug}/slides/{index}")
+def admin_deck_slide(request: Request, slug: str, index: int):
+    _require_capture_host(request)
+    slide = decks.get_slide(slug, index, "it")
+    if slide is None:
+        raise HTTPException(status_code=404)
+    return JSONResponse(slide)
 
 
 @app.post("/admin/api/live/goto")

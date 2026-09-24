@@ -13,17 +13,27 @@
 <p id="waiting" class="waiting" hidden></p>
 <div id="viewer" hidden>
   <iframe id="frame" class="game-frame-full"></iframe>
+  <div id="split" class="split" hidden>
+    <div class="slide-pane">
+      <div class="slide-box" id="slide-it" lang="it"></div>
+    </div>
+    <div class="slide-pane" id="slide-translated-pane">
+      <div class="slide-box" id="slide-translated"></div>
+    </div>
+  </div>
   <div id="blank-screen" class="blank-screen" hidden></div>
 </div>
 <script>
   const STRINGS = {{ follow_strings_json | safe }};
+  const CURRENT_LANG = "{{ lang }}";
+  const IS_RTL = {{ "true" if is_rtl else "false" }};
   function t(key) { return STRINGS[key]; }
 
   let mode = "live";
   let state = null;
   let browsingIndex = 1;
   let lastRevision = -1;
-  let lastAppliedIndex = null;
+  let lastAppliedKey = null;
   let sseFailures = 0;
   let pollTimer = null;
   let es = null;
@@ -33,12 +43,34 @@
       + `?rm=minimal&start=false&loop=false&slide=${index}`;
   }
 
+  async function loadLocalSlide(index) {
+    const itBox = document.getElementById("slide-it");
+    const translatedBox = document.getElementById("slide-translated");
+    const translatedPane = document.getElementById("slide-translated-pane");
+    try {
+      const response = await fetch(`/api/live/slide?index=${index}`);
+      const data = await response.json();
+      itBox.innerHTML = data.it;
+      if (data.translated) {
+        translatedBox.innerHTML = data.translated;
+        translatedBox.lang = CURRENT_LANG;
+        translatedBox.dir = IS_RTL ? "rtl" : "ltr";
+        translatedPane.hidden = false;
+      } else {
+        translatedPane.hidden = true;
+      }
+    } catch (e) {
+      // leave whatever was showing
+    }
+  }
+
   function render() {
     const waiting = document.getElementById("waiting");
     const viewer = document.getElementById("viewer");
     const viewLink = document.getElementById("view-link");
     const backBtn = document.getElementById("back-btn");
     const frame = document.getElementById("frame");
+    const split = document.getElementById("split");
     const blankScreen = document.getElementById("blank-screen");
 
     backBtn.textContent = t("back");
@@ -53,25 +85,37 @@
     }
     waiting.hidden = true;
     viewer.hidden = false;
-    viewLink.hidden = false;
-    viewLink.href = `https://docs.google.com/presentation/d/${state.file_id}/edit`;
-    viewLink.textContent = t("viewLink");
     backBtn.hidden = mode === "live";
 
     document.getElementById("pill").textContent = mode === "live" ? t("live") : t("browsing");
 
     if (state.status === "blank") {
       frame.hidden = true;
+      split.hidden = true;
       blankScreen.hidden = false;
       return;
     }
     blankScreen.hidden = true;
-    frame.hidden = false;
 
     const targetIndex = mode === "live" ? state.index : browsingIndex;
-    if (targetIndex !== lastAppliedIndex) {
+    const isLocal = state.source === "local";
+
+    viewLink.hidden = isLocal;
+    if (!isLocal) {
+      viewLink.href = `https://docs.google.com/presentation/d/${state.file_id}/edit`;
+      viewLink.textContent = t("viewLink");
+    }
+
+    frame.hidden = isLocal;
+    split.hidden = !isLocal;
+
+    const key = `${state.source}:${targetIndex}`;
+    if (key === lastAppliedKey) return;
+    lastAppliedKey = key;
+    if (isLocal) {
+      loadLocalSlide(targetIndex);
+    } else {
       frame.src = embedUrl(state.file_id, targetIndex);
-      lastAppliedIndex = targetIndex;
     }
   }
 

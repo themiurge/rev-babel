@@ -39,8 +39,21 @@ does not scale past this room; see
 
 **Lesson 1 happened (17 September) and went well** — the slide mirror
 (Slide Sync Lite) was, per the maintainer, the most helpful thing in the
-room. Ten lessons, Thursdays 16:30–18:00, through 19 November.
+room. Ten lessons, Thursdays 16:30–18:00, through 19 November. **Lesson 2
+(24 September) covers "Il proprio account"**: creating or recovering a
+Google account, choosing and keeping a password safely, behaving on a
+shared computer.
 
+- **Slide Sync Lite now has a second source: locally-authored HTML decks**
+  ([ADR 0016](docs/decisions/0016-local-slide-decks-and-split-screen-translation.md)),
+  alongside the existing Google Slides embed. A deck is a JSON file
+  (`rev_babel_web/decks/*.json`), picked by title on `/present` instead of
+  a pasted URL. A student following a local deck sees a real split
+  screen — Italian and their own language, both visible at once, each
+  boxed at 16:9 — rendered server-side per slide, not just a hover title.
+  A three-slide sample (`lezione-2-account-demo.json`, all five
+  languages) proves the mechanism; lesson 2's real content is still to be
+  authored.
 - **Accounts are now permanent, not per-session** ([ADR
   0015](docs/decisions/0015-permanent-accounts-and-language-preference.md)).
   The login page shows every existing student as a one-tap button; a
@@ -129,7 +142,7 @@ room. Ten lessons, Thursdays 16:30–18:00, through 19 November.
   otherwise still placeholders. No model has been downloaded, no segment
   has been transcribed, no word has been translated. The tunnel currently
   answers only when something is put behind it by hand.
-- **Twelve decisions recorded**, of which one is superseded:
+- **Sixteen decisions recorded**, of which one is superseded:
   [ADR 0010](docs/decisions/0010-avatar-picker.md) replaced login
   photographs with a preset avatar collection claimed on first use, which
   removed the only category of personal data the system held. A user row is
@@ -262,6 +275,20 @@ Lead times and physical presence, which is why they are listed apart.
 
 ## Revision log
 
+- **v0.10 — 2026-09-24** — Slide Sync Lite gained a second presentation
+  source: locally-authored JSON slide decks, alongside Google Slides
+  ([ADR 0016](docs/decisions/0016-local-slide-decks-and-split-screen-translation.md)).
+  The admin picks a deck by title on `/present`
+  (`POST /admin/api/live/start_local`); a student following it gets a real
+  split screen, Italian and their own language side by side, each boxed
+  at 16:9, fetched per-slide from `GET /api/live/slide` using their
+  existing language preference. Deck content is translated the same way
+  as the ADR 0015 UI strings (one `agy` batch per language, tags
+  preserved and validated) but lives in the deck's own JSON, not
+  `i18n.STRINGS`, since it's shown outright rather than as a hover title.
+  A three-slide sample deck exercises the mechanism end to end, verified
+  live through the tunnel with a throwaway account; lesson 2's real
+  content is not yet authored.
 - **v0.9 — 2026-09-24** — Two amendments to v0.8, same day: added
   Kurmanji (`kmr`) alongside Sorani (`ckb`) rather than resolve the
   variant guess, and added `students.roster_visible` so the login picker
