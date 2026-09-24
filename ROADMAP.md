@@ -44,6 +44,21 @@ room. Ten lessons, Thursdays 16:30–18:00, through 19 November. **Lesson 2
 Google account, choosing and keeping a password safely, behaving on a
 shared computer.
 
+- **Lesson 2's second real deck: "Attenzione alle truffe online"**
+  (`lezione-2-truffe-online.json`, five slides, all five languages) —
+  the maintainer revised the lesson plan to add a scams-awareness
+  section (why scam messages work, the four warning signs, "close and
+  reopen instead of clicking," what to do if it happens, a three-rule
+  recap). Adapted from the maintainer's full teaching script, condensed
+  for slide readability. Added a new `.signal-list`/`.signal-num` CSS
+  pattern (a numbered warning-sign list) alongside the existing chip/
+  compare/vowel-map vocabulary. Per the maintainer's request for visuals
+  the source material didn't include, each slide carries a themed emoji
+  (🎣🚩🔁🆘✅, plus one per warning sign) rather than an embedded image —
+  consistent with the deck philosophy of real HTML/CSS content over
+  baked-in pictures, and emoji need no translation at all. `SPID` and
+  the reporting-site URL `commissariatodips.it` are protected literals;
+  everything else, including institution names, translates normally.
 - **"Cifra la password" got hover translations, two difficulty modes,
   and true word randomization** — three fixes from the maintainer's
   first real playtest. It's now `templates/games/cifra.html` (a Jinja
@@ -330,6 +345,17 @@ Lead times and physical presence, which is why they are listed apart.
 
 ## Revision log
 
+- **v0.14 — 2026-09-24** — Added "Attenzione alle truffe online", lesson
+  2's second local deck (five slides, five languages), adapted from the
+  maintainer's revised lesson plan and full teaching script: why scam
+  messages work, the four warning signs, "close and reopen instead of
+  clicking," what to do if it happens, a three-rule recap. New
+  `.signal-list` CSS pattern for the numbered warning-sign slide. Added
+  themed emoji per slide as the deck's visuals, per the maintainer's
+  request - not embedded pictures, matching the deck's translatable-HTML
+  philosophy, since emoji carry through every language unchanged.
+  `SPID` and `commissariatodips.it` protected as literals during
+  translation; verified live through the tunnel.
 - **v0.13 — 2026-09-24** — Three fixes from the maintainer's first
   playtest of "Cifra la password": (1) rewrote it as
   `templates/games/cifra.html`, a real Jinja template instead of a

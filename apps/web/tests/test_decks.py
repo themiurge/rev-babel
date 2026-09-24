@@ -44,3 +44,21 @@ def test_password_deck_translates_the_word_but_not_the_examples() -> None:
 
     slide2 = decks.get_slide("lezione-2-password-sicura", 2, "fr")
     assert '<div class="pw-example">password</div>' in slide2["translated"]
+
+
+def test_list_decks_finds_the_scams_deck() -> None:
+    found = {d["slug"]: d for d in decks.list_decks()}
+    assert "lezione-2-truffe-online" in found
+    assert found["lezione-2-truffe-online"]["slide_count"] == 5
+
+
+def test_scams_deck_preserves_protected_terms_and_emoji() -> None:
+    slide3 = decks.get_slide("lezione-2-truffe-online", 3, "ar")
+    assert "SPID" in slide3["it"]
+    assert "SPID" in slide3["translated"]
+
+    slide4 = decks.get_slide("lezione-2-truffe-online", 4, "ckb")
+    assert "commissariatodips.it" in slide4["translated"]
+
+    slide1 = decks.get_slide("lezione-2-truffe-online", 1, "en")
+    assert "🎣" in slide1["translated"]
