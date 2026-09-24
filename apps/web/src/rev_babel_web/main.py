@@ -42,12 +42,18 @@ LESSONS = [
         "long_title": "La Tastiera e il Mouse",
         "url": "/course/lezione-1",
     },
+    {
+        "slug": "lezione-2",
+        "title": "Lezione 2",
+        "long_title": "Il proprio account",
+        "url": "/course/lezione-2",
+    },
 ]
 
 # Per-game sanity bounds on a reported score, so a stray or malicious
 # postMessage can't write nonsense into the database. Not a leaderboard —
 # each student sees only their own numbers, per docs/data-and-privacy.md.
-GAMES = {
+LESSON1_GAMES = {
     "mouse": {
         "title": "Il mouse",
         "unit": "ms",
@@ -61,9 +67,21 @@ GAMES = {
         "src": "/static/lessons/lezione-1/keyboard/index.html",
     },
 }
+LESSON2_GAMES = {
+    "cifra": {
+        "title": "Cifra la password",
+        "unit": "s",
+        "max_value": 3_600,
+        "src": "/static/lessons/lezione-2/cifra/index.html",
+    },
+}
 
-# Which games belong to which lesson. Only lezione-1 has any today.
-LESSON_GAMES = {"lezione-1": GAMES}
+# Flat lookup across every lesson, for score validation - a game slug is
+# unique across the whole site, not just within its own lesson.
+GAMES = {**LESSON1_GAMES, **LESSON2_GAMES}
+
+# Which games belong to which lesson, for the lesson page's link list.
+LESSON_GAMES = {"lezione-1": LESSON1_GAMES, "lezione-2": LESSON2_GAMES}
 
 
 def _format_score(unit: str, value: float | None) -> str:

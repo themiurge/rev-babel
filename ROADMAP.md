@@ -44,6 +44,17 @@ room. Ten lessons, Thursdays 16:30–18:00, through 19 November. **Lesson 2
 Google account, choosing and keeping a password safely, behaving on a
 shared computer.
 
+- **Lesson 2 has its first practice game: "Cifra la password"**
+  (`/course/lezione-2/cifra`, `static/lessons/lezione-2/cifra/`). A
+  student types the encrypted form of a short practice word under a
+  timer; the rule reminder (vowel→digit tiles + "!") stays visible on
+  the page itself, and checking matches the exact spreadsheet formula
+  the maintainer supplied — lowercase `a→4, i→1, o→0, e→3`, then append
+  `!` — not a looser case-insensitive version, so typed answers must
+  match it exactly. Scored like the keyboard game: elapsed time, lower
+  is better, personal best only. `LESSONS`/`LESSON_GAMES` are now
+  properly per-lesson (previously a single shared `GAMES` dict would
+  have leaked lezione-2's game onto lezione-1's page).
 - **Lesson 2's first real local deck exists: "Scegliere una password
   sicura"** (`lezione-2-password-sicura.json`, three slides, all five
   languages), covering why the password matters, weak vs. strong
@@ -302,6 +313,14 @@ Lead times and physical presence, which is why they are listed apart.
 
 ## Revision log
 
+- **v0.12 — 2026-09-24** — Added lesson 2's first game, "Cifra la
+  password" (`/course/lezione-2/cifra`): a timed practice round where a
+  student types the encrypted form of a short word, checked against the
+  exact spreadsheet formula the maintainer supplied (lowercase
+  `a→4 i→1 o→0 e→3` then `!`). Split `GAMES`/`LESSON_GAMES` into proper
+  per-lesson dicts with a flat lookup kept only for score validation -
+  previously a single shared dict meant a lesson-2 game would have
+  leaked onto lezione-1's page. `LESSONS` now has two entries.
 - **v0.11 — 2026-09-24** — Lesson 2's first real local deck ("Scegliere
   una password sicura", three slides, five languages) built from the
   maintainer's own teaching script; the reference image's diagrams were

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🔐 Cifra la Password!</title>
+  <style>
+    :root { --purple: #5b3fc4; --green: #1e7a3c; --red: #c0392b; }
+    body {
+      margin: 0; padding: 20px; box-sizing: border-box;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
+      background: linear-gradient(135deg, #f1eafc 0%, #e6f4ea 100%);
+      display: flex; flex-direction: column; align-items: center;
+    }
+    h1 { margin: 0 0 4px; }
+    .screen { max-width: 620px; width: 100%; }
+
+    .rules {
+      background: #fff; border-radius: 16px; padding: 18px 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.1); margin-bottom: 16px;
+    }
+    .rules h2 { margin: 0 0 10px; font-size: 1.05rem; }
+    .vowel-map { display: flex; flex-wrap: wrap; gap: 0.8rem 1.6rem; margin-bottom: 10px; }
+    .vowel-pair { display: flex; align-items: center; gap: 0.4rem; font-weight: 700; font-size: 1.1rem; }
+    .letter, .digit {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 2rem; height: 2rem; border-radius: 6px;
+    }
+    .letter { background: #f1eafc; color: var(--purple); }
+    .digit { background: var(--purple); color: #fff; }
+    .arrow { color: #999; font-weight: 700; }
+    .rules p { margin: 6px 0 0; color: #444; font-size: 0.95rem; }
+    .rules .bang { font-weight: 700; color: var(--purple); }
+
+    .panel {
+      background: #fff; border-radius: 16px; padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.1); text-align: center;
+    }
+    .word-display { font-size: 2.2rem; font-weight: 700; letter-spacing: 0.05em; margin: 10px 0 6px; color: #222; }
+    .progress { color: #777; font-size: 0.9rem; margin-bottom: 14px; }
+    input#answer {
+      font-size: 1.4rem; padding: 0.5rem 0.8rem; width: 60%; text-align: center;
+      border: 2px solid #ccc; border-radius: 8px; box-sizing: border-box;
+    }
+    input#answer.correct { border-color: var(--green); background: #eef7ef; }
+    input#answer.wrong { border-color: var(--red); background: #fdf1f0; }
+    .btn {
+      margin-top: 14px; padding: 10px 20px; font-size: 1rem; border: none;
+      background: var(--purple); color: #fff; border-radius: 10px; cursor: pointer;
+    }
+    .btn:hover { background: #4a32a3; }
+    .feedback { min-height: 1.4rem; margin-top: 10px; font-weight: 700; }
+    .feedback.wrong { color: var(--red); }
+    .stats { display: flex; gap: 16px; justify-content: center; margin-top: 10px; color: #666; font-size: 0.95rem; }
+    .complete { font-size: 1.4rem; margin-top: 10px; color: #084c2e; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="screen">
+    <h1>🔐 Cifra la Password!</h1>
+    <div class="rules">
+      <h2>Le vocali diventano numeri</h2>
+      <div class="vowel-map">
+        <div class="vowel-pair"><span class="letter">a</span><span class="arrow">&rarr;</span><span class="digit">4</span></div>
+        <div class="vowel-pair"><span class="letter">e</span><span class="arrow">&rarr;</span><span class="digit">3</span></div>
+        <div class="vowel-pair"><span class="letter">i</span><span class="arrow">&rarr;</span><span class="digit">1</span></div>
+        <div class="vowel-pair"><span class="letter">o</span><span class="arrow">&rarr;</span><span class="digit">0</span></div>
+      </div>
+      <p>Alla fine aggiungi sempre un punto esclamativo: <span class="bang">!</span></p>
+      <p>Esempio: <strong>casa</strong> &rarr; <strong>c4s4!</strong></p>
+    </div>
+
+    <div class="panel" id="start-panel">
+      <p>Scrivi la versione cifrata di ogni parola, più veloce che puoi.</p>
+      <button id="startBtn" class="btn">Inizia</button>
+    </div>
+
+    <div class="panel" id="game-panel" style="display:none;">
+      <div class="progress" id="progress"></div>
+      <div class="word-display" id="word-display"></div>
+      <input type="text" id="answer" autocomplete="off" autocapitalize="off" spellcheck="false" />
+      <div><button id="checkBtn" class="btn">Verifica</button></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="stats"><div>Tempo: <span id="timer">0:00</span></div></div>
+      <div class="complete" id="complete"></div>
+      <button id="restartBtn" class="btn" style="display:none;">🔁 Ricomincia</button>
+    </div>
+  </div>
+
+  <script>
+    const WORDS = ["casa", "mela", "sole", "pane", "vino", "gatto"];
+
+    function encrypt(word) {
+      if (!word) return "";
+      return word.replace(/a/g, "4").replace(/i/g, "1").replace(/o/g, "0").replace(/e/g, "3") + "!";
+    }
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    const startPanel = document.getElementById("start-panel");
+    const gamePanel = document.getElementById("game-panel");
+    const startBtn = document.getElementById("startBtn");
+    const checkBtn = document.getElementById("checkBtn");
+    const restartBtn = document.getElementById("restartBtn");
+    const answerInput = document.getElementById("answer");
+    const wordDisplay = document.getElementById("word-display");
+    const progress = document.getElementById("progress");
+    const feedback = document.getElementById("feedback");
+    const timerEl = document.getElementById("timer");
+    const completeEl = document.getElementById("complete");
+
+    let sequence = [];
+    let currentIndex = 0;
+    let startTime = null;
+    let timerInterval = null;
+
+    function updateTimer() {
+      const elapsed = Math.floor((Date.now() - startTime) / 1000);
+      const min = Math.floor(elapsed / 60);
+      const sec = String(elapsed % 60).padStart(2, "0");
+      timerEl.textContent = `${min}:${sec}`;
+    }
+
+    function showWord() {
+      wordDisplay.textContent = sequence[currentIndex];
+      progress.textContent = `Parola ${currentIndex + 1} di ${sequence.length}`;
+      answerInput.value = "";
+      answerInput.className = "";
+      feedback.textContent = "";
+      feedback.className = "feedback";
+      answerInput.focus();
+    }
+
+    function startGame() {
+      sequence = shuffle(WORDS.slice());
+      currentIndex = 0;
+      startTime = Date.now();
+      clearInterval(timerInterval);
+      updateTimer();
+      timerInterval = setInterval(updateTimer, 1000);
+
+      startPanel.style.display = "none";
+      gamePanel.style.display = "block";
+      restartBtn.style.display = "none";
+      completeEl.textContent = "";
+      showWord();
+    }
+
+    function checkAnswer() {
+      if (currentIndex >= sequence.length) return;
+      const expected = encrypt(sequence[currentIndex]);
+      const given = answerInput.value.trim();
+      if (given === expected) {
+        answerInput.className = "correct";
+        feedback.textContent = "";
+        currentIndex++;
+        if (currentIndex === sequence.length) {
+          clearInterval(timerInterval);
+          completeEl.textContent = "🎉 Ce l'hai fatta! 🎉";
+          restartBtn.style.display = "inline-block";
+          wordDisplay.textContent = "";
+          progress.textContent = "";
+          answerInput.style.display = "none";
+          checkBtn.style.display = "none";
+          const seconds = (Date.now() - startTime) / 1000;
+          if (window.parent !== window) {
+            window.parent.postMessage(
+              { type: "rev-babel-score", game: "cifra", value: seconds, unit: "s" },
+              window.location.origin
+            );
+          }
+        } else {
+          setTimeout(showWord, 350);
+        }
+      } else {
+        answerInput.className = "wrong";
+        feedback.textContent = "Non è corretto, riprova.";
+        feedback.className = "feedback wrong";
+      }
+    }
+
+    startBtn.addEventListener("click", startGame);
+    restartBtn.addEventListener("click", () => {
+      answerInput.style.display = "inline-block";
+      checkBtn.style.display = "inline-block";
+      startGame();
+    });
+    checkBtn.addEventListener("click", checkAnswer);
+    answerInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        checkAnswer();
+      }
+    });
+  </script>
+</body>
+</html>

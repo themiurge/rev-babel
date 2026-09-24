@@ -45,6 +45,14 @@ def test_unknown_lesson_is_a_404() -> None:
     assert response.status_code == 404
 
 
+def test_lesson_2_page_lists_the_password_game() -> None:
+    response = client.get("/course/lezione-2")
+    assert response.status_code == 200
+    assert "Il proprio account" in response.text
+    assert 'href="/course/lezione-2/cifra"' in response.text
+    assert ">Cifra la password</a>" in response.text
+
+
 def test_game_page_embeds_the_full_size_iframe() -> None:
     response = client.get("/course/lezione-1/mouse")
     assert response.status_code == 200
@@ -84,3 +92,17 @@ def test_submitting_scores_tracks_personal_best() -> None:
 
     worse = client.post("/api/scores", json={"game": "keyboard", "value": 25.0})
     assert worse.json() == {"best": 20.0, "last": 25.0}
+
+
+def test_cifra_game_page_embeds_the_iframe() -> None:
+    response = client.get("/course/lezione-2/cifra")
+    assert response.status_code == 200
+    assert "/static/lessons/lezione-2/cifra/index.html" in response.text
+    assert "Miglior tempo" in response.text
+    assert 'href="/course/lezione-2"' in response.text  # back link
+
+
+def test_cifra_score_is_accepted_and_tracked() -> None:
+    response = client.post("/api/scores", json={"game": "cifra", "value": 12.5})
+    assert response.status_code == 200
+    assert response.json() == {"best": 12.5, "last": 12.5}
