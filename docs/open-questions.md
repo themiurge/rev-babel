@@ -4,9 +4,12 @@ Unresolved as of this scaffold. Do not invent answers to these — if you
 resolve one, replace the entry with a decision (and an ADR, if it's
 architectural) rather than deleting it silently.
 
-- **A student's first language** is not yet known; likely Arabic, possibly
-  Sorani or Kurmanji Kurdish. To be established in lesson 1 (17 September
-  2026).
+- **A student's first language** is still not confirmed. Lesson 1 (17
+  September 2026) established a *second*-language / support-language
+  preference for the three named students — English, Kurdish (assumed
+  Sorani, `ckb`), French — recorded in ADR 0015 and issue 0020, but
+  whether that equals each student's native tongue is still open, as is
+  the Kurdish variant itself (issue 0008).
 - **First-language reading fluency** is unverified for every user. If
   captions can't be read, Eco's design assumptions (see `eco.md`,
   `overview.md`) change.

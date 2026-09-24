@@ -1,0 +1,4 @@
+{% macro title_attr(text) -%}
+{%- set hint = tr(text) -%}
+{%- if hint %}title="{{ hint }}"{% endif -%}
+{%- endmacro %}

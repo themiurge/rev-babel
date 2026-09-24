@@ -1,3 +1,4 @@
+{% import "_macros.html" as m with context %}
 <!doctype html>
 <html lang="it">
 <head>
@@ -7,12 +8,36 @@
   <link rel="stylesheet" href="/static/style.css?v={{ static_version }}">
 </head>
 <body>
-  <main class="welcome">
-    <h1>Benvenuta</h1>
-    <p>Come ti chiami?</p>
+  <div class="login-topbar">
+    {% include "_lang_select.html" %}
+  </div>
+  <main class="login">
+    <h1 {{ m.title_attr("Benvenuta") }}>Benvenuta</h1>
+
+    {% if students %}
+    <p {{ m.title_attr("Chi sei?") }}>Chi sei?</p>
+    <div class="roster">
+      {% for student in students %}
+      <form method="post" action="/login/{{ student.id }}">
+        <button type="submit">{{ student.name }}</button>
+      </form>
+      {% endfor %}
+    </div>
+    <p class="login-divider" {{ m.title_attr("Non ti vedi? Scrivi il tuo nome qui sotto.") }}>
+      Non ti vedi? Scrivi il tuo nome qui sotto.
+    </p>
+    {% else %}
+    <p {{ m.title_attr("Chi sei?") }}>Chi sei?</p>
+    {% endif %}
+
     <form method="post" action="/welcome">
-      <input type="text" name="name" maxlength="60" autofocus required autocomplete="off">
-      <button type="submit">Entra</button>
+      <input
+        type="text" name="name" maxlength="60" required autocomplete="off"
+        {% if not students %}autofocus{% endif %}
+        placeholder="{{ tr('Il tuo nome') or 'Il tuo nome' }}"
+        {{ m.title_attr("Il tuo nome") }}
+      >
+      <button type="submit" {{ m.title_attr("Entra") }}>Entra</button>
     </form>
     {% if error %}<p class="error">{{ error }}</p>{% endif %}
   </main>

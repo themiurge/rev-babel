@@ -1,7 +1,10 @@
 {% extends "_base.html" %}
+{% import "_macros.html" as m with context %}
 {% block main %}
 <main class="content">
-  <h1>Benvenuta, {{ name }}!</h1>
-  <p>Scegli una lezione dal menu a sinistra per iniziare.</p>
+  <h1 {{ m.title_attr("Benvenuta,") }}>Benvenuta, {{ name }}!</h1>
+  <p {{ m.title_attr("Scegli una lezione dal menu a sinistra per iniziare.") }}>
+    Scegli una lezione dal menu a sinistra per iniziare.
+  </p>
 </main>
 {% endblock %}

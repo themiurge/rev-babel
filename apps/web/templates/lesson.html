@@ -1,12 +1,13 @@
 {% extends "_base.html" %}
+{% import "_macros.html" as m with context %}
 {% block main %}
 <main class="content">
-  <h1>{{ lesson.long_title }}</h1>
+  <h1 {{ m.title_attr(lesson.long_title) }}>{{ lesson.long_title }}</h1>
   <ul class="game-links">
     {% for key, info in games.items() %}
-    <li><a href="/course/{{ lesson.slug }}/{{ key }}">{{ info.title }}</a></li>
+    <li><a href="/course/{{ lesson.slug }}/{{ key }}" {{ m.title_attr(info.title) }}>{{ info.title }}</a></li>
     {% endfor %}
-    <li><a href="/follow">Segui la lezione</a></li>
+    <li><a href="/follow" {{ m.title_attr("Segui la lezione") }}>Segui la lezione</a></li>
   </ul>
 </main>
 {% endblock %}

@@ -20,19 +20,63 @@ body {
   color: #222;
 }
 
-.welcome {
-  max-width: 24rem;
-  margin: 15vh auto;
-  text-align: center;
+/* ---- Login page (no sidebar yet - nobody is signed in) ---- */
+
+.login-topbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.8rem 1.2rem;
 }
 
-.welcome input {
+.login {
+  max-width: 30rem;
+  margin: 6vh auto;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.login h1 {
+  margin-bottom: 0.2rem;
+}
+
+.roster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin: 1.2rem 0;
+}
+
+.roster form {
+  display: contents;
+}
+
+.roster button {
+  font-size: 1.1rem;
+  padding: 0.7rem 1.3rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.roster button:hover {
+  background: #eee;
+}
+
+.login-divider {
+  margin: 1.6rem 0 0.8rem;
+  color: #888;
+  font-size: 0.95rem;
+}
+
+.login input {
   font-size: 1.2rem;
   padding: 0.5rem;
-  width: 80%;
+  width: 60%;
 }
 
-.welcome button {
+.login button[type="submit"] {
   font-size: 1.2rem;
   padding: 0.5rem 1rem;
   margin-left: 0.5rem;
@@ -41,6 +85,8 @@ body {
 .error {
   color: #b00020;
 }
+
+/* ---- Signed-in layout: sidebar + topbar + page body ---- */
 
 .layout {
   display: flex;
@@ -81,15 +127,62 @@ body {
   background: #444;
 }
 
+.sidebar-user {
+  position: fixed;
+  bottom: 2.4rem;
+  font-size: 0.85rem;
+  color: #ccc;
+  width: 12rem;
+}
+
 .sidebar .logout {
   position: fixed;
   bottom: 1rem;
   font-size: 0.85rem;
   color: #aaa;
+  padding: 0;
+}
+
+.page {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 1rem;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.topbar-left,
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.topbar-right a,
+.topbar-right button {
+  font-size: 0.9rem;
+}
+
+.lang-select {
+  font-size: 0.9rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
 }
 
 .content {
-  flex-grow: 1;
+  flex: 1 1 auto;
   padding: 2rem;
   min-width: 0;
   overflow-y: auto;
@@ -118,24 +211,6 @@ body {
 
 .game-links a:hover {
   background: #eee;
-}
-
-.game-page {
-  flex-grow: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.game-topbar {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.6rem 1rem;
-  background: #fff;
-  border-bottom: 1px solid #ddd;
 }
 
 .back-link {
@@ -176,23 +251,6 @@ body {
   font-weight: 600;
 }
 
-.topbar-left {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.topbar-right {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.topbar-right a,
-.topbar-right button {
-  font-size: 0.9rem;
-}
-
 #back-btn {
   background: #222;
   color: #fff;
@@ -200,16 +258,6 @@ body {
   border-radius: 6px;
   padding: 0.4rem 0.8rem;
   cursor: pointer;
-}
-
-.lang-picker button {
-  background: transparent;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 0.2rem 0.5rem;
-  margin-left: 0.2rem;
-  cursor: pointer;
-  font-size: 0.8rem;
 }
 
 .strip {

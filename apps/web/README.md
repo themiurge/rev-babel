@@ -21,10 +21,12 @@ Any model inference (transcription, translation, chat) — those live in
 
 ## Status
 
-A welcome screen (typed name, ADR 0013 — a temporary stand-in for the
-avatar picker), a minimal SQLite session store, and three page levels: the
-course page (`/course`, just a greeting today), a lesson page listing its
-games (`/course/lezione-1`), and a full-window game page
+A login page (`/`, ADR 0013 for why it's typed names at all, ADR 0015 for
+why they're now permanent accounts) shows every existing student as a
+one-tap button, plus a name field that only creates a new account if no
+case-insensitive match exists. Three page levels follow: the course page
+(`/course`, just a greeting today), a lesson page listing its games
+(`/course/lezione-1`), and a full-window game page
 (`/course/lezione-1/<game>`) with the left sidebar, a small top bar (back
 link + personal record), and the game filling the rest of the viewport.
 Lesson 1's two games (mouse, keyboard) live under
@@ -33,6 +35,14 @@ Lesson 1's two games (mouse, keyboard) live under
 shows the student's own personal best and last attempt only — no
 leaderboard, per `docs/data-and-privacy.md` ("progress is visible to the
 teacher only, never to other students"). No avatar picker yet.
+
+**Language preference and hover translation** (ADR 0015): each student has
+a `language` column (`it`/`en`/`fr`/`ckb`/`ar`), changeable from an
+always-visible dropdown top right on every page. Every Italian UI label
+optionally carries a `title` attribute — a native tooltip — with its
+translation, looked up in `rev_babel_web/i18n.py` by the Italian text
+itself. Machine-translated in one `agy` CLI batch per language; not yet
+reviewed by a native speaker of any of the four.
 
 **Slide Sync Lite** ([ADR 0014](../../docs/decisions/0014-slide-sync-lite.md))
 syncs one integer — the current Google Slides index — from a presenter page

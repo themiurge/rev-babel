@@ -1,3 +1,4 @@
+{% import "_macros.html" as m with context %}
 <!doctype html>
 <html lang="it">
 <head>
@@ -9,15 +10,25 @@
 <body>
   <div class="layout">
     <nav class="sidebar">
-      <h2>Lezioni</h2>
+      <h2 {{ m.title_attr("Lezioni") }}>Lezioni</h2>
       <ul>
         {% for lesson in lessons %}
-        <li><a href="{{ lesson.url }}">{{ lesson.title }}</a></li>
+        <li><a href="{{ lesson.url }}" {{ m.title_attr(lesson.title) }}>{{ lesson.title }}</a></li>
         {% endfor %}
       </ul>
-      <a href="/logout" class="logout">Non sei {{ name }}?</a>
+      <div class="sidebar-user">{{ name }}</div>
+      <a href="/logout" class="logout" {{ m.title_attr("Cambia utente") }}>Cambia utente</a>
     </nav>
-    {% block main %}{% endblock %}
+    <div class="page">
+      <div class="topbar">
+        <div class="topbar-left">{% block topbar_left %}{% endblock %}</div>
+        <div class="topbar-right">
+          {% block topbar_extra %}{% endblock %}
+          {% include "_lang_select.html" %}
+        </div>
+      </div>
+      {% block main %}{% endblock %}
+    </div>
   </div>
 </body>
 </html>

@@ -1,49 +1,23 @@
 {% extends "_base.html" %}
+{% import "_macros.html" as m with context %}
+{% block topbar_left %}
+<a href="/course/lezione-1" class="back-link" {{ m.title_attr("Indietro") }}>&larr; Indietro</a>
+<span class="pill" id="pill">—</span>
+{% endblock %}
+{% block topbar_extra %}
+<a href="#" id="view-link" target="_blank" rel="noopener" hidden></a>
+<button id="back-btn" hidden></button>
+{% endblock %}
 {% block main %}
-<main class="game-page">
-  <div class="game-topbar">
-    <div class="topbar-left">
-      <a href="/course/lezione-1" class="back-link">&larr; Indietro</a>
-      <span class="pill" id="pill">—</span>
-    </div>
-    <div class="topbar-right">
-      <a href="#" id="view-link" target="_blank" rel="noopener" hidden></a>
-      <button id="back-btn" hidden></button>
-      <span class="lang-picker">
-        <button data-lang="it">IT</button>
-        <button data-lang="en">EN</button>
-        <button data-lang="fr">FR</button>
-      </span>
-    </div>
-  </div>
-  <div id="reconnecting" class="strip" hidden></div>
-  <p id="waiting" class="waiting" hidden></p>
-  <div id="viewer" hidden>
-    <iframe id="frame" class="game-frame-full"></iframe>
-    <div id="blank-screen" class="blank-screen" hidden></div>
-  </div>
-</main>
+<div id="reconnecting" class="strip" hidden></div>
+<p id="waiting" class="waiting" hidden></p>
+<div id="viewer" hidden>
+  <iframe id="frame" class="game-frame-full"></iframe>
+  <div id="blank-screen" class="blank-screen" hidden></div>
+</div>
 <script>
-  const STRINGS = {
-    it: {
-      live: "In diretta", browsing: "Stai guardando un'altra slide", back: "Torna al vivo",
-      waiting: "La lezione non è ancora iniziata.", reconnecting: "Riconnessione…",
-      viewLink: "Vedi su Google Slides",
-    },
-    en: {
-      live: "Live", browsing: "Viewing another slide", back: "Back to live",
-      waiting: "The lesson hasn't started yet.", reconnecting: "Reconnecting…",
-      viewLink: "View on Google Slides",
-    },
-    fr: {
-      live: "En direct", browsing: "Vous regardez une autre diapositive", back: "Revenir au direct",
-      waiting: "Le cours n'a pas encore commencé.", reconnecting: "Reconnexion…",
-      viewLink: "Voir sur Google Slides",
-    },
-  };
-
-  let lang = "it";
-  try { lang = localStorage.getItem("followLang") || "it"; } catch (e) {}
+  const STRINGS = {{ follow_strings_json | safe }};
+  function t(key) { return STRINGS[key]; }
 
   let mode = "live";
   let state = null;
@@ -54,19 +28,9 @@
   let pollTimer = null;
   let es = null;
 
-  function t(key) { return (STRINGS[lang] || STRINGS.it)[key]; }
-
   function embedUrl(fileId, index) {
     return `https://docs.google.com/presentation/d/${fileId}/embed`
       + `?rm=minimal&start=false&loop=false&slide=${index}`;
-  }
-
-  function applyStrings() {
-    document.getElementById("pill").textContent = mode === "live" ? t("live") : t("browsing");
-    document.getElementById("back-btn").textContent = t("back");
-    document.getElementById("waiting").textContent = t("waiting");
-    document.getElementById("reconnecting").textContent = t("reconnecting");
-    document.getElementById("view-link").textContent = t("viewLink");
   }
 
   function render() {
@@ -77,17 +41,21 @@
     const frame = document.getElementById("frame");
     const blankScreen = document.getElementById("blank-screen");
 
+    backBtn.textContent = t("back");
+
     if (!state || state.status === "ended") {
       viewer.hidden = true;
       viewLink.hidden = true;
       backBtn.hidden = true;
       waiting.hidden = false;
+      waiting.textContent = t("waiting");
       return;
     }
     waiting.hidden = true;
     viewer.hidden = false;
     viewLink.hidden = false;
     viewLink.href = `https://docs.google.com/presentation/d/${state.file_id}/edit`;
+    viewLink.textContent = t("viewLink");
     backBtn.hidden = mode === "live";
 
     document.getElementById("pill").textContent = mode === "live" ? t("live") : t("browsing");
@@ -139,7 +107,9 @@
   });
 
   function showReconnecting(show) {
-    document.getElementById("reconnecting").hidden = !show;
+    const strip = document.getElementById("reconnecting");
+    strip.textContent = t("reconnecting");
+    strip.hidden = !show;
   }
 
   function startPolling() {
@@ -173,15 +143,6 @@
     };
   }
 
-  document.querySelectorAll(".lang-picker button").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      lang = btn.dataset.lang;
-      try { localStorage.setItem("followLang", lang); } catch (e) {}
-      applyStrings();
-    });
-  });
-
-  applyStrings();
   render();
   connectSSE();
 </script>

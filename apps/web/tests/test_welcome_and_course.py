@@ -7,7 +7,7 @@ client = TestClient(app)
 def test_welcome_page_loads() -> None:
     response = client.get("/")
     assert response.status_code == 200
-    assert "Come ti chiami?" in response.text
+    assert "Chi sei?" in response.text
 
 
 def test_course_requires_a_name() -> None:
@@ -20,7 +20,8 @@ def test_submitting_a_name_reaches_the_course_page() -> None:
     response = client.post("/welcome", data={"name": "Fatima"}, follow_redirects=True)
     assert response.status_code == 200
     assert "Benvenuta, Fatima!" in response.text
-    assert '<a href="/course/lezione-1">Lezione 1</a>' in response.text
+    assert 'href="/course/lezione-1"' in response.text
+    assert ">Lezione 1</a>" in response.text
 
 
 def test_blank_name_is_rejected() -> None:
@@ -33,8 +34,10 @@ def test_lesson_page_lists_both_games() -> None:
     response = client.get("/course/lezione-1")
     assert response.status_code == 200
     assert "La Tastiera e il Mouse" in response.text
-    assert '<a href="/course/lezione-1/mouse">Il mouse</a>' in response.text
-    assert '<a href="/course/lezione-1/keyboard">La tastiera</a>' in response.text
+    assert 'href="/course/lezione-1/mouse"' in response.text
+    assert ">Il mouse</a>" in response.text
+    assert 'href="/course/lezione-1/keyboard"' in response.text
+    assert ">La tastiera</a>" in response.text
 
 
 def test_unknown_lesson_is_a_404() -> None:

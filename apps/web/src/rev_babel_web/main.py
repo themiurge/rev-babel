@@ -1,7 +1,8 @@
-"""FastAPI app: welcome screen, name capture, and the course page.
+"""FastAPI app: login, the course/lesson/game pages, and Slide Sync Lite.
 
-See ADR 0013 for why this captures a typed name at all, ahead of the
-avatar picker (ADR 0010) that is meant to replace it.
+See ADR 0013 for why login is a typed/picked name at all, ahead of the
+avatar picker (ADR 0010) that is meant to replace it, and ADR 0015 for the
+permanent-account and language-preference model.
 """
 
 from __future__ import annotations
@@ -9,15 +10,16 @@ from __future__ import annotations
 import json
 import os
 import time
+from typing import Callable
 
-from fastapi import FastAPI, Form, HTTPException, Request
+from fastapi import FastAPI, Form, HTTPException, Request, Response
 from fastapi.responses import JSONResponse, RedirectResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
 from starlette.middleware.sessions import SessionMiddleware
 
-from rev_babel_web import db, live
+from rev_babel_web import db, i18n, live
 
 _HERE = os.path.dirname(__file__)
 _WEB_ROOT = os.path.abspath(os.path.join(_HERE, "..", ".."))
@@ -30,6 +32,8 @@ if not SESSION_SECRET:
     )
 
 MAX_NAME_LENGTH = 60
+SESSION_MAX_AGE_SECONDS = 24 * 60 * 60
+COOKIE_SECURE = os.environ.get("WEB_COOKIE_SECURE", "true").lower() != "false"
 
 LESSONS = [
     {
@@ -73,6 +77,10 @@ class ScoreIn(BaseModel):
     value: float = Field(gt=0)
 
 
+class LanguageIn(BaseModel):
+    language: str
+
+
 # Slide Sync Lite's admin surface (/present, /admin/api/live/*) is gated on
 # the Host header being the teacher-only capture host, with no further
 # auth — a deliberate stopgap for today, same accepted risk as issue 0001
@@ -103,15 +111,13 @@ class LiveStatusIn(BaseModel):
     status: str
 
 
-SESSION_MAX_AGE_SECONDS = 24 * 60 * 60
-
 app = FastAPI()
 app.add_middleware(
     SessionMiddleware,
     secret_key=SESSION_SECRET,
     session_cookie="rev_babel_session",
     same_site="lax",
-    https_only=os.environ.get("WEB_COOKIE_SECURE", "true").lower() != "false",
+    https_only=COOKIE_SECURE,
     max_age=SESSION_MAX_AGE_SECONDS,
 )
 app.mount("/static", StaticFiles(directory=os.path.join(_WEB_ROOT, "static")), name="static")
@@ -121,11 +127,41 @@ templates = Jinja2Templates(directory=os.path.join(_WEB_ROOT, "templates"))
 templates.env.globals["static_version"] = str(int(time.time()))
 
 
-def _current_name(request: Request) -> str | None:
+def _current_student(request: Request) -> db.Student | None:
     student_id = request.session.get("student_id")
     if not student_id:
         return None
-    return db.get_student_name(student_id)
+    return db.get_student(student_id)
+
+
+def _current_name(request: Request) -> str | None:
+    student = _current_student(request)
+    return student["name"] if student else None
+
+
+def _current_lang(request: Request) -> str:
+    student = _current_student(request)
+    if student is not None:
+        return student["language"]
+    cookie_lang = request.cookies.get("rev_babel_lang")
+    if cookie_lang in i18n.LANGUAGES:
+        return cookie_lang
+    return "it"
+
+
+def _translator(lang: str) -> Callable[[str], str]:
+    return lambda text: i18n.translate(text, lang)
+
+
+def _base_context(request: Request) -> dict:
+    lang = _current_lang(request)
+    return {
+        "name": _current_name(request),
+        "lessons": LESSONS,
+        "lang": lang,
+        "languages": i18n.LANGUAGES,
+        "tr": _translator(lang),
+    }
 
 
 def _clean_name(raw: str) -> str | None:
@@ -139,67 +175,96 @@ def _clean_name(raw: str) -> str | None:
 def welcome(request: Request):
     if _current_name(request) is not None:
         return RedirectResponse("/course", status_code=303)
-    return templates.TemplateResponse(request, "welcome.html", {"error": None})
+    context = _base_context(request)
+    context.update({"error": None, "students": db.list_students()})
+    return templates.TemplateResponse(request, "welcome.html", context)
 
 
 @app.post("/welcome")
 def submit_name(request: Request, name: str = Form(...)):
     clean = _clean_name(name)
     if clean is None:
-        return templates.TemplateResponse(
-            request,
-            "welcome.html",
-            {"error": "Scrivi il tuo nome per continuare."},
-            status_code=400,
+        context = _base_context(request)
+        context.update(
+            {"error": "Scrivi il tuo nome per continuare.", "students": db.list_students()}
         )
-    request.session["student_id"] = db.create_student(clean)
+        return templates.TemplateResponse(request, "welcome.html", context, status_code=400)
+    existing_id = db.find_student_by_name(clean)
+    if existing_id is not None:
+        request.session["student_id"] = existing_id
+    else:
+        # A brand new account defaults to whatever language was last picked
+        # in the always-visible dropdown - on this page, that is a plain
+        # cookie, since nobody is logged in yet to own a DB row.
+        default_lang = _current_lang(request)
+        request.session["student_id"] = db.create_student(clean, language=default_lang)
     return RedirectResponse("/course", status_code=303)
+
+
+@app.post("/login/{student_id}")
+def login(request: Request, student_id: str):
+    if db.get_student(student_id) is None:
+        raise HTTPException(status_code=404)
+    request.session["student_id"] = student_id
+    return RedirectResponse("/course", status_code=303)
+
+
+@app.post("/api/language")
+def set_language(request: Request, body: LanguageIn, response: Response):
+    if body.language != "it" and body.language not in i18n.LANGUAGES:
+        raise HTTPException(status_code=400, detail="Unknown language.")
+    student = _current_student(request)
+    if student is not None:
+        db.set_student_language(student["id"], body.language)
+    response.set_cookie(
+        "rev_babel_lang",
+        body.language,
+        max_age=SESSION_MAX_AGE_SECONDS,
+        httponly=False,
+        samesite="lax",
+        secure=COOKIE_SECURE,
+    )
+    return {"ok": True}
 
 
 @app.get("/course")
 def course(request: Request):
-    name = _current_name(request)
-    if name is None:
+    if _current_name(request) is None:
         return RedirectResponse("/", status_code=303)
-    return templates.TemplateResponse(request, "course.html", {"name": name, "lessons": LESSONS})
+    return templates.TemplateResponse(request, "course.html", _base_context(request))
 
 
 @app.get("/course/{lesson_slug}")
 def lesson_detail(request: Request, lesson_slug: str):
-    name = _current_name(request)
-    if name is None:
+    if _current_name(request) is None:
         return RedirectResponse("/", status_code=303)
     lesson = next((lesson for lesson in LESSONS if lesson["slug"] == lesson_slug), None)
     if lesson is None:
         raise HTTPException(status_code=404)
-    games = LESSON_GAMES.get(lesson_slug, {})
-    return templates.TemplateResponse(
-        request, "lesson.html", {"name": name, "lessons": LESSONS, "lesson": lesson, "games": games}
-    )
+    context = _base_context(request)
+    context.update({"lesson": lesson, "games": LESSON_GAMES.get(lesson_slug, {})})
+    return templates.TemplateResponse(request, "lesson.html", context)
 
 
 @app.get("/course/{lesson_slug}/{game_slug}")
 def lesson_game(request: Request, lesson_slug: str, game_slug: str):
-    name = _current_name(request)
-    if name is None:
+    if _current_name(request) is None:
         return RedirectResponse("/", status_code=303)
     info = LESSON_GAMES.get(lesson_slug, {}).get(game_slug)
     if info is None:
         raise HTTPException(status_code=404)
     student_id = request.session["student_id"]
-    return templates.TemplateResponse(
-        request,
-        "game.html",
+    context = _base_context(request)
+    context.update(
         {
-            "name": name,
-            "lessons": LESSONS,
             "lesson_slug": lesson_slug,
             "game": game_slug,
             "info": info,
             "best_display": _format_score(info["unit"], db.personal_best(student_id, game_slug)),
             "last_display": _format_score(info["unit"], db.last_score(student_id, game_slug)),
-        },
+        }
     )
+    return templates.TemplateResponse(request, "game.html", context)
 
 
 @app.get("/logout")
@@ -210,10 +275,20 @@ def logout(request: Request):
 
 @app.get("/follow")
 def follow(request: Request):
-    name = _current_name(request)
-    if name is None:
+    if _current_name(request) is None:
         return RedirectResponse("/", status_code=303)
-    return templates.TemplateResponse(request, "follow.html", {"name": name, "lessons": LESSONS})
+    context = _base_context(request)
+    tr = context["tr"]
+    follow_strings = {
+        "live": tr("In diretta") or "In diretta",
+        "browsing": tr("Stai guardando un'altra slide") or "Stai guardando un'altra slide",
+        "back": tr("Torna al vivo") or "Torna al vivo",
+        "waiting": tr("La lezione non è ancora iniziata.") or "La lezione non è ancora iniziata.",
+        "reconnecting": tr("Riconnessione…") or "Riconnessione…",
+        "viewLink": tr("Vedi su Google Slides") or "Vedi su Google Slides",
+    }
+    context["follow_strings_json"] = json.dumps(follow_strings)
+    return templates.TemplateResponse(request, "follow.html", context)
 
 
 @app.get("/api/live")
@@ -277,16 +352,16 @@ def admin_live_count(request: Request):
 
 @app.post("/api/scores")
 def submit_score(request: Request, score: ScoreIn):
-    student_id = request.session.get("student_id")
-    if student_id is None or db.get_student_name(student_id) is None:
+    student = _current_student(request)
+    if student is None:
         raise HTTPException(status_code=401, detail="No active session.")
     game_info = GAMES.get(score.game)
     if game_info is None or score.value > game_info["max_value"]:
         raise HTTPException(status_code=400, detail="Unknown game or implausible score.")
-    db.record_score(student_id, score.game, score.value)
+    db.record_score(student["id"], score.game, score.value)
     return JSONResponse(
         {
-            "best": db.personal_best(student_id, score.game),
-            "last": db.last_score(student_id, score.game),
+            "best": db.personal_best(student["id"], score.game),
+            "last": db.last_score(student["id"], score.game),
         }
     )

@@ -1,15 +1,17 @@
 {% extends "_base.html" %}
+{% import "_macros.html" as m with context %}
+{% block topbar_left %}
+<a href="/course/{{ lesson_slug }}" class="back-link" {{ m.title_attr("Indietro") }}>&larr; Indietro</a>
+{% endblock %}
+{% block topbar_extra %}
+<div class="game-score" data-game="{{ game }}">
+  <span {{ m.title_attr("Miglior tempo") }}>Miglior tempo</span>: <span data-field="best">{{ best_display }}</span>
+  &middot;
+  <span {{ m.title_attr("ultimo tentativo") }}>ultimo tentativo</span>: <span data-field="last">{{ last_display }}</span>
+</div>
+{% endblock %}
 {% block main %}
-<main class="game-page">
-  <div class="game-topbar">
-    <a href="/course/{{ lesson_slug }}" class="back-link">&larr; Indietro</a>
-    <div class="game-score" data-game="{{ game }}">
-      Miglior tempo: <span data-field="best">{{ best_display }}</span>
-      &middot; ultimo tentativo: <span data-field="last">{{ last_display }}</span>
-    </div>
-  </div>
-  <iframe src="{{ info.src }}" class="game-frame-full"></iframe>
-</main>
+<iframe src="{{ info.src }}" class="game-frame-full"></iframe>
 <script>
   (function () {
     const unit = "{{ info.unit }}";

@@ -35,10 +35,26 @@ screen. Ten lessons, six users, and then it stops. It is not a product and
 does not scale past this room; see
 [`docs/overview.md`](docs/overview.md).
 
-## Where we are now  *(2026-09-17)*
+## Where we are now  *(2026-09-24)*
 
-**Lesson 1, today.** Ten lessons, Thursdays 16:30–18:00, through 19
-November.
+**Lesson 1 happened (17 September) and went well** — the slide mirror
+(Slide Sync Lite) was, per the maintainer, the most helpful thing in the
+room. Ten lessons, Thursdays 16:30–18:00, through 19 November.
+
+- **Accounts are now permanent, not per-session** ([ADR
+  0015](docs/decisions/0015-permanent-accounts-and-language-preference.md)).
+  The login page shows every existing student as a one-tap button; a
+  typed name only creates a new row if no case-insensitive match exists.
+  Three real students are set up to stay: Benita (English), Harzhin
+  (Kurdish, assumed Sorani/`ckb` — issue 0008 still open on the variant),
+  Mousrietou (French) — chosen from what lesson 1 itself revealed,
+  informing issue 0020.
+- **Every Italian UI label can carry a hover translation** in the
+  student's language, via an always-visible dropdown (top right, every
+  page): `it`/`en`/`fr`/`ckb`/`ar`, machine-translated in one `agy` CLI
+  batch per language and not yet reviewed by a native speaker of any of
+  them. A new account's default language is whatever the dropdown was
+  last set to in that browser.
 
 - **`apps/web` is no longer a placeholder.** A welcome screen collects a
   typed name, a minimal SQLite store (`data/rev_babel.db`, gitignored)
@@ -245,6 +261,22 @@ Lead times and physical presence, which is why they are listed apart.
   [`plans/README.md`](plans/README.md).
 
 ## Revision log
+
+- **v0.8 — 2026-09-24** — Permanent named accounts and a language
+  preference ([ADR
+  0015](docs/decisions/0015-permanent-accounts-and-language-preference.md)):
+  the login page picks from a roster instead of always creating a new
+  row; every Italian label can hover-translate into the student's chosen
+  language via an always-visible top-right dropdown. Benita, Harzhin, and
+  Mousrietou set up as permanent accounts with English/Kurdish (`ckb`,
+  assumed)/French, reusing their existing lesson-1 rows so their game
+  scores weren't lost. Translations for en/fr/ckb/ar machine-generated via
+  the `agy` CLI, unreviewed by a native speaker. Informs issue 0020;
+  issue 0008 stays open on the Kurdish variant. Fixed one real bug along
+  the way: `response.set_cookie()` on an injected `Response` parameter is
+  silently discarded when the route also returns its own `JSONResponse` -
+  the language cookie wasn't being set until the handler returned a plain
+  dict instead.
 
 - **v0.7 — 2026-09-17** — Two follow-page bugs fixed from live use during
   lesson 1: (1) `[hidden]` on `.waiting`/`#viewer` was being overridden by

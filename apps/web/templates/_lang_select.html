@@ -1,0 +1,15 @@
+<select id="lang-select" class="lang-select" aria-label="Lingua / Language">
+  <option value="it"{% if lang == "it" %} selected{% endif %}>IT</option>
+  {% for code, label in languages.items() %}
+  <option value="{{ code }}"{% if code == lang %} selected{% endif %}>{{ label }}</option>
+  {% endfor %}
+</select>
+<script>
+  document.getElementById("lang-select").addEventListener("change", function () {
+    fetch("/api/language", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({language: this.value}),
+    }).then(function () { location.reload(); });
+  });
+</script>
