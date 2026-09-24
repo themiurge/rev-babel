@@ -262,6 +262,13 @@ Lead times and physical presence, which is why they are listed apart.
 
 ## Revision log
 
+- **v0.9 — 2026-09-24** — Two amendments to v0.8, same day: added
+  Kurmanji (`kmr`) alongside Sorani (`ckb`) rather than resolve the
+  variant guess, and added `students.roster_visible` so the login picker
+  shows only Benita, Harzhin, and Mousrietou — the two `Emilio` test rows,
+  `Io`, and `Florencia` (the maintainer's wife, a deliberate test account)
+  are hidden, not deleted, and still reachable by retyping their name.
+  New accounts default to visible.
 - **v0.8 — 2026-09-24** — Permanent named accounts and a language
   preference ([ADR
   0015](docs/decisions/0015-permanent-accounts-and-language-preference.md)):

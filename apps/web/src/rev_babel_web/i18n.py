@@ -8,10 +8,11 @@ separate id scheme to keep in sync with the templates.
 
 Translations were machine-generated in batches (see the `agy` CLI
 sessions referenced in ADR 0015) and have not been reviewed by a native
-speaker of any of the four languages. Treat them as a first pass, not a
-verified translation - especially the Kurdish, where even the variant
-(Sorani / Central Kurdish, `ckb`) is the maintainer's best guess at "the
-northern Iraq one," not a confirmed fact about the student's dialect.
+speaker of any of the five languages. Treat them as a first pass, not a
+verified translation - especially the two Kurdish variants: `ckb` (Sorani
+/ Central Kurdish) was the maintainer's best guess at "the northern Iraq
+one," and `kmr` (Kurmanji / Northern Kurdish) was added alongside it as a
+hedge rather than a confirmed correction - see ADR 0015's follow-up.
 """
 
 from __future__ import annotations
@@ -20,7 +21,7 @@ import json
 from pathlib import Path
 from typing import Literal
 
-LanguageCode = Literal["it", "en", "fr", "ckb", "ar"]
+LanguageCode = Literal["it", "en", "fr", "ckb", "kmr", "ar"]
 
 # Display name for each selectable "second language," shown in its own
 # script so the choice doesn't require reading Italian or Latin script.
@@ -30,6 +31,7 @@ LANGUAGES: dict[str, str] = {
     "en": "English",
     "fr": "Français",
     "ckb": "کوردی",
+    "kmr": "Kurmancî",
     "ar": "العربية",
 }
 

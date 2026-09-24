@@ -2,6 +2,7 @@
 
 - **Status:** accepted
 - **Date:** 2026-09-24
+- **Amended:** 2026-09-24 — added Kurmanji (`kmr`) and a `roster_visible` flag
 
 ## Context
 
@@ -52,8 +53,30 @@ The four languages' initial translations were machine-generated in one batch
 per language via the `agy` CLI in headless mode (`agy -p "translate..."`),
 each given the full list of Italian source strings and asked to return
 `ITALIAN ||| TRANSLATION` pairs only. They have **not been reviewed by a
-native speaker of any of the four languages** and should be treated as a
+native speaker of any of the languages** and should be treated as a
 first pass.
+
+## Amendment — 2026-09-24
+
+Two changes made the same day, once the maintainer reviewed the above:
+
+- **Kurmanji (`kmr`, Northern Kurdish) added alongside Sorani (`ckb`)**,
+  translated the same way via `agy`, rather than resolving the
+  Sorani-vs-Kurmanji ambiguity by picking one. "It doesn't hurt" to offer
+  both and let the dropdown settle it — cheaper than guessing wrong and
+  finding out later. Issue 0008 stays open regardless: this sidesteps the
+  variant question for the UI, but Eco's transcription/translation
+  pipeline will still need a real answer, not two options.
+- **A `roster_visible` column on `students`.** The login page's roster
+  should show the three real students and nobody else — the two `Emilio`
+  test rows, `Io` (also a test entry), and `Florencia` (the maintainer's
+  wife, a deliberate test account) were cluttering it. New rows created
+  the normal way (typing a name on the login page) default to visible;
+  the migration backfills existing rows as hidden, so only Benita,
+  Harzhin, and Mousrietou were explicitly flipped back to visible.
+  Hidden rows are **not deleted** — their data and scores stay, and
+  `find_student_by_name` still matches them, so retyping "Florencia"
+  logs back into the same test account rather than creating a duplicate.
 
 ## Consequences
 
@@ -79,10 +102,10 @@ even the variant choice is unconfirmed.
 ## Open follow-ups
 
 - Confirm with someone who'd know whether Harzhin's Kurdish is really Sorani
-  (`ckb`) rather than Kurmanji (`kmr`) - this closes issue 0008's remaining
-  half.
-- Have a native or fluent speaker spot-check the `en`/`fr`/`ckb`/`ar` strings
-  in `apps/web/src/rev_babel_web/strings.json` before relying on them for
-  something more consequential than a button hover.
+  (`ckb`), Kurmanji (`kmr`), or she just picks whichever renders more
+  legibly to her - this closes issue 0008's remaining half.
+- Have a native or fluent speaker spot-check the `en`/`fr`/`ckb`/`kmr`/`ar`
+  strings in `apps/web/src/rev_babel_web/strings.json` before relying on
+  them for something more consequential than a button hover.
 - Decide what happens when two students share a name (issue TBD - not filed
   yet, since it hasn't happened).

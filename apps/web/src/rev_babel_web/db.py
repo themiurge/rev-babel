@@ -45,6 +45,10 @@ def _migrate(conn: sqlite3.Connection) -> None:
     columns = {row[1] for row in conn.execute("PRAGMA table_info(students)")}
     if "language" not in columns:
         conn.execute("ALTER TABLE students ADD COLUMN language TEXT NOT NULL DEFAULT 'it'")
+    if "roster_visible" not in columns:
+        # Existing rows (test accounts made before this column existed)
+        # default to hidden - only newly created accounts opt in below.
+        conn.execute("ALTER TABLE students ADD COLUMN roster_visible INTEGER NOT NULL DEFAULT 0")
 
 
 @contextmanager
@@ -61,10 +65,13 @@ def connect() -> Iterator[sqlite3.Connection]:
 
 
 def create_student(name: str, language: str = "it") -> str:
+    # New accounts made the normal way (typed on the login page) are
+    # visible in the roster by default - only pre-existing/test rows
+    # backfilled by the migration above start out hidden.
     student_id = str(uuid.uuid4())
     with connect() as conn:
         conn.execute(
-            "INSERT INTO students (id, name, language) VALUES (?, ?, ?)",
+            "INSERT INTO students (id, name, language, roster_visible) VALUES (?, ?, ?, 1)",
             (student_id, name, language),
         )
     return student_id
@@ -87,9 +94,10 @@ def find_student_by_name(name: str) -> str | None:
 
 
 def list_students() -> list[Student]:
+    """Roster-visible students only, for the login picker."""
     with connect() as conn:
         rows = conn.execute(
-            "SELECT id, name, language FROM students ORDER BY lower(name)"
+            "SELECT id, name, language FROM students WHERE roster_visible = 1 ORDER BY lower(name)"
         ).fetchall()
     return [{"id": r[0], "name": r[1], "language": r[2]} for r in rows]
 
@@ -97,6 +105,14 @@ def list_students() -> list[Student]:
 def set_student_language(student_id: str, language: str) -> None:
     with connect() as conn:
         conn.execute("UPDATE students SET language = ? WHERE id = ?", (language, student_id))
+
+
+def set_student_roster_visible(student_id: str, visible: bool) -> None:
+    with connect() as conn:
+        conn.execute(
+            "UPDATE students SET roster_visible = ? WHERE id = ?",
+            (1 if visible else 0, student_id),
+        )
 
 
 def record_score(student_id: str, game: str, value: float) -> None:

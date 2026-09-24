@@ -3,156 +3,182 @@
     "en": "Welcome",
     "fr": "Bienvenue",
     "ckb": "بەخێربێیت",
-    "ar": "أهلاً بكِ"
+    "ar": "أهلاً بكِ",
+    "kmr": "Bi xêr hatî"
   },
   "Chi sei?": {
     "en": "Who are you?",
     "fr": "Qui es-tu ?",
     "ckb": "تۆ کێیت؟",
-    "ar": "من أنتِ؟"
+    "ar": "من أنتِ؟",
+    "kmr": "Tu kî yî?"
   },
   "Non ti vedi? Scrivi il tuo nome qui sotto.": {
     "en": "Don't see yourself? Type your name below.",
     "fr": "Tu ne te vois pas ? Écris ton nom ci-dessous.",
     "ckb": "خۆت نابینیت؟ ناوت لە خوارەوە بنووسە.",
-    "ar": "ألا ترين نفسكِ؟ اكتبي اسمكِ بالأسفل."
+    "ar": "ألا ترين نفسكِ؟ اكتبي اسمكِ بالأسفل.",
+    "kmr": "Xwe nabînî? Navê xwe li jêr binivîse."
   },
   "Il tuo nome": {
     "en": "Your name",
     "fr": "Ton nom",
     "ckb": "ناوت",
-    "ar": "اسمكِ"
+    "ar": "اسمكِ",
+    "kmr": "Navê te"
   },
   "Entra": {
     "en": "Enter",
     "fr": "Entrer",
     "ckb": "بچۆ ژوورەوە",
-    "ar": "دخول"
+    "ar": "دخول",
+    "kmr": "Têkeve"
   },
   "Scrivi il tuo nome per continuare.": {
     "en": "Type your name to continue.",
     "fr": "Écris ton nom pour continuer.",
     "ckb": "بۆ بەردەوامبوون ناوت بنووسە.",
-    "ar": "اكتبي اسمكِ للمتابعة."
+    "ar": "اكتبي اسمكِ للمتابعة.",
+    "kmr": "Ji bo berdewamkirinê navê xwe binivîse."
   },
   "Lezioni": {
     "en": "Lessons",
     "fr": "Leçons",
     "ckb": "وانەکان",
-    "ar": "الدروس"
+    "ar": "الدروس",
+    "kmr": "Ders"
   },
   "Cambia utente": {
     "en": "Switch user",
     "fr": "Changer d'utilisateur",
     "ckb": "گۆڕینی بەکارهێنەر",
-    "ar": "تغيير المستخدم"
+    "ar": "تغيير المستخدم",
+    "kmr": "Bikarhêner biguhêre"
   },
   "Il mouse": {
     "en": "The mouse",
     "fr": "La souris",
     "ckb": "ماوس",
-    "ar": "الفأرة"
+    "ar": "الفأرة",
+    "kmr": "Mişk"
   },
   "La tastiera": {
     "en": "The keyboard",
     "fr": "Le clavier",
     "ckb": "تەختەکلیل",
-    "ar": "لوحة المفاتيح"
+    "ar": "لوحة المفاتيح",
+    "kmr": "Klavye"
   },
   "Segui la lezione": {
     "en": "Follow the lesson",
     "fr": "Suivre la leçon",
     "ckb": "شوێن وانەکە بکەوە",
-    "ar": "تابعي الدرس"
+    "ar": "تابعي الدرس",
+    "kmr": "Dersê bişopîne"
   },
   "Indietro": {
     "en": "Back",
     "fr": "Retour",
     "ckb": "گەڕانەوە",
-    "ar": "رجوع"
+    "ar": "رجوع",
+    "kmr": "Vegere"
   },
   "Miglior tempo": {
     "en": "Best time",
     "fr": "Meilleur temps",
     "ckb": "باشترین کات",
-    "ar": "أفضل وقت"
+    "ar": "أفضل وقت",
+    "kmr": "Dema herî baş"
   },
   "ultimo tentativo": {
     "en": "last attempt",
     "fr": "dernier essai",
     "ckb": "دوایین هەوڵ",
-    "ar": "آخر محاولة"
+    "ar": "آخر محاولة",
+    "kmr": "ceribandina dawî"
   },
   "In diretta": {
     "en": "Live",
     "fr": "En direct",
     "ckb": "ڕاستەوخۆ",
-    "ar": "مباشر"
+    "ar": "مباشر",
+    "kmr": "Zindî"
   },
   "Stai guardando un'altra slide": {
     "en": "You are looking at another slide",
     "fr": "Tu regardes une autre diapositive",
     "ckb": "سەیری سلایدێکی تر دەکەیت",
-    "ar": "أنتِ تشاهدين شريحة أخرى"
+    "ar": "أنتِ تشاهدين شريحة أخرى",
+    "kmr": "Tu li slayteke din dinêrî"
   },
   "Torna al vivo": {
     "en": "Back to live",
     "fr": "Retour au direct",
     "ckb": "بگەڕێوە بۆ ڕاستەوخۆ",
-    "ar": "العودة إلى المباشر"
+    "ar": "العودة إلى المباشر",
+    "kmr": "Vegere weşana zindî"
   },
   "La lezione non è ancora iniziata.": {
     "en": "The lesson has not started yet.",
     "fr": "La leçon n'a pas encore commencé.",
     "ckb": "وانەکە هێشتا دەستی پێ نەکردووە.",
-    "ar": "لم يبدأ الدرس بعد."
+    "ar": "لم يبدأ الدرس بعد.",
+    "kmr": "Ders hîna dest pê nekiriye."
   },
   "Riconnessione…": {
     "en": "Reconnecting…",
     "fr": "Reconnexion…",
     "ckb": "پەیوەستبوونەوە…",
-    "ar": "إعادة الاتصال…"
+    "ar": "إعادة الاتصال…",
+    "kmr": "Ji nû ve tê girêdan…"
   },
   "Vedi su Google Slides": {
     "en": "View on Google Slides",
     "fr": "Voir sur Google Slides",
     "ckb": "لە Google Slides بیبینە",
-    "ar": "عرض على Google Slides"
+    "ar": "عرض على Google Slides",
+    "kmr": "Li ser Google Slides bibîne"
   },
   "Lingua": {
     "en": "Language",
     "fr": "Langue",
     "ckb": "زمان",
-    "ar": "اللغة"
+    "ar": "اللغة",
+    "kmr": "Ziman"
   },
   "La Tastiera e il Mouse": {
     "en": "The Keyboard and the Mouse",
     "fr": "Le Clavier et la Souris",
     "ckb": "تەختەکلیل و ماوس",
-    "ar": "لوحة المفاتيح والفأرة"
+    "ar": "لوحة المفاتيح والفأرة",
+    "kmr": "Klavye û Mişk"
   },
   "Lezione 1": {
     "en": "Lesson 1",
     "fr": "Leçon 1",
     "ckb": "وانەی ١",
-    "ar": "الدرس 1"
+    "ar": "الدرس 1",
+    "kmr": "Dersa 1"
   },
   "Benvenuta,": {
     "en": "Welcome,",
     "fr": "Bienvenue,",
     "ckb": "بەخێربێیت،",
-    "ar": "أهلاً بكِ،"
+    "ar": "أهلاً بكِ،",
+    "kmr": "Bi xêr hatî,"
   },
   "Scegli una lezione dal menu a sinistra per iniziare.": {
     "en": "Choose a lesson from the menu on the left to start.",
     "fr": "Choisis une leçon dans le menu à gauche pour commencer.",
     "ckb": "وانەیەک لە پێڕستی لای چەپ هەڵبژێرە بۆ دەستپێکردن.",
-    "ar": "اختاري درساً من القائمة على اليسار للبدء."
+    "ar": "اختاري درساً من القائمة على اليسار للبدء.",
+    "kmr": "Ji bo destpêkirinê, ji menûya li milê çepê dersekê hilbijêre."
   },
   "Contenuti in arrivo.": {
     "en": "Content coming soon.",
     "fr": "Contenus à venir.",
     "ckb": "ناوەڕۆک بەم زووانە دێت.",
-    "ar": "محتوى قادم قريباً."
+    "ar": "محتوى قادم قريباً.",
+    "kmr": "Naverok di nêzîk de tê."
   }
 }

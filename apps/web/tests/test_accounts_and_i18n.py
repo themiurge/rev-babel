@@ -70,6 +70,14 @@ def test_language_preference_persists_across_a_fresh_login() -> None:
     assert 'title="وانەکان"' in response.text
 
 
+def test_kurmanji_is_a_selectable_language() -> None:
+    setup = TestClient(app)
+    setup.post("/api/language", json={"language": "kmr"})
+    setup.post("/welcome", data={"name": "Kurmanji Speaker"})
+    response = setup.get("/course")
+    assert 'title="Ders"' in response.text  # "Lezioni" in Kurmanji
+
+
 def test_game_page_shows_hover_translation_for_current_language() -> None:
     setup = TestClient(app)
     setup.post("/api/language", json={"language": "en"})
@@ -84,3 +92,29 @@ def test_italian_default_has_no_hover_titles() -> None:
     setup.post("/welcome", data={"name": "Italian Default"})
     response = setup.get("/course")
     assert "title=" not in response.text
+
+
+def test_new_accounts_are_roster_visible_by_default() -> None:
+    setup = TestClient(app)
+    setup.post("/welcome", data={"name": "Visible By Default"})
+    response = client.get("/")
+    assert "Visible By Default" in response.text
+
+
+def test_hiding_a_student_removes_them_from_the_roster() -> None:
+    setup = TestClient(app)
+    setup.post("/welcome", data={"name": "Hide Me"})
+    student_id = db.find_student_by_name("Hide Me")
+    assert student_id in {s["id"] for s in db.list_students()}
+
+    db.set_student_roster_visible(student_id, False)
+    assert student_id not in {s["id"] for s in db.list_students()}
+
+    response = client.get("/")
+    assert "Hide Me" not in response.text
+
+    # Hidden accounts are still reachable by typing the exact name again -
+    # not deleted, just off the roster.
+    reached = TestClient(app)
+    reached.post("/welcome", data={"name": "Hide Me"}, follow_redirects=True)
+    assert db.find_student_by_name("Hide Me") == student_id
