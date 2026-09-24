@@ -69,6 +69,13 @@
     "ar": "لوحة المفاتيح",
     "kmr": "Klavye"
   },
+  "Password in codice": {
+    "en": "Coded Password",
+    "fr": "Mot de passe codé",
+    "ckb": "تێپەڕەوشە بە کۆد",
+    "ar": "كلمة المرور المشفرة",
+    "kmr": "Şîfreya bi kod"
+  },
   "Segui la lezione": {
     "en": "Follow the lesson",
     "fr": "Suivre la leçon",

@@ -78,6 +78,13 @@ shared computer.
   baked-in pictures, and emoji need no translation at all. `SPID` and
   the reporting-site URL `commissariatodips.it` are protected literals;
   everything else, including institution names, translates normally.
+- **The password game is now called "Password in codice."** "Cifra" (the
+  verb "cifrare," to encipher) tested as too hard a word for the class,
+  per the maintainer. Retitled everywhere it's user-visible (lesson page
+  link, `<title>`, in-game heading); the internal route, game key, and
+  score-table entries (`cifra`, `cifra_facile`, `cifra_difficile`) are
+  unchanged, since students never see those. Added a matching hover
+  translation, which the title never actually had before this.
 - **"Cifra la password" got hover translations, two difficulty modes,
   and true word randomization** — three fixes from the maintainer's
   first real playtest. It's now `templates/games/cifra.html` (a Jinja
@@ -364,6 +371,13 @@ Lead times and physical presence, which is why they are listed apart.
 
 ## Revision log
 
+- **v0.16 — 2026-09-24** — Renamed the password game from "Cifra la
+  password" to "Password in codice" - "cifra" tested as too hard a word
+  for the class. Changed everywhere a student sees it (lesson-page link,
+  page `<title>`, in-game `<h1>`); left the internal route/game-key/
+  score-table name (`cifra`/`cifra_facile`/`cifra_difficile`) alone,
+  since it's never shown. Added the title's hover translation in all
+  five languages, which it never had before.
 - **v0.15 — 2026-09-24** — Added a 12-question scam-recognition quiz
   deck ("Truffa o sicuro? Il quiz", 24 slides, five languages), lesson
   2's third local deck. Each question renders as a realistic SMS, email,

@@ -69,7 +69,7 @@ LESSON1_GAMES = {
 }
 LESSON2_GAMES = {
     "cifra": {
-        "title": "Cifra la password",
+        "title": "Password in codice",
         "unit": "s",
         "max_value": 3_600,
         # A Jinja template, not a plain static file, so its own on-page

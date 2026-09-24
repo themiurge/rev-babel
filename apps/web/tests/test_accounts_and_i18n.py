@@ -87,6 +87,14 @@ def test_game_page_shows_hover_translation_for_current_language() -> None:
     assert 'title="Best time"' in response.text
 
 
+def test_lesson_2_game_link_has_hover_translation() -> None:
+    setup = TestClient(app)
+    setup.post("/api/language", json={"language": "en"})
+    setup.post("/welcome", data={"name": "Lesson 2 Speaker"})
+    response = setup.get("/course/lezione-2")
+    assert 'title="Coded Password"' in response.text
+
+
 def test_cifra_game_page_shows_hover_translation_for_current_language() -> None:
     """Unlike the imported mouse/keyboard games, cifra is a Jinja template
     (not a plain static file), so its own on-page text - not just the

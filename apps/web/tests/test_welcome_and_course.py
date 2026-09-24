@@ -50,7 +50,7 @@ def test_lesson_2_page_lists_the_password_game() -> None:
     assert response.status_code == 200
     assert "Il proprio account" in response.text
     assert 'href="/course/lezione-2/cifra"' in response.text
-    assert ">Cifra la password</a>" in response.text
+    assert ">Password in codice</a>" in response.text
 
 
 def test_game_page_embeds_the_full_size_iframe() -> None:
