@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>rev-babel — presenter</title>
   <style>
+    /* Several rules below (notably `iframe { display: block }`) set
+       `display` on a selector that beats the browser's built-in
+       [hidden] rule on cascade origin, which would otherwise silently
+       stop `el.hidden = true` from hiding anything. */
+    [hidden] { display: none !important; }
     html, body { height: 100%; margin: 0; }
     body {
       font-family: system-ui, sans-serif;

@@ -57,6 +57,18 @@ def test_present_is_served_on_the_capture_host() -> None:
     assert "Avvia la presentazione" in response.text
 
 
+def test_root_redirects_to_present_on_the_capture_host() -> None:
+    response = client.get("/", headers=CAPTURE_HEADERS, follow_redirects=False)
+    assert response.status_code == 303
+    assert response.headers["location"] == "/present"
+
+
+def test_root_is_the_student_login_page_off_the_capture_host() -> None:
+    anonymous = TestClient(app)
+    response = anonymous.get("/", follow_redirects=False)
+    assert response.status_code == 200
+
+
 def test_admin_endpoints_are_blocked_off_the_capture_host() -> None:
     response = client.post(
         "/admin/api/live/start",

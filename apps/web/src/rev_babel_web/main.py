@@ -177,6 +177,12 @@ def _clean_name(raw: str) -> str | None:
 
 @app.get("/")
 def welcome(request: Request):
+    # mic.emiliovicari.com is the teacher-only host - there is no reason to
+    # land on the student login page there. See ADR 0014/0016 for why
+    # /present and /admin/* are already gated the same way.
+    host = request.headers.get("host", "").split(":")[0]
+    if CAPTURE_HOST and host == CAPTURE_HOST:
+        return RedirectResponse("/present", status_code=303)
     if _current_name(request) is not None:
         return RedirectResponse("/course", status_code=303)
     context = _base_context(request)
