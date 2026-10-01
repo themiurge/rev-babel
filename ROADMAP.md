@@ -78,6 +78,20 @@ shared computer.
   baked-in pictures, and emoji need no translation at all. `SPID` and
   the reporting-site URL `commissariatodips.it` are protected literals;
   everything else, including institution names, translates normally.
+- **Lesson 3's third deck: "L'account Google"** (33 slides, five languages,
+  `lezione-3-account-google.json`), meant as optional if time allows.
+  Why a central cloud account, why Google, the two-step check, password
+  managers, then hands-on: install Claude and sign in with "Continua con
+  Google" (SSO), create a Wikipedia account (chosen because it is
+  legitimate, useful in any language, and has no Google button) with
+  Chrome/Android generating and saving the password in Google Password
+  Manager, log out and back in, and finally passkeys via `g.co/passkeys`.
+  Facts checked on the web: Claude requires an SMS phone verification even
+  with Google sign-in; Wikipedia's form labels, hCaptcha and lack of
+  Google/passkey login; on iPhone the Google manager only works through
+  Chrome after choosing it as the AutoFill provider (slide 13). New
+  `.mock-btn` CSS. **Not verified on real phones**: exact button labels,
+  and the passkey flow on `g.co/passkeys`.
 - **Lesson 3 exists: "Le email e i documenti"**, with two local decks.
   "Le email: come funzionano" (14 slides) covers the address, the
   composer's fields (A, Cc, Oggetto, testo), attachments, sending,

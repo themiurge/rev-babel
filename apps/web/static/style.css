@@ -732,3 +732,32 @@ body {
   background: #fff8d6;
   box-shadow: inset 4px 0 0 #f5b800;
 }
+
+/* ---- Button mockup for lesson 3's Google-account deck ("Continua con
+   Google", "Sì, sono io"). .hl marks the one to tap. ---- */
+
+.slide-box .mock-btn,
+#local-slide .mock-btn {
+  display: block;
+  max-width: 22rem;
+  margin: 0.6rem auto;
+  padding: 0.7rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  background: #fff;
+  font-weight: 600;
+  text-align: center;
+}
+
+.slide-box .mock-btn.dark,
+#local-slide .mock-btn.dark {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+.slide-box .mock-btn.hl,
+#local-slide .mock-btn.hl {
+  background: #fff8d6;
+  border-color: #f5b800;
+}

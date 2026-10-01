@@ -103,3 +103,16 @@ def test_lesson_3_decks_exist_and_keep_literals_untranslated() -> None:
         assert "Documento di prova - Nome Cognome" in deck["slides"][12][lang]
         assert "Buongiorno Emilio," in deck["slides"][13][lang]
         assert "scansione.pdf" in deck["slides"][14][lang]
+
+
+def test_google_account_deck_keeps_brands_and_typed_examples() -> None:
+    found = {d["slug"]: d for d in decks.list_decks()}
+    assert found["lezione-3-account-google"]["slide_count"] == 33
+
+    deck = decks.get_deck("lezione-3-account-google")
+    for lang in ("en", "fr", "ckb", "ar"):
+        slides = deck["slides"]
+        assert any("g.co/passkeys" in s[lang] for s in slides)
+        assert any("it.wikipedia.org" in s[lang] for s in slides)
+        assert any("Farfalla27" in s[lang] for s in slides)
+        assert all("Claude" in slides[i][lang] for i in (14, 15, 17, 18))
