@@ -48,6 +48,12 @@ LESSONS = [
         "long_title": "Il proprio account",
         "url": "/course/lezione-2",
     },
+    {
+        "slug": "lezione-3",
+        "title": "Lezione 3",
+        "long_title": "Le email e i documenti",
+        "url": "/course/lezione-3",
+    },
 ]
 
 # Per-game sanity bounds on a reported score, so a stray or malicious

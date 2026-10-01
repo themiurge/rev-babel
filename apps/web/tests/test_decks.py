@@ -86,3 +86,20 @@ def test_quiz_deck_reveal_slides_preserve_protected_terms_and_emoji() -> None:
 
     email_slide = decks.get_slide("lezione-2-truffe-quiz", 15, "ar")
     assert "agenziaentrate-rimborso@gmail.com" in email_slide["translated"]
+
+
+def test_lesson_3_decks_exist_and_keep_literals_untranslated() -> None:
+    found = {d["slug"]: d for d in decks.list_decks()}
+    assert found["lezione-3-email"]["slide_count"] == 14
+    assert found["lezione-3-scansione-invio"]["slide_count"] == 19
+
+    # The address, subject and body are what students must type verbatim,
+    # so they survive translation untouched in every language.
+    deck = decks.get_deck("lezione-3-scansione-invio")
+    for lang in ("en", "fr", "ckb", "ar"):
+        for index in (11, 12, 13, 14):  # A, subject, body, attachment slides
+            html = deck["slides"][index][lang]
+            assert "emilio.vicari@gmail.com" in html
+        assert "Documento di prova - Nome Cognome" in deck["slides"][12][lang]
+        assert "Buongiorno Emilio," in deck["slides"][13][lang]
+        assert "scansione.pdf" in deck["slides"][14][lang]

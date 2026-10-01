@@ -78,6 +78,22 @@ shared computer.
   baked-in pictures, and emoji need no translation at all. `SPID` and
   the reporting-site URL `commissariatodips.it` are protected literals;
   everything else, including institution names, translates normally.
+- **Lesson 3 exists: "Le email e i documenti"**, with two local decks.
+  "Le email: come funzionano" (14 slides) covers the address, the
+  composer's fields (A, Cc, Oggetto, testo), attachments, sending,
+  folders, replying, and a tie-back to lesson 2's scam signals. "Scansionare
+  e inviare un documento" (19 slides) tells students to take out their
+  phone, teaches good capture, then three scanning methods - Google
+  Drive (Scansione), iPhone (File > Scansiona documenti), plain Android
+  camera - converging on one shared send flow to
+  `emilio.vicari@gmail.com` with a fixed subject and body. New
+  `.mock-compose` CSS shows the composer with the current field
+  highlighted. Translated per slide with `agy`; whatever students must type
+  verbatim (address, subject, body, file name) is swapped for placeholders
+  before translating, so it cannot be altered. `agy` sometimes returned
+  empty output; one slide only worked after translating its text pieces
+  separately. **UI button labels were written from memory and not checked
+  on real phones.**
 - **The password game is now called "Password in codice."** "Cifra" (the
   verb "cifrare," to encipher) tested as too hard a word for the class,
   per the maintainer. Retitled everywhere it's user-visible (lesson page
