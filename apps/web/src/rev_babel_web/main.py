@@ -84,6 +84,15 @@ LESSON2_GAMES = {
     },
 }
 
+LESSON3_GAMES = {
+    "email": {
+        "title": "Invia l'email!",
+        "unit": "s",
+        "max_value": 3_600,
+        "src": "/games/email",
+    },
+}
+
 # Games with more than one difficulty: each mode gets its own score key
 # (its own row in game_scores) so easy and hard are tracked separately,
 # but they still share one lesson-page entry and one iframe.
@@ -97,13 +106,17 @@ GAME_MODES: dict[str, list[dict[str, str]]] = {
 # Flat lookup across every lesson, for score validation - a game slug is
 # unique across the whole site, not just within its own lesson. Mode
 # keys validate against their base game's bounds.
-GAMES = {**LESSON1_GAMES, **LESSON2_GAMES}
+GAMES = {**LESSON1_GAMES, **LESSON2_GAMES, **LESSON3_GAMES}
 for _base_slug, _modes in GAME_MODES.items():
     for _mode in _modes:
         GAMES[_mode["key"]] = GAMES[_base_slug]
 
 # Which games belong to which lesson, for the lesson page's link list.
-LESSON_GAMES = {"lezione-1": LESSON1_GAMES, "lezione-2": LESSON2_GAMES}
+LESSON_GAMES = {
+    "lezione-1": LESSON1_GAMES,
+    "lezione-2": LESSON2_GAMES,
+    "lezione-3": LESSON3_GAMES,
+}
 
 
 def _format_score(unit: str, value: float | None) -> str:
@@ -351,6 +364,21 @@ def game_cifra(request: Request):
         }
     )
     return templates.TemplateResponse(request, "games/cifra.html", context)
+
+
+@app.get("/games/email")
+def game_email(request: Request):
+    context = _base_context(request)
+    tr = context["tr"]
+    context["email_strings_json"] = json.dumps(
+        {
+            "check": tr("Controlla:") or "Controlla:",
+            "fillAll": tr("Prima compila tutti i campi.") or "Prima compila tutti i campi.",
+            "sent": tr("Email inviata!") or "Email inviata!",
+            "done": tr("Ce l'hai fatta!") or "Ce l'hai fatta!",
+        }
+    )
+    return templates.TemplateResponse(request, "games/email.html", context)
 
 
 @app.get("/logout")

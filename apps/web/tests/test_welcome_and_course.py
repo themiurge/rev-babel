@@ -129,3 +129,29 @@ def test_games_cifra_page_renders_with_both_start_buttons() -> None:
     assert 'id="startEasyBtn"' in response.text
     assert 'id="startHardBtn"' in response.text
     assert "vowel-pair" in response.text
+
+
+def test_lesson_3_page_links_to_the_email_game() -> None:
+    response = client.get("/course/lezione-3")
+    assert response.status_code == 200
+    assert 'href="/course/lezione-3/email"' in response.text
+
+
+def test_email_game_page_embeds_the_iframe_and_tracks_one_score() -> None:
+    response = client.get("/course/lezione-3/email")
+    assert response.status_code == 200
+    assert "/games/email" in response.text
+    assert 'data-game="email"' in response.text
+
+    first = client.post("/api/scores", json={"game": "email", "value": 40.0})
+    assert first.json() == {"best": 40.0, "last": 40.0}
+    second = client.post("/api/scores", json={"game": "email", "value": 55.0})
+    assert second.json() == {"best": 40.0, "last": 55.0}
+
+
+def test_games_email_page_renders_the_composer() -> None:
+    response = client.get("/games/email")
+    assert response.status_code == 200
+    assert 'id="startBtn"' in response.text
+    assert "mock-compose" in response.text
+    assert "emilio.vicari@gmail.com" in response.text

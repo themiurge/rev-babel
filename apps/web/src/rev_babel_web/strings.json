@@ -264,5 +264,145 @@
     "ckb": "قورس",
     "kmr": "Zehmet",
     "ar": "صعب"
+  },
+  "Invia l'email!": {
+    "en": "Send the email!",
+    "fr": "Envoie l'e-mail !",
+    "ckb": "ئیمەیڵەکە بنێرە!",
+    "kmr": "Emailê bişîne!",
+    "ar": "أرسل البريد الإلكتروني!"
+  },
+  "Compila l'email come dice il compito, poi tocca Invia.": {
+    "en": "Fill in the email as the task says, then tap Send.",
+    "fr": "Remplis l'e-mail comme le dit la consigne, puis appuie sur Envoyer.",
+    "ckb": "ئیمەیڵەکە وەک ئەرکەکە دەڵێت پڕبکەرەوە، پاشان دەست لە ناردن بدە.",
+    "kmr": "Emailê wekî ku peywir dibêje tije bike, paşê li ser Bişîne bitikîne.",
+    "ar": "املأ البريد الإلكتروني كما تقول المهمة، ثم اضغط إرسال."
+  },
+  "Il compito": {
+    "en": "The task",
+    "fr": "La consigne",
+    "ckb": "ئەرکەکە",
+    "kmr": "Peywir",
+    "ar": "المهمة"
+  },
+  "Indirizzo:": {
+    "en": "Address:",
+    "fr": "Adresse :",
+    "ckb": "ناونیشان:",
+    "kmr": "Navnîşan:",
+    "ar": "العنوان:"
+  },
+  "Oggetto:": {
+    "en": "Subject:",
+    "fr": "Objet :",
+    "ckb": "بابەت:",
+    "kmr": "Mijar:",
+    "ar": "الموضوع:"
+  },
+  "Testo:": {
+    "en": "Text:",
+    "fr": "Texte :",
+    "ckb": "دەق:",
+    "kmr": "Nivîs:",
+    "ar": "النص:"
+  },
+  "Allegato:": {
+    "en": "Attachment:",
+    "fr": "Pièce jointe :",
+    "ckb": "هاوپێچ:",
+    "kmr": "Pêvek:",
+    "ar": "المرفق:"
+  },
+  "A:": {
+    "en": "To:",
+    "fr": "À :",
+    "ckb": "بۆ:",
+    "kmr": "Bo:",
+    "ar": "إلى:"
+  },
+  "con saluto, allegato e grazie": {
+    "en": "with greeting, attachment and thank you",
+    "fr": "avec salutation, pièce jointe et merci",
+    "ckb": "لەگەڵ سڵاو، هاوپێچ و سوپاس",
+    "kmr": "bi silav, pêvek û spas",
+    "ar": "مع تحية، ومرفق، وشكر"
+  },
+  "Scegli l'indirizzo": {
+    "en": "Choose the address",
+    "fr": "Choisis l'adresse",
+    "ckb": "ناونیشانەکە هەڵبژێرە",
+    "kmr": "Navnîşanê hilbijêre",
+    "ar": "اختر العنوان"
+  },
+  "Scegli l'oggetto": {
+    "en": "Choose the subject",
+    "fr": "Choisis l'objet",
+    "ckb": "بابەتەکە هەڵبژێرە",
+    "kmr": "Mijarê hilbijêre",
+    "ar": "اختر الموضوع"
+  },
+  "Scegli il testo": {
+    "en": "Choose the text",
+    "fr": "Choisis le texte",
+    "ckb": "دەقەکە هەڵبژێرە",
+    "kmr": "Nivîsê hilbijêre",
+    "ar": "اختر النص"
+  },
+  "Scegli l'allegato": {
+    "en": "Choose the attachment",
+    "fr": "Choisis la pièce jointe",
+    "ckb": "هاوپێچەکە هەڵبژێرە",
+    "kmr": "Pêvekê hilbijêre",
+    "ar": "اختر المرفق"
+  },
+  "Invia": {
+    "en": "Send",
+    "fr": "Envoyer",
+    "ckb": "ناردن",
+    "kmr": "Bişîne",
+    "ar": "إرسال"
+  },
+  "Controlla:": {
+    "en": "Check:",
+    "fr": "Vérifie :",
+    "ckb": "بپشکنە:",
+    "kmr": "Kontrol bike:",
+    "ar": "تحقق:"
+  },
+  "Prima compila tutti i campi.": {
+    "en": "First fill in all fields.",
+    "fr": "Remplis d'abord tous les champs.",
+    "ckb": "سەرەتا هەموو خانەکان پڕبکەرەوە.",
+    "kmr": "Pêşî hemû xaneyan tije bike.",
+    "ar": "أولاً، املأ جميع الحقول."
+  },
+  "Ogni errore: +5 secondi.": {
+    "en": "Each mistake: +5 seconds.",
+    "fr": "Chaque erreur : +5 secondes.",
+    "ckb": "هەر هەڵەیەک: +5 چرکە.",
+    "kmr": "Her şaşî: +5 saniye.",
+    "ar": "كل خطأ: +5 ثوانٍ."
+  },
+  "Email inviata!": {
+    "en": "Email sent!",
+    "fr": "E-mail envoyé !",
+    "ckb": "ئیمەیڵەکە نێردرا!",
+    "kmr": "Email hat şandin!",
+    "ar": "تم إرسال البريد الإلكتروني!"
+  },
+  "Le email e i documenti": {
+    "en": "Emails and documents",
+    "fr": "Les e-mails et les documents",
+    "ckb": "ئیمەیڵەکان و بەڵگەنامەکان",
+    "kmr": "Email û belge",
+    "ar": "البريد الإلكتروني والمستندات"
+  },
+  "Lezione 3": {
+    "en": "Lesson 3",
+    "fr": "Leçon 3",
+    "ckb": "وانەی 3",
+    "kmr": "Ders 3",
+    "ar": "الدرس 3"
   }
 }

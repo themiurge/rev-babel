@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invia l'email!</title>
+<link rel="stylesheet" href="/static/style.css?v={{ static_version }}">
+{% import "_macros.html" as m with context %}
+<style>
+  body {
+    margin: 0; padding: 20px; box-sizing: border-box;
+    background: linear-gradient(135deg, #e8f0fe 0%, #fff8d6 100%);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .screen { max-width: 620px; width: 100%; }
+  h1 { margin: 0 0 8px; text-align: center; }
+  .screen .slide-box { margin-bottom: 14px; }
+  .screen .slide-box h2 { margin-top: 0; font-size: 1.1rem; }
+  .panel {
+    background: #fff; border-radius: 16px; padding: 20px; margin-bottom: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.1); text-align: center;
+  }
+  .task-line { display: flex; gap: 0.6rem; text-align: left; padding: 0.2rem 0; word-break: break-all; }
+  .task-label { flex: 0 0 6.5rem; color: #888; }
+  .task-value { font-weight: 700; }
+  .progress { color: #777; font-size: 0.9rem; margin-bottom: 8px; }
+  #composer .compose-row, #composer .compose-body { cursor: pointer; min-height: 1.6rem; }
+  #composer .compose-body { white-space: pre-line; border-bottom: 1px solid #eee; }
+  #composer .compose-attach { cursor: pointer; margin-top: 0.6rem; }
+  #composer .bad { background: #fdf1f0; box-shadow: inset 4px 0 0 #c0392b; }
+  .choices { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 10px; }
+  .choice {
+    padding: 0.8rem 1rem; font-size: 1.05rem; text-align: left; white-space: pre-line;
+    border: 2px solid #ccc; border-radius: 12px; background: #fff; cursor: pointer; word-break: break-all;
+  }
+  .choice:hover { border-color: #5b3fc4; background: #f1eafc; }
+  .btn {
+    margin-top: 10px; padding: 12px 24px; font-size: 1.1rem; border: none;
+    background: #1a56c4; color: #fff; border-radius: 10px; cursor: pointer;
+  }
+  .btn:hover { background: #12419a; }
+  .feedback { min-height: 1.4rem; margin-top: 10px; font-weight: 700; }
+  .feedback.wrong { color: #c0392b; }
+  .feedback.ok { color: #1e7a3c; }
+  .stats { display: flex; gap: 16px; justify-content: center; margin-top: 10px; color: #666; font-size: 0.95rem; }
+  .complete { font-size: 1.4rem; margin-top: 10px; color: #084c2e; font-weight: 700; }
+  .hint { color: #666; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+  <div class="screen">
+    <h1>✉️ Invia l'email!</h1>
+
+    <div class="panel" id="start-panel">
+      <p {{ m.title_attr("Compila l'email come dice il compito, poi tocca Invia.") }}>Compila l'email come dice il compito, poi tocca Invia.</p>
+      <p class="hint" {{ m.title_attr("Ogni errore: +5 secondi.") }}>Ogni errore: +5 secondi.</p>
+      <button id="startBtn" class="btn" {{ m.title_attr("Inizia") }}>Inizia</button>
+    </div>
+
+    <div id="game-panel" style="display:none;">
+      <div class="progress" id="progress"></div>
+
+      <div class="slide-box">
+        <h2 {{ m.title_attr("Il compito") }}>📋 Il compito</h2>
+        <div class="task-line"><span class="task-label" {{ m.title_attr("Indirizzo:") }}>Indirizzo:</span><span class="task-value" id="task-to"></span></div>
+        <div class="task-line"><span class="task-label" {{ m.title_attr("Oggetto:") }}>Oggetto:</span><span class="task-value" id="task-subject"></span></div>
+        <div class="task-line"><span class="task-label" {{ m.title_attr("Testo:") }}>Testo:</span><span class="task-value" {{ m.title_attr("con saluto, allegato e grazie") }}>con saluto, allegato e grazie</span></div>
+        <div class="task-line"><span class="task-label" {{ m.title_attr("Allegato:") }}>Allegato:</span><span class="task-value" id="task-file"></span></div>
+      </div>
+
+      <div class="slide-box">
+        <div class="mock-compose" id="composer">
+          <div class="compose-row" data-field="to"><span class="compose-label" {{ m.title_attr("A:") }}>A:</span><span class="compose-value" id="v-to"></span></div>
+          <div class="compose-row" data-field="subject"><span class="compose-label" {{ m.title_attr("Oggetto:") }}>Oggetto:</span><span class="compose-value" id="v-subject"></span></div>
+          <div class="compose-body" data-field="body" id="v-body"></div>
+          <div class="compose-attach" data-field="file" id="v-file">📎 …</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p id="prompt-to" data-prompt="to" {{ m.title_attr("Scegli l'indirizzo") }}>Scegli l'indirizzo</p>
+        <p id="prompt-subject" data-prompt="subject" {{ m.title_attr("Scegli l'oggetto") }}>Scegli l'oggetto</p>
+        <p id="prompt-body" data-prompt="body" {{ m.title_attr("Scegli il testo") }}>Scegli il testo</p>
+        <p id="prompt-file" data-prompt="file" {{ m.title_attr("Scegli l'allegato") }}>Scegli l'allegato</p>
+        <div class="choices" id="choices"></div>
+        <button id="sendBtn" class="btn" {{ m.title_attr("Invia") }}>Invia ✈️</button>
+        <div class="feedback" id="feedback"></div>
+        <div class="stats"><div><span {{ m.title_attr("Tempo:") }}>Tempo:</span> <span id="timer">0:00</span></div></div>
+        <div class="complete" id="complete"></div>
+        <button id="restartBtn" class="btn" style="display:none;" {{ m.title_attr("Ricomincia") }}>🔁 Ricomincia</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const STRINGS = {{ email_strings_json | safe }};
+
+    // Fictional people and files only. Each field has two near-miss
+    // distractors (one letter off, wrong extension, a similar title), so
+    // tapping the first tile that "looks right" doesn't work.
+    const GOOD_BODY = "Buongiorno,\nin allegato trovi il file.\nGrazie!";
+    const BAD_BODIES = ["ciao", "Mandami il file subito!!!"];
+    const TASKS = [
+      { to: "maria.bianchi@gmail.com", toBad: ["maria.bianchi@gmial.com", "maria.bianci@gmail.com"],
+        subject: "Foto del corso", subjectBad: ["Foto del mare", "Corso"], file: "foto-corso.jpg", fileBad: ["foto-mare.jpg", "foto-corsi.jpg"] },
+      { to: "scuola.rossini@gmail.com", toBad: ["scuola.rosini@gmail.com", "scuola.rossini@gmai.com"],
+        subject: "Iscrizione al corso", subjectBad: ["Iscrizione al concerto", "Corso"], file: "iscrizione.pdf", fileBad: ["iscrizione.doc", "iscrizioni.pdf"] },
+      { to: "dottor.neri@gmail.com", toBad: ["dottor.nerl@gmail.com", "dottor.neri@gmail.it"],
+        subject: "Richiesta di appuntamento", subjectBad: ["Richiesta di aiuto", "Appuntamento"], file: "richiesta.pdf", fileBad: ["richiesta.jpg", "ricevuta.pdf"] },
+      { to: "biblioteca.centro@gmail.com", toBad: ["bibloteca.centro@gmail.com", "biblioteca.centro@gmail.co"],
+        subject: "Tessera della biblioteca", subjectBad: ["Tessera del bus", "Biblioteca"], file: "tessera.pdf", fileBad: ["tessera.png", "tesserino.pdf"] },
+      { to: "laura.conti@gmail.com", toBad: ["laura.contl@gmail.com", "laura.conte@gmail.com"],
+        subject: "Ricetta di famiglia", subjectBad: ["Ricetta del dolce", "Famiglia"], file: "ricetta.pdf", fileBad: ["ricetta.jpg", "ricette.pdf"] },
+      { to: "corso.italiano@gmail.com", toBad: ["corso.italiano@gmail.con", "corso.italiani@gmail.com"],
+        subject: "Compiti della settimana", subjectBad: ["Compiti del mese", "Settimana"], file: "compiti.pdf", fileBad: ["compiti.doc", "compito.pdf"] },
+      { to: "sara.moretti@gmail.com", toBad: ["sara.moreti@gmail.com", "sara.morettl@gmail.com"],
+        subject: "Biglietto del treno", subjectBad: ["Biglietto del cinema", "Treno"], file: "biglietto.pdf", fileBad: ["biglietto.jpg", "biglietti.pdf"] },
+    ];
+    // The last round is the real thing students do in the lesson.
+    const FINAL_TASK = { to: "emilio.vicari@gmail.com", toBad: ["emilio.vicari@gmial.com", "emilio.vicary@gmail.com"],
+      subject: "Documento di prova", subjectBad: ["Documenti", "Prova"], file: "scansione.pdf", fileBad: ["scansione.png", "scansioni.pdf"] };
+    const ROUND_SIZE = 5; // 4 sampled tasks + the final one
+    const PENALTY_SECONDS = 5;
+    const FIELDS = ["to", "subject", "body", "file"];
+    const FIELD_LABELS = { to: "A", subject: "Oggetto", body: "Testo", file: "Allegato" };
+
+    function shuffle(list) {
+      const copy = list.slice();
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    const $ = (id) => document.getElementById(id);
+    const startPanel = $("start-panel"), gamePanel = $("game-panel");
+    const feedback = $("feedback"), timerEl = $("timer"), completeEl = $("complete");
+
+    let rounds = [], roundIndex = 0, chosen = {}, active = "to";
+    let startTime = null, timerInterval = null, errors = 0, finished = false;
+
+    function elapsed() {
+      return (Date.now() - startTime) / 1000 + errors * PENALTY_SECONDS;
+    }
+
+    function updateTimer() {
+      const total = Math.floor(elapsed());
+      timerEl.textContent = `${Math.floor(total / 60)}:${String(total % 60).padStart(2, "0")}`;
+    }
+
+    function optionsFor(field) {
+      const task = rounds[roundIndex];
+      if (field === "to") return [task.to, ...task.toBad];
+      if (field === "subject") return [task.subject, ...task.subjectBad];
+      if (field === "file") return [task.file, ...task.fileBad];
+      return [GOOD_BODY, ...BAD_BODIES];
+    }
+
+    function correctFor(field) {
+      const task = rounds[roundIndex];
+      return { to: task.to, subject: task.subject, body: GOOD_BODY, file: task.file }[field];
+    }
+
+    function renderComposer() {
+      $("v-to").textContent = chosen.to || "";
+      $("v-subject").textContent = chosen.subject || "";
+      $("v-body").textContent = chosen.body || "";
+      $("v-file").textContent = "📎 " + (chosen.file || "…");
+      document.querySelectorAll("#composer [data-field]").forEach((el) => {
+        el.classList.toggle("hl", el.dataset.field === active);
+      });
+    }
+
+    function renderChoices() {
+      document.querySelectorAll("[data-prompt]").forEach((p) => {
+        p.style.display = p.dataset.prompt === active ? "block" : "none";
+      });
+      const box = $("choices");
+      box.innerHTML = "";
+      shuffle(optionsFor(active)).forEach((text) => {
+        const b = document.createElement("button");
+        b.className = "choice";
+        b.textContent = text;
+        b.addEventListener("click", () => pick(text));
+        box.appendChild(b);
+      });
+    }
+
+    function nextEmptyField() {
+      return FIELDS.find((f) => !chosen[f]) || null;
+    }
+
+    function pick(text) {
+      if (finished) return;
+      chosen[active] = text;
+      feedback.textContent = "";
+      active = nextEmptyField() || active;
+      renderComposer();
+      renderChoices();
+    }
+
+    function setActive(field) {
+      if (finished) return;
+      active = field;
+      renderComposer();
+      renderChoices();
+    }
+
+    function startRound() {
+      const task = rounds[roundIndex];
+      chosen = {};
+      active = "to";
+      $("progress").textContent = `${roundIndex + 1} / ${rounds.length}`;
+      $("task-to").textContent = task.to;
+      $("task-subject").textContent = task.subject;
+      $("task-file").textContent = "📎 " + task.file;
+      document.querySelectorAll("#composer .bad").forEach((el) => el.classList.remove("bad"));
+      renderComposer();
+      renderChoices();
+    }
+
+    function startGame() {
+      rounds = [...shuffle(TASKS).slice(0, ROUND_SIZE - 1), FINAL_TASK];
+      roundIndex = 0;
+      errors = 0;
+      finished = false;
+      startTime = Date.now();
+      clearInterval(timerInterval);
+      updateTimer();
+      timerInterval = setInterval(updateTimer, 1000);
+      startPanel.style.display = "none";
+      gamePanel.style.display = "block";
+      $("restartBtn").style.display = "none";
+      $("sendBtn").style.display = "inline-block";
+      $("choices").style.display = "flex";
+      completeEl.textContent = "";
+      feedback.textContent = "";
+      startRound();
+    }
+
+    function finish() {
+      finished = true;
+      clearInterval(timerInterval);
+      const seconds = elapsed();
+      updateTimer();
+      completeEl.textContent = "🎉 " + STRINGS.done + " 🎉";
+      $("restartBtn").style.display = "inline-block";
+      $("sendBtn").style.display = "none";
+      $("choices").style.display = "none";
+      document.querySelectorAll("[data-prompt]").forEach((p) => { p.style.display = "none"; });
+      if (window.parent !== window) {
+        window.parent.postMessage(
+          { type: "rev-babel-score", game: "email", value: seconds, unit: "s" },
+          window.location.origin
+        );
+      }
+    }
+
+    function send() {
+      if (finished) return;
+      if (nextEmptyField()) {
+        feedback.textContent = STRINGS.fillAll;
+        feedback.className = "feedback wrong";
+        active = nextEmptyField();
+        renderComposer();
+        renderChoices();
+        return;
+      }
+      const wrong = FIELDS.filter((f) => chosen[f] !== correctFor(f));
+      if (wrong.length === 0) {
+        feedback.textContent = "✅ " + STRINGS.sent;
+        feedback.className = "feedback ok";
+        roundIndex++;
+        if (roundIndex === rounds.length) {
+          finish();
+        } else {
+          setTimeout(() => { feedback.textContent = ""; startRound(); }, 700);
+        }
+        return;
+      }
+      errors++;
+      updateTimer();
+      wrong.forEach((f) => {
+        document.querySelector(`#composer [data-field="${f}"]`).classList.add("bad");
+        delete chosen[f];
+      });
+      active = wrong[0];
+      feedback.textContent = `${STRINGS.check} ${wrong.map((f) => FIELD_LABELS[f]).join(", ")} (+${PENALTY_SECONDS} s)`;
+      feedback.className = "feedback wrong";
+      renderComposer();
+      renderChoices();
+    }
+
+    $("startBtn").addEventListener("click", startGame);
+    $("restartBtn").addEventListener("click", startGame);
+    $("sendBtn").addEventListener("click", send);
+    document.querySelectorAll("#composer [data-field]").forEach((el) => {
+      el.addEventListener("click", () => {
+        el.classList.remove("bad");
+        setActive(el.dataset.field);
+      });
+    });
+  </script>
+</body>
+</html>

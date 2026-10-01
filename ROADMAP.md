@@ -78,6 +78,19 @@ shared computer.
   baked-in pictures, and emoji need no translation at all. `SPID` and
   the reporting-site URL `commissariatodips.it` are protected literals;
   everything else, including institution names, translates normally.
+- **Lesson 3 has a game: "Invia l'email!"** (`templates/games/email.html`,
+  one mode, five rounds, scored in seconds with a personal best like the
+  other games). Each round shows a task card (address, subject, attachment;
+  the message must be polite) and the slides' email-composer mockup; the
+  student taps one of three tiles per field (A, Oggetto, Testo, Allegato)
+  and presses Invia. Distractors are near misses - `gmial.com`, a letter
+  off, `.doc` instead of `.pdf` - so tapping the first tile that looks right
+  fails. Each wrong send costs +5 seconds and clears only the wrong fields.
+  The fifth round is always the real lesson task (`emilio.vicari@gmail.com`,
+  "Documento di prova", `scansione.pdf`). All people and files are fictional.
+  The page's labels got hover translations in all five languages, as did the
+  two lesson-3 titles that were missing. Exercised headlessly with jsdom
+  (clean run and a run with deliberate mistakes), not in a real browser.
 - **Lesson 3's third deck: "L'account Google"** (33 slides, five languages,
   `lezione-3-account-google.json`), meant as optional if time allows.
   Why a central cloud account, why Google, the two-step check, password
