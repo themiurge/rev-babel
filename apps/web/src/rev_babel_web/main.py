@@ -54,6 +54,12 @@ LESSONS = [
         "long_title": "Le email e i documenti",
         "url": "/course/lezione-3",
     },
+    {
+        "slug": "lezione-4",
+        "title": "Lezione 4",
+        "long_title": "Lo SPID e i servizi online",
+        "url": "/course/lezione-4",
+    },
 ]
 
 # Per-game sanity bounds on a reported score, so a stray or malicious

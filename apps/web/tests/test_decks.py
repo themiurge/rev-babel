@@ -116,3 +116,31 @@ def test_google_account_deck_keeps_brands_and_typed_examples() -> None:
         assert any("it.wikipedia.org" in s[lang] for s in slides)
         assert any("Farfalla27" in s[lang] for s in slides)
         assert all("Claude" in slides[i][lang] for i in (14, 15, 17, 18))
+
+
+def test_lesson_4_spid_decks_keep_numbers_urls_and_labels_untranslated() -> None:
+    found = {d["slug"]: d for d in decks.list_decks()}
+    assert found["lezione-4-recupero-spid"]["slide_count"] == 17
+    assert found["lezione-4-spid"]["slide_count"] == 24
+
+    # Phone numbers, addresses and on-screen button labels are what students
+    # copy or look for, so they must come through every translation intact.
+    recovery = decks.get_deck("lezione-4-recupero-spid")["slides"]
+    spid = decks.get_deck("lezione-4-spid")["slides"]
+    for lang in ("it", "en", "fr", "ckb", "ar"):
+        assert "06.4526.3893" in recovery[4][lang]
+        assert "posteid.poste.it/recuperocredenziali.shtml" in recovery[6][lang]
+        assert "Non ricordo il codice PosteID" in recovery[10][lang]
+        assert "06.977.977.77" in recovery[12][lang]
+        assert "Accedi con SPID" in spid[4][lang]
+        assert "fascicolo-sanitario.it" in spid[14][lang]
+        assert "questure.poliziadistato.it/stranieri" in spid[18][lang]
+        assert "{{" not in recovery[4][lang] and "[[P" not in recovery[4][lang]
+
+
+def test_lesson_4_spid_decks_have_every_language_on_every_slide() -> None:
+    for slug in ("lezione-4-recupero-spid", "lezione-4-spid"):
+        for slide in decks.get_deck(slug)["slides"]:
+            for lang in ("it", "en", "fr", "ckb", "ar"):
+                assert slide[lang].startswith("<h1>")
+                assert "[[P" not in slide[lang] and "{{" not in slide[lang]

@@ -404,5 +404,19 @@
     "ckb": "وانەی 3",
     "kmr": "Ders 3",
     "ar": "الدرس 3"
+  },
+  "Lezione 4": {
+    "en": "Lesson 4",
+    "fr": "Leçon 4",
+    "ckb": "وانەی 4",
+    "kmr": "Ders 4",
+    "ar": "الدرس 4"
+  },
+  "Lo SPID e i servizi online": {
+    "en": "SPID and online services",
+    "fr": "Le SPID et les services en ligne",
+    "ckb": "SPID و خزمەتگوزارییە ئۆنلاینەکان",
+    "kmr": "SPID û karûbarên serhêl",
+    "ar": "SPID والخدمات عبر الإنترنت"
   }
 }

@@ -78,6 +78,34 @@ shared computer.
   baked-in pictures, and emoji need no translation at all. `SPID` and
   the reporting-site URL `commissariatodips.it` are protected literals;
   everything else, including institution names, translates normally.
+- **Lesson 4 (SPID) has two decks**, five languages, and a "Lezione 4" entry
+  in the course menu (no game yet). `lezione-4-spid.json` (24 slides): SPID
+  as a key and not a website, the six-step login with a "Dove siamo?" mockup
+  per step, three security rules and the "chi ha iniziato il login?" test,
+  then services useful to this class: Fascicolo sanitario
+  (`fascicolo-sanitario.it`), Comune di Parma / ANPR certificates and
+  `agenda.comune.parma.it`, INPS assegno unico, school enrolment on Unica,
+  and permesso di soggiorno (checking the status needs **no SPID**, only the
+  10-character pratica or 12-character assicurata number; Portale Servizi ALI
+  and PrenotaFacile do). Closes on a "look, don't change anything" practice
+  slide and a where-to-ask-for-help slide (Informastranieri, patronati, AUSL).
+  `lezione-4-recupero-spid.json` (17 slides) is the "ritroviamo l'accesso"
+  deck for PosteID, framed for everyone rather than one student: triage
+  (password / nome utente / codice app / numero), password reset by calling
+  `06.4526.3893` from the linked phone and following the emailed link,
+  blocked profile (30 min), app code (5 attempts, "Non ricordo il codice
+  PosteID"), new phone, temporary PIN when SMS don't arrive, and lost number
+  (Poste customer service `06.977.977.77`, phone the post office first).
+  Sources: posteid.poste.it assistenza and poste.it FAQ (fetched), Questura di
+  Parma and Comune di Parma pages, Regione Emilia-Romagna FSE page. **Not
+  verified:** whether the student's SPID is actually Poste (assumed); exact
+  app wording in the approval mockup; whether a post office can change the
+  SPID number (one forum report says not always; last resort is revoking and
+  re-registering via revoca.posteid@posteitaliane.it); assegno unico permit
+  eligibility (sources disagree, slide defers to a patronato); Poste support
+  hours; Questura Parma appointment rules (pages dated 2018-2024). Translated
+  with `agy` through `{{...}}`-protected literals; it returned empty for many
+  slides, so the builder falls back to per-sentence translation.
 - **Lesson 3 has a game: "Invia l'email!"** (`templates/games/email.html`,
   one mode, five rounds, scored in seconds with a personal best like the
   other games). Each round shows a task card (address, subject, attachment;
