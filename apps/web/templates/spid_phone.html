@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Approva l'accesso</title>
+<style>
+  body { margin: 0; font-family: system-ui, sans-serif; background: #eef2f7; color: #111; }
+  .sim { background: #fff3c4; text-align: center; padding: 8px; font-size: 0.85rem; font-weight: 600; }
+  .app { max-width: 26rem; margin: 0 auto; padding: 16px; }
+  .app-head { background: #1a56c4; color: #fff; border-radius: 14px 14px 0 0; padding: 14px 16px; font-weight: 700; font-size: 1.1rem; }
+  .card { background: #fff; border-radius: 0 0 14px 14px; padding: 20px 16px 24px; box-shadow: 0 6px 20px rgba(0,0,0,.08); }
+  .card h1 { font-size: 1.3rem; margin: 0 0 10px; }
+  .card p { line-height: 1.45; margin: 0 0 12px; }
+  .service { font-weight: 700; }
+  form { display: flex; flex-direction: column; gap: 12px; margin-top: 18px; }
+  button { font-size: 1.2rem; padding: 16px; border-radius: 12px; border: 0; font-weight: 700; }
+  .ok { background: #1e7a3c; color: #fff; }
+  .no { background: #fff; color: #b3261e; border: 2px solid #b3261e; }
+  .tip { background: #eef6ff; border-radius: 10px; padding: 10px 12px; font-size: 0.95rem; }
+  .big { font-size: 3rem; text-align: center; }
+</style>
+</head>
+<body>
+  <div class="sim">GIOCO · Simulazione della lezione 4 · Non è lo SPID vero</div>
+  <div class="app">
+    <div class="app-head">📱 App Poste ID (finta)</div>
+    <div class="card">
+    {% if decision == "approve" %}
+      <div class="big">✅</div>
+      <h1>Accesso approvato</h1>
+      <p>Torna al computer: il sito si apre da solo.</p>
+    {% elif decision == "reject" %}
+      <div class="big">🚫</div>
+      <h1>Accesso rifiutato</h1>
+      <p>Nella vita vera è la cosa giusta quando non hai iniziato tu l'accesso. Nel gioco, torna al computer e riprova.</p>
+    {% elif usable %}
+      <h1>Vuoi approvare l'accesso?</h1>
+      <p>Qualcuno vuole entrare in <span class="service">{{ service }}</span> con il tuo SPID.</p>
+      <p class="tip"><strong>Chi ha iniziato l'accesso?</strong> Se sei stata tu, sul computer, adesso: premi Approva. Se non stavi entrando: premi Rifiuta.</p>
+      <form method="post" action="/spid/{{ code }}">
+        <button class="ok" name="decision" value="approve">Approva</button>
+        <button class="no" name="decision" value="reject">Rifiuta</button>
+      </form>
+    {% else %}
+      <div class="big">⌛</div>
+      <h1>Link già usato o scaduto</h1>
+      <p>Torna al computer e premi «Riprova» per avere un nuovo codice.</p>
+    {% endif %}
+    </div>
+  </div>
+</body>
+</html>

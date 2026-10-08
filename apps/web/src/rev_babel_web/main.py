@@ -19,7 +19,7 @@ from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
 from starlette.middleware.sessions import SessionMiddleware
 
-from rev_babel_web import db, decks, i18n, live
+from rev_babel_web import db, decks, i18n, live, spid_game
 
 _HERE = os.path.dirname(__file__)
 _WEB_ROOT = os.path.abspath(os.path.join(_HERE, "..", ".."))
@@ -99,6 +99,18 @@ LESSON3_GAMES = {
     },
 }
 
+# Opens in its own tab, full window, with its own side panes: no iframe, no
+# score (the lesson page links straight to /games/spid).
+LESSON4_GAMES = {
+    "spid": {
+        "title": "Entra con SPID!",
+        "unit": "s",
+        "max_value": 3_600,
+        "src": "/games/spid",
+        "new_tab": True,
+    },
+}
+
 # Games with more than one difficulty: each mode gets its own score key
 # (its own row in game_scores) so easy and hard are tracked separately,
 # but they still share one lesson-page entry and one iframe.
@@ -122,6 +134,7 @@ LESSON_GAMES = {
     "lezione-1": LESSON1_GAMES,
     "lezione-2": LESSON2_GAMES,
     "lezione-3": LESSON3_GAMES,
+    "lezione-4": LESSON4_GAMES,
 }
 
 
@@ -322,6 +335,8 @@ def lesson_game(request: Request, lesson_slug: str, game_slug: str):
     info = LESSON_GAMES.get(lesson_slug, {}).get(game_slug)
     if info is None:
         raise HTTPException(status_code=404)
+    if info.get("new_tab"):
+        return RedirectResponse(info["src"], status_code=303)
     student_id = request.session["student_id"]
     context = _base_context(request)
     modes = GAME_MODES.get(game_slug)
@@ -385,6 +400,122 @@ def game_email(request: Request):
         }
     )
     return templates.TemplateResponse(request, "games/email.html", context)
+
+
+SPID_SERVICES = {"fse", "comune", "inps", "scuola", "questura"}
+_SPID_STRINGS_PATH = os.path.join(_HERE, "spid_game_strings.json")
+with open(_SPID_STRINGS_PATH, encoding="utf-8") as _f:
+    SPID_GAME_STRINGS = json.load(_f)
+SPID_SERVICE_NAMES = {
+    "fse": "Fascicolo sanitario",
+    "comune": "Comune di Parma",
+    "inps": "INPS",
+    "scuola": "Iscrizioni scolastiche",
+    "questura": "Prenotazioni Questura",
+}
+
+
+def _public_base(request: Request) -> str:
+    """Where the student's phone can reach this app: the student host, never
+    the protected teacher host, which a phone cannot open."""
+    public = os.environ.get("ECO_PUBLIC_HOST")
+    host = request.headers.get("host", "")
+    if public and host.split(":")[0] == CAPTURE_HOST:
+        return f"https://{public}"
+    scheme = request.headers.get("x-forwarded-proto") or request.url.scheme
+    return f"{scheme}://{host}"
+
+
+class SpidChallengeIn(BaseModel):
+    service: str
+
+
+@app.get("/games/spid")
+def game_spid(request: Request):
+    student = _current_student(request)
+    if student is None:
+        return RedirectResponse("/", status_code=303)
+    lang = _current_lang(request)
+    context = _base_context(request)
+    context.update(
+        {
+            # "</" would end the <script> block this JSON is embedded in.
+            "spid_strings_json": json.dumps(SPID_GAME_STRINGS, ensure_ascii=False).replace(
+                "</", "<\\/"
+            ),
+            "is_rtl": lang in i18n.RTL_LANGUAGES,
+            "student_id": student["id"],
+        }
+    )
+    return templates.TemplateResponse(request, "games/spid.html", context)
+
+
+@app.post("/api/spid-game/challenge")
+def spid_challenge_create(request: Request, body: SpidChallengeIn):
+    student = _current_student(request)
+    if student is None:
+        raise HTTPException(status_code=401)
+    if body.service not in SPID_SERVICES:
+        raise HTTPException(status_code=400, detail="Unknown service.")
+    challenge = spid_game.create(student["id"], SPID_SERVICE_NAMES[body.service])
+    base = _public_base(request)
+    url = f"{base}/spid/{challenge.code}"
+    return {
+        "code": challenge.code,
+        "url": url,
+        "display": url.split("://", 1)[1],
+        "qr_svg": spid_game.qr_svg(url),
+    }
+
+
+@app.get("/api/spid-game/challenge/{code}")
+def spid_challenge_status(request: Request, code: str):
+    student = _current_student(request)
+    if student is None:
+        raise HTTPException(status_code=401)
+    challenge = spid_game.get(code)
+    if challenge is None or challenge.student_id != student["id"]:
+        return {"state": "expired"}
+    if challenge.state != spid_game.PENDING:
+        # The computer has now seen the outcome: the code is spent.
+        spid_game.consume(code)
+    return {"state": challenge.state}
+
+
+@app.get("/spid/{code}")
+def spid_phone_page(request: Request, code: str):
+    challenge = spid_game.get(code)
+    usable = challenge is not None and challenge.state == spid_game.PENDING
+    return templates.TemplateResponse(
+        request,
+        "spid_phone.html",
+        {
+            "code": code,
+            "service": challenge.service if usable and challenge else "",
+            "usable": usable,
+            "decision": None,
+        },
+        status_code=200 if usable else 410,
+    )
+
+
+@app.post("/spid/{code}")
+def spid_phone_decide(request: Request, code: str, decision: str = Form(...)):
+    if decision not in ("approve", "reject"):
+        raise HTTPException(status_code=400)
+    challenge = spid_game.decide(code, approve=decision == "approve")
+    if challenge is None:
+        return templates.TemplateResponse(
+            request,
+            "spid_phone.html",
+            {"code": code, "service": "", "usable": False, "decision": None},
+            status_code=410,
+        )
+    return templates.TemplateResponse(
+        request,
+        "spid_phone.html",
+        {"code": code, "service": challenge.service, "usable": False, "decision": decision},
+    )
 
 
 @app.get("/logout")

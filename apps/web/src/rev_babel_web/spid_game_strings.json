@@ -1,0 +1,450 @@
+{
+ "ui_tasks": {
+  "it": "📋 I tuoi compiti",
+  "en": "📋 Your tasks",
+  "fr": "📋 I tuoi compiti",
+  "ckb": "📋 ئەرکەکانت",
+  "kmr": "📋 Karên te",
+  "ar": "📋 مهامكِ"
+ },
+ "ui_now": {
+  "it": "💡 Cosa fare adesso",
+  "en": "💡 What to do now",
+  "fr": "💡 Que faire maintenant",
+  "ckb": "💡 ئێستا چی بکەیت",
+  "kmr": "💡 Niha çi bikin",
+  "ar": "💡 ماذا تفعلين الآن"
+ },
+ "ui_start": {
+  "it": "Inizia il gioco",
+  "en": "Start the game",
+  "fr": "Commencer le jeu",
+  "ckb": "یارییەکە دەست پێ بکە",
+  "kmr": "Dest bi lîstikê bike",
+  "ar": "ابدئي اللعبة"
+ },
+ "ui_next": {
+  "it": "Vai al compito successivo",
+  "en": "Go to the next task",
+  "fr": "Vai al compito successivo",
+  "ckb": "بڕۆ بۆ ئەرکی دواتر",
+  "kmr": "Vai al compito successivo",
+  "ar": "انتقلي إلى المهمة التالية"
+ },
+ "ui_retry": {
+  "it": "Riprova",
+  "en": "Try again",
+  "fr": "Réessayer",
+  "ckb": "دووبارە هەوڵ بدەرەوە",
+  "kmr": "Dîsa biceribîne",
+  "ar": "حاولي مرة أخرى"
+ },
+ "ui_playagain": {
+  "it": "Ricomincia da capo",
+  "en": "Start over",
+  "fr": "Ricomincia da capo",
+  "ckb": "لە سەرەتاوە دەست پێ بکەرەوە",
+  "kmr": "Ji serî ve dest pê bike",
+  "ar": "ابدئي من البداية"
+ },
+ "intro_title": {
+  "it": "👋 Benvenuta! Alleniamoci con lo SPID",
+  "en": "👋 Welcome! Let's practice with SPID",
+  "fr": "👋 Bienvenue ! Entraînons-nous avec le SPID",
+  "ckb": "👋 بەخێربێیت! با ڕاهێنان بکەین لەگەڵ SPID",
+  "kmr": "👋 Bi xêr hatî! Werin em bi SPID re pratîk bikin",
+  "ar": "👋 مرحباً بكِ! لنتدرب على SPID"
+ },
+ "intro_body": {
+  "it": "<p>Questo è un gioco. <strong>Tutto è finto</strong>: i siti, i nomi, le password. Puoi sbagliare: non succede niente.</p><ol><li>Hai <strong>5 compiti</strong>. Li vedi nella lista a destra.</li><li>Per ogni compito: cerchi un sito, entri con lo <strong>SPID</strong> e fai una piccola cosa.</li><li>Per entrare ti serve il <strong>telefono</strong>: inquadri un codice QR e premi Approva. Tieni il telefono vicino.</li><li>Nella colonna a destra trovi sempre la spiegazione di quello che vedi.</li><li>Quando finisci un compito, diventa <strong>verde</strong>.</li></ol><p class=\"ask\"><strong>Se hai capito, fai clic su Inizia il gioco. Se non hai capito, chiedi a Emilio.</strong></p>",
+  "en": "<p>This is a game. <strong>Everything is fake</strong>: the websites, the names, the passwords. You can make mistakes: nothing happens.</p><ol><li>You have <strong>5 tasks</strong>. You can see them in the list on the right.</li><li>For each task: you look for a website, log in with <strong>SPID</strong>, and do a small thing.</li><li>To log in, you need your <strong>phone</strong>: scan a QR code and press Approva. Keep your phone close.</li><li>In the column on the right, you will always find an explanation of what you see.</li><li>When you finish a task, it turns <strong>green</strong>.</li></ol><p class=\"ask\"><strong>If you understand, click on Inizia il gioco. If you don't understand, ask Emilio.</strong></p>",
+  "fr": "<p>C'est un jeu. <strong>Tout est faux</strong> : les sites, les noms, les mots de passe. Tu peux te tromper : il ne se passe rien.</p><ol><li>Tu as <strong>5 tâches</strong>. Tu les vois dans la liste à droite.</li><li>Pour chaque tâche : tu cherches un site, tu te connectes avec le <strong>SPID</strong> et tu fais une petite chose.</li><li>Pour te connecter, tu as besoin du <strong>téléphone</strong> : tu scannes un code QR et tu appuies sur Approva. Garde le téléphone près de toi.</li><li>Dans la colonne de droite, tu trouves toujours l'explication de ce que tu vois.</li><li>Quand tu finis une tâche, elle devient <strong>verte</strong>.</li></ol><p class=\"ask\"><strong>Si tu as compris, clique sur Inizia il gioco. Si tu n'as pas compris, demande à Emilio.</strong></p>",
+  "ckb": "<p>ئەمە یارییەکە. <strong>هەموو شتێک ڕاستەقینە نییە</strong>: سایتەکان، ناوەکان، وشە نهێنییەکان. دەتوانیت هەڵە بکەیت: هیچ ڕوونادات.</p><ol><li>تۆ <strong>5 ئەرکت</strong> هەیە. لە لیستەکەی لای ڕاستدا دەیانبینیت.</li><li>بۆ هەر ئەرکێک: بەدوای سایتێکدا دەگەڕێیت، بە <strong>SPID</strong> دەچیتە ژوورەوە و کارێکی بچووک دەکەیت.</li><li>بۆ چوونە ژوورەوە پێویستت بە <strong>مۆبایل</strong> دەبێت: کامێراکە دەگریتە سەر کۆدی QR و پەنجە دەنێیت بە Approva دا. مۆبایلەکەت لە نزیک خۆت دابنێ.</li><li>لە ستوونی لای ڕاستدا هەمیشە ڕوونکردنەوەی ئەوە دەدۆزیتەوە کە دەیبینیت.</li><li>کاتێک ئەرکێک تەواو دەکەیت، دەبێتە <strong>سەوز</strong>.</li></ol><p class=\"ask\"><strong>ئەگەر تێگەیشتیت، کلیک لەسەر Inizia il gioco بکە. ئەگەر تێنەگەیشتیت، پرسیار لە Emilio بکە.</strong></p>",
+  "kmr": "<p>Ev lîstikek e. <strong>Her tişt sexte ye</strong>: malper, nav û şîfre. Tu dikarî şaş bikî: tiştek nabe.</p><ol><li><strong>5 karên te</strong> hene. Tu wan di lîsteya li milê rastê de dibînî.</li><li>Ji bo her karî: tu li malperekê digerî, bi <strong>SPID</strong> dikevî hundir û tiştekî biçûk dikî.</li><li>Ji bo ku bikevî hundir, <strong>telefon</strong> ji te re lazim e: koda QR dixî nav çarçoveyê û pê li Approva dikî. Telefona xwe li nêzîk bihêle.</li><li>Di stûna li milê rastê de her tim şiroveya tiştê ku tu dibînî heye.</li><li>Dema ku tu karekî diqedînî, ew dibe <strong>kesk</strong>.</li></ol><p class=\"ask\"><strong>Heke te fêm kir, klîk bike ser Inizia il gioco. Heke te fêm nekir, ji Emilio bipirse.</strong></p>",
+  "ar": "<p>هذه لعبة. <strong>كل شيء غير حقيقي</strong>: المواقع، والأسماء، وكلمات المرور. يمكنكِ أن تخطئي: لن يحدث شيء.</p><ol><li>لديكِ <strong>5 مهام</strong>. ترينها في القائمة على اليمين.</li><li>في كل مهمة: تبحثين عن موقع، وتدخلين باستخدام <strong>SPID</strong>، وتفعلين شيئاً بسيطاً.</li><li>للدخول تحتاجين إلى <strong>الهاتف</strong>: توجهين الكاميرا نحو رمز QR وتضغطين على Approva. أبقي الهاتف قريباً منكِ.</li><li>في العمود على اليمين تجدين دائماً شرحاً لما ترينه.</li><li>عندما تنتهين من مهمة، يصبح لونها <strong>أخضر</strong>.</li></ol><p class=\"ask\"><strong>إذا فهمتِ، اضغطي على Inizia il gioco. وإذا لم تفهمي، اسألي Emilio.</strong></p>"
+ },
+ "task_1": {
+  "it": "<h3>Compito @@N@@ di 5</h3><p>Vuoi guardare un referto medico. Ti serve il <strong>Fascicolo sanitario</strong>.</p><p>Nel motore di ricerca scrivi: Fascicolo sanitario</p>",
+  "en": "<h3>Task @@N@@ of 5</h3><p>You want to look at a medical report. You need the<strong>Health record</strong>.</p><p>In the search engine, type: Fascicolo sanitario</p>",
+  "fr": "<h3>Tâche @@N@@ sur 5</h3><p>Tu veux regarder un compte-rendu médical. Il te faut le<strong>Dossier médical</strong>.</p><p>Dans le moteur de recherche, écris : Fascicolo sanitario</p>",
+  "ckb": "<h3>ئەرکی @@N@@ لە 5</h3><p>دەتەوێت سەیری ڕاپۆرتێکی پزیشکی بکەیت. پێویستت بە<strong>دۆسیەی تەندروستی</strong>.</p><p>لە مەکینەی گەڕاندا بنووسە: Fascicolo sanitario</p>",
+  "kmr": "<h3>Kar @@N@@ ji 5</h3><p>Tu dixwazî encamên kontrola doktor bibînî. Ji te re <strong>Dosyaya tenduristiyê</strong> lazim e.</p><p>Di cihê lêgerînê de binivîse: Fascicolo sanitario</p>",
+  "ar": "<h3>المهمة @@N@@ من 5</h3><p>تريدين رؤية تقرير طبي. تحتاجين إلى <strong>الملف الصحي</strong>.</p><p>في محرك البحث اكتبي: Fascicolo sanitario</p>"
+ },
+ "task_2": {
+  "it": "<h3>Compito @@N@@ di 5</h3><p>Ti serve un certificato di residenza. Lo chiedi al <strong>Comune di Parma</strong>.</p><p>Nel motore di ricerca scrivi: Comune di Parma</p>",
+  "en": "<h3>Task @@N@@ of 5</h3><p>You need a residence certificate. You ask the <strong>Municipality of Parma</strong> for it.</p><p>In the search engine, type: Comune di Parma</p>",
+  "fr": "<h3>Tâche @@N@@ sur 5</h3><p>Tu as besoin d'un certificat de résidence. Tu le demandes au<strong>Mairie de Parme</strong>.</p><p>Dans le moteur de recherche, écris : Comune di Parma</p>",
+  "ckb": "<h3>ئەرکی @@N@@ لە 5</h3><p>پێویستت بە بەڵگەنامەی نیشتەجێبوون هەیە. داوای لە <strong>Comune di Parma</strong> دەکەیت.</p><p>لە بزوێنەری گەڕاندا بنووسە: Comune di Parma</p>",
+  "kmr": "<h3>Erka @@N@@ ji 5an</h3><p>Ji te re belgeya rûniştinê pêwîst e. Tu wê ji <strong>Comune di Parma</strong> dixwazî.</p><p>Di motora lêgerînê de binivîse: Comune di Parma</p>",
+  "ar": "<h3>المهمة @@N@@ من 5</h3><p>تحتاجين إلى شهادة إقامة. تطلبينها من<strong>بلدية بارما</strong>.</p><p>في محرك البحث اكتبي: Comune di Parma</p>"
+ },
+ "task_3": {
+  "it": "<h3>Compito @@N@@ di 5</h3><p>Vuoi vedere a che punto è l'assegno unico per i figli. Lo trovi sul sito dell'<strong>INPS</strong>.</p><p>Nel motore di ricerca scrivi: INPS</p>",
+  "en": "<h3>Task @@N@@ of 5</h3><p>You want to check the status of the single child allowance. You can find it on the <strong>INPS</strong> website.</p><p>In the search engine, type: INPS</p>",
+  "fr": "<h3>Exercice @@N@@ sur 5</h3><p>Tu veux voir où en est l'allocation unique pour les enfants. Tu la trouves sur le site de l'<strong>INPS</strong>.</p><p>Dans le moteur de recherche, écris : INPS</p>",
+  "ckb": "<h3>ئەرکی @@N@@ لە 5</h3><p>دەتەوێت بزانیت یارمەتیی دارایی منداڵان گەیشتووەتە کوێ. لە ماڵپەڕی <strong>INPS</strong> دەیدۆزیتەوە.</p><p>لە بزوێنەری گەڕاندا بنووسە: INPS</p>",
+  "kmr": "<h3>Peywira @@N@@ ji 5an</h3><p>Tu dixwazî bibînî ka alîkariya yekane ya ji bo zarokan di çi rewşê de ye. Tu wê li ser malpera <strong>INPS</strong>ê dibînî.</p><p>Di motora lêgerînê de binivîse: INPS</p>",
+  "ar": "<h3>المهمة @@N@@ من 5</h3><p>تريدين معرفة حالة بدل الأبناء الموحد. تجدينه على موقع <strong>INPS</strong>.</p><p>في محرك البحث اكتبي: INPS</p>"
+ },
+ "task_4": {
+  "it": "<h3>Compito @@N@@ di 5</h3><p>Devi iscrivere un figlio a scuola. Si fa online, sul sito delle <strong>iscrizioni scolastiche</strong>.</p><p>Nel motore di ricerca scrivi: Iscrizioni scuola</p>",
+  "en": "<h3>Task @@N@@ of 5</h3><p>You need to enroll a child in school. You do it online, on the <strong>school enrollment</strong> website.</p><p>In the search engine, type: Iscrizioni scuola</p>",
+  "fr": "<h3>Exercice @@N@@ sur 5</h3><p>Tu dois inscrire un enfant à l'école. Cela se fait en ligne, sur le site des <strong>inscriptions scolaires</strong>.</p><p>Dans le moteur de recherche, écris : Iscrizioni scuola</p>",
+  "ckb": "<h3>ئەرکی @@N@@ لە 5</h3><p>دەبێت منداڵێک لە قوتابخانە ناونووس بکەیت. بە ئۆنلاین دەکرێت، لە ماڵپەڕی <strong>ناونووسینی قوتابخانەکان</strong>.</p><p>لە بزوێنەری گەڕاندا بنووسە: Iscrizioni scuola</p>",
+  "kmr": "<h3>Erka @@N@@ ji 5</h3><p>Divê tu zarokekî li dibistanê qeyd bikî. Ev li ser înternetê tê kirin, li ser malpera <strong>qeydkirina dibistanê</strong>.</p><p>Di motora lêgerînê de binivîse: Iscrizioni scuola</p>",
+  "ar": "<h3>المهمة @@N@@ من 5</h3><p>عليكِ أن تسجّلي ابنكِ في المدرسة. يتم ذلك عبر الإنترنت، على موقع <strong>التسجيل في المدارس</strong>.</p><p>في محرك البحث اكتبي: Iscrizioni scuola</p>"
+ },
+ "task_5": {
+  "it": "<h3>Compito @@N@@ di 5</h3><p>Devi prenotare un appuntamento in <strong>Questura</strong>.</p><p>Nel motore di ricerca scrivi: Questura</p>",
+  "en": "<h3>Task @@N@@ of 5</h3><p>You need to book an appointment at the <strong>Questura</strong>.</p><p>In the search engine, type: Questura</p>",
+  "fr": "<h3>Exercice @@N@@ sur 5</h3><p>Vous devez prendre un rendez-vous à la <strong>Questura</strong>.</p><p>Dans le moteur de recherche, écrivez : Questura</p>",
+  "ckb": "<h3>ئەرکی @@N@@ لە 5</h3><p>دەبێت کاتێک لە <strong>Questura</strong> بگریت.</p><p>لە ماڵپەڕی گەڕاندا بنووسە: Questura</p>",
+  "kmr": "<h3>Kar @@N@@ ji 5</h3><p>Divê tu li <strong>Questura</strong> randevûyekê bigirî.</p><p>Di makîneya lêgerînê de binivîse: Questura</p>",
+  "ar": "<h3>المهمة @@N@@ من 5</h3><p>يجب أن تحجزي موعدًا في <strong>Questura</strong>.</p><p>في محرك البحث اكتبي: Questura</p>"
+ },
+ "search_blank": {
+  "it": "<h3>Il motore di ricerca</h3><p>Qui cerchi un sito. Fai clic nella casella, scrivi il nome del sito e premi <strong>Invio</strong> (o fai clic su Cerca).</p><p>Se sbagli una lettera non è un problema: il gioco capisce lo stesso.</p>",
+  "en": "<h3>The search engine</h3><p>Here you look for a website. Click in the box, type the name of the website and press <strong>Enter</strong> (or click Cerca).</p><p>If you get a letter wrong, it's not a problem: the game still understands.</p>",
+  "fr": "<h3>Le moteur de recherche</h3><p>Ici, vous cherchez un site. Cliquez dans la case, écrivez le nom du site et appuyez sur <strong>Entrée</strong> (ou cliquez sur Cerca).</p><p>Si vous vous trompez d'une lettre, ce n'est pas grave : le jeu comprend quand même.</p>",
+  "ckb": "<h3>ماتۆڕی گەڕان</h3><p>لێرە ماڵپەڕێک دەدۆزیتەوە. کلیک لەناو خانەکە بکە، ناوی ماڵپەڕەکە بنووسە و <strong>Enter</strong> دابگرە (یان کلیک لە Cerca بکە).</p><p>ئەگەر پیتێکت بە هەڵە نووسی، کێشە نییە: یارییەکە هەر تێدەگات.</p>",
+  "kmr": "<h3>Motora lêgerînê</h3><p>Li vir tu malperekê digerî. Li qutîkê bitikîne, navê malperê binivîse û bişkoka <strong>Enter</strong> bitikîne (an jî li Cerca bitikîne).</p><p>Heke tu tîpekê şaş binivîsî, ne pirsgirêk e: lîstik dîsa jî fêm dike.</p>",
+  "ar": "<h3>محرك البحث</h3><p>هنا تبحثين عن موقع. انقري داخل المربع، واكتبي اسم الموقع، ثم اضغطي على <strong>Invio</strong> (أو انقري على Cerca).</p><p>إذا أخطأتِ في حرف واحد فلا مشكلة: اللعبة تفهم رغم ذلك.</p>"
+ },
+ "search_results": {
+  "it": "<h3>I risultati</h3><p>Ecco i siti che ho trovato. Ogni risultato ha un <strong>titolo in blu</strong>. Fai clic sul titolo del sito che ti serve.</p><p>Nella vita vera ci sono tanti risultati, anche siti falsi. Qui sono pochi e tutti finti.</p>",
+  "en": "<h3>The results</h3><p>Here are the websites I found. Each result has a <strong>title in blue</strong>. Click on the title of the website you need.</p><p>In real life there are many results, and some are fake websites. Here there are only a few, and they are all pretend.</p>",
+  "fr": "<h3>Les résultats</h3><p>Voici les sites que j'ai trouvés. Chaque résultat a un <strong>titre en bleu</strong>. Cliquez sur le titre du site dont vous avez besoin.</p><p>Dans la vraie vie, il y a beaucoup de résultats, et aussi des faux sites. Ici, il y en a peu et ils sont tous faux.</p>",
+  "ckb": "<h3>ئەنجامەکان</h3><p>ئەمانە ئەو ماڵپەڕانەن کە دۆزیمنەوە. هەر ئەنجامێک <strong>ناونیشانێکی شین</strong>ی هەیە. کلیک لەسەر ناونیشانی ئەو ماڵپەڕە بکە کە پێویستتە.</p><p>لە ژیانی ڕاستەقینەدا ئەنجامی زۆر هەن، ماڵپەڕی ساختەش هەن. لێرەدا کەمن و هەموویان ساختەن.</p>",
+  "kmr": "<h3>Encam</h3><p>Ev in malperên ku min dîtin. Her encamek <strong>sernavekî şîn</strong> heye. Li ser sernavê malpera ku ji te re lazim e bitikîne.</p><p>Di jiyana rastî de gelek encam hene, malperên sexte jî hene. Li vir tenê çend encam hene û hemû ne rast in.</p>",
+  "ar": "<h3>النتائج</h3><p>هذه هي المواقع التي وجدتُها. لكل نتيجة <strong>عنوان باللون الأزرق</strong>. اضغطي على عنوان الموقع الذي تحتاجينه.</p><p>في الحياة الحقيقية توجد نتائج كثيرة، وفيها أيضًا مواقع مزيّفة. هنا النتائج قليلة وكلها غير حقيقية.</p>"
+ },
+ "search_none": {
+  "it": "<h3>Non trovo niente</h3><p>Controlla le parole che hai scritto. Guarda il compito nella lista a destra: c'è scritto cosa cercare.</p>",
+  "en": "<h3>I can't find anything</h3><p>Check the words you wrote. Look at the task in the list on the right: it says what to look for.</p>",
+  "fr": "<h3>Je ne trouve rien</h3><p>Vérifie les mots que tu as écrits. Regarde la tâche dans la liste à droite : elle te dit quoi chercher.</p>",
+  "ckb": "<h3>هیچ شتێک نادۆزمەوە</h3><p>ئەو وشانەی نووسیوتن بپشکنە. سەیری ئەرکەکە بکە لە لیستەکەی لای ڕاست: لەوێ نووسراوە بەدوای چیدا بگەڕێیت.</p>",
+  "kmr": "<h3>Ez tiştekî nabînim</h3><p>Li peyvên ku te nivîsîne binêre. Li karê di lîsteya aliyê rastê de binêre: li wir hatiye nivîsîn ku tu çi bigerî.</p>",
+  "ar": "<h3>لا أجد أي شيء</h3><p>تحقّقي من الكلمات التي كتبتِها. انظري إلى المهمة في القائمة على اليمين: مكتوب فيها ما يجب أن تبحثي عنه.</p>"
+ },
+ "wrong_site": {
+  "it": "<h3>Questo sito è per un altro compito</h3><p>Il tuo compito adesso è un altro. Fai clic su Indietro (la freccia in alto) e cerca: @@SITE@@</p>",
+  "en": "<h3>This website is for a different task</h3><p>Your task now is a different one. Click on Indietro (the arrow at the top) and search for: @@SITE@@</p>",
+  "fr": "<h3>Ce site est pour une autre tâche</h3><p>Maintenant, votre tâche est différente. Cliquez sur Indietro (la flèche en haut) et cherchez : @@SITE@@</p>",
+  "ckb": "<h3>ئەم ماڵپەڕە بۆ ئەرکێکی ترە</h3><p>ئێستا ئەرکەکەت شتێکی ترە. کلیک لە Indietro بکە (تیرەکە لە سەرەوە) و بگەڕێ بۆ: @@SITE@@</p>",
+  "kmr": "<h3>Ev malper ji bo karekî din e</h3><p>Karê te niha karekî din e. Li ser Indietro (tîra li jor) bitikîne û li vê bigere: @@SITE@@</p>",
+  "ar": "<h3>هذا الموقع لمهمة أخرى</h3><p>مهمتك الآن مختلفة. اضغطي على Indietro (السهم في الأعلى) وابحثي عن: @@SITE@@</p>"
+ },
+ "site_home": {
+  "it": "<h3>Sei sul sito del servizio</h3><p>Leggi un po' le informazioni. Guarda in alto, nella barra: è l'<strong>indirizzo</strong> del sito. Qui è finto e finisce con .example. Nella vita vera finisce con .it, .gov.it o simili.</p><p>Adesso cerca il pulsante Accedi con SPID. A volte è in alto, a volte in un menu, a volte in un riquadro.</p><p>Attenzione: Entra con CIE è un'altra cosa. Non è quello.</p>",
+  "en": "<h3>You are on the service website</h3><p>Read the information for a moment. Look at the top, in the bar: this is the website <strong>address</strong>. Here it is fake and ends with .example. In real life it ends with .it, .gov.it or something similar.</p><p>Now look for the Accedi con SPID button. Sometimes it is at the top, sometimes in a menu, sometimes in a box.</p><p>Careful: Entra con CIE is something different. It is not the right one.</p>",
+  "fr": "<h3>Vous êtes sur le site du service</h3><p>Lisez un peu les informations. Regardez en haut, dans la barre : c'est l'<strong>adresse</strong> du site. Ici, elle est fausse et finit par .example. Dans la vraie vie, elle finit par .it, .gov.it ou quelque chose de proche.</p><p>Maintenant, cherchez le bouton Accedi con SPID. Parfois il est en haut, parfois dans un menu, parfois dans un cadre.</p><p>Attention : Entra con CIE est une autre chose. Ce n'est pas celui-là.</p>",
+  "ckb": "<h3>تۆ لەسەر ماڵپەڕی خزمەتگوزارییەکەیت</h3><p>کەمێک زانیارییەکان بخوێنەوە. سەیری سەرەوە بکە، لە شریتەکەدا: ئەوە <strong>ناونیشانی</strong> ماڵپەڕەکەیە. لێرەدا ساختەیە و بە .example کۆتایی دێت. لە ژیانی ڕاستەقینەدا بە .it، .gov.it یان شتی وەک ئەوانە کۆتایی دێت.</p><p>ئێستا بەدوای دوگمەی Accedi con SPID بگەڕێ. هەندێک جار لە سەرەوەیە، هەندێک جار لە ناو لیستێکدایە، هەندێک جار لە ناو چوارگۆشەیەکدایە.</p><p>ئاگاداربە: Entra con CIE شتێکی ترە. ئەوە نییە.</p>",
+  "kmr": "<h3>Tu li ser malpera xizmetê yî</h3><p>Hinekî agahiyan bixwîne. Li jor, li barê binêre: ew <strong>navnîşana</strong> malperê ye. Li vir ew ne rast e û bi .example diqede. Di jiyana rastîn de ew bi .it, .gov.it an tiştekî wisa diqede.</p><p>Niha li bişkoka Accedi con SPID bigere. Carinan li jor e, carinan di menuyê de ye, carinan di qutiyekê de ye.</p><p>Hişyar be: Entra con CIE tiştekî din e. Ew ne ew e.</p>",
+  "ar": "<h3>أنتِ الآن على موقع الخدمة</h3><p>اقرئي المعلومات قليلًا. انظري إلى الأعلى، في الشريط: هذا هو <strong>عنوان</strong> الموقع. هنا العنوان غير حقيقي وينتهي بـ .example. في الحياة الحقيقية ينتهي بـ ‎.it أو ‎.gov.it أو شيء مشابه.</p><p>الآن ابحثي عن الزر Accedi con SPID. أحيانًا يكون في الأعلى، وأحيانًا في قائمة، وأحيانًا في مربع.</p><p>انتبهي: Entra con CIE شيء آخر. ليس هو الزر المطلوب.</p>"
+ },
+ "site_menu": {
+  "it": "<h3>Hai aperto il menu</h3><p>Guarda dentro: cerca il pulsante Accedi con SPID.</p>",
+  "en": "<h3>You opened the menu</h3><p>Look inside: find the Accedi con SPID button.</p>",
+  "fr": "<h3>Vous avez ouvert le menu</h3><p>Regardez dedans : cherchez le bouton Accedi con SPID.</p>",
+  "ckb": "<h3>مێنیوەکەت کردەوە</h3><p>سەیری ناوەوەی بکە: بەدوای دوگمەی Accedi con SPID بگەڕێ.</p>",
+  "kmr": "<h3>Te menû vekir</h3><p>Li hundir binêre: li bişkoka Accedi con SPID bigere.</p>",
+  "ar": "<h3>لقد فتحتِ القائمة</h3><p>انظري في داخلها: ابحثي عن الزر Accedi con SPID.</p>"
+ },
+ "spid_chooser": {
+  "it": "<h3>Scegli il tuo gestore SPID</h3><p>Il <strong>gestore</strong> è l'azienda che ti ha dato lo SPID. Ce ne sono tanti.</p><p>Nel gioco il tuo gestore è Poste ID. Fai clic su Poste ID.</p><p>Nella vita vera scegli il tuo.</p>",
+  "en": "<h3>Choose your SPID provider</h3><p>The <strong>provider</strong> is the company that gave you your SPID. There are many of them.</p><p>In the game, your provider is Poste ID. Click on Poste ID.</p><p>In real life, choose your own.</p>",
+  "fr": "<h3>Choisis ton fournisseur SPID</h3><p>Le <strong>fournisseur</strong> est l'entreprise qui t'a donné le SPID. Il y en a beaucoup.</p><p>Dans le jeu, ton fournisseur est Poste ID. Clique sur Poste ID.</p><p>Dans la vraie vie, choisis le tien.</p>",
+  "ckb": "<h3>دابینکەری SPIDی خۆت هەڵبژێرە</h3><p><strong>دابینکەر</strong> ئەو کۆمپانیایەیە کە SPIDی پێداویت. زۆریان هەن.</p><p>لە یارییەکەدا دابینکەرەکەت Poste IDـە. کلیک لە Poste ID بکە.</p><p>لە ژیانی ڕاستەقینەدا، هی خۆت هەڵبژێرە.</p>",
+  "kmr": "<h3>Pêşkêşkerê xwe yê SPID hilbijêre</h3><p><strong>Pêşkêşker</strong> ew şirket e ku SPID daye te. Gelek ji wan hene.</p><p>Di lîstikê de pêşkêşkerê te Poste ID e. Li ser Poste ID bitikîne.</p><p>Di jiyana rastî de yê xwe hilbijêre.</p>",
+  "ar": "<h3>اختاري مزوّد SPID الخاص بكِ</h3><p><strong>المزوّد</strong> هو الشركة التي أعطتكِ SPID. هناك شركات كثيرة.</p><p>في اللعبة، مزوّدكِ هو Poste ID. اضغطي على Poste ID.</p><p>في الحياة الحقيقية، اختاري مزوّدكِ.</p>"
+ },
+ "spid_login": {
+  "it": "<h3>Qui scrivi nome utente e password</h3><p>Guarda l'indirizzo in alto: è cambiato. Adesso non sei più sul sito del servizio, sei sul sito del <strong>gestore SPID</strong>. È normale.</p><p>Per il gioco usa <strong>questi dati finti</strong>, uguali per tutti:</p>@@CREDS@@<ol><li>Fai clic nella casella Nome utente e scrivi il nome utente.</li><li>Fai clic nella casella Password e scrivi la password. I puntini nascondono le lettere: è normale. Con l'occhio 👁 puoi vederle.</li><li>Fai clic su Entra.</li></ol><p>Scrivi con le lettere piccole e senza spazi.</p><p class=\"real\"><strong>Nella vita vera:</strong> il nome utente è la tua email dello SPID. La password è solo tua: non la dici a nessuno e la scrivi solo sul sito del tuo gestore.</p>",
+  "en": "<h3>Here you write your username and password</h3><p>Look at the address at the top: it has changed. Now you are no longer on the service's website, you are on the website of the <strong>SPID provider</strong>. This is normal.</p><p>For the game, use <strong>these fake details</strong>, the same for everyone:</p>@@CREDS@@<ol><li>Click in the box Nome utente and write the username.</li><li>Click in the box Password and write the password. The dots hide the letters: this is normal. With the eye 👁 you can see them.</li><li>Click on Entra.</li></ol><p>Write in small letters and with no spaces.</p><p class=\"real\"><strong>In real life:</strong> the username is your SPID email. The password is only yours: do not tell it to anyone, and write it only on your provider's website.</p>",
+  "fr": "<h3>Ici, tu écris le nom d'utilisateur et le mot de passe</h3><p>Regarde l'adresse en haut : elle a changé. Maintenant, tu n'es plus sur le site du service, tu es sur le site du <strong>fournisseur SPID</strong>. C'est normal.</p><p>Pour le jeu, utilise <strong>ces fausses données</strong>, les mêmes pour tout le monde :</p>@@CREDS@@<ol><li>Clique dans la case Nome utente et écris le nom d'utilisateur.</li><li>Clique dans la case Password et écris le mot de passe. Les petits points cachent les lettres : c'est normal. Avec l'œil 👁, tu peux les voir.</li><li>Clique sur Entra.</li></ol><p>Écris en lettres minuscules et sans espaces.</p><p class=\"real\"><strong>Dans la vraie vie :</strong> le nom d'utilisateur, c'est ton adresse e-mail du SPID. Le mot de passe est seulement à toi : tu ne le dis à personne et tu l'écris seulement sur le site de ton fournisseur.</p>",
+  "ckb": "<h3>لێرە ناوی بەکارهێنەر و وشەی نهێنی دەنووسیت</h3><p>سەیری ناونیشانەکەی سەرەوە بکە: گۆڕاوە. ئێستا ئیتر لەسەر ماڵپەڕی خزمەتگوزارییەکە نیت، لەسەر ماڵپەڕی <strong>دابینکەری SPID</strong>یت. ئەمە ئاساییە.</p><p>بۆ یارییەکە <strong>ئەم زانیارییە ساختانە</strong> بەکاربهێنە، بۆ هەمووان وەک یەکن:</p>@@CREDS@@<ol><li>کرتە لە خانەی Nome utente بکە و ناوی بەکارهێنەر بنووسە.</li><li>کرتە لە خانەی Password بکە و وشەی نهێنی بنووسە. خاڵەکان پیتەکان دەشارنەوە: ئەمە ئاساییە. بە چاوەکە 👁 دەتوانیت بیانبینیت.</li><li>کرتە لەسەر Entra بکە.</li></ol><p>بە پیتی بچووک و بەبێ بۆشایی بنووسە.</p><p class=\"real\"><strong>لە ژیانی ڕاستەقینەدا:</strong> ناوی بەکارهێنەر ئیمەیڵی SPIDەکەتە. وشەی نهێنی تەنها هی خۆتە: بە کەسی مەڵێ و تەنها لەسەر ماڵپەڕی دابینکەرەکەت بینووسە.</p>",
+  "kmr": "<h3>Li vir navê bikarhêner û şîfreyê dinivîsî</h3><p>Li navnîşana li jor binêre: ew guheriye. Niha tu êdî ne li ser malpera xizmetê yî, tu li ser malpera <strong>rêvebirê SPID</strong> yî. Ev normal e.</p><p>Ji bo lîstikê <strong>van agahiyên derewîn</strong> bi kar bîne, ji bo her kesî yek in:</p>@@CREDS@@<ol><li>Li qutîka Nome utente bitikîne û navê bikarhêner binivîse.</li><li>Li qutîka Password bitikîne û şîfreyê binivîse. Xal tîpan vedişêrin: ev normal e. Bi çavê 👁 tu dikarî wan bibînî.</li><li>Li ser Entra bitikîne.</li></ol><p>Bi tîpên biçûk û bê valahî binivîse.</p><p class=\"real\"><strong>Di jiyana rastîn de:</strong> navê bikarhêner emaila te ya SPID e. Şîfre tenê ya te ye: tu wê ji kesî re nabêjî û tenê li ser malpera rêvebirê xwe dinivîsî.</p>",
+  "ar": "<h3>هنا تكتبين اسم المستخدم وكلمة السر</h3><p>انظري إلى العنوان في الأعلى: لقد تغيّر. الآن لم تعودي على موقع الخدمة، أنتِ على موقع <strong>مزوّد SPID</strong>. هذا أمر عادي.</p><p>في هذه اللعبة استعملي <strong>هذه البيانات غير الحقيقية</strong>، وهي نفسها للجميع:</p>@@CREDS@@<ol><li>اضغطي داخل الخانة Nome utente واكتبي اسم المستخدم.</li><li>اضغطي داخل الخانة Password واكتبي كلمة السر. النقاط تخفي الحروف: هذا أمر عادي. بالضغط على العين 👁 يمكنك رؤيتها.</li><li>اضغطي على Entra.</li></ol><p>اكتبي بالحروف الصغيرة ومن دون مسافات.</p><p class=\"real\"><strong>في الحياة الحقيقية:</strong> اسم المستخدم هو بريدك الإلكتروني الخاص بـ SPID. كلمة السر لكِ وحدك: لا تقوليها لأحد، واكتبيها فقط على موقع المزوّد الخاص بكِ.</p>"
+ },
+ "spid_login_wrong": {
+  "it": "<h3>Il nome utente o la password non sono giusti</h3><p>Non ti preoccupare. Guarda bene i dati finti e riprova:</p>@@CREDS@@<p>Lettere piccole, nessuno spazio. Controlla anche che non ci sia un errore in una lettera.</p><p>Nella vita vera, se sbagli troppe volte lo SPID si blocca per un po'.</p>",
+  "en": "<h3>The username or password is not right</h3><p>Don't worry. Look carefully at the practice details and try again:</p>@@CREDS@@<p>Small letters, no spaces. Also check that there is no mistake in any letter.</p><p>In real life, if you get it wrong too many times, SPID gets blocked for a while.</p>",
+  "fr": "<h3>Le nom d'utilisateur ou le mot de passe n'est pas bon</h3><p>Ne t'inquiète pas. Regarde bien les fausses données et essaie encore :</p>@@CREDS@@<p>Petites lettres, pas d'espace. Vérifie aussi qu'il n'y a pas d'erreur dans une lettre.</p><p>Dans la vraie vie, si tu te trompes trop de fois, le SPID se bloque pendant un moment.</p>",
+  "ckb": "<h3>ناوی بەکارهێنەر یان وشەی نهێنی دروست نییە</h3><p>نیگەران مەبە. بە باشی سەیری زانیارییە ساختەکان بکە و دووبارە هەوڵ بدەرەوە:</p>@@CREDS@@<p>پیتی بچووک، بێ بۆشایی. هەروەها سەیر بکە کە هەڵە لە هیچ پیتێکدا نەبێت.</p><p>لە ژیانی ڕاستەقینەدا، ئەگەر زۆر جار هەڵە بکەیت، SPID بۆ ماوەیەک دادەخرێت.</p>",
+  "kmr": "<h3>Navê bikarhêner an şîfre ne rast in</h3><p>Xem neke. Li daneyên sexte baş binêre û dîsa biceribîne:</p>@@CREDS@@<p>Tîpên biçûk, bê valahî. Her weha kontrol bike ku di tîpekê de şaşî tune be.</p><p>Di jiyana rastî de, heke tu gelek caran şaş bikî, SPID ji bo demekê tê girtin.</p>",
+  "ar": "<h3>اسم المستخدم أو كلمة المرور غير صحيحة</h3><p>لا تقلقي. انظري جيدًا إلى البيانات التجريبية وحاولي مرة أخرى:</p>@@CREDS@@<p>حروف صغيرة، بدون مسافات. تأكدي أيضًا أنه لا يوجد خطأ في أي حرف.</p><p>في الحياة الحقيقية، إذا أخطأتِ مرات كثيرة، يتوقف SPID عن العمل لبعض الوقت.</p>"
+ },
+ "spid_login_help": {
+  "it": "<h3>Ti aiuto io</h3><p>Hai sbagliato tre volte. Fai clic su Scrivi per me e il gioco scrive i dati al posto tuo. Poi fai clic su Entra.</p>",
+  "en": "<h3>Let me help you</h3><p>You made three mistakes. Click on Scrivi per me and the game will fill in the details for you. Then click on Entra.</p>",
+  "fr": "<h3>Je vais t'aider</h3><p>Tu t'es trompée trois fois. Clique sur Scrivi per me et le jeu écrit les informations à ta place. Ensuite, clique sur Entra.</p>",
+  "ckb": "<h3>من یارمەتیت دەدەم</h3><p>سێ جار هەڵەت کرد. کرتە لە Scrivi per me بکە و یارییەکە زانیارییەکان لە جیاتی تۆ دەنووسێت. پاشان کرتە لە Entra بکە.</p>",
+  "kmr": "<h3>Ez ê alîkariya te bikim</h3><p>Te sê caran şaşî kir. Li ser Scrivi per me bitikîne û lîstik dê agahiyan li şûna te binivîse. Paşê li ser Entra bitikîne.</p>",
+  "ar": "<h3>سأساعدكِ</h3><p>أخطأتِ ثلاث مرات. اضغطي على Scrivi per me وستكتب اللعبة البيانات بدلًا منكِ. ثم اضغطي على Entra.</p>"
+ },
+ "spid_qr": {
+  "it": "<h3>Adesso serve il telefono</h3><p>Hai scritto i dati giusti. Ora il sito vuole essere sicuro che sei <strong>proprio tu</strong>.</p><ol><li>Prendi il <strong>telefono</strong>.</li><li>Apri la <strong>fotocamera</strong>.</li><li>Inquadra il <strong>codice QR</strong> sullo schermo del computer.</li><li>Sul telefono tocca il <strong>link</strong> che appare.</li><li>Si apre una pagina: premi Approva.</li></ol><p>Il computer aspetta. Quando premi Approva, il sito si apre da solo.</p><p><strong>Perché puoi approvare?</strong> Perché sei stata tu a iniziare l'accesso. Se il telefono chiede di approvare e tu non stavi entrando: premi Rifiuta.</p><p>La fotocamera non legge il codice? Scrivi sul telefono l'indirizzo che vedi sotto il codice.</p>",
+  "en": "<h3>Now you need your phone</h3><p>You wrote the right details. Now the website wants to be sure it is <strong>really you</strong>.</p><ol><li>Take your <strong>phone</strong>.</li><li>Open the <strong>camera</strong>.</li><li>Point it at the <strong>QR code</strong> on the computer screen.</li><li>On your phone, tap the <strong>link</strong> that appears.</li><li>A page opens: press Approva.</li></ol><p>The computer waits. When you press Approva, the website opens by itself.</p><p><strong>Why can you approve?</strong> Because you started the login. If your phone asks you to approve and you were not logging in: press Rifiuta.</p><p>The camera does not read the code? Type on your phone the address you see under the code.</p>",
+  "fr": "<h3>Maintenant, il faut le téléphone</h3><p>Vous avez écrit les bonnes informations. Maintenant, le site veut être sûr que c'est <strong>bien vous</strong>.</p><ol><li>Prenez le <strong>téléphone</strong>.</li><li>Ouvrez l'<strong>appareil photo</strong>.</li><li>Visez le <strong>code QR</strong> sur l'écran de l'ordinateur.</li><li>Sur le téléphone, touchez le <strong>lien</strong> qui apparaît.</li><li>Une page s'ouvre : appuyez sur Approva.</li></ol><p>L'ordinateur attend. Quand vous appuyez sur Approva, le site s'ouvre tout seul.</p><p><strong>Pourquoi pouvez-vous accepter ?</strong> Parce que c'est vous qui avez commencé la connexion. Si le téléphone vous demande d'accepter et que vous n'étiez pas en train de vous connecter : appuyez sur Rifiuta.</p><p>L'appareil photo ne lit pas le code ? Écrivez sur le téléphone l'adresse que vous voyez sous le code.</p>",
+  "ckb": "<h3>ئێستا پێویستت بە تەلەفۆنە</h3><p>زانیارییە دروستەکانت نووسی. ئێستا ماڵپەڕەکە دەیەوێت دڵنیا بێت کە <strong>بە ڕاستی خۆتیت</strong>.</p><ol><li><strong>تەلەفۆنەکەت</strong> هەڵبگرە.</li><li><strong>کامێرا</strong> بکەرەوە.</li><li>کامێراکە بەرەو <strong>کۆدی QR</strong> بگرە کە لەسەر شاشەی کۆمپیوتەرەکەیە.</li><li>لەسەر تەلەفۆنەکە دەست لەو <strong>لینکە</strong> بدە کە دەردەکەوێت.</li><li>پەڕەیەک دەکرێتەوە: Approva دابگرە.</li></ol><p>کۆمپیوتەرەکە چاوەڕێ دەکات. کاتێک Approva دادەگریت، ماڵپەڕەکە خۆی دەکرێتەوە.</p><p><strong>بۆچی دەتوانیت ڕازی بیت؟</strong> چونکە خۆت دەستت بە چوونەژوورەوە کرد. ئەگەر تەلەفۆنەکە داوای ڕەزامەندی کرد و تۆ خەریکی چوونەژوورەوە نەبوویت: Rifiuta دابگرە.</p><p>کامێراکە کۆدەکە ناخوێنێتەوە؟ ئەو ناونیشانەی لە ژێر کۆدەکە دەیبینیت لەسەر تەلەفۆنەکە بنووسە.</p>",
+  "kmr": "<h3>Niha telefon lazim e</h3><p>Te agahiyên rast nivîsîn. Niha malper dixwaze piştrast be ku <strong>bi rastî tu yî</strong>.</p><ol><li><strong>Telefonê</strong> bigire.</li><li><strong>Kamerayê</strong> veke.</li><li>Kamerayê ber bi <strong>koda QR</strong> ya li ser ekrana komputerê ve bigire.</li><li>Li ser telefonê, li ser wê <strong>lînkê</strong> ku xuya dibe bitikîne.</li><li>Rûpelek vedibe: Approva bitikîne.</li></ol><p>Komputer li bendê ye. Dema ku tu Approva bitikînî, malper bi xwe vedibe.</p><p><strong>Çima tu dikarî qebûl bikî?</strong> Ji ber ku te bi xwe ketin dest pê kir. Heke telefon ji te bixwaze ku tu qebûl bikî û tu ne dikete hundir: Rifiuta bitikîne.</p><p>Kamera kodê naxwîne? Navnîşana ku li bin kodê dibînî, li ser telefonê binivîse.</p>",
+  "ar": "<h3>الآن تحتاجين إلى الهاتف</h3><p>كتبتِ البيانات الصحيحة. الآن يريد الموقع أن يتأكد أنكِ <strong>أنتِ بالفعل</strong>.</p><ol><li>خذي <strong>الهاتف</strong>.</li><li>افتحي <strong>الكاميرا</strong>.</li><li>وجّهي الكاميرا إلى <strong>رمز QR</strong> الموجود على شاشة الكمبيوتر.</li><li>على الهاتف، اضغطي على <strong>الرابط</strong> الذي يظهر.</li><li>تُفتح صفحة: اضغطي Approva.</li></ol><p>الكمبيوتر ينتظر. عندما تضغطين Approva، يُفتح الموقع وحده.</p><p><strong>لماذا يمكنكِ الموافقة؟</strong> لأنكِ أنتِ من بدأ الدخول. إذا طلب الهاتف الموافقة وأنتِ لم تكوني تدخلين: اضغطي Rifiuta.</p><p>الكاميرا لا تقرأ الرمز؟ اكتبي على الهاتف العنوان الذي ترينه تحت الرمز.</p>"
+ },
+ "spid_rejected": {
+  "it": "<h3>Hai premuto Rifiuta</h3><p>Va bene! Nella vita vera è la cosa giusta quando non sei stata tu a iniziare l'accesso.</p><p>Ma in questo gioco stavi entrando tu. Fai clic su Riprova e poi premi Approva sul telefono.</p>",
+  "en": "<h3>You pressed Rifiuta</h3><p>That's okay! In real life, this is the right thing to do when you did not start the login yourself.</p><p>But in this game, you were the one logging in. Click Riprova and then press Approva on your phone.</p>",
+  "fr": "<h3>Tu as appuyé sur Rifiuta</h3><p>C'est bien ! Dans la vraie vie, c'est la bonne chose à faire quand ce n'est pas toi qui as commencé la connexion.</p><p>Mais dans ce jeu, c'est toi qui te connectais. Clique sur Riprova puis appuie sur Approva sur ton téléphone.</p>",
+  "ckb": "<h3>تۆ Rifiutaت داگرت</h3><p>باشە! لە ژیانی ڕاستەقینەدا، ئەگەر خۆت دەستت بە چوونەژوورەوە نەکردبێت، ئەمە کارێکی دروستە.</p><p>بەڵام لەم یارییەدا خۆت بوویت کە دەچوویتە ژوورەوە. کلیک لە Riprova بکە و پاشان لە تەلەفۆنەکەت Approva داگرە.</p>",
+  "kmr": "<h3>Te Rifiuta pêl kir</h3><p>Baş e! Di jiyana rastîn de, eger ne tu bûyî ku têketin dest pê kir, ev tişta rast e.</p><p>Lê di vê lîstikê de tu bi xwe dikevî hundir. Li ser Riprova bitikîne û paşê li ser telefonê Approva pêl bike.</p>",
+  "ar": "<h3>ضغطتِ على Rifiuta</h3><p>لا بأس! في الحياة الحقيقية، هذا هو الصواب عندما لا تكونين أنتِ من بدأ الدخول.</p><p>لكن في هذه اللعبة، أنتِ من كانت تدخل. اضغطي على Riprova ثم اضغطي على Approva في الهاتف.</p>"
+ },
+ "spid_expired": {
+  "it": "<h3>Il codice è scaduto</h3><p>Il codice QR vale pochi minuti, come nella vita vera. Fai clic su Riprova per averne uno nuovo.</p>",
+  "en": "<h3>The code has expired</h3><p>The QR code only works for a few minutes, just like in real life. Click Riprova to get a new one.</p>",
+  "fr": "<h3>Le code a expiré</h3><p>Le code QR est valable quelques minutes, comme dans la vraie vie. Cliquez sur Riprova pour en avoir un nouveau.</p>",
+  "ckb": "<h3>کۆدەکە بەسەرچووە</h3><p>کۆدی QR تەنها چەند خولەکێک کار دەکات، وەک لە ژیانی ڕاستەقینەدا. کرتە لەسەر Riprova بکە بۆ ئەوەی کۆدێکی نوێ وەربگریت.</p>",
+  "kmr": "<h3>Dema kodê derbas bûye</h3><p>Koda QR tenê çend deqeyan derbasdar e, wek di jiyana rastî de. Ji bo yeke nû bistînî, li ser Riprova bitikîne.</p>",
+  "ar": "<h3>انتهت صلاحية الرمز</h3><p>رمز QR صالح لبضع دقائق فقط، كما في الحياة الحقيقية. اضغطي على Riprova للحصول على رمز جديد.</p>"
+ },
+ "spid_error": {
+  "it": "<h3>Qualcosa non funziona</h3><p>Il gioco non riesce a creare il codice. Fai clic su Riprova. Se non funziona, chiedi a Emilio.</p>",
+  "en": "<h3>Something is not working</h3><p>The game cannot create the code. Click on Riprova. If it does not work, ask Emilio.</p>",
+  "fr": "<h3>Quelque chose ne marche pas</h3><p>Le jeu n'arrive pas à créer le code. Cliquez sur Riprova. Si ça ne marche pas, demandez à Emilio.</p>",
+  "ckb": "<h3>شتێک کار ناکات</h3><p>یارییەکە ناتوانێت کۆدەکە دروست بکات. کلیک لە Riprova بکە. ئەگەر کاری نەکرد، لە ئێمیلیۆ بپرسە.</p>",
+  "kmr": "<h3>Tiştek naxebite</h3><p>Lîstik nikare kodê çêke. Li ser Riprova bitikîne. Heke naxebite, ji Emilio bipirse.</p>",
+  "ar": "<h3>هناك شيء لا يعمل</h3><p>اللعبة لا تستطيع إنشاء الرمز. اضغطي على Riprova. إذا لم ينجح ذلك، اسألي إميليو.</p>"
+ },
+ "in_1": {
+  "it": "<h3>Sei dentro! 🎉</h3><p>Vedi il tuo nome in alto: così capisci che hai fatto l'accesso.</p><p>Qui ci sono i tuoi documenti sanitari. Fai clic sul referto Analisi del sangue per aprirlo.</p>",
+  "en": "<h3>You are in! 🎉</h3><p>You can see your name at the top: this means you are logged in.</p><p>Here you can find your health documents. Click on the report Analisi del sangue to open it.</p>",
+  "fr": "<h3>Vous êtes connectée ! 🎉</h3><p>Vous voyez votre nom en haut : cela veut dire que vous êtes bien connectée.</p><p>Ici, vous trouvez vos documents de santé. Cliquez sur le compte rendu Analisi del sangue pour l'ouvrir.</p>",
+  "ckb": "<h3>چوویتە ژوورەوە! 🎉</h3><p>ناوی خۆت لە سەرەوە دەبینیت: بەم شێوەیە دەزانیت کە چوویتە ژوورەوە.</p><p>لێرە بەڵگەنامە تەندروستییەکانی خۆت هەن. کلیک لە ئەنجامی پشکنینی Analisi del sangue بکە بۆ ئەوەی بیکەیتەوە.</p>",
+  "kmr": "<h3>Tu ketî hundir! 🎉</h3><p>Li jor navê xwe dibînî: bi vî awayî tu dizanî ku te têketin kir.</p><p>Li vir belgeyên te yên tenduristiyê hene. Li ser encama muayeneyê Analisi del sangue bitikîne da ku wê vekî.</p>",
+  "ar": "<h3>أنتِ في الداخل! 🎉</h3><p>ترين اسمكِ في الأعلى: هكذا تعرفين أنكِ دخلتِ إلى حسابكِ.</p><p>هنا توجد وثائقكِ الصحية. اضغطي على التقرير الطبي Analisi del sangue لفتحه.</p>"
+ },
+ "in_2": {
+  "it": "<h3>Sei dentro! 🎉</h3><p>Vedi il tuo nome in alto: così capisci che hai fatto l'accesso.</p><p>Scegli il certificato che ti serve: fai clic su Certificato di residenza. Poi premi Scarica PDF.</p>",
+  "en": "<h3>You are in! 🎉</h3><p>You can see your name at the top: this means you are logged in.</p><p>Choose the certificate you need: click on Certificato di residenza. Then press Scarica PDF.</p>",
+  "fr": "<h3>Vous êtes connectée ! 🎉</h3><p>Vous voyez votre nom en haut : cela veut dire que vous êtes bien connectée.</p><p>Choisissez le certificat dont vous avez besoin : cliquez sur Certificato di residenza. Puis appuyez sur Scarica PDF.</p>",
+  "ckb": "<h3>چوویتە ژوورەوە! 🎉</h3><p>ناوی خۆت لە سەرەوە دەبینیت: بەمە دەزانیت کە چوویتە ژوورەوە.</p><p>ئەو بەڵگەنامەیە هەڵبژێرە کە پێویستتە: کلیک لە Certificato di residenza بکە. پاشان Scarica PDF دابگرە.</p>",
+  "kmr": "<h3>Tu ketî hundir! 🎉</h3><p>Li jor navê xwe dibînî: bi vî awayî tu dizanî ku te têketin kir.</p><p>Belgeya ku ji te re lazim e hilbijêre: li ser Certificato di residenza bitikîne. Paşê Scarica PDF bitikîne.</p>",
+  "ar": "<h3>لقد دخلتِ! 🎉</h3><p>ترين اسمكِ في الأعلى: هكذا تعرفين أنكِ سجّلتِ الدخول.</p><p>اختاري الشهادة التي تحتاجينها: اضغطي على Certificato di residenza. ثم اضغطي Scarica PDF.</p>"
+ },
+ "in_3": {
+  "it": "<h3>Sei dentro! 🎉</h3><p>Vedi il tuo nome in alto: così capisci che hai fatto l'accesso.</p><p>Nella lista c'è la tua domanda. Fai clic su Vedi il dettaglio per leggere a che punto è.</p>",
+  "en": "<h3>You're in! 🎉</h3><p>You can see your name at the top: this tells you that you have logged in.</p><p>Your application is in the list. Click on Vedi il dettaglio to see how it is going.</p>",
+  "fr": "<h3>Vous êtes connectée ! 🎉</h3><p>Vous voyez votre nom en haut : cela veut dire que vous êtes bien connectée.</p><p>Dans la liste, il y a votre demande. Cliquez sur Vedi il dettaglio pour voir où elle en est.</p>",
+  "ckb": "<h3>چوویتە ژوورەوە! 🎉</h3><p>ناوی خۆت لە سەرەوە دەبینیت: بەم شێوەیە دەزانیت کە چوویتە ژوورەوە.</p><p>داواکارییەکەت لە لیستەکەدایە. کلیک لە Vedi il dettaglio بکە بۆ ئەوەی بزانیت گەیشتووەتە کوێ.</p>",
+  "kmr": "<h3>Tu ketî hundir! 🎉</h3><p>Navê xwe li jor dibînî: bi vî awayî tu fêm dikî ku tu ketî hundir.</p><p>Daxwaza te di lîsteyê de ye. Li ser Vedi il dettaglio bitikîne da ku bixwînî ka daxwaza te gihîştiye kîjan qonaxê.</p>",
+  "ar": "<h3>لقد دخلتِ! 🎉</h3><p>ترين اسمكِ في الأعلى: هكذا تعرفين أنكِ سجّلتِ الدخول.</p><p>في القائمة يوجد طلبكِ. اضغطي على Vedi il dettaglio لتعرفي في أي مرحلة هو.</p>"
+ },
+ "in_4": {
+  "it": "<h3>Sei dentro! 🎉</h3><p>Vedi il tuo nome in alto: così capisci che hai fatto l'accesso.</p><p>Scegli il figlio e la scuola. Poi premi Invia domanda. Nel gioco la domanda è finta.</p>",
+  "en": "<h3>You're in! 🎉</h3><p>You can see your name at the top: this means you are logged in.</p><p>Choose your child and the school. Then press Invia domanda. In the game, the application is not real.</p>",
+  "fr": "<h3>Vous êtes connectée ! 🎉</h3><p>Vous voyez votre nom en haut : comme ça, vous savez que vous êtes bien connectée.</p><p>Choisissez l'enfant et l'école. Puis appuyez sur Invia domanda. Dans le jeu, la demande est pour de faux.</p>",
+  "ckb": "<h3>چوویتە ژوورەوە! 🎉</h3><p>ناوی خۆت لە سەرەوە دەبینیت: بەمە دەزانیت کە چوویتە ژوورەوە.</p><p>منداڵەکەت و قوتابخانەکە هەڵبژێرە. پاشان Invia domanda دابگرە. لەم یارییەدا داواکارییەکە ڕاستەقینە نییە.</p>",
+  "kmr": "<h3>Tu ketiyî hundir! 🎉</h3><p>Li jor navê xwe dibînî: bi vî awayî tu fêm dikî ku te têketin kiriye.</p><p>Zarokê xwe û dibistanê hilbijêre. Paşê Invia domanda bitikîne. Di lîstikê de daxwaz ne rast e.</p>",
+  "ar": "<h3>لقد دخلتِ! 🎉</h3><p>ترين اسمك في الأعلى: هكذا تعرفين أنكِ سجّلتِ الدخول.</p><p>اختاري الابن أو الابنة والمدرسة. ثم اضغطي Invia domanda. في اللعبة، الطلب ليس حقيقيًا.</p>"
+ },
+ "in_5": {
+  "it": "<h3>Sei dentro! 🎉</h3><p>Vedi il tuo nome in alto: così capisci che hai fatto l'accesso.</p><p>Fai clic su un giorno libero. Poi premi Conferma.</p>",
+  "en": "<h3>You're in! 🎉</h3><p>You can see your name at the top: this means you are logged in.</p><p>Click on a free day. Then press Conferma.</p>",
+  "fr": "<h3>Vous êtes connectée ! 🎉</h3><p>Vous voyez votre nom en haut : cela veut dire que vous êtes bien connectée.</p><p>Cliquez sur un jour libre. Puis appuyez sur Conferma.</p>",
+  "ckb": "<h3>چوویتە ژوورەوە! 🎉</h3><p>ناوی خۆت لە سەرەوە دەبینیت: بەمە دەزانیت کە چوویتە ژوورەوە.</p><p>کلیک لەسەر ڕۆژێکی بەتاڵ بکە. پاشان Conferma دابگرە.</p>",
+  "kmr": "<h3>Tu ketî hundir! 🎉</h3><p>Li jor navê xwe dibînî: bi vî awayî tu fêm dikî ku te têketin kiriye.</p><p>Li ser rojeke vala bitikîne. Paşê Conferma bitikîne.</p>",
+  "ar": "<h3>لقد دخلتِ! 🎉</h3><p>ترين اسمكِ في الأعلى: هكذا تعرفين أنكِ سجّلتِ الدخول.</p><p>اضغطي على يوم متاح. ثم اضغطي Conferma.</p>"
+ },
+ "after_action": {
+  "it": "<h3>Fatto! 👏</h3><p>Hai finito quello che dovevi fare. Adesso c'è un'ultima cosa importante: <strong>esci</strong>.</p><p>Fai clic su Esci in alto a destra. Non basta chiudere la pagina, specialmente su un computer di tutti.</p>",
+  "en": "<h3>Done! 👏</h3><p>You have finished what you needed to do. Now there is one last important thing: <strong>log out</strong>.</p><p>Click on Esci at the top right. Just closing the page is not enough, especially on a shared computer.</p>",
+  "fr": "<h3>C'est fait ! 👏</h3><p>Vous avez fini ce que vous deviez faire. Maintenant, il reste une dernière chose importante : <strong>déconnectez-vous</strong>.</p><p>Cliquez sur Esci en haut à droite. Il ne suffit pas de fermer la page, surtout sur un ordinateur partagé.</p>",
+  "ckb": "<h3>تەواو بوو! 👏</h3><p>ئەو کارەی دەبوو بیکەیت تەواوت کرد. ئێستا شتێکی گرنگی کۆتایی ماوە: <strong>بچۆ دەرەوە</strong>.</p><p>کلیک لە Esci بکە لە سەرەوەی لای ڕاست. داخستنی پەڕەکە بەس نییە، بەتایبەتی لەسەر کۆمپیوتەرێک کە هی هەمووانە.</p>",
+  "kmr": "<h3>Temam bû! 👏</h3><p>Te karê ku diviya bû bikî qedand. Niha karekî dawî yê girîng heye: <strong>derkeve</strong>.</p><p>Li jor, li aliyê rastê, li ser Esci bitikîne. Girtina rûpelê têrê nake, nemaze li ser kompûtereke ku her kes bi kar tîne.</p>",
+  "ar": "<h3>تمّ! 👏</h3><p>لقد أنهيتِ ما كان عليكِ فعله. الآن بقي شيء أخير ومهم: <strong>اخرجي من حسابكِ</strong>.</p><p>اضغطي على Esci في الأعلى على اليمين. لا يكفي أن تُغلقي الصفحة، خاصةً إذا كنتِ تستخدمين جهاز كمبيوتر يستعمله الجميع.</p>"
+ },
+ "splash_title": {
+  "it": "🎉 Bravissima!",
+  "en": "🎉 Well done!",
+  "fr": "🎉 Bravo !",
+  "ckb": "🎉 زۆر باشە!",
+  "kmr": "🎉 Gelek baş e!",
+  "ar": "🎉 أحسنتِ!"
+ },
+ "splash_body": {
+  "it": "<p>Hai finito il compito @@N@@ di 5.</p><p>Hai cercato il sito, hai usato lo SPID, hai approvato con il telefono e sei uscita. Questi sono sempre gli stessi passi.</p>",
+  "en": "<p>You finished task @@N@@ of 5.</p><p>You looked for the website, you used SPID, you approved with your phone and you logged out. These are always the same steps.</p>",
+  "fr": "<p>Tu as fini la tâche @@N@@ sur 5.</p><p>Tu as cherché le site, tu as utilisé le SPID, tu as validé avec ton téléphone et tu es sortie. Ce sont toujours les mêmes étapes.</p>",
+  "ckb": "<p>ئەرکی @@N@@ لە 5 تەواو کرد.</p><p>ماڵپەڕەکەت دۆزییەوە، SPIDـت بەکارهێنا، بە تەلەفۆنەکەت پەسەندت کرد و چوویتە دەرەوە. ئەمانە هەمیشە هەمان هەنگاون.</p>",
+  "kmr": "<p>Te karê @@N@@ ji 5an qedand.</p><p>Te li malperê geriya, te SPID bi kar anî, te bi telefonê erê kir û tu derketî. Ev her tim heman gav in.</p>",
+  "ar": "<p>لقد أنهيتِ المهمة @@N@@ من 5.</p><p>بحثتِ عن الموقع، واستخدمتِ SPID، ووافقتِ بالهاتف، ثم خرجتِ. هذه هي نفس الخطوات دائمًا.</p>"
+ },
+ "final_title": {
+  "it": "🏆 Hai finito tutti i compiti!",
+  "en": "🏆 You finished all the tasks!",
+  "fr": "🏆 Tu as fini toutes les tâches !",
+  "ckb": "🏆 هەموو ئەرکەکانت تەواو کرد!",
+  "kmr": "🏆 Te hemû kar qedandin!",
+  "ar": "🏆 لقد أنهيتِ كل المهام!"
+ },
+ "final_body": {
+  "it": "<p>Adesso sai entrare nei servizi online con lo SPID.</p><ol><li>Apri il sito del servizio e cerca Accedi con SPID.</li><li>Scegli il tuo gestore, scrivi nome utente e password.</li><li>Approva con il telefono.</li><li>Alla fine, esci.</li></ol><p><strong>Ricorda: approva solo se hai iniziato tu l'accesso.</strong> La password e i codici non si dicono a nessuno.</p>",
+  "en": "<p>Now you know how to log in to online services with SPID.</p><ol><li>Open the service's website and look for Accedi con SPID.</li><li>Choose your provider, then type your username and password.</li><li>Approve on your phone.</li><li>When you are done, log out.</li></ol><p><strong>Remember: only approve if you started the login yourself.</strong> Never tell anyone your password or codes.</p>",
+  "fr": "<p>Maintenant, vous savez entrer dans les services en ligne avec le SPID.</p><ol><li>Ouvrez le site du service et cherchez Accedi con SPID.</li><li>Choisissez votre fournisseur, écrivez votre nom d'utilisateur et votre mot de passe.</li><li>Validez avec votre téléphone.</li><li>À la fin, déconnectez-vous.</li></ol><p><strong>N'oubliez pas : validez seulement si c'est vous qui avez commencé la connexion.</strong> Ne donnez jamais votre mot de passe et vos codes à personne.</p>",
+  "ckb": "<p>ئێستا دەزانیت چۆن بە SPID بچیتە ناو خزمەتگوزارییە ئۆنلاینەکان.</p><ol><li>ماڵپەڕی خزمەتگوزارییەکە بکەرەوە و بەدوای Accedi con SPID بگەڕێ.</li><li>کۆمپانیای SPIDەکەت هەڵبژێرە، ناوی بەکارهێنەر و وشەی نهێنی بنووسە.</li><li>بە تەلەفۆنەکەت ڕەزامەندی بدە.</li><li>لە کۆتاییدا، بچۆ دەرەوە.</li></ol><p><strong>لەبیرت بێت: تەنها ئەو کاتە ڕەزامەندی بدە کە خۆت چوونە ژوورەوەکەت دەست پێکردبێت.</strong> وشەی نهێنی و کۆدەکان بە هیچ کەس مەڵێ.</p>",
+  "kmr": "<p>Niha tu dizanî bi SPID-ê têkevî xizmetên online.</p><ol><li>Malpera xizmetê veke û li Accedi con SPID bigere.</li><li>Pêşkêşkerê xwe hilbijêre, navê bikarhêner û şîfreyê binivîse.</li><li>Bi telefonê erê bike.</li><li>Di dawiyê de, derkeve.</li></ol><p><strong>Bîne bîra xwe: tenê erê bike eger te bi xwe dest bi têketinê kiribe.</strong> Şîfre û kod ji kesî re nayên gotin.</p>",
+  "ar": "<p>الآن تعرفين كيف تدخلين إلى الخدمات على الإنترنت باستخدام SPID.</p><ol><li>افتحي موقع الخدمة وابحثي عن Accedi con SPID.</li><li>اختاري الشركة التي أعطتك SPID، واكتبي اسم المستخدم وكلمة السر.</li><li>وافقي من هاتفك.</li><li>في النهاية، اخرجي.</li></ol><p><strong>تذكّري: وافقي فقط إذا كنتِ أنتِ من بدأ الدخول.</strong> لا تقولي كلمة السر والرموز لأي أحد.</p>"
+ },
+ "tk_1": {
+  "it": "Guarda un referto nel Fascicolo sanitario",
+  "en": "Look at a medical report in your Health Record",
+  "fr": "Consultez un compte rendu médical dans votre dossier de santé",
+  "ckb": "سەیری ئەنجامی پشکنینێک بکە لە دۆسیەی تەندروستیدا",
+  "kmr": "Raporeke doktor di Dosyaya tenduristiyê de binêre",
+  "ar": "انظري إلى نتيجة فحص في الملف الصحي"
+ },
+ "tk_2": {
+  "it": "Scarica un certificato dal Comune di Parma",
+  "en": "Download a certificate from the Comune di Parma",
+  "fr": "Télécharger un certificat de la Mairie de Parme",
+  "ckb": "بەڵگەنامەیەک لە شارەوانیی پارما دابەزێنە",
+  "kmr": "Ji Şaredariya Parmayê belgeyekê daxe",
+  "ar": "حمّلي شهادة من بلدية بارما"
+ },
+ "tk_3": {
+  "it": "Guarda lo stato dell'assegno unico (INPS)",
+  "en": "Check the status of your single child allowance (INPS)",
+  "fr": "Vérifiez où en est votre allocation familiale unique (INPS)",
+  "ckb": "سەیری دۆخی یارمەتیی پارەی منداڵان بکە (INPS)",
+  "kmr": "Rewşa alîkariya yekane ya ji bo zarokan (INPS) binêre",
+  "ar": "انظري إلى حالة الإعانة الموحدة للأطفال (INPS)"
+ },
+ "tk_4": {
+  "it": "Iscrivi un figlio a scuola",
+  "en": "Enroll your child in school",
+  "fr": "Inscrire un enfant à l'école",
+  "ckb": "منداڵەکەت لە قوتابخانە ناو بنووسە",
+  "kmr": "Zarokê xwe li dibistanê qeyd bike",
+  "ar": "سجّلي طفلكِ في المدرسة"
+ },
+ "tk_5": {
+  "it": "Prenota un appuntamento in Questura",
+  "en": "Book an appointment at the Questura",
+  "fr": "Prenez un rendez-vous à la Questura",
+  "ckb": "لە Questura کاتێک بگرە",
+  "kmr": "Li Questura ji xwe re randevûyekê bigire",
+  "ar": "احجزي موعدًا في Questura"
+ },
+ "sb_search": {
+  "it": "Cerca il sito",
+  "en": "Search for the website",
+  "fr": "Cherchez le site",
+  "ckb": "ماڵپەڕەکە بدۆزەرەوە",
+  "kmr": "Malperê bigere",
+  "ar": "ابحثي عن الموقع"
+ },
+ "sb_spid": {
+  "it": "Trova Accedi con SPID",
+  "en": "Find Accedi con SPID",
+  "fr": "Trouvez Accedi con SPID",
+  "ckb": "Accedi con SPID بدۆزەرەوە",
+  "kmr": "Bibîne Accedi con SPID",
+  "ar": "ابحثي عن Accedi con SPID"
+ },
+ "sb_provider": {
+  "it": "Scegli Poste ID",
+  "en": "Choose Poste ID",
+  "fr": "Choisissez Poste ID",
+  "ckb": "Poste ID هەڵبژێرە",
+  "kmr": "Hilbijêre Poste ID",
+  "ar": "اختاري Poste ID"
+ },
+ "sb_login": {
+  "it": "Scrivi nome utente e password",
+  "en": "Write your username and password",
+  "fr": "Écrivez votre nom d'utilisateur et votre mot de passe",
+  "ckb": "ناوی بەکارهێنەر و وشەی نهێنی بنووسە",
+  "kmr": "Navê bikarhêner û şîfreyê binivîse",
+  "ar": "اكتبي اسم المستخدم وكلمة المرور"
+ },
+ "sb_phone": {
+  "it": "Approva con il telefono",
+  "en": "Approve with your phone",
+  "fr": "Validez avec le téléphone",
+  "ckb": "بە تەلەفۆنەکەت پەسەندی بکە",
+  "kmr": "Bi telefonê pejirîne",
+  "ar": "وافقي باستخدام الهاتف"
+ },
+ "sb_logout": {
+  "it": "Esci dal sito",
+  "en": "Leave the site",
+  "fr": "Quitter le site",
+  "ckb": "لە ماڵپەڕەکە دەربچۆ",
+  "kmr": "Ji malperê derkeve",
+  "ar": "اخرجي من الموقع"
+ },
+ "sb_1": {
+  "it": "Apri il referto Analisi del sangue",
+  "en": "Open the report Analisi del sangue",
+  "fr": "Ouvrez le compte rendu Analisi del sangue",
+  "ckb": "ئەنجامی پشکنینەکە بکەرەوە Analisi del sangue",
+  "kmr": "Encama muayeneyê veke Analisi del sangue",
+  "ar": "افتحي التقرير الطبي Analisi del sangue"
+ },
+ "sb_2a": {
+  "it": "Scegli Certificato di residenza",
+  "en": "Choose Certificato di residenza",
+  "fr": "Choisissez Certificato di residenza",
+  "ckb": "Certificato di residenza هەڵبژێرە",
+  "kmr": "Hilbijêre Certificato di residenza",
+  "ar": "اختاري Certificato di residenza"
+ },
+ "sb_2b": {
+  "it": "Premi Scarica PDF",
+  "en": "Press Scarica PDF",
+  "fr": "Appuyez sur Scarica PDF",
+  "ckb": "پەنجە بنێ بە Scarica PDF",
+  "kmr": "Bitikîne Scarica PDF",
+  "ar": "اضغطي Scarica PDF"
+ },
+ "sb_3": {
+  "it": "Apri il dettaglio dell'assegno",
+  "en": "Open the details of your allowance",
+  "fr": "Ouvrez le détail de l'allocation",
+  "ckb": "وردەکاریی یارمەتییە داراییەکە بکەرەوە",
+  "kmr": "Hûrguliyên alîkariya pereyan veke",
+  "ar": "افتحي تفاصيل المنحة"
+ },
+ "sb_4a": {
+  "it": "Scegli il figlio e la scuola",
+  "en": "Choose your child and the school",
+  "fr": "Choisissez l'enfant et l'école",
+  "ckb": "منداڵەکە و قوتابخانەکە هەڵبژێرە",
+  "kmr": "Zarokê xwe û dibistanê hilbijêre",
+  "ar": "اختاري الطفل والمدرسة"
+ },
+ "sb_4b": {
+  "it": "Premi Invia domanda",
+  "en": "Press Invia domanda",
+  "fr": "Appuyez sur Invia domanda",
+  "ckb": "پەنجە بنێ بە Invia domanda",
+  "kmr": "Bitikîne Invia domanda",
+  "ar": "اضغطي Invia domanda"
+ },
+ "sb_5a": {
+  "it": "Scegli un giorno",
+  "en": "Choose a day",
+  "fr": "Choisissez un jour",
+  "ckb": "ڕۆژێک هەڵبژێرە",
+  "kmr": "Rojekê hilbijêre",
+  "ar": "اختاري يومًا"
+ },
+ "sb_5b": {
+  "it": "Premi Conferma",
+  "en": "Press Conferma",
+  "fr": "Appuyez sur Conferma",
+  "ckb": "پەنجە بنێ بە Conferma",
+  "kmr": "Bitikîne Conferma",
+  "ar": "اضغطي Conferma"
+ }
+}

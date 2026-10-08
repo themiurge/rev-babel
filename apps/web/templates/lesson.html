@@ -5,7 +5,11 @@
   <h1 {{ m.title_attr(lesson.long_title) }}>{{ lesson.long_title }}</h1>
   <ul class="game-links">
     {% for key, info in games.items() %}
+    {% if info.new_tab %}
+    <li><a href="{{ info.src }}" target="_blank" rel="noopener" {{ m.title_attr(info.title) }}>{{ info.title }} ↗</a></li>
+    {% else %}
     <li><a href="/course/{{ lesson.slug }}/{{ key }}" {{ m.title_attr(info.title) }}>{{ info.title }}</a></li>
+    {% endif %}
     {% endfor %}
     <li><a href="/follow" {{ m.title_attr("Segui la lezione") }}>Segui la lezione</a></li>
   </ul>

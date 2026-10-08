@@ -79,7 +79,7 @@ shared computer.
   the reporting-site URL `commissariatodips.it` are protected literals;
   everything else, including institution names, translates normally.
 - **Lesson 4 (SPID) has two decks**, five languages, and a "Lezione 4" entry
-  in the course menu (no game yet). `lezione-4-spid.json` (24 slides): SPID
+  in the course menu, plus the game below. `lezione-4-spid.json` (24 slides): SPID
   as a key and not a website, the six-step login with a "Dove siamo?" mockup
   per step, three security rules and the "chi ha iniziato il login?" test,
   then services useful to this class: Fascicolo sanitario
@@ -106,6 +106,18 @@ shared computer.
   hours; Questura Parma appointment rules (pages dated 2018-2024). Translated
   with `agy` through `{{...}}`-protected literals; it returned empty for many
   slides, so the builder falls back to per-sentence translation.
+- **Lesson 4 game "Entra con SPID!"** opens in a new tab at `/games/spid`:
+  fake browser in the centre, Italian + preferred-language instructions on
+  the right (one explanation per screen, `spid_game_strings.json`, built
+  from the Italian sources with `claude -p --model opus --effort low`), and
+  a five-task list (FSE, Comune, INPS, scuola, questura) with subtasks.
+  Fuzzy search finds the fake `.example` sites; each has its SPID button in
+  a different place; the fake provider login uses `maria` / `farfalla27`;
+  a QR code opens a one-time Italian page (`/spid/<code>`) on the phone with
+  Approva / Rifiuta; approval logs the computer in. Challenges live in
+  memory (single worker), progress in localStorage. **Unverified:**
+  ckb/kmr/ar/fr/en game text is machine-translated and unreviewed (kmr
+  especially), and the "Poste ID app" wording is a guess.
 - **Lesson 3 has a game: "Invia l'email!"** (`templates/games/email.html`,
   one mode, five rounds, scored in seconds with a personal best like the
   other games). Each round shows a task card (address, subject, attachment;
