@@ -1,0 +1,610 @@
+{
+ "ui_step": {
+  "it": "Passo @@N@@ di @@T@@",
+  "en": "Step @@N@@ of @@T@@",
+  "fr": "Étape @@N@@ sur @@T@@",
+  "ckb": "هەنگاوی @@N@@ لە @@T@@",
+  "kmr": "Gav @@N@@ ji @@T@@",
+  "ar": "الخطوة @@N@@ من @@T@@"
+ },
+ "ui_start": {
+  "it": "Inizia",
+  "en": "Start",
+  "fr": "Commencer",
+  "ckb": "دەست پێ بکە",
+  "kmr": "Dest pê bike",
+  "ar": "ابدئي"
+ },
+ "ui_next": {
+  "it": "Vai avanti ➜",
+  "en": "Go on ➜",
+  "fr": "Continuer ➜",
+  "ckb": "بڕۆ بۆ دواتر ➜",
+  "kmr": "Biçe pêş ➜",
+  "ar": "تابعي ➜"
+ },
+ "ui_skip": {
+  "it": "Salta questo passo",
+  "en": "Skip this step",
+  "fr": "Passer cette étape",
+  "ckb": "ئەم هەنگاوە بپەڕێنە",
+  "kmr": "Vî gavî derbas bike",
+  "ar": "تخطّي هذه الخطوة"
+ },
+ "ui_hint": {
+  "it": "💡 Un aiuto",
+  "en": "💡 A little help",
+  "fr": "💡 Un coup de main",
+  "ckb": "💡 یارمەتییەک",
+  "kmr": "💡 Alîkarî",
+  "ar": "💡 مساعدة"
+ },
+ "ui_ok": {
+  "it": "✅ Bravissima!",
+  "en": "✅ Well done!",
+  "fr": "✅ Bravo !",
+  "ckb": "✅ زۆر باشە!",
+  "kmr": "✅ Pir baş e!",
+  "ar": "✅ أحسنتِ!"
+ },
+ "ui_restart": {
+  "it": "Ricomincia da capo",
+  "en": "Start over",
+  "fr": "Recommencer",
+  "ckb": "لە سەرەتاوە دەست پێ بکەرەوە",
+  "kmr": "Ji serî ve dest pê bike",
+  "ar": "ابدئي من البداية"
+ },
+ "ui_free": {
+  "it": "Continua a scrivere",
+  "en": "Keep writing",
+  "fr": "Continuer à écrire",
+  "ckb": "بەردەوام بە لە نووسین",
+  "kmr": "Berdewam bike binivîse",
+  "ar": "تابعي الكتابة"
+ },
+ "ui_back": {
+  "it": "← Torna al corso",
+  "en": "← Back to the course",
+  "fr": "← Retour au cours",
+  "ckb": "← بگەڕێوە بۆ خولەکە",
+  "kmr": "← Vegere ser kursê",
+  "ar": "← العودة إلى الدورة"
+ },
+ "ui_docname": {
+  "it": "📄 Il mio primo documento",
+  "en": "📄 My first document",
+  "fr": "📄 Mon premier document",
+  "ckb": "📄 یەکەم بەڵگەنامەکەم",
+  "kmr": "📄 Belgeya min a yekem",
+  "ar": "📄 مستندي الأول"
+ },
+ "ui_placeholder": {
+  "it": "Fai clic qui e scrivi…",
+  "en": "Click here and write…",
+  "fr": "Clique ici et écris…",
+  "ckb": "لێرە کرتە بکە و بنووسە…",
+  "kmr": "Li vir bitikîne û binivîse…",
+  "ar": "اضغطي هنا واكتبي…"
+ },
+ "ui_privacy": {
+  "it": "🔒 Quello che scrivi resta sul tuo schermo. Non viene salvato.",
+  "en": "🔒 What you write stays on your screen. It is not saved.",
+  "fr": "🔒 Ce que tu écris reste sur ton écran. Rien n'est enregistré.",
+  "ckb": "🔒 ئەوەی دەینووسیت تەنها لەسەر شاشەکەتە. هیچ پاشەکەوت ناکرێت.",
+  "kmr": "🔒 Tiştê tu dinivîsî tenê li ser ekrana te dimîne. Tê tomar kirin nabe.",
+  "ar": "🔒 ما تكتبينه يبقى على شاشتك فقط. لا يتم حفظه."
+ },
+ "tb_undo": {
+  "it": "Annulla",
+  "en": "Undo",
+  "fr": "Annuler",
+  "ckb": "پاشگەزبوونەوە",
+  "kmr": "Betal bike",
+  "ar": "تراجع"
+ },
+ "tb_redo": {
+  "it": "Ripristina",
+  "en": "Redo",
+  "fr": "Rétablir",
+  "ckb": "گەڕاندنەوە",
+  "kmr": "Vegerîne",
+  "ar": "إعادة"
+ },
+ "tb_header": {
+  "it": "Stile del testo",
+  "en": "Text style",
+  "fr": "Style du texte",
+  "ckb": "شێوازی دەق",
+  "kmr": "Şêwaza nivîsê",
+  "ar": "نمط النص"
+ },
+ "tb_bold": {
+  "it": "Grassetto",
+  "en": "Bold",
+  "fr": "Gras",
+  "ckb": "ئەستوور",
+  "kmr": "Qalind",
+  "ar": "غامق"
+ },
+ "tb_italic": {
+  "it": "Corsivo",
+  "en": "Italic",
+  "fr": "Italique",
+  "ckb": "لار",
+  "kmr": "Xwar",
+  "ar": "مائل"
+ },
+ "tb_underline": {
+  "it": "Sottolineato",
+  "en": "Underline",
+  "fr": "Souligné",
+  "ckb": "ژێرهێڵ",
+  "kmr": "Binxetkirî",
+  "ar": "تسطير"
+ },
+ "tb_color": {
+  "it": "Colore",
+  "en": "Colour",
+  "fr": "Couleur",
+  "ckb": "ڕەنگ",
+  "kmr": "Reng",
+  "ar": "اللون"
+ },
+ "tb_left": {
+  "it": "A sinistra",
+  "en": "Align left",
+  "fr": "À gauche",
+  "ckb": "بۆ چەپ",
+  "kmr": "Li çepê",
+  "ar": "إلى اليسار"
+ },
+ "tb_center": {
+  "it": "Centra",
+  "en": "Centre",
+  "fr": "Centrer",
+  "ckb": "ناوەڕاست",
+  "kmr": "Navîn",
+  "ar": "توسيط"
+ },
+ "tb_right": {
+  "it": "A destra",
+  "en": "Align right",
+  "fr": "À droite",
+  "ckb": "بۆ ڕاست",
+  "kmr": "Li rastê",
+  "ar": "إلى اليمين"
+ },
+ "tb_bullet": {
+  "it": "Elenco puntato",
+  "en": "Bulleted list",
+  "fr": "Liste à puces",
+  "ckb": "لیستی خاڵدار",
+  "kmr": "Lîsteya xalî",
+  "ar": "قائمة نقطية"
+ },
+ "tb_ordered": {
+  "it": "Elenco numerato",
+  "en": "Numbered list",
+  "fr": "Liste numérotée",
+  "ckb": "لیستی ژمارەدار",
+  "kmr": "Lîsteya bi hejmar",
+  "ar": "قائمة مرقمة"
+ },
+ "intro_title": {
+  "it": "👋 Benvenuta! Impariamo a scrivere un documento",
+  "en": "👋 Welcome! Let's learn to write a document",
+  "fr": "👋 Bienvenue ! Apprenons à écrire un document",
+  "ckb": "👋 بەخێربێیت! با فێری نووسینی بەڵگەنامە ببین",
+  "kmr": "👋 Bi xêr hatî! Werin em fêr bibin belgeyekê binivîsin",
+  "ar": "👋 مرحباً بكِ! لنتعلم كتابة مستند"
+ },
+ "intro_body": {
+  "it": "<p>Qui c'è un <strong>programma di scrittura</strong>, come Word o Google Documenti.</p><ol><li>A <strong>sinistra</strong> c'è la pagina bianca: qui scrivi.</li><li>A <strong>destra</strong> ti spiego cosa fare, un passo alla volta.</li><li>Una <strong>freccia arancione</strong> ti mostra dove fare clic.</li><li>Puoi sbagliare: non succede niente.</li></ol><p class=\"real\">🔒 Quello che scrivi resta sul tuo schermo. Non viene salvato.</p><p class=\"ask\"><strong>Se hai capito, fai clic su Inizia. Se non hai capito, chiedi a Emilio.</strong></p>",
+  "en": "<p>Here is a <strong>writing program</strong>, like Word or Google Docs.</p><ol><li>On the <strong>left</strong> is the white page: you write here.</li><li>On the <strong>right</strong> I explain what to do, one step at a time.</li><li>An <strong>orange arrow</strong> shows you where to click.</li><li>You can make mistakes: nothing bad happens.</li></ol><p class=\"real\">🔒 What you write stays on your screen. It is not saved.</p><p class=\"ask\"><strong>If you understood, click Start. If you did not understand, ask Emilio.</strong></p>",
+  "fr": "<p>Voici un <strong>programme de traitement de texte</strong>, comme Word ou Google Docs.</p><ol><li>À <strong>gauche</strong> se trouve la page blanche : tu écris ici.</li><li>À <strong>droite</strong> je t'explique quoi faire, étape par étape.</li><li>Une <strong>flèche orange</strong> te montre où cliquer.</li><li>Tu peux te tromper : il ne se passe rien de grave.</li></ol><p class=\"real\">🔒 Ce que tu écris reste sur ton écran. Rien n'est enregistré.</p><p class=\"ask\"><strong>Si tu as compris, clique sur Commencer. Si tu n'as pas compris, demande à Emilio.</strong></p>",
+  "ckb": "<p>ئەمە <strong>بەرنامەیەکی نووسینە</strong>، وەک Word یان Google Docs.</p><ol><li>لای <strong>چەپ</strong> لاپەڕە سپییەکەیە: لێرە دەنووسیت.</li><li>لای <strong>ڕاست</strong> هەنگاو بە هەنگاو پێت دەڵێم چی بکەیت.</li><li><strong>تیرێکی پرتەقاڵی</strong> نیشانت دەدات لە کوێ کرتە بکەیت.</li><li>دەتوانیت هەڵە بکەیت: هیچ ڕوونادات.</li></ol><p class=\"real\">🔒 ئەوەی دەینووسیت تەنها لەسەر شاشەکەتە. هیچ پاشەکەوت ناکرێت.</p><p class=\"ask\"><strong>ئەگەر تێگەیشتیت، کرتە لە «دەست پێ بکە» بکە. ئەگەر تێنەگەیشتیت، لە Emilio بپرسە.</strong></p>",
+  "kmr": "<p>Li vir <strong>bernameyeke nivîsê</strong> heye, mîna Word an Google Docs.</p><ol><li>Li aliyê <strong>çepê</strong> rûpela spî heye: tu li vir dinivîsî.</li><li>Li aliyê <strong>rastê</strong> ez gav bi gav ji te re dibêjim çi bikî.</li><li><strong>Tîreke porteqalî</strong> nîşanî te dide li ku bitikînî.</li><li>Tu dikarî xelet bikî: tiştek nabe.</li></ol><p class=\"real\">🔒 Tiştê tu dinivîsî tenê li ser ekrana te dimîne. Tê tomar kirin nabe.</p><p class=\"ask\"><strong>Heke te fêm kir, li «Dest pê bike» bitikîne. Heke te fêm nekir, ji Emilio bipirse.</strong></p>",
+  "ar": "<p>هنا <strong>برنامج للكتابة</strong>، مثل Word أو Google Docs.</p><ol><li>على <strong>اليسار</strong> الصفحة البيضاء: هنا تكتبين.</li><li>على <strong>اليمين</strong> أشرح لكِ ماذا تفعلين، خطوة بخطوة.</li><li><strong>سهم برتقالي</strong> يريكِ أين تضغطين.</li><li>يمكنكِ أن تخطئي: لا يحدث شيء.</li></ol><p class=\"real\">🔒 ما تكتبينه يبقى على شاشتك فقط. لا يتم حفظه.</p><p class=\"ask\"><strong>إذا فهمتِ، اضغطي على «ابدئي». إذا لم تفهمي، اسألي Emilio.</strong></p>"
+ },
+ "s1_t": {
+  "it": "Scrivi il titolo",
+  "en": "Write the title",
+  "fr": "Écris le titre",
+  "ckb": "ناونیشانەکە بنووسە",
+  "kmr": "Sernivîsê binivîse",
+  "ar": "اكتبي العنوان"
+ },
+ "s1_b": {
+  "it": "<p>Fai clic nella pagina bianca. Poi scrivi un <strong>titolo</strong>, per esempio: <em>La mia città</em>.</p>",
+  "en": "<p>Click on the white page. Then write a <strong>title</strong>, for example: <em>My city</em>.</p>",
+  "fr": "<p>Clique sur la page blanche. Puis écris un <strong>titre</strong>, par exemple : <em>Ma ville</em>.</p>",
+  "ckb": "<p>کرتە لەسەر لاپەڕە سپییەکە بکە. پاشان <strong>ناونیشانێک</strong> بنووسە، بۆ نموونە: <em>شارەکەم</em>.</p>",
+  "kmr": "<p>Li ser rûpela spî bitikîne. Paşê <strong>sernivîsek</strong> binivîse, bo nimûne: <em>Bajarê min</em>.</p>",
+  "ar": "<p>اضغطي على الصفحة البيضاء. ثم اكتبي <strong>عنواناً</strong>، مثلاً: <em>مدينتي</em>.</p>"
+ },
+ "s1_h": {
+  "it": "Muovi il mouse sulla pagina e fai clic una volta. Appare una lineetta che lampeggia: ora puoi scrivere.",
+  "en": "Move the mouse over the page and click once. A blinking line appears: now you can write.",
+  "fr": "Place la souris sur la page et clique une fois. Un trait clignotant apparaît : tu peux écrire.",
+  "ckb": "ماوسەکە بخەرە سەر لاپەڕەکە و یەک جار کرتە بکە. هێڵێکی چاوتروکێن دەردەکەوێت: ئێستا دەتوانیت بنووسیت.",
+  "kmr": "Mişkê bibe ser rûpelê û carekê bitikîne. Xetek ronî-vemirî xuya dibe: niha tu dikarî binivîsî.",
+  "ar": "حرّكي الفأرة على الصفحة واضغطي مرة واحدة. يظهر خط يومض: الآن يمكنكِ الكتابة."
+ },
+ "s2_t": {
+  "it": "Vai a capo e scrivi una frase",
+  "en": "New line, then a sentence",
+  "fr": "Va à la ligne et écris une phrase",
+  "ckb": "بچۆ دێڕی نوێ و ڕستەیەک بنووسە",
+  "kmr": "Here rêza nû û hevokekê binivîse",
+  "ar": "انتقلي إلى سطر جديد واكتبي جملة"
+ },
+ "s2_b": {
+  "it": "<p>Premi il tasto <kbd>Invio</kbd> per andare a capo. Poi scrivi una frase, per esempio: <em>Mi piace molto il mio quartiere.</em></p>",
+  "en": "<p>Press the <kbd>Invio</kbd> (Enter) key to start a new line. Then write a sentence, for example: <em>I like my neighbourhood very much.</em></p>",
+  "fr": "<p>Appuie sur la touche <kbd>Invio</kbd> (Entrée) pour aller à la ligne. Puis écris une phrase, par exemple : <em>J'aime beaucoup mon quartier.</em></p>",
+  "ckb": "<p>دوگمەی <kbd>Invio</kbd> (Enter) دابگرە بۆ دێڕی نوێ. پاشان ڕستەیەک بنووسە، بۆ نموونە: <em>گەڕەکەکەم زۆر بەدڵمە.</em></p>",
+  "kmr": "<p>Bişkojka <kbd>Invio</kbd> (Enter) bitikîne da ku here rêza nû. Paşê hevokekê binivîse, bo nimûne: <em>Taxa min pir ji min re xweş e.</em></p>",
+  "ar": "<p>اضغطي على مفتاح <kbd>Invio</kbd> (Enter) للانتقال إلى سطر جديد. ثم اكتبي جملة، مثلاً: <em>أحب حيّي كثيراً.</em></p>"
+ },
+ "s2_h": {
+  "it": "Il tasto Invio è il tasto grande a destra, con la freccia. Dopo Invio il cursore va sulla riga sotto: poi scrivi.",
+  "en": "The Enter key is the big key on the right, with an arrow. After Enter the cursor goes to the next line: then write.",
+  "fr": "La touche Entrée est la grande touche à droite, avec une flèche. Après Entrée, le curseur passe à la ligne suivante : écris ensuite.",
+  "ckb": "دوگمەی Enter دوگمە گەورەکەی لای ڕاستە، بە تیرێکەوە. دوای Enter نیشانەکە دەچێتە دێڕی خوارەوە: پاشان بنووسە.",
+  "kmr": "Bişkojka Enter bişkojka mezin a li aliyê rastê ye, bi tîrekê. Piştî Enter nîşander diçe rêza jêrîn: paşê binivîse.",
+  "ar": "مفتاح Enter هو المفتاح الكبير على اليمين، وعليه سهم. بعد Enter ينتقل المؤشر إلى السطر التالي: ثم اكتبي."
+ },
+ "s3_t": {
+  "it": "Seleziona il titolo",
+  "en": "Select the title",
+  "fr": "Sélectionne le titre",
+  "ckb": "ناونیشانەکە دیاری بکە",
+  "kmr": "Sernivîsê hilbijêre",
+  "ar": "حدّدي العنوان"
+ },
+ "s3_b": {
+  "it": "<p>Per cambiare una riga, prima la devi <strong>selezionare</strong>. Fai <strong>3 clic veloci</strong> sul titolo. La riga diventa colorata.</p>",
+  "en": "<p>To change a line, you must first <strong>select</strong> it. Click the title <strong>3 times, quickly</strong>. The line turns coloured.</p>",
+  "fr": "<p>Pour modifier une ligne, il faut d'abord la <strong>sélectionner</strong>. Clique <strong>3 fois, vite</strong>, sur le titre. La ligne se colore.</p>",
+  "ckb": "<p>بۆ گۆڕینی دێڕێک، پێویستە سەرەتا <strong>دیاری بکەیت</strong>. <strong>3 جار بە خێرایی</strong> کرتە لەسەر ناونیشانەکە بکە. دێڕەکە ڕەنگ دەگرێت.</p>",
+  "kmr": "<p>Ji bo guhertina rêzekê, pêşî divê tu wê <strong>hilbijêrî</strong>. <strong>3 caran bi lez</strong> li ser sernivîsê bitikîne. Rêz rengîn dibe.</p>",
+  "ar": "<p>لتغيير سطر، يجب أولاً أن <strong>تحدّديه</strong>. اضغطي <strong>3 مرات بسرعة</strong> على العنوان. يتلوّن السطر.</p>"
+ },
+ "s3_h": {
+  "it": "Oppure: tieni premuto il tasto sinistro del mouse e trascina da sinistra a destra su tutto il titolo.",
+  "en": "Or: hold down the left mouse button and drag from left to right over the whole title.",
+  "fr": "Ou : maintiens le bouton gauche de la souris et glisse de gauche à droite sur tout le titre.",
+  "ckb": "یان: دوگمەی چەپی ماوسەکە دابگرە و لە چەپەوە بۆ ڕاست بەسەر هەموو ناونیشانەکەدا ڕایبکێشە.",
+  "kmr": "An jî: bişkojka çepê ya mişkê bigire û ji çepê ber bi rastê li ser tevahiya sernivîsê bikişîne.",
+  "ar": "أو: اضغطي مع الاستمرار على زر الفأرة الأيسر واسحبي من اليسار إلى اليمين على العنوان كله."
+ },
+ "s4_t": {
+  "it": "Grassetto",
+  "en": "Bold",
+  "fr": "Gras",
+  "ckb": "ئەستوور (Grassetto)",
+  "kmr": "Qalind (Grassetto)",
+  "ar": "غامق (Grassetto)"
+ },
+ "s4_b": {
+  "it": "<p>Il titolo è selezionato. Premi il pulsante <strong>B</strong> (<strong>Grassetto</strong>): le lettere diventano più spesse.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>B</kbd></p>",
+  "en": "<p>The title is selected. Press the <strong>B</strong> button (<strong>Grassetto</strong> = Bold): the letters become thicker.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>B</kbd></p>",
+  "fr": "<p>Le titre est sélectionné. Appuie sur le bouton <strong>B</strong> (<strong>Grassetto</strong> = Gras) : les lettres deviennent plus épaisses.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>B</kbd></p>",
+  "ckb": "<p>ناونیشانەکە دیاری کراوە. دوگمەی <strong>B</strong> (<strong>Grassetto</strong> = ئەستوور) دابگرە: پیتەکان ئەستوورتر دەبن.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>B</kbd></p>",
+  "kmr": "<p>Sernivîs hatiye hilbijartin. Bişkojka <strong>B</strong> (<strong>Grassetto</strong> = Qalind) bitikîne: tîp qalindtir dibin.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>B</kbd></p>",
+  "ar": "<p>العنوان محدَّد. اضغطي على الزر <strong>B</strong> (<strong>Grassetto</strong> = غامق): تصبح الحروف أسمك.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>B</kbd></p>"
+ },
+ "s4_h": {
+  "it": "Il pulsante B è nella barra in alto: guarda la freccia arancione. Se il titolo non è più colorato, selezionalo di nuovo.",
+  "en": "The B button is in the bar at the top: look at the orange arrow. If the title is no longer coloured, select it again.",
+  "fr": "Le bouton B est dans la barre du haut : regarde la flèche orange. Si le titre n'est plus coloré, sélectionne-le de nouveau.",
+  "ckb": "دوگمەی B لە شریتی سەرەوەیە: تیرە پرتەقاڵییەکە ببینە. ئەگەر ناونیشانەکە ڕەنگی نەما، دیسان دیاری بکەرەوە.",
+  "kmr": "Bişkojka B di darika jorîn de ye: li tîra porteqalî binêre. Heke sernivîs êdî rengîn nebe, dîsa hilbijêre.",
+  "ar": "الزر B في الشريط العلوي: انظري إلى السهم البرتقالي. إذا لم يعد العنوان ملوّناً، حدّديه من جديد."
+ },
+ "s5_t": {
+  "it": "Titolo grande",
+  "en": "A big title",
+  "fr": "Un grand titre",
+  "ckb": "ناونیشانی گەورە",
+  "kmr": "Sernivîsa mezin",
+  "ar": "عنوان كبير"
+ },
+ "s5_b": {
+  "it": "<p>Ora rendi il titolo più grande. Apri il menu <strong>Testo normale</strong> e scegli <strong>Titolo</strong>.</p>",
+  "en": "<p>Now make the title bigger. Open the <strong>Testo normale</strong> (Normal text) menu and choose <strong>Titolo</strong> (Title).</p>",
+  "fr": "<p>Maintenant, agrandis le titre. Ouvre le menu <strong>Testo normale</strong> (Texte normal) et choisis <strong>Titolo</strong> (Titre).</p>",
+  "ckb": "<p>ئێستا ناونیشانەکە گەورەتر بکە. لیستی <strong>Testo normale</strong> (دەقی ئاسایی) بکەرەوە و <strong>Titolo</strong> (ناونیشان) هەڵبژێرە.</p>",
+  "kmr": "<p>Niha sernivîsê mezintir bike. Menuya <strong>Testo normale</strong> (nivîsa asayî) veke û <strong>Titolo</strong> (sernivîs) hilbijêre.</p>",
+  "ar": "<p>الآن كبّري العنوان. افتحي القائمة <strong>Testo normale</strong> (نص عادي) واختاري <strong>Titolo</strong> (عنوان).</p>"
+ },
+ "s5_h": {
+  "it": "Fai clic sul menu con la freccettina: si apre una lista. Poi fai clic su Titolo.",
+  "en": "Click the menu with the little arrow: a list opens. Then click Titolo.",
+  "fr": "Clique sur le menu avec la petite flèche : une liste s'ouvre. Puis clique sur Titolo.",
+  "ckb": "کرتە لەسەر لیستەکە بکە کە تیرێکی بچووکی هەیە: لیستێک دەکرێتەوە. پاشان کرتە لەسەر Titolo بکە.",
+  "kmr": "Li menuya bi tîra biçûk bitikîne: lîsteyek vedibe. Paşê li Titolo bitikîne.",
+  "ar": "اضغطي على القائمة التي فيها سهم صغير: تفتح لائحة. ثم اضغطي على Titolo."
+ },
+ "s6_t": {
+  "it": "Al centro",
+  "en": "In the centre",
+  "fr": "Au centre",
+  "ckb": "لە ناوەڕاست",
+  "kmr": "Li navîn",
+  "ar": "في الوسط"
+ },
+ "s6_b": {
+  "it": "<p>Metti il titolo al centro della pagina: premi il pulsante <strong>Centra</strong> (le righe al centro).</p>",
+  "en": "<p>Put the title in the middle of the page: press the <strong>Centra</strong> (Centre) button (the lines in the middle).</p>",
+  "fr": "<p>Mets le titre au milieu de la page : appuie sur le bouton <strong>Centra</strong> (Centrer) (les lignes au centre).</p>",
+  "ckb": "<p>ناونیشانەکە بخەرە ناوەڕاستی لاپەڕەکە: دوگمەی <strong>Centra</strong> (ناوەڕاست) دابگرە (هێڵەکان لە ناوەڕاستن).</p>",
+  "kmr": "<p>Sernivîsê deynin nîvê rûpelê: bişkojka <strong>Centra</strong> (Navîn) bitikîne (xet li navîn in).</p>",
+  "ar": "<p>ضعي العنوان في وسط الصفحة: اضغطي على الزر <strong>Centra</strong> (توسيط) (الخطوط في الوسط).</p>"
+ },
+ "s6_h": {
+  "it": "Ci sono tre pulsanti con righe: a sinistra, al centro, a destra. Scegli quello con le righe al centro.",
+  "en": "There are three buttons with lines: left, centre, right. Choose the one with the lines in the middle.",
+  "fr": "Il y a trois boutons avec des lignes : gauche, centre, droite. Choisis celui avec les lignes au centre.",
+  "ckb": "سێ دوگمە هەن کە هێڵیان تێدایە: چەپ، ناوەڕاست، ڕاست. ئەوەیان هەڵبژێرە کە هێڵەکانی لە ناوەڕاستن.",
+  "kmr": "Sê bişkojk hene ku xet tê de ne: çep, navîn, rast. Ya ku xetên wê li navîn in hilbijêre.",
+  "ar": "هناك ثلاثة أزرار فيها خطوط: يسار ووسط ويمين. اختاري الذي خطوطه في الوسط."
+ },
+ "s7_t": {
+  "it": "Seleziona una parola",
+  "en": "Select a word",
+  "fr": "Sélectionne un mot",
+  "ckb": "وشەیەک دیاری بکە",
+  "kmr": "Peyvekê hilbijêre",
+  "ar": "حدّدي كلمة"
+ },
+ "s7_b": {
+  "it": "<p>Adesso lavoriamo sulla frase. Fai <strong>doppio clic</strong> su una parola della frase per selezionarla.</p>",
+  "en": "<p>Now let's work on the sentence. <strong>Double-click</strong> a word in the sentence to select it.</p>",
+  "fr": "<p>Maintenant, travaillons sur la phrase. Fais un <strong>double clic</strong> sur un mot de la phrase pour le sélectionner.</p>",
+  "ckb": "<p>ئێستا لەسەر ڕستەکە کار دەکەین. <strong>دوو جار کرتە</strong> لەسەر وشەیەکی ڕستەکە بکە بۆ دیاریکردنی.</p>",
+  "kmr": "<p>Niha em li ser hevokê dixebitin. Li ser peyvekê ya hevokê <strong>du caran bitikîne</strong> da ku wê hilbijêrî.</p>",
+  "ar": "<p>الآن نعمل على الجملة. اضغطي <strong>ضغطتين سريعتين</strong> على كلمة من الجملة لتحديدها.</p>"
+ },
+ "s7_h": {
+  "it": "Doppio clic = due clic veloci, nello stesso punto, sopra la parola.",
+  "en": "Double-click = two quick clicks in the same place, on the word.",
+  "fr": "Double clic = deux clics rapides au même endroit, sur le mot.",
+  "ckb": "دوو جار کرتە = دوو کرتەی خێرا لە یەک شوێن، لەسەر وشەکە.",
+  "kmr": "Du caran bitikîne = du tikandinên bilez di heman cihî de, li ser peyvê.",
+  "ar": "ضغطتان سريعتان = ضغطتان متتاليتان في المكان نفسه، على الكلمة."
+ },
+ "s8_t": {
+  "it": "Corsivo",
+  "en": "Italic",
+  "fr": "Italique",
+  "ckb": "لار (Corsivo)",
+  "kmr": "Xwar (Corsivo)",
+  "ar": "مائل (Corsivo)"
+ },
+ "s8_b": {
+  "it": "<p>Premi il pulsante <strong>I</strong> (<strong>Corsivo</strong>): la parola si inclina.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>I</kbd></p>",
+  "en": "<p>Press the <strong>I</strong> button (<strong>Corsivo</strong> = Italic): the word leans over.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>I</kbd></p>",
+  "fr": "<p>Appuie sur le bouton <strong>I</strong> (<strong>Corsivo</strong> = Italique) : le mot s'incline.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>I</kbd></p>",
+  "ckb": "<p>دوگمەی <strong>I</strong> (<strong>Corsivo</strong> = لار) دابگرە: وشەکە لار دەبێت.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>I</kbd></p>",
+  "kmr": "<p>Bişkojka <strong>I</strong> (<strong>Corsivo</strong> = Xwar) bitikîne: peyv xwar dibe.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>I</kbd></p>",
+  "ar": "<p>اضغطي على الزر <strong>I</strong> (<strong>Corsivo</strong> = مائل): تميل الكلمة.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>I</kbd></p>"
+ },
+ "s8_h": {
+  "it": "Se la parola non è più colorata, fai di nuovo doppio clic sopra la parola.",
+  "en": "If the word is no longer coloured, double-click the word again.",
+  "fr": "Si le mot n'est plus coloré, fais de nouveau un double clic dessus.",
+  "ckb": "ئەگەر وشەکە ڕەنگی نەما، دیسان دوو جار کرتەی لەسەر بکە.",
+  "kmr": "Heke peyv êdî rengîn nebe, dîsa du caran li ser bitikîne.",
+  "ar": "إذا لم تعد الكلمة ملوّنة، اضغطي عليها ضغطتين سريعتين من جديد."
+ },
+ "s9_t": {
+  "it": "Sottolineato",
+  "en": "Underline",
+  "fr": "Souligné",
+  "ckb": "ژێرهێڵ (Sottolineato)",
+  "kmr": "Binxetkirî (Sottolineato)",
+  "ar": "تسطير (Sottolineato)"
+ },
+ "s9_b": {
+  "it": "<p>La parola è ancora selezionata. Premi il pulsante <strong>U</strong> (<strong>Sottolineato</strong>): appare una riga sotto la parola.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>U</kbd></p>",
+  "en": "<p>The word is still selected. Press the <strong>U</strong> button (<strong>Sottolineato</strong> = Underline): a line appears under the word.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>U</kbd></p>",
+  "fr": "<p>Le mot est toujours sélectionné. Appuie sur le bouton <strong>U</strong> (<strong>Sottolineato</strong> = Souligné) : un trait apparaît sous le mot.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>U</kbd></p>",
+  "ckb": "<p>وشەکە هێشتا دیاری کراوە. دوگمەی <strong>U</strong> (<strong>Sottolineato</strong> = ژێرهێڵ) دابگرە: هێڵێک لە ژێر وشەکە دەردەکەوێت.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>U</kbd></p>",
+  "kmr": "<p>Peyv hê jî hilbijartî ye. Bişkojka <strong>U</strong> (<strong>Sottolineato</strong> = Binxetkirî) bitikîne: di bin peyvê de xetek xuya dibe.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>U</kbd></p>",
+  "ar": "<p>الكلمة ما زالت محدَّدة. اضغطي على الزر <strong>U</strong> (<strong>Sottolineato</strong> = تسطير): يظهر خط تحت الكلمة.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>U</kbd></p>"
+ },
+ "s9_h": {
+  "it": "Se la parola non è più colorata, fai di nuovo doppio clic sopra la parola.",
+  "en": "If the word is no longer coloured, double-click the word again.",
+  "fr": "Si le mot n'est plus coloré, fais de nouveau un double clic dessus.",
+  "ckb": "ئەگەر وشەکە ڕەنگی نەما، دیسان دوو جار کرتەی لەسەر بکە.",
+  "kmr": "Heke peyv êdî rengîn nebe, dîsa du caran li ser bitikîne.",
+  "ar": "إذا لم تعد الكلمة ملوّنة، اضغطي عليها ضغطتين سريعتين من جديد."
+ },
+ "s10_t": {
+  "it": "Colore",
+  "en": "Colour",
+  "fr": "Couleur",
+  "ckb": "ڕەنگ (Colore)",
+  "kmr": "Reng (Colore)",
+  "ar": "اللون (Colore)"
+ },
+ "s10_b": {
+  "it": "<p>Cambia il colore della parola: apri il menu <strong>Colore</strong> (la lettera <strong>A</strong> colorata) e scegli un colore, per esempio il rosso.</p>",
+  "en": "<p>Change the colour of the word: open the <strong>Colore</strong> (Colour) menu (the coloured letter <strong>A</strong>) and choose a colour, for example red.</p>",
+  "fr": "<p>Change la couleur du mot : ouvre le menu <strong>Colore</strong> (Couleur) (la lettre <strong>A</strong> colorée) et choisis une couleur, par exemple le rouge.</p>",
+  "ckb": "<p>ڕەنگی وشەکە بگۆڕە: لیستی <strong>Colore</strong> (ڕەنگ) بکەرەوە (پیتی <strong>A</strong>ی ڕەنگاوڕەنگ) و ڕەنگێک هەڵبژێرە، بۆ نموونە سوور.</p>",
+  "kmr": "<p>Rengê peyvê biguherîne: menuya <strong>Colore</strong> (Reng) veke (tîpa <strong>A</strong> a rengîn) û rengekî hilbijêre, bo nimûne sor.</p>",
+  "ar": "<p>غيّري لون الكلمة: افتحي قائمة <strong>Colore</strong> (اللون) (الحرف <strong>A</strong> الملوّن) واختاري لوناً، مثلاً الأحمر.</p>"
+ },
+ "s10_h": {
+  "it": "Fai clic sulla A colorata: si apre una tavolozza di colori. Fai clic su un colore.",
+  "en": "Click the coloured A: a palette of colours opens. Click a colour.",
+  "fr": "Clique sur le A coloré : une palette de couleurs s'ouvre. Clique sur une couleur.",
+  "ckb": "کرتە لەسەر A ڕەنگاوڕەنگەکە بکە: پاڵێتێکی ڕەنگ دەکرێتەوە. کرتە لەسەر ڕەنگێک بکە.",
+  "kmr": "Li A ya rengîn bitikîne: palêta rengan vedibe. Li rengekî bitikîne.",
+  "ar": "اضغطي على الحرف A الملوّن: تفتح لوحة ألوان. اضغطي على لون."
+ },
+ "s11_t": {
+  "it": "Annulla",
+  "en": "Undo",
+  "fr": "Annuler",
+  "ckb": "پاشگەزبوونەوە (Annulla)",
+  "kmr": "Betal bike (Annulla)",
+  "ar": "تراجع (Annulla)"
+ },
+ "s11_b": {
+  "it": "<p>Hai sbagliato qualcosa? Puoi tornare indietro. Premi il pulsante <strong>Annulla</strong> (la freccia che gira a sinistra): il colore sparisce.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>Z</kbd></p>",
+  "en": "<p>Made a mistake? You can go back. Press the <strong>Annulla</strong> (Undo) button (the arrow turning left): the colour disappears.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>Z</kbd></p>",
+  "fr": "<p>Tu as fait une erreur ? Tu peux revenir en arrière. Appuie sur le bouton <strong>Annulla</strong> (Annuler) (la flèche qui tourne à gauche) : la couleur disparaît.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>Z</kbd></p>",
+  "ckb": "<p>هەڵەیەکت کرد؟ دەتوانیت بگەڕێیتەوە. دوگمەی <strong>Annulla</strong> (پاشگەزبوونەوە) دابگرە (تیرەکە بۆ چەپ دەسوڕێتەوە): ڕەنگەکە نامێنێت.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>Z</kbd></p>",
+  "kmr": "<p>Te xeletiyek kir? Tu dikarî vegerî. Bişkojka <strong>Annulla</strong> (Betal bike) bitikîne (tîra ku ber bi çepê dizivire): reng winda dibe.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>Z</kbd></p>",
+  "ar": "<p>أخطأتِ في شيء؟ يمكنكِ الرجوع. اضغطي على الزر <strong>Annulla</strong> (تراجع) (السهم الذي يدور إلى اليسار): يختفي اللون.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>Z</kbd></p>"
+ },
+ "s11_h": {
+  "it": "Il pulsante Annulla è in alto a sinistra, accanto a Ripristina. Guarda la freccia.",
+  "en": "The Annulla (Undo) button is at the top left, next to Ripristina (Redo). Look at the arrow.",
+  "fr": "Le bouton Annulla est en haut à gauche, à côté de Ripristina. Regarde la flèche.",
+  "ckb": "دوگمەی Annulla لە سەرەوەی لای چەپە، لەتەک Ripristina. تیرەکە ببینە.",
+  "kmr": "Bişkojka Annulla li jorê çepê ye, li kêlek Ripristina. Li tîrê binêre.",
+  "ar": "الزر Annulla في أعلى اليسار، بجانب Ripristina. انظري إلى السهم."
+ },
+ "s12_t": {
+  "it": "Ripristina",
+  "en": "Redo",
+  "fr": "Rétablir",
+  "ckb": "گەڕاندنەوە (Ripristina)",
+  "kmr": "Vegerîne (Ripristina)",
+  "ar": "إعادة (Ripristina)"
+ },
+ "s12_b": {
+  "it": "<p>Hai cambiato idea? Premi <strong>Ripristina</strong> (la freccia che gira a destra): il colore torna.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>Y</kbd></p>",
+  "en": "<p>Changed your mind? Press <strong>Ripristina</strong> (Redo) (the arrow turning right): the colour comes back.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>Y</kbd></p>",
+  "fr": "<p>Tu as changé d'avis ? Appuie sur <strong>Ripristina</strong> (Rétablir) (la flèche qui tourne à droite) : la couleur revient.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>Y</kbd></p>",
+  "ckb": "<p>بیرت گۆڕا؟ <strong>Ripristina</strong> (گەڕاندنەوە) دابگرە (تیرەکە بۆ ڕاست دەسوڕێتەوە): ڕەنگەکە دەگەڕێتەوە.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>Y</kbd></p>",
+  "kmr": "<p>Te raman guhert? <strong>Ripristina</strong> (Vegerîne) bitikîne (tîra ku ber bi rastê dizivire): reng vedigere.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>Y</kbd></p>",
+  "ar": "<p>غيّرتِ رأيكِ؟ اضغطي على <strong>Ripristina</strong> (إعادة) (السهم الذي يدور إلى اليمين): يعود اللون.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>Y</kbd></p>"
+ },
+ "s12_h": {
+  "it": "Ripristina è il pulsante accanto ad Annulla, con la freccia che gira a destra.",
+  "en": "Ripristina (Redo) is the button next to Annulla, with the arrow turning right.",
+  "fr": "Ripristina est le bouton à côté d'Annulla, avec la flèche qui tourne à droite.",
+  "ckb": "Ripristina ئەو دوگمەیە کە لەتەک Annulla ـە، بە تیرێکی ڕووەو ڕاست.",
+  "kmr": "Ripristina bişkojka li kêlek Annulla ye, bi tîra ku ber bi rastê dizivire.",
+  "ar": "Ripristina هو الزر بجانب Annulla، وسهمه يدور إلى اليمين."
+ },
+ "s13_t": {
+  "it": "Scrivi tre righe",
+  "en": "Write three lines",
+  "fr": "Écris trois lignes",
+  "ckb": "سێ دێڕ بنووسە",
+  "kmr": "Sê rêzan binivîse",
+  "ar": "اكتبي ثلاثة أسطر"
+ },
+ "s13_b": {
+  "it": "<p>Fai clic alla fine della frase, premi <kbd>Invio</kbd> e scrivi <strong>tre righe</strong>, una sotto l'altra. Per esempio tre cose che ti piacciono: <em>il mare</em>, <em>il tè</em>, <em>la musica</em>.</p>",
+  "en": "<p>Click at the end of the sentence, press <kbd>Invio</kbd> (Enter) and write <strong>three lines</strong>, one under the other. For example three things you like: <em>the sea</em>, <em>tea</em>, <em>music</em>.</p>",
+  "fr": "<p>Clique à la fin de la phrase, appuie sur <kbd>Invio</kbd> (Entrée) et écris <strong>trois lignes</strong>, l'une sous l'autre. Par exemple trois choses que tu aimes : <em>la mer</em>, <em>le thé</em>, <em>la musique</em>.</p>",
+  "ckb": "<p>کرتە لە کۆتایی ڕستەکە بکە، <kbd>Invio</kbd> (Enter) دابگرە و <strong>سێ دێڕ</strong> بنووسە، یەک لە ژێر یەک. بۆ نموونە سێ شت کە حەزت لێیانە: <em>دەریا</em>، <em>چا</em>، <em>مۆسیقا</em>.</p>",
+  "kmr": "<p>Li dawiya hevokê bitikîne, <kbd>Invio</kbd> (Enter) bitikîne û <strong>sê rêzan</strong> binivîse, yek li bin yekê. Bo nimûne sê tiştên ku ji te re xweş in: <em>derya</em>, <em>çay</em>, <em>muzîk</em>.</p>",
+  "ar": "<p>اضغطي في نهاية الجملة، ثم اضغطي <kbd>Invio</kbd> (Enter) واكتبي <strong>ثلاثة أسطر</strong>، واحداً تحت الآخر. مثلاً ثلاثة أشياء تحبينها: <em>البحر</em> و<em>الشاي</em> و<em>الموسيقى</em>.</p>"
+ },
+ "s13_h": {
+  "it": "Dopo ogni riga premi Invio, poi scrivi la riga dopo. Alla fine devi avere tre righe nuove sotto la frase.",
+  "en": "After each line press Enter, then write the next line. In the end you need three new lines under the sentence.",
+  "fr": "Après chaque ligne, appuie sur Entrée, puis écris la ligne suivante. À la fin, tu dois avoir trois nouvelles lignes sous la phrase.",
+  "ckb": "دوای هەر دێڕێک Enter دابگرە، پاشان دێڕی دواتر بنووسە. لە کۆتاییدا دەبێت سێ دێڕی نوێت لە ژێر ڕستەکە هەبێت.",
+  "kmr": "Piştî her rêzê Enter bitikîne, paşê rêza din binivîse. Di dawiyê de divê sê rêzên nû di bin hevokê de hebin.",
+  "ar": "بعد كل سطر اضغطي Enter ثم اكتبي السطر التالي. في النهاية يجب أن يكون لديكِ ثلاثة أسطر جديدة تحت الجملة."
+ },
+ "s14_t": {
+  "it": "Seleziona le tre righe",
+  "en": "Select the three lines",
+  "fr": "Sélectionne les trois lignes",
+  "ckb": "سێ دێڕەکە دیاری بکە",
+  "kmr": "Sê rêzan hilbijêre",
+  "ar": "حدّدي الأسطر الثلاثة"
+ },
+ "s14_b": {
+  "it": "<p>Seleziona le tre righe insieme: tieni premuto il tasto sinistro del mouse e trascina <strong>dall'inizio della prima riga fino alla fine dell'ultima</strong>.</p>",
+  "en": "<p>Select the three lines together: hold down the left mouse button and drag <strong>from the start of the first line to the end of the last</strong>.</p>",
+  "fr": "<p>Sélectionne les trois lignes ensemble : maintiens le bouton gauche de la souris et glisse <strong>du début de la première ligne à la fin de la dernière</strong>.</p>",
+  "ckb": "<p>هەر سێ دێڕەکە پێکەوە دیاری بکە: دوگمەی چەپی ماوسەکە دابگرە و <strong>لە سەرەتای دێڕی یەکەمەوە تا کۆتایی دێڕی کۆتایی</strong> ڕایبکێشە.</p>",
+  "kmr": "<p>Sê rêzan bi hev re hilbijêre: bişkojka çepê ya mişkê bigire û <strong>ji destpêka rêza yekem heta dawiya rêza dawî</strong> bikişîne.</p>",
+  "ar": "<p>حدّدي الأسطر الثلاثة معاً: اضغطي مع الاستمرار على زر الفأرة الأيسر واسحبي <strong>من بداية السطر الأول إلى نهاية السطر الأخير</strong>.</p>"
+ },
+ "s14_h": {
+  "it": "Non selezionare il titolo e la frase: solo le tre righe nuove. Vedi la freccia.",
+  "en": "Do not select the title and the sentence: only the three new lines. Look at the arrow.",
+  "fr": "Ne sélectionne pas le titre ni la phrase : seulement les trois nouvelles lignes. Regarde la flèche.",
+  "ckb": "ناونیشان و ڕستەکە دیاری مەکە: تەنها سێ دێڕە نوێیەکە. تیرەکە ببینە.",
+  "kmr": "Sernivîs û hevokê hilnebijêre: tenê sê rêzên nû. Li tîrê binêre.",
+  "ar": "لا تحدّدي العنوان والجملة: فقط الأسطر الثلاثة الجديدة. انظري إلى السهم."
+ },
+ "s15_t": {
+  "it": "Elenco puntato",
+  "en": "Bulleted list",
+  "fr": "Liste à puces",
+  "ckb": "لیستی خاڵدار (Elenco puntato)",
+  "kmr": "Lîsteya xalî (Elenco puntato)",
+  "ar": "قائمة نقطية (Elenco puntato)"
+ },
+ "s15_b": {
+  "it": "<p>Premi il pulsante <strong>Elenco puntato</strong> (i pallini con le righe): ogni riga prende un pallino.</p>",
+  "en": "<p>Press the <strong>Elenco puntato</strong> (Bulleted list) button (the dots with lines): each line gets a bullet.</p>",
+  "fr": "<p>Appuie sur le bouton <strong>Elenco puntato</strong> (Liste à puces) (les points avec des lignes) : chaque ligne reçoit une puce.</p>",
+  "ckb": "<p>دوگمەی <strong>Elenco puntato</strong> (لیستی خاڵدار) دابگرە (خاڵەکان لەگەڵ هێڵەکان): هەر دێڕێک خاڵێکی دەبێت.</p>",
+  "kmr": "<p>Bişkojka <strong>Elenco puntato</strong> (Lîsteya xalî) bitikîne (xal bi xetan re): her rêzek xalekê digire.</p>",
+  "ar": "<p>اضغطي على الزر <strong>Elenco puntato</strong> (قائمة نقطية) (النقاط مع الخطوط): يأخذ كل سطر نقطة.</p>"
+ },
+ "s15_h": {
+  "it": "Se le righe non sono più colorate, selezionale di nuovo con il mouse.",
+  "en": "If the lines are no longer coloured, select them again with the mouse.",
+  "fr": "Si les lignes ne sont plus colorées, sélectionne-les de nouveau avec la souris.",
+  "ckb": "ئەگەر دێڕەکان ڕەنگیان نەما، دیسان بە ماوس دیاریان بکەرەوە.",
+  "kmr": "Heke rêz êdî rengîn nebin, dîsa bi mişkê hilbijêre.",
+  "ar": "إذا لم تعد الأسطر ملوّنة، حدّديها من جديد بالفأرة."
+ },
+ "s16_t": {
+  "it": "Elenco numerato",
+  "en": "Numbered list",
+  "fr": "Liste numérotée",
+  "ckb": "لیستی ژمارەدار (Elenco numerato)",
+  "kmr": "Lîsteya bi hejmar (Elenco numerato)",
+  "ar": "قائمة مرقمة (Elenco numerato)"
+ },
+ "s16_b": {
+  "it": "<p>Ultima prova: premi il pulsante <strong>Elenco numerato</strong> (1, 2, 3). I pallini diventano numeri.</p>",
+  "en": "<p>Last try: press the <strong>Elenco numerato</strong> (Numbered list) button (1, 2, 3). The bullets become numbers.</p>",
+  "fr": "<p>Dernier essai : appuie sur le bouton <strong>Elenco numerato</strong> (Liste numérotée) (1, 2, 3). Les puces deviennent des numéros.</p>",
+  "ckb": "<p>دوایین هەوڵ: دوگمەی <strong>Elenco numerato</strong> (لیستی ژمارەدار) دابگرە (1، 2، 3). خاڵەکان دەبنە ژمارە.</p>",
+  "kmr": "<p>Ceribandina dawî: bişkojka <strong>Elenco numerato</strong> (Lîsteya bi hejmar) bitikîne (1، 2، 3). Xal dibin hejmar.</p>",
+  "ar": "<p>المحاولة الأخيرة: اضغطي على الزر <strong>Elenco numerato</strong> (قائمة مرقمة) (1، 2، 3). تتحول النقاط إلى أرقام.</p>"
+ },
+ "s16_h": {
+  "it": "È il pulsante accanto a quello dei pallini, con i numeri 1, 2, 3.",
+  "en": "It is the button next to the bullets one, with the numbers 1, 2, 3.",
+  "fr": "C'est le bouton à côté de celui des puces, avec les chiffres 1, 2, 3.",
+  "ckb": "ئەو دوگمەیە کە لە تەنیشت دوگمەی خاڵەکانە، بە ژمارەکانی 1، 2، 3.",
+  "kmr": "Bişkojka li kêlek ya xalan e, bi hejmarên 1، 2، 3.",
+  "ar": "هو الزر الذي بجانب زر النقاط، وفيه الأرقام 1 و2 و3."
+ },
+ "fin_title": {
+  "it": "🎉 Bravissima! Hai scritto il tuo primo documento",
+  "en": "🎉 Well done! You wrote your first document",
+  "fr": "🎉 Bravo ! Tu as écrit ton premier document",
+  "ckb": "🎉 زۆر باشە! یەکەم بەڵگەنامەکەت نووسی",
+  "kmr": "🎉 Pir baş e! Te belgeya xwe ya yekem nivîsî",
+  "ar": "🎉 أحسنتِ! كتبتِ مستندكِ الأول"
+ },
+ "fin_body": {
+  "it": "<p>Adesso sai fare tante cose:</p><ul><li>scrivere e andare a capo (<kbd>Invio</kbd>)</li><li>selezionare una parola o una riga</li><li><strong>Grassetto</strong>, <em>Corsivo</em>, <u>Sottolineato</u> e colore</li><li>fare un titolo e metterlo al centro</li><li>tornare indietro con <strong>Annulla</strong></li><li>fare un elenco puntato o numerato</li></ul><p class=\"real\">🔒 Il documento non viene salvato. Se chiudi la pagina, sparisce.</p><p class=\"ask\"><strong>Puoi continuare a scrivere quello che vuoi nella pagina bianca.</strong></p>",
+  "en": "<p>Now you can do many things:</p><ul><li>write and start a new line (<kbd>Invio</kbd>)</li><li>select a word or a line</li><li><strong>Bold</strong>, <em>Italic</em>, <u>Underline</u> and colour</li><li>make a title and put it in the centre</li><li>go back with <strong>Annulla</strong> (Undo)</li><li>make a bulleted or numbered list</li></ul><p class=\"real\">🔒 The document is not saved. If you close the page, it disappears.</p><p class=\"ask\"><strong>You can keep writing whatever you like on the white page.</strong></p>",
+  "fr": "<p>Maintenant, tu sais faire plein de choses :</p><ul><li>écrire et aller à la ligne (<kbd>Invio</kbd>)</li><li>sélectionner un mot ou une ligne</li><li><strong>Gras</strong>, <em>Italique</em>, <u>Souligné</u> et couleur</li><li>faire un titre et le centrer</li><li>revenir en arrière avec <strong>Annulla</strong> (Annuler)</li><li>faire une liste à puces ou numérotée</li></ul><p class=\"real\">🔒 Le document n'est pas enregistré. Si tu fermes la page, il disparaît.</p><p class=\"ask\"><strong>Tu peux continuer à écrire ce que tu veux sur la page blanche.</strong></p>",
+  "ckb": "<p>ئێستا دەتوانیت زۆر شت بکەیت:</p><ul><li>نووسین و چوونە دێڕی نوێ (<kbd>Invio</kbd>)</li><li>دیاریکردنی وشەیەک یان دێڕێک</li><li><strong>ئەستوور</strong>، <em>لار</em>، <u>ژێرهێڵ</u> و ڕەنگ</li><li>دروستکردنی ناونیشان و خستنە ناوەڕاست</li><li>گەڕانەوە بە <strong>Annulla</strong> (پاشگەزبوونەوە)</li><li>دروستکردنی لیستی خاڵدار یان ژمارەدار</li></ul><p class=\"real\">🔒 بەڵگەنامەکە پاشەکەوت ناکرێت. ئەگەر لاپەڕەکە دابخەیت، نامێنێت.</p><p class=\"ask\"><strong>دەتوانیت لەسەر لاپەڕە سپییەکە هەرچییەک دەتەوێت بنووسیت.</strong></p>",
+  "kmr": "<p>Niha tu dikarî gelek tiştan bikî:</p><ul><li>binivîsî û here rêza nû (<kbd>Invio</kbd>)</li><li>peyvek an rêzekê hilbijêrî</li><li><strong>Qalind</strong>, <em>Xwar</em>, <u>Binxetkirî</u> û reng</li><li>sernivîsek çêkî û bixî navîn</li><li>bi <strong>Annulla</strong> (Betal bike) vegerî</li><li>lîsteyeke xalî an bi hejmar çêkî</li></ul><p class=\"real\">🔒 Belge tê tomar kirin nabe. Heke tu rûpelê bigirî, winda dibe.</p><p class=\"ask\"><strong>Tu dikarî li ser rûpela spî her tiştê ku bixwazî binivîsî.</strong></p>",
+  "ar": "<p>الآن تعرفين أن تفعلي أشياء كثيرة:</p><ul><li>الكتابة والانتقال إلى سطر جديد (<kbd>Invio</kbd>)</li><li>تحديد كلمة أو سطر</li><li><strong>غامق</strong> و<em>مائل</em> و<u>تسطير</u> ولون</li><li>كتابة عنوان ووضعه في الوسط</li><li>الرجوع بـ <strong>Annulla</strong> (تراجع)</li><li>عمل قائمة نقطية أو مرقمة</li></ul><p class=\"real\">🔒 المستند لا يُحفظ. إذا أغلقتِ الصفحة يختفي.</p><p class=\"ask\"><strong>يمكنكِ متابعة الكتابة في الصفحة البيضاء كما تشائين.</strong></p>"
+ }
+}

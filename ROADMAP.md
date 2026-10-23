@@ -78,6 +78,21 @@ shared computer.
   baked-in pictures, and emoji need no translation at all. `SPID` and
   the reporting-site URL `commissariatodips.it` are protected literals;
   everything else, including institution names, translates normally.
+- **Lesson 5 (writing a document) has a guided tutorial**, "Scrivi un documento",
+  in a new tab at `/games/documento` (`templates/games/documento.html`,
+  `static/lessons/lezione-5/documento/tutorial.js`, text in
+  `doc_tutorial_strings.json`). Left: a real word processor, **Quill 2.0.3**
+  (BSD-3, vendored in `static/vendor/quill/`, no CDN, no build step) with a
+  deliberately small toolbar - undo/redo, text style, bold, italic,
+  underline, colour, alignment, bullet and numbered lists. Right: Italian +
+  preferred-language instructions, 16 steps. Each step reads the document
+  (text, formats, selection, undo stack) and completes by itself; an orange
+  arrow and pulsing frame point at the exact button, the open menu item, or
+  the lines to select; a hint appears after 20 s; "Salta questo passo" is
+  always there. Nothing the student writes is stored or sent: no network
+  call, no localStorage. No score. **Unverified:** ckb/kmr/ar/fr/en text is
+  machine-translated and unreviewed; driven end to end in headless Chromium
+  (it and ar), not yet on the classroom machines.
 - **Lesson 4 (SPID) has two decks**, five languages, and a "Lezione 4" entry
   in the course menu, plus the game below. `lezione-4-spid.json` (24 slides): SPID
   as a key and not a website, the six-step login with a "Dove siamo?" mockup

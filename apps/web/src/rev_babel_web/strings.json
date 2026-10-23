@@ -418,5 +418,26 @@
     "ckb": "SPID و خزمەتگوزارییە ئۆنلاینەکان",
     "kmr": "SPID û karûbarên serhêl",
     "ar": "SPID والخدمات عبر الإنترنت"
+  },
+  "Lezione 5": {
+    "en": "Lesson 5",
+    "fr": "Leçon 5",
+    "ckb": "وانەی 5",
+    "kmr": "Ders 5",
+    "ar": "الدرس 5"
+  },
+  "Scrivere un documento": {
+    "en": "Writing a document",
+    "fr": "Écrire un document",
+    "ckb": "نووسینی بەڵگەنامە",
+    "kmr": "Nivîsandina belgeyekê",
+    "ar": "كتابة مستند"
+  },
+  "Scrivi un documento": {
+    "en": "Write a document",
+    "fr": "Écris un document",
+    "ckb": "بەڵگەنامەیەک بنووسە",
+    "kmr": "Belgeyekê binivîse",
+    "ar": "اكتبي مستنداً"
   }
 }

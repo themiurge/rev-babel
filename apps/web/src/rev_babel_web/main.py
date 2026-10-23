@@ -60,6 +60,12 @@ LESSONS = [
         "long_title": "Lo SPID e i servizi online",
         "url": "/course/lezione-4",
     },
+    {
+        "slug": "lezione-5",
+        "title": "Lezione 5",
+        "long_title": "Scrivere un documento",
+        "url": "/course/lezione-5",
+    },
 ]
 
 # Per-game sanity bounds on a reported score, so a stray or malicious
@@ -111,6 +117,17 @@ LESSON4_GAMES = {
     },
 }
 
+# A guided tutorial rather than a game: no score, its own tab.
+LESSON5_GAMES = {
+    "documento": {
+        "title": "Scrivi un documento",
+        "unit": "s",
+        "max_value": 3_600,
+        "src": "/games/documento",
+        "new_tab": True,
+    },
+}
+
 # Games with more than one difficulty: each mode gets its own score key
 # (its own row in game_scores) so easy and hard are tracked separately,
 # but they still share one lesson-page entry and one iframe.
@@ -135,6 +152,7 @@ LESSON_GAMES = {
     "lezione-2": LESSON2_GAMES,
     "lezione-3": LESSON3_GAMES,
     "lezione-4": LESSON4_GAMES,
+    "lezione-5": LESSON5_GAMES,
 }
 
 
@@ -400,6 +418,28 @@ def game_email(request: Request):
         }
     )
     return templates.TemplateResponse(request, "games/email.html", context)
+
+
+_DOC_STRINGS_PATH = os.path.join(_HERE, "doc_tutorial_strings.json")
+with open(_DOC_STRINGS_PATH, encoding="utf-8") as _f:
+    DOC_TUTORIAL_STRINGS = json.load(_f)
+
+
+@app.get("/games/documento")
+def game_documento(request: Request):
+    if _current_name(request) is None:
+        return RedirectResponse("/", status_code=303)
+    context = _base_context(request)
+    context.update(
+        {
+            # "</" would end the <script> block this JSON is embedded in.
+            "doc_strings_json": json.dumps(DOC_TUTORIAL_STRINGS, ensure_ascii=False).replace(
+                "</", "<\\/"
+            ),
+            "is_rtl": context["lang"] in i18n.RTL_LANGUAGES,
+        }
+    )
+    return templates.TemplateResponse(request, "games/documento.html", context)
 
 
 SPID_SERVICES = {"fse", "comune", "inps", "scuola", "questura"}
