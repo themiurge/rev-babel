@@ -1,0 +1,13 @@
+{% extends "games/_guided_editor.html" %}
+{% block title %}Il CV di Amina{% endblock %}
+{% block docname %}ui_docname_cv{% endblock %}
+{% block extra_css %}
+  #editor.ql-container.ql-snow { font-size: 18px; }
+  #editor .ql-editor p { margin: 0 0 0.15em; }
+{% endblock %}
+{% block docbar_tail %}
+<button type="button" id="print-btn" class="doc-btn" data-tb="tb_print"><span aria-hidden="true">🖨️</span><span>Stampa / PDF</span></button>
+{% endblock %}
+{% block tutorial_script %}
+  <script src="/static/lessons/lezione-5/cv/tutorial.js?v={{ static_version }}"></script>
+{% endblock %}

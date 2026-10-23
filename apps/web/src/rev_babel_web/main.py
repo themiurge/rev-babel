@@ -126,6 +126,13 @@ LESSON5_GAMES = {
         "src": "/games/documento",
         "new_tab": True,
     },
+    "cv": {
+        "title": "Il CV di Amina",
+        "unit": "s",
+        "max_value": 3_600,
+        "src": "/games/cv",
+        "new_tab": True,
+    },
 }
 
 # Games with more than one difficulty: each mode gets its own score key
@@ -420,26 +427,41 @@ def game_email(request: Request):
     return templates.TemplateResponse(request, "games/email.html", context)
 
 
-_DOC_STRINGS_PATH = os.path.join(_HERE, "doc_tutorial_strings.json")
-with open(_DOC_STRINGS_PATH, encoding="utf-8") as _f:
-    DOC_TUTORIAL_STRINGS = json.load(_f)
+def _load_strings(*names: str) -> dict:
+    """The shared editor strings plus one tutorial's own, as one dict."""
+    merged: dict = {}
+    for name in ("guided_editor_ui_strings.json", *names):
+        with open(os.path.join(_HERE, name), encoding="utf-8") as f:
+            merged.update(json.load(f))
+    return merged
 
 
-@app.get("/games/documento")
-def game_documento(request: Request):
+DOC_TUTORIAL_STRINGS = _load_strings("doc_tutorial_strings.json")
+CV_TUTORIAL_STRINGS = _load_strings("cv_tutorial_strings.json")
+
+
+def _guided_editor_page(request: Request, template: str, strings: dict):
     if _current_name(request) is None:
         return RedirectResponse("/", status_code=303)
     context = _base_context(request)
     context.update(
         {
             # "</" would end the <script> block this JSON is embedded in.
-            "doc_strings_json": json.dumps(DOC_TUTORIAL_STRINGS, ensure_ascii=False).replace(
-                "</", "<\\/"
-            ),
+            "doc_strings_json": json.dumps(strings, ensure_ascii=False).replace("</", "<\\/"),
             "is_rtl": context["lang"] in i18n.RTL_LANGUAGES,
         }
     )
-    return templates.TemplateResponse(request, "games/documento.html", context)
+    return templates.TemplateResponse(request, template, context)
+
+
+@app.get("/games/documento")
+def game_documento(request: Request):
+    return _guided_editor_page(request, "games/documento.html", DOC_TUTORIAL_STRINGS)
+
+
+@app.get("/games/cv")
+def game_cv(request: Request):
+    return _guided_editor_page(request, "games/cv.html", CV_TUTORIAL_STRINGS)
 
 
 SPID_SERVICES = {"fse", "comune", "inps", "scuola", "questura"}

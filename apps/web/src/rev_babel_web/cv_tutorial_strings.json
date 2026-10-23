@@ -1,0 +1,402 @@
+{
+ "ui_docname_cv": {
+  "it": "📄 Il CV di Amina",
+  "en": "📄 Amina's CV",
+  "fr": "📄 Le CV d'Amina",
+  "ckb": "📄 سیڤییەکەی ئامینا",
+  "kmr": "📄 CV'ya Amina",
+  "ar": "📄 السيرة الذاتية لأمينة"
+ },
+ "tb_print": {
+  "it": "Stampa o salva in PDF",
+  "en": "Print or save as PDF",
+  "fr": "Imprimer ou enregistrer en PDF",
+  "ckb": "چاپکردن یان پاشەکەوتکردن وەک PDF",
+  "kmr": "Çap bike an wekî PDF tomar bike",
+  "ar": "طباعة أو حفظ بصيغة PDF"
+ },
+ "ui_owncv": {
+  "it": "✍️ Scrivi il tuo CV",
+  "en": "✍️ Write your own CV",
+  "fr": "✍️ Écris ton propre CV",
+  "ckb": "✍️ سیڤییەکەی خۆت بنووسە",
+  "kmr": "✍️ CV'ya xwe binivîse",
+  "ar": "✍️ اكتبي سيرتكِ الذاتية"
+ },
+ "intro_title": {
+  "it": "👋 Il CV di Amina",
+  "en": "👋 Amina's CV",
+  "fr": "👋 Le CV d'Amina",
+  "ckb": "👋 سیڤییەکەی ئامینا",
+  "kmr": "👋 CV'ya Amina",
+  "ar": "👋 السيرة الذاتية لأمينة"
+ },
+ "intro_body": {
+  "it": "<p><strong>Amina</strong> è un personaggio inventato. Cerca lavoro e ha bisogno di un <strong>CV</strong> (curriculum): una pagina che dice chi è e che cosa sa fare.</p><ol><li>Il testo di Amina è già nella pagina, ma è tutto uguale e disordinato.</li><li>Tu lo sistemi, un passo alla volta: titoli, grassetto, elenchi, colore.</li><li>Una <strong>freccia arancione</strong> ti mostra dove fare clic.</li><li>Alla fine <strong>stampi</strong> il CV o lo salvi in <strong>PDF</strong>. Poi puoi scrivere il tuo.</li></ol><p class=\"real\">🔒 Quello che scrivi resta sul tuo schermo. Non viene salvato.</p><p class=\"ask\"><strong>Se hai capito, fai clic su Inizia. Se non hai capito, chiedi a Emilio.</strong></p>",
+  "en": "<p><strong>Amina</strong> is an invented character. She is looking for a job and needs a <strong>CV</strong> (curriculum vitae): one page that says who she is and what she can do.</p><ol><li>Amina's text is already on the page, but it is all the same and untidy.</li><li>You tidy it up, one step at a time: titles, bold, lists, colour.</li><li>An <strong>orange arrow</strong> shows you where to click.</li><li>At the end you <strong>print</strong> the CV or save it as a <strong>PDF</strong>. Then you can write your own.</li></ol><p class=\"real\">🔒 What you write stays on your screen. It is not saved.</p><p class=\"ask\"><strong>If you understood, click Start. If you did not understand, ask Emilio.</strong></p>",
+  "fr": "<p><strong>Amina</strong> est un personnage inventé. Elle cherche du travail et a besoin d'un <strong>CV</strong> (curriculum vitæ) : une page qui dit qui elle est et ce qu'elle sait faire.</p><ol><li>Le texte d'Amina est déjà sur la page, mais tout est pareil et en désordre.</li><li>Tu le mets en forme, étape par étape : titres, gras, listes, couleur.</li><li>Une <strong>flèche orange</strong> te montre où cliquer.</li><li>À la fin, tu <strong>imprimes</strong> le CV ou tu l'enregistres en <strong>PDF</strong>. Ensuite, tu peux écrire le tien.</li></ol><p class=\"real\">🔒 Ce que tu écris reste sur ton écran. Rien n'est enregistré.</p><p class=\"ask\"><strong>Si tu as compris, clique sur Commencer. Si tu n'as pas compris, demande à Emilio.</strong></p>",
+  "ckb": "<p><strong>ئامینا</strong> کەسایەتییەکی داهێنراوە. بەدوای کاردا دەگەڕێت و پێویستی بە <strong>سیڤی</strong> (CV) هەیە: لاپەڕەیەک کە دەڵێت کێیە و چی دەتوانێت بکات.</p><ol><li>دەقی ئامینا پێشتر لە لاپەڕەکەدایە، بەڵام هەمووی وەک یەکە و ڕێکنەخراوە.</li><li>تۆ هەنگاو بە هەنگاو ڕێکی دەخەیت: ناونیشان، ئەستوور، لیست، ڕەنگ.</li><li><strong>تیرێکی پرتەقاڵی</strong> نیشانت دەدات لە کوێ کرتە بکەیت.</li><li>لە کۆتاییدا سیڤییەکە <strong>چاپ</strong> دەکەیت یان وەک <strong>PDF</strong> پاشەکەوتی دەکەیت. پاشان دەتوانیت ئی خۆت بنووسیت.</li></ol><p class=\"real\">🔒 ئەوەی دەینووسیت تەنها لەسەر شاشەکەتە. هیچ پاشەکەوت ناکرێت.</p><p class=\"ask\"><strong>ئەگەر تێگەیشتیت، کرتە لە «دەست پێ بکە» بکە. ئەگەر تێنەگەیشتیت، لە Emilio بپرسە.</strong></p>",
+  "kmr": "<p><strong>Amina</strong> karakterekî xeyalî ye. Li kar digere û pêdivî bi <strong>CV</strong>'yekê heye: rûpelek ku dibêje ew kî ye û çi dikare bike.</p><ol><li>Nivîsa Amina jixwe di rûpelê de ye, lê hemû wekhev û tevlihev e.</li><li>Tu gav bi gav rêk dixî: sernivîs, qalind, lîste, reng.</li><li><strong>Tîreke porteqalî</strong> nîşanî te dide li ku bitikînî.</li><li>Di dawiyê de CV <strong>çap dikî</strong> an wekî <strong>PDF</strong> tomar dikî. Paşê tu dikarî yê xwe binivîsî.</li></ol><p class=\"real\">🔒 Tiştê tu dinivîsî tenê li ser ekrana te dimîne. Tê tomar kirin nabe.</p><p class=\"ask\"><strong>Heke te fêm kir, li «Dest pê bike» bitikîne. Heke te fêm nekir, ji Emilio bipirse.</strong></p>",
+  "ar": "<p><strong>أمينة</strong> شخصية مختلقة. تبحث عن عمل وتحتاج إلى <strong>سيرة ذاتية</strong> (CV): صفحة تقول من هي وماذا تستطيع أن تفعل.</p><ol><li>نص أمينة موجود في الصفحة، لكنه كله متشابه وغير مرتب.</li><li>أنتِ ترتبينه خطوة بخطوة: عناوين، خط غامق، قوائم، لون.</li><li><strong>سهم برتقالي</strong> يريكِ أين تضغطين.</li><li>في النهاية <strong>تطبعين</strong> السيرة الذاتية أو تحفظينها بصيغة <strong>PDF</strong>. بعدها يمكنكِ كتابة سيرتكِ.</li></ol><p class=\"real\">🔒 ما تكتبينه يبقى على شاشتك فقط. لا يتم حفظه.</p><p class=\"ask\"><strong>إذا فهمتِ، اضغطي على «ابدئي». إذا لم تفهمي، اسألي Emilio.</strong></p>"
+ },
+ "s1_t": {
+  "it": "Il nome è un titolo",
+  "en": "The name is a title",
+  "fr": "Le nom est un titre",
+  "ckb": "ناو ناونیشانە",
+  "kmr": "Nav sernivîs e",
+  "ar": "الاسم عنوان"
+ },
+ "s1_b": {
+  "it": "<p>Fai clic sul nome <strong>Amina Hassan</strong>, in alto. Poi apri il menu <strong>Testo normale</strong> e scegli <strong>Titolo</strong>.</p>",
+  "en": "<p>Click the name <strong>Amina Hassan</strong> at the top. Then open the <strong>Testo normale</strong> (Normal text) menu and choose <strong>Titolo</strong> (Title).</p>",
+  "fr": "<p>Clique sur le nom <strong>Amina Hassan</strong>, en haut. Puis ouvre le menu <strong>Testo normale</strong> (Texte normal) et choisis <strong>Titolo</strong> (Titre).</p>",
+  "ckb": "<p>کرتە لەسەر ناوی <strong>Amina Hassan</strong> بکە، لە سەرەوە. پاشان لیستی <strong>Testo normale</strong> (دەقی ئاسایی) بکەرەوە و <strong>Titolo</strong> (ناونیشان) هەڵبژێرە.</p>",
+  "kmr": "<p>Li ser navê <strong>Amina Hassan</strong> bitikîne, li jorê. Paşê menuya <strong>Testo normale</strong> (nivîsa asayî) veke û <strong>Titolo</strong> (sernivîs) hilbijêre.</p>",
+  "ar": "<p>اضغطي على الاسم <strong>Amina Hassan</strong> في الأعلى. ثم افتحي القائمة <strong>Testo normale</strong> (نص عادي) واختاري <strong>Titolo</strong> (عنوان).</p>"
+ },
+ "s1_h": {
+  "it": "Basta un clic dentro la riga: non serve selezionarla. Poi segui la freccia.",
+  "en": "One click inside the line is enough: you do not need to select it. Then follow the arrow.",
+  "fr": "Un clic dans la ligne suffit : pas besoin de la sélectionner. Ensuite, suis la flèche.",
+  "ckb": "یەک کرتە لەناو دێڕەکە بەسە: پێویست ناکات دیاری بکەیت. پاشان شوێن تیرەکە بکەوە.",
+  "kmr": "Tikandineke di nav rêzê de bes e: pêdivî bi hilbijartinê nîne. Paşê li tîrê bişopîne.",
+  "ar": "نقرة واحدة داخل السطر تكفي: لا حاجة لتحديده. ثم اتبعي السهم."
+ },
+ "s2_t": {
+  "it": "Il nome al centro",
+  "en": "Centre the name",
+  "fr": "Le nom au centre",
+  "ckb": "ناو بخەرە ناوەڕاست",
+  "kmr": "Navê bixe navîn",
+  "ar": "الاسم في الوسط"
+ },
+ "s2_b": {
+  "it": "<p>Il cursore è ancora sul nome. Premi il pulsante <strong>Centra</strong> (le righe al centro).</p>",
+  "en": "<p>The cursor is still on the name. Press the <strong>Centra</strong> (Centre) button (the lines in the middle).</p>",
+  "fr": "<p>Le curseur est toujours sur le nom. Appuie sur le bouton <strong>Centra</strong> (Centrer) (les lignes au centre).</p>",
+  "ckb": "<p>نیشانەکە هێشتا لەسەر ناوەکەیە. دوگمەی <strong>Centra</strong> (ناوەڕاست) دابگرە (هێڵەکان لە ناوەڕاستن).</p>",
+  "kmr": "<p>Nîşander hê li ser navî ye. Bişkojka <strong>Centra</strong> (Navîn) bitikîne (xet li navîn in).</p>",
+  "ar": "<p>المؤشر ما زال على الاسم. اضغطي على الزر <strong>Centra</strong> (توسيط) (الخطوط في الوسط).</p>"
+ },
+ "s2_h": {
+  "it": "Se la freccia è sul nome, fai un clic sul nome. Poi premi il pulsante con le righe al centro.",
+  "en": "If the arrow is on the name, click the name once. Then press the button with the lines in the middle.",
+  "fr": "Si la flèche est sur le nom, clique une fois sur le nom. Puis appuie sur le bouton avec les lignes au centre.",
+  "ckb": "ئەگەر تیرەکە لەسەر ناوەکەیە، یەک جار کرتە لەسەر ناوەکە بکە. پاشان دوگمەی هێڵەکانی ناوەڕاست دابگرە.",
+  "kmr": "Heke tîr li ser navî ye, carekê li navî bitikîne. Paşê bişkojka bi xetên navîn bitikîne.",
+  "ar": "إذا كان السهم على الاسم، اضغطي على الاسم مرة. ثم اضغطي على الزر الذي خطوطه في الوسط."
+ },
+ "s3_t": {
+  "it": "I contatti al centro",
+  "en": "Centre the contact line",
+  "fr": "Les coordonnées au centre",
+  "ckb": "زانیاری پەیوەندی بخەرە ناوەڕاست",
+  "kmr": "Agahiyên têkiliyê bixe navîn",
+  "ar": "بيانات التواصل في الوسط"
+ },
+ "s3_b": {
+  "it": "<p>Sotto il nome ci sono l'indirizzo, il telefono e l'email. Fai clic su quella riga e premi <strong>Centra</strong>.</p>",
+  "en": "<p>Under the name are the address, phone and email. Click that line and press <strong>Centra</strong> (Centre).</p>",
+  "fr": "<p>Sous le nom, il y a l'adresse, le téléphone et l'e-mail. Clique sur cette ligne et appuie sur <strong>Centra</strong> (Centrer).</p>",
+  "ckb": "<p>لە ژێر ناوەکە ناونیشان و تەلەفۆن و ئیمەیڵ هەیە. کرتە لەسەر ئەو دێڕە بکە و <strong>Centra</strong> (ناوەڕاست) دابگرە.</p>",
+  "kmr": "<p>Di bin navî de navnîşan, telefon û e-name hene. Li wê rêzê bitikîne û <strong>Centra</strong> (Navîn) bitikîne.</p>",
+  "ar": "<p>تحت الاسم هناك العنوان والهاتف والبريد الإلكتروني. اضغطي على ذلك السطر ثم على <strong>Centra</strong> (توسيط).</p>"
+ },
+ "s3_h": {
+  "it": "È la seconda riga della pagina. Prima un clic sulla riga, poi il pulsante.",
+  "en": "It is the second line on the page. First click the line, then the button.",
+  "fr": "C'est la deuxième ligne de la page. D'abord un clic sur la ligne, puis le bouton.",
+  "ckb": "دێڕی دووەمی لاپەڕەکەیە. سەرەتا کرتە لەسەر دێڕەکە بکە، پاشان دوگمەکە.",
+  "kmr": "Rêza duyem a rûpelê ye. Pêşî li rêzê bitikîne, paşê li bişkojkê.",
+  "ar": "إنه السطر الثاني في الصفحة. أولاً اضغطي على السطر، ثم على الزر."
+ },
+ "s4_t": {
+  "it": "Un titolo per ogni parte",
+  "en": "A heading for each part",
+  "fr": "Un titre pour chaque partie",
+  "ckb": "ناونیشانێک بۆ هەر بەشێک",
+  "kmr": "Sernivîsek ji bo her beşê",
+  "ar": "عنوان لكل قسم"
+ },
+ "s4_b": {
+  "it": "<p>Un CV ha tante parti: Profilo, Esperienza, Istruzione... Fai clic su <strong>Profilo</strong>. Poi apri il menu <strong>Testo normale</strong> e scegli <strong>Sottotitolo</strong>.</p>",
+  "en": "<p>A CV has several parts: Profile, Experience, Education... Click <strong>Profilo</strong>. Then open the <strong>Testo normale</strong> (Normal text) menu and choose <strong>Sottotitolo</strong> (Subtitle).</p>",
+  "fr": "<p>Un CV a plusieurs parties : Profil, Expérience, Formation... Clique sur <strong>Profilo</strong>. Puis ouvre le menu <strong>Testo normale</strong> (Texte normal) et choisis <strong>Sottotitolo</strong> (Sous-titre).</p>",
+  "ckb": "<p>سیڤی چەند بەشێکی هەیە: پرۆفایل، ئەزموون، خوێندن... کرتە لەسەر <strong>Profilo</strong> بکە. پاشان لیستی <strong>Testo normale</strong> (دەقی ئاسایی) بکەرەوە و <strong>Sottotitolo</strong> (ژێرناونیشان) هەڵبژێرە.</p>",
+  "kmr": "<p>CV çend beş hene: Profîl, Ezmûn, Xwendin... Li <strong>Profilo</strong> bitikîne. Paşê menuya <strong>Testo normale</strong> (nivîsa asayî) veke û <strong>Sottotitolo</strong> (binsernivîs) hilbijêre.</p>",
+  "ar": "<p>للسيرة الذاتية عدة أقسام: الملف الشخصي، الخبرة، التعليم... اضغطي على <strong>Profilo</strong>. ثم افتحي القائمة <strong>Testo normale</strong> (نص عادي) واختاري <strong>Sottotitolo</strong> (عنوان فرعي).</p>"
+ },
+ "s4_h": {
+  "it": "Sottotitolo è la voce sotto Titolo, nella lista. Compare anche una riga sotto la parola.",
+  "en": "Sottotitolo is the item under Titolo in the list. A line also appears under the word.",
+  "fr": "Sottotitolo est l'élément sous Titolo dans la liste. Un trait apparaît aussi sous le mot.",
+  "ckb": "Sottotitolo ئەو بڕگەیە کە لە لیستەکەدا لە ژێر Titolo ـە. هێڵێکیش لە ژێر وشەکە دەردەکەوێت.",
+  "kmr": "Sottotitolo di lîsteyê de di bin Titolo de ye. Di bin peyvê de xetek jî xuya dibe.",
+  "ar": "Sottotitolo هو البند الذي تحت Titolo في القائمة. ويظهر أيضاً خط تحت الكلمة."
+ },
+ "s5_t": {
+  "it": "Gli altri titoli",
+  "en": "The other headings",
+  "fr": "Les autres titres",
+  "ckb": "ناونیشانەکانی تر",
+  "kmr": "Sernivîsên din",
+  "ar": "العناوین الأخرى"
+ },
+ "s5_b": {
+  "it": "<p>Fai lo stesso con gli altri <strong>4 titoli</strong>: <strong>Esperienza lavorativa</strong>, <strong>Istruzione</strong>, <strong>Lingue</strong>, <strong>Competenze</strong>.</p>",
+  "en": "<p>Do the same with the other <strong>4 headings</strong>: <strong>Esperienza lavorativa</strong>, <strong>Istruzione</strong>, <strong>Lingue</strong>, <strong>Competenze</strong>.</p>",
+  "fr": "<p>Fais pareil avec les <strong>4 autres titres</strong> : <strong>Esperienza lavorativa</strong>, <strong>Istruzione</strong>, <strong>Lingue</strong>, <strong>Competenze</strong>.</p>",
+  "ckb": "<p>هەمان شت لەگەڵ <strong>4 ناونیشانەکەی تر</strong> بکە: <strong>Esperienza lavorativa</strong>، <strong>Istruzione</strong>، <strong>Lingue</strong>، <strong>Competenze</strong>.</p>",
+  "kmr": "<p>Heman tişt bi <strong>4 sernivîsên din</strong> re bike: <strong>Esperienza lavorativa</strong>, <strong>Istruzione</strong>, <strong>Lingue</strong>, <strong>Competenze</strong>.</p>",
+  "ar": "<p>افعلي الشيء نفسه مع <strong>العناوين الأربعة الأخرى</strong>: <strong>Esperienza lavorativa</strong> و<strong>Istruzione</strong> و<strong>Lingue</strong> و<strong>Competenze</strong>.</p>"
+ },
+ "s5_h": {
+  "it": "Per ogni titolo: un clic sulla riga, poi il menu, poi Sottotitolo. La freccia ti mostra il prossimo.",
+  "en": "For each heading: click the line, then the menu, then Sottotitolo. The arrow shows you the next one.",
+  "fr": "Pour chaque titre : un clic sur la ligne, puis le menu, puis Sottotitolo. La flèche te montre le suivant.",
+  "ckb": "بۆ هەر ناونیشانێک: کرتە لەسەر دێڕەکە، پاشان لیستەکە، پاشان Sottotitolo. تیرەکە ئەوەی دواتر نیشان دەدات.",
+  "kmr": "Ji bo her sernivîsê: li rêzê bitikîne, paşê menû, paşê Sottotitolo. Tîr ya din nîşanî te dide.",
+  "ar": "لكل عنوان: اضغطي على السطر ثم القائمة ثم Sottotitolo. السهم يريكِ العنوان التالي."
+ },
+ "s6_t": {
+  "it": "I lavori in grassetto",
+  "en": "Jobs in bold",
+  "fr": "Les emplois en gras",
+  "ckb": "کارەکان بە ئەستوور",
+  "kmr": "Kar bi qalind",
+  "ar": "الوظائف بخط غامق"
+ },
+ "s6_b": {
+  "it": "<p>In <strong>Esperienza lavorativa</strong> ci sono due lavori. Mettili in <strong>grassetto</strong>: seleziona tutta la riga con <strong>3 clic</strong>, poi premi <strong>B</strong>.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>B</kbd></p>",
+  "en": "<p>Under <strong>Esperienza lavorativa</strong> there are two jobs. Put them in <strong>bold</strong>: select the whole line with <strong>3 clicks</strong>, then press <strong>B</strong>.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>B</kbd></p>",
+  "fr": "<p>Sous <strong>Esperienza lavorativa</strong>, il y a deux emplois. Mets-les en <strong>gras</strong> : sélectionne toute la ligne avec <strong>3 clics</strong>, puis appuie sur <strong>B</strong>.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>B</kbd></p>",
+  "ckb": "<p>لە <strong>Esperienza lavorativa</strong> دوو کار هەیە. بیانخە <strong>ئەستوور</strong>: هەموو دێڕەکە بە <strong>3 کرتە</strong> دیاری بکە، پاشان <strong>B</strong> دابگرە.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>B</kbd></p>",
+  "kmr": "<p>Di bin <strong>Esperienza lavorativa</strong> de du kar hene. Wan bike <strong>qalind</strong>: tevahiya rêzê bi <strong>3 tikandinan</strong> hilbijêre, paşê <strong>B</strong> bitikîne.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>B</kbd></p>",
+  "ar": "<p>تحت <strong>Esperienza lavorativa</strong> هناك وظيفتان. اجعليهما <strong>غامقتين</strong>: حدّدي السطر كله بـ <strong>3 ضغطات</strong> ثم اضغطي على <strong>B</strong>.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>B</kbd></p>"
+ },
+ "s6_h": {
+  "it": "Sono le righe «Aiuto cuoca - ...» e «Addetta alle pulizie - ...». Tutta la riga deve essere colorata prima di premere B.",
+  "en": "They are the lines «Aiuto cuoca - ...» and «Addetta alle pulizie - ...». The whole line must be coloured before you press B.",
+  "fr": "Ce sont les lignes «Aiuto cuoca - ...» et «Addetta alle pulizie - ...». Toute la ligne doit être colorée avant d'appuyer sur B.",
+  "ckb": "ئەوانە دێڕەکانی «Aiuto cuoca - ...» و «Addetta alle pulizie - ...» ن. پێش دانانی B دەبێت هەموو دێڕەکە ڕەنگی گرتبێت.",
+  "kmr": "Ew rêzên «Aiuto cuoca - ...» û «Addetta alle pulizie - ...» ne. Beriya tikandina B divê tevahiya rêzê rengîn be.",
+  "ar": "هما السطران «Aiuto cuoca - ...» و«Addetta alle pulizie - ...». يجب أن يتلوّن السطر كله قبل الضغط على B."
+ },
+ "s7_t": {
+  "it": "Le date in corsivo",
+  "en": "Dates in italic",
+  "fr": "Les dates en italique",
+  "ckb": "بەروارەکان بە لار",
+  "kmr": "Dîrok bi xwar",
+  "ar": "التواريخ بخط مائل"
+ },
+ "s7_b": {
+  "it": "<p>Sotto ogni lavoro c'è una data (per esempio <em>2023 - 2025</em>). Mettila in <strong>corsivo</strong>: seleziona la riga con 3 clic, poi premi <strong>I</strong>. Fallo per tutte e due.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>I</kbd></p>",
+  "en": "<p>Under each job there is a date (for example <em>2023 - 2025</em>). Put it in <strong>italic</strong>: select the line with 3 clicks, then press <strong>I</strong>. Do it for both.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>I</kbd></p>",
+  "fr": "<p>Sous chaque emploi, il y a une date (par exemple <em>2023 - 2025</em>). Mets-la en <strong>italique</strong> : sélectionne la ligne avec 3 clics, puis appuie sur <strong>I</strong>. Fais-le pour les deux.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>I</kbd></p>",
+  "ckb": "<p>لە ژێر هەر کارێک بەروارێک هەیە (بۆ نموونە <em>2023 - 2025</em>). بیخە <strong>لار</strong>: دێڕەکە بە 3 کرتە دیاری بکە، پاشان <strong>I</strong> دابگرە. بۆ هەردووکیان بیکە.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>I</kbd></p>",
+  "kmr": "<p>Di bin her karî de dîrokek heye (bo nimûne <em>2023 - 2025</em>). Wê bike <strong>xwar</strong>: rêzê bi 3 tikandinan hilbijêre, paşê <strong>I</strong> bitikîne. Ji bo herduyan bike.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>I</kbd></p>",
+  "ar": "<p>تحت كل وظيفة يوجد تاريخ (مثلاً <em>2023 - 2025</em>). اجعليه <strong>مائلاً</strong>: حدّدي السطر بـ 3 ضغطات ثم اضغطي على <strong>I</strong>. افعلي ذلك للتاريخين.</p><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>I</kbd></p>"
+ },
+ "s7_h": {
+  "it": "Le date sono due righe corte: 2023 - 2025 e 2021 - 2023. La freccia ti mostra la prossima.",
+  "en": "The dates are two short lines: 2023 - 2025 and 2021 - 2023. The arrow shows you the next one.",
+  "fr": "Les dates sont deux lignes courtes : 2023 - 2025 et 2021 - 2023. La flèche te montre la suivante.",
+  "ckb": "بەروارەکان دوو دێڕی کورتن: 2023 - 2025 و 2021 - 2023. تیرەکە ئەوەی دواتر نیشان دەدات.",
+  "kmr": "Dîrok du rêzên kurt in: 2023 - 2025 û 2021 - 2023. Tîr ya din nîşanî te dide.",
+  "ar": "التاريخان سطران قصيران: 2023 - 2025 و2021 - 2023. السهم يريكِ التالي."
+ },
+ "s8_t": {
+  "it": "Le competenze: elenco puntato",
+  "en": "Skills: a bulleted list",
+  "fr": "Les compétences : une liste à puces",
+  "ckb": "تواناکان: لیستی خاڵدار",
+  "kmr": "Jêhatîbûn: lîsteya xalî",
+  "ar": "المهارات: قائمة نقطية"
+ },
+ "s8_b": {
+  "it": "<p>In fondo ci sono le <strong>Competenze</strong>: tre righe. Selezionale tutte e tre (trascina con il mouse) e premi <strong>Elenco puntato</strong>.</p>",
+  "en": "<p>At the bottom are the <strong>Competenze</strong> (Skills): three lines. Select all three (drag with the mouse) and press <strong>Elenco puntato</strong> (Bulleted list).</p>",
+  "fr": "<p>En bas, il y a les <strong>Competenze</strong> (Compétences) : trois lignes. Sélectionne-les toutes les trois (glisse avec la souris) et appuie sur <strong>Elenco puntato</strong> (Liste à puces).</p>",
+  "ckb": "<p>لە خوارەوە <strong>Competenze</strong> (تواناکان) هەیە: سێ دێڕ. هەر سێکیان دیاری بکە (بە ماوس ڕایبکێشە) و <strong>Elenco puntato</strong> (لیستی خاڵدار) دابگرە.</p>",
+  "kmr": "<p>Li jêr <strong>Competenze</strong> (Jêhatîbûn) hene: sê rêz. Her sê hilbijêre (bi mişkê bikişîne) û <strong>Elenco puntato</strong> (Lîsteya xalî) bitikîne.</p>",
+  "ar": "<p>في الأسفل <strong>Competenze</strong> (المهارات): ثلاثة أسطر. حدّديها كلها (اسحبي بالفأرة) واضغطي على <strong>Elenco puntato</strong> (قائمة نقطية).</p>"
+ },
+ "s8_h": {
+  "it": "Trascina dall'inizio di «Cucina» fino alla fine di «Lavoro di squadra». Il pulsante ha i pallini con le righe.",
+  "en": "Drag from the start of «Cucina» to the end of «Lavoro di squadra». The button has dots with lines.",
+  "fr": "Glisse du début de «Cucina» à la fin de «Lavoro di squadra». Le bouton a des points avec des lignes.",
+  "ckb": "لە سەرەتای «Cucina» ـەوە تا کۆتایی «Lavoro di squadra» ڕایبکێشە. دوگمەکە خاڵی لەگەڵ هێڵەکان هەیە.",
+  "kmr": "Ji destpêka «Cucina» heta dawiya «Lavoro di squadra» bikişîne. Bişkojk xal bi xetan re heye.",
+  "ar": "اسحبي من بداية «Cucina» إلى نهاية «Lavoro di squadra». الزر عليه نقاط مع خطوط."
+ },
+ "s9_t": {
+  "it": "Le lingue: elenco puntato",
+  "en": "Languages: a bulleted list",
+  "fr": "Les langues : une liste à puces",
+  "ckb": "زمانەکان: لیستی خاڵدار",
+  "kmr": "Ziman: lîsteya xalî",
+  "ar": "اللغات: قائمة نقطية"
+ },
+ "s9_b": {
+  "it": "<p>Ora le <strong>Lingue</strong>: seleziona le tre righe (Arabo, Italiano, Inglese) e premi <strong>Elenco puntato</strong>.</p>",
+  "en": "<p>Now the <strong>Lingue</strong> (Languages): select the three lines (Arabo, Italiano, Inglese) and press <strong>Elenco puntato</strong> (Bulleted list).</p>",
+  "fr": "<p>Maintenant les <strong>Lingue</strong> (Langues) : sélectionne les trois lignes (Arabo, Italiano, Inglese) et appuie sur <strong>Elenco puntato</strong> (Liste à puces).</p>",
+  "ckb": "<p>ئێستا <strong>Lingue</strong> (زمانەکان): سێ دێڕەکە (Arabo، Italiano، Inglese) دیاری بکە و <strong>Elenco puntato</strong> (لیستی خاڵدار) دابگرە.</p>",
+  "kmr": "<p>Niha <strong>Lingue</strong> (Ziman): sê rêzan (Arabo, Italiano, Inglese) hilbijêre û <strong>Elenco puntato</strong> (Lîsteya xalî) bitikîne.</p>",
+  "ar": "<p>الآن <strong>Lingue</strong> (اللغات): حدّدي الأسطر الثلاثة (Arabo وItaliano وInglese) واضغطي على <strong>Elenco puntato</strong> (قائمة نقطية).</p>"
+ },
+ "s9_h": {
+  "it": "Stessa cosa di prima: trascina sulle tre righe, poi premi il pulsante dei pallini.",
+  "en": "Same as before: drag over the three lines, then press the dots button.",
+  "fr": "Comme avant : glisse sur les trois lignes, puis appuie sur le bouton des puces.",
+  "ckb": "وەک پێشتر: بەسەر سێ دێڕەکەدا ڕایبکێشە، پاشان دوگمەی خاڵەکان دابگرە.",
+  "kmr": "Mîna berê: li ser sê rêzan bikişîne, paşê bişkojka xalan bitikîne.",
+  "ar": "كما سبق: اسحبي على الأسطر الثلاثة ثم اضغطي على زر النقاط."
+ },
+ "s10_t": {
+  "it": "L'istruzione: elenco puntato",
+  "en": "Education: a bulleted list",
+  "fr": "La formation : une liste à puces",
+  "ckb": "خوێندن: لیستی خاڵدار",
+  "kmr": "Xwendin: lîsteya xalî",
+  "ar": "التعليم: قائمة نقطية"
+ },
+ "s10_b": {
+  "it": "<p>Ultima: <strong>Istruzione</strong>. Seleziona le due righe (Diploma, Corso di italiano) e premi <strong>Elenco puntato</strong>.</p>",
+  "en": "<p>Last one: <strong>Istruzione</strong> (Education). Select the two lines (Diploma, Corso di italiano) and press <strong>Elenco puntato</strong> (Bulleted list).</p>",
+  "fr": "<p>La dernière : <strong>Istruzione</strong> (Formation). Sélectionne les deux lignes (Diploma, Corso di italiano) et appuie sur <strong>Elenco puntato</strong> (Liste à puces).</p>",
+  "ckb": "<p>دوایین: <strong>Istruzione</strong> (خوێندن). دوو دێڕەکە (Diploma، Corso di italiano) دیاری بکە و <strong>Elenco puntato</strong> (لیستی خاڵدار) دابگرە.</p>",
+  "kmr": "<p>Ya dawî: <strong>Istruzione</strong> (Xwendin). Du rêzan (Diploma, Corso di italiano) hilbijêre û <strong>Elenco puntato</strong> (Lîsteya xalî) bitikîne.</p>",
+  "ar": "<p>الأخير: <strong>Istruzione</strong> (التعليم). حدّدي السطرين (Diploma وCorso di italiano) واضغطي على <strong>Elenco puntato</strong> (قائمة نقطية).</p>"
+ },
+ "s10_h": {
+  "it": "Sono le due righe sotto il titolo Istruzione. Trascina, poi premi il pulsante dei pallini.",
+  "en": "They are the two lines under the Istruzione heading. Drag, then press the dots button.",
+  "fr": "Ce sont les deux lignes sous le titre Istruzione. Glisse, puis appuie sur le bouton des puces.",
+  "ckb": "ئەوانە دوو دێڕەکەی ژێر ناونیشانی Istruzione ن. ڕایبکێشە، پاشان دوگمەی خاڵەکان دابگرە.",
+  "kmr": "Ew du rêzên di bin sernivîsa Istruzione de ne. Bikişîne, paşê bişkojka xalan bitikîne.",
+  "ar": "هما السطران تحت عنوان Istruzione. اسحبي ثم اضغطي على زر النقاط."
+ },
+ "s11_t": {
+  "it": "Un colore per il nome",
+  "en": "A colour for the name",
+  "fr": "Une couleur pour le nom",
+  "ckb": "ڕەنگێک بۆ ناو",
+  "kmr": "Rengek ji bo navî",
+  "ar": "لون للاسم"
+ },
+ "s11_b": {
+  "it": "<p>Dai un tocco di colore: seleziona il nome <strong>Amina Hassan</strong> (3 clic), apri il menu <strong>Colore</strong> (la <strong>A</strong> colorata) e scegli il blu.</p>",
+  "en": "<p>Add a touch of colour: select the name <strong>Amina Hassan</strong> (3 clicks), open the <strong>Colore</strong> (Colour) menu (the coloured <strong>A</strong>) and choose blue.</p>",
+  "fr": "<p>Ajoute une touche de couleur : sélectionne le nom <strong>Amina Hassan</strong> (3 clics), ouvre le menu <strong>Colore</strong> (Couleur) (le <strong>A</strong> coloré) et choisis le bleu.</p>",
+  "ckb": "<p>ڕەنگێکی بچووک زیاد بکە: ناوی <strong>Amina Hassan</strong> دیاری بکە (3 کرتە)، لیستی <strong>Colore</strong> (ڕەنگ) بکەرەوە (پیتی <strong>A</strong>ی ڕەنگاوڕەنگ) و شین هەڵبژێرە.</p>",
+  "kmr": "<p>Tiştekî reng lê zêde bike: navê <strong>Amina Hassan</strong> hilbijêre (3 tikandin), menuya <strong>Colore</strong> (Reng) veke (tîpa <strong>A</strong> a rengîn) û şîn hilbijêre.</p>",
+  "ar": "<p>أضيفي لمسة لون: حدّدي الاسم <strong>Amina Hassan</strong> (3 ضغطات)، افتحي القائمة <strong>Colore</strong> (اللون) (الحرف <strong>A</strong> الملوّن) واختاري الأزرق.</p>"
+ },
+ "s11_h": {
+  "it": "Il blu è il quarto colore della tavolozza. Va bene anche un altro colore: l'importante è che il nome cambi colore.",
+  "en": "Blue is the fourth colour in the palette. Any other colour is fine too: what matters is that the name changes colour.",
+  "fr": "Le bleu est la quatrième couleur de la palette. Un autre convient aussi : l'important est que le nom change de couleur.",
+  "ckb": "شین ڕەنگی چوارەمی پاڵێتەکەیە. ڕەنگێکی تریش دروستە: گرنگ ئەوەیە ڕەنگی ناوەکە بگۆڕێت.",
+  "kmr": "Şîn rengê çaremîn ê palêtê ye. Rengekî din jî baş e: girîng ew e ku rengê navî biguhere.",
+  "ar": "الأزرق هو اللون الرابع في اللوحة. أي لون آخر مقبول أيضاً: المهم أن يتغير لون الاسم."
+ },
+ "s12_t": {
+  "it": "Aggiungi una competenza",
+  "en": "Add a skill",
+  "fr": "Ajoute une compétence",
+  "ckb": "تواناییەک زیاد بکە",
+  "kmr": "Jêhatîbûnekê zêde bike",
+  "ar": "أضيفي مهارة"
+ },
+ "s12_b": {
+  "it": "<p>Amina sa usare il computer! Fai clic alla fine di «Lavoro di squadra», premi <kbd>Invio</kbd> e scrivi: <strong>Uso del computer</strong></p>",
+  "en": "<p>Amina can use a computer! Click at the end of «Lavoro di squadra», press <kbd>Invio</kbd> (Enter) and write: <strong>Uso del computer</strong></p>",
+  "fr": "<p>Amina sait utiliser l'ordinateur ! Clique à la fin de «Lavoro di squadra», appuie sur <kbd>Invio</kbd> (Entrée) et écris : <strong>Uso del computer</strong></p>",
+  "ckb": "<p>ئامینا دەزانێت کۆمپیوتەر بەکاربهێنێت! کرتە لە کۆتایی «Lavoro di squadra» بکە، <kbd>Invio</kbd> (Enter) دابگرە و بنووسە: <strong>Uso del computer</strong></p>",
+  "kmr": "<p>Amina dizane komputerê bi kar bîne! Li dawiya «Lavoro di squadra» bitikîne, <kbd>Invio</kbd> (Enter) bitikîne û binivîse: <strong>Uso del computer</strong></p>",
+  "ar": "<p>أمينة تعرف استخدام الحاسوب! اضغطي في نهاية «Lavoro di squadra»، ثم اضغطي <kbd>Invio</kbd> (Enter) واكتبي: <strong>Uso del computer</strong></p>"
+ },
+ "s12_h": {
+  "it": "Dopo Invio compare subito un nuovo pallino: scrivi lì. Il testo è Uso del computer.",
+  "en": "After Enter a new bullet appears straight away: write there. The text is Uso del computer.",
+  "fr": "Après Entrée, une nouvelle puce apparaît tout de suite : écris là. Le texte est Uso del computer.",
+  "ckb": "دوای Enter خاڵێکی نوێ یەکسەر دەردەکەوێت: لەوێ بنووسە. دەقەکە Uso del computer ـە.",
+  "kmr": "Piştî Enter xalek nû tavilê xuya dibe: li wir binivîse. Nivîs Uso del computer e.",
+  "ar": "بعد Enter تظهر نقطة جديدة فوراً: اكتبي هناك. النص هو Uso del computer."
+ },
+ "s13_t": {
+  "it": "Copia e incolla",
+  "en": "Copy and paste",
+  "fr": "Copier-coller",
+  "ckb": "کۆپی و پەیست",
+  "kmr": "Kopî û pêveke",
+  "ar": "نسخ ولصق"
+ },
+ "s13_b": {
+  "it": "<p>Ogni CV italiano finisce con questa frase. Non devi scriverla: <strong>copiala</strong>!</p><p class=\"copyme\">Autorizzo il trattamento dei dati personali ai sensi del Regolamento UE 2016/679 (GDPR).</p><ol><li>Seleziona la frase qui sopra (3 clic) e premi <kbd>Ctrl</kbd> + <kbd>C</kbd>.</li><li>Fai clic alla fine del CV. Premi <kbd>Invio</kbd> <strong>due volte</strong>: l'elenco finisce.</li><li>Premi <kbd>Ctrl</kbd> + <kbd>V</kbd> per incollare.</li></ol>",
+  "en": "<p>Every Italian CV ends with this sentence. You do not have to write it: <strong>copy</strong> it! (Use the Italian sentence above.)</p><ol><li>Select the sentence above (3 clicks) and press <kbd>Ctrl</kbd> + <kbd>C</kbd>.</li><li>Click at the end of the CV. Press <kbd>Invio</kbd> (Enter) <strong>twice</strong>: the list ends.</li><li>Press <kbd>Ctrl</kbd> + <kbd>V</kbd> to paste.</li></ol>",
+  "fr": "<p>Tout CV italien se termine par cette phrase. Tu n'as pas à l'écrire : <strong>copie</strong>-la ! (Utilise la phrase italienne ci-dessus.)</p><ol><li>Sélectionne la phrase ci-dessus (3 clics) et appuie sur <kbd>Ctrl</kbd> + <kbd>C</kbd>.</li><li>Clique à la fin du CV. Appuie <strong>deux fois</strong> sur <kbd>Invio</kbd> (Entrée) : la liste se termine.</li><li>Appuie sur <kbd>Ctrl</kbd> + <kbd>V</kbd> pour coller.</li></ol>",
+  "ckb": "<p>هەموو سیڤییەکی ئیتاڵی بەم ڕستەیە کۆتایی دێت. پێویست ناکات بینووسیت: <strong>کۆپی</strong> بکە! (ڕستە ئیتاڵییەکەی سەرەوە بەکاربهێنە.)</p><ol><li>ڕستەکەی سەرەوە دیاری بکە (3 کرتە) و <kbd>Ctrl</kbd> + <kbd>C</kbd> دابگرە.</li><li>کرتە لە کۆتایی سیڤییەکە بکە. <kbd>Invio</kbd> (Enter) <strong>دوو جار</strong> دابگرە: لیستەکە تەواو دەبێت.</li><li><kbd>Ctrl</kbd> + <kbd>V</kbd> دابگرە بۆ پەیستکردن.</li></ol>",
+  "kmr": "<p>Her CV'yeke îtalî bi vê hevokê diqede. Pêdivî nake tu wê binivîsî: wê <strong>kopî bike</strong>! (Hevoka îtalî ya jorîn bi kar bîne.)</p><ol><li>Hevoka jorîn hilbijêre (3 tikandin) û <kbd>Ctrl</kbd> + <kbd>C</kbd> bitikîne.</li><li>Li dawiya CV bitikîne. <kbd>Invio</kbd> (Enter) <strong>du caran</strong> bitikîne: lîste diqede.</li><li><kbd>Ctrl</kbd> + <kbd>V</kbd> bitikîne da ku pêve bikî.</li></ol>",
+  "ar": "<p>كل سيرة ذاتية إيطالية تنتهي بهذه الجملة. لا تحتاجين إلى كتابتها: <strong>انسخيها</strong>! (استخدمي الجملة الإيطالية أعلاه.)</p><ol><li>حدّدي الجملة أعلاه (3 ضغطات) واضغطي <kbd>Ctrl</kbd> + <kbd>C</kbd>.</li><li>اضغطي في نهاية السيرة الذاتية. اضغطي <kbd>Invio</kbd> (Enter) <strong>مرتين</strong>: تنتهي القائمة.</li><li>اضغطي <kbd>Ctrl</kbd> + <kbd>V</kbd> للصق.</li></ol>"
+ },
+ "s13_h": {
+  "it": "Se la frase finisce dentro l'elenco, premi Annulla e riprova: due volte Invio, poi incolla. La frase deve stare sotto l'elenco, senza pallino.",
+  "en": "If the sentence ends up inside the list, press Annulla (Undo) and try again: Enter twice, then paste. The sentence must be below the list, without a bullet.",
+  "fr": "Si la phrase se retrouve dans la liste, appuie sur Annulla (Annuler) et recommence : Entrée deux fois, puis colle. La phrase doit être sous la liste, sans puce.",
+  "ckb": "ئەگەر ڕستەکە کەوتە ناو لیستەکە، Annulla (پاشگەزبوونەوە) دابگرە و دووبارە هەوڵ بدە: دوو جار Enter، پاشان پەیست. ڕستەکە دەبێت لە ژێر لیستەکە بێت، بێ خاڵ.",
+  "kmr": "Heke hevok ket nav lîsteyê, Annulla (Betal bike) bitikîne û dîsa biceribîne: du caran Enter, paşê pêve bike. Divê hevok di bin lîsteyê de be, bê xal.",
+  "ar": "إذا انتهت الجملة داخل القائمة، اضغطي Annulla (تراجع) وحاولي من جديد: Enter مرتين ثم الصق. يجب أن تكون الجملة تحت القائمة، بلا نقطة."
+ },
+ "s14_t": {
+  "it": "Stampa o salva in PDF",
+  "en": "Print or save as PDF",
+  "fr": "Imprimer ou enregistrer en PDF",
+  "ckb": "چاپ یان پاشەکەوت وەک PDF",
+  "kmr": "Çap bike an wekî PDF tomar bike",
+  "ar": "طباعة أو حفظ بصيغة PDF"
+ },
+ "s14_b": {
+  "it": "<p>Il CV è pronto! Premi il pulsante <strong>Stampa / PDF</strong>. Si apre una finestra:</p><ul><li>per fare un <strong>file PDF</strong>: in «Destinazione» scegli <strong>Salva come PDF</strong>, poi premi <strong>Salva</strong>;</li><li>per <strong>stampare</strong>: scegli la stampante, poi premi <strong>Stampa</strong>.</li></ul><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>P</kbd></p>",
+  "en": "<p>The CV is ready! Press the <strong>Stampa / PDF</strong> (Print / PDF) button. A window opens:</p><ul><li>to make a <strong>PDF file</strong>: in «Destinazione» (Destination) choose <strong>Salva come PDF</strong> (Save as PDF), then press <strong>Salva</strong> (Save);</li><li>to <strong>print</strong>: choose the printer, then press <strong>Stampa</strong> (Print).</li></ul><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>P</kbd></p>",
+  "fr": "<p>Le CV est prêt ! Appuie sur le bouton <strong>Stampa / PDF</strong> (Imprimer / PDF). Une fenêtre s'ouvre :</p><ul><li>pour faire un <strong>fichier PDF</strong> : dans «Destinazione» (Destination) choisis <strong>Salva come PDF</strong> (Enregistrer au format PDF), puis appuie sur <strong>Salva</strong> (Enregistrer) ;</li><li>pour <strong>imprimer</strong> : choisis l'imprimante, puis appuie sur <strong>Stampa</strong> (Imprimer).</li></ul><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>P</kbd></p>",
+  "ckb": "<p>سیڤییەکە ئامادەیە! دوگمەی <strong>Stampa / PDF</strong> (چاپ / PDF) دابگرە. پەنجەرەیەک دەکرێتەوە:</p><ul><li>بۆ دروستکردنی <strong>فایلی PDF</strong>: لە «Destinazione» (مەبەست) <strong>Salva come PDF</strong> (پاشەکەوت وەک PDF) هەڵبژێرە، پاشان <strong>Salva</strong> (پاشەکەوت) دابگرە؛</li><li>بۆ <strong>چاپکردن</strong>: چاپکەرەکە هەڵبژێرە، پاشان <strong>Stampa</strong> (چاپ) دابگرە.</li></ul><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>P</kbd></p>",
+  "kmr": "<p>CV amade ye! Bişkojka <strong>Stampa / PDF</strong> (Çap / PDF) bitikîne. Paceyek vedibe:</p><ul><li>ji bo çêkirina <strong>pelê PDF</strong>: di «Destinazione» (Armanc) de <strong>Salva come PDF</strong> (Wekî PDF tomar bike) hilbijêre, paşê <strong>Salva</strong> (Tomar bike) bitikîne;</li><li>ji bo <strong>çapkirinê</strong>: çapkerê hilbijêre, paşê <strong>Stampa</strong> (Çap) bitikîne.</li></ul><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>P</kbd></p>",
+  "ar": "<p>السيرة الذاتية جاهزة! اضغطي على الزر <strong>Stampa / PDF</strong> (طباعة / PDF). تفتح نافذة:</p><ul><li>لعمل <strong>ملف PDF</strong>: في «Destinazione» (الوجهة) اختاري <strong>Salva come PDF</strong> (حفظ بصيغة PDF) ثم اضغطي <strong>Salva</strong> (حفظ)؛</li><li>لـ<strong>الطباعة</strong>: اختاري الطابعة ثم اضغطي <strong>Stampa</strong> (طباعة).</li></ul><p class=\"tip\">⌨️ <kbd>Ctrl</kbd> + <kbd>P</kbd></p>"
+ },
+ "s14_h": {
+  "it": "Il pulsante Stampa / PDF è in alto, a destra, nella barra degli strumenti. Guarda la freccia.",
+  "en": "The Stampa / PDF button is at the top right of the toolbar. Look at the arrow.",
+  "fr": "Le bouton Stampa / PDF est en haut à droite de la barre d'outils. Regarde la flèche.",
+  "ckb": "دوگمەی Stampa / PDF لە سەرەوە لای ڕاستی شریتی ئامرازەکانە. تیرەکە ببینە.",
+  "kmr": "Bişkojka Stampa / PDF li jorê li aliyê rastê yê darika amûran e. Li tîrê binêre.",
+  "ar": "زر Stampa / PDF في أعلى يمين شريط الأدوات. انظري إلى السهم."
+ },
+ "fin_title": {
+  "it": "🎉 Il CV di Amina è pronto!",
+  "en": "🎉 Amina's CV is ready!",
+  "fr": "🎉 Le CV d'Amina est prêt !",
+  "ckb": "🎉 سیڤییەکەی ئامینا ئامادەیە!",
+  "kmr": "🎉 CV'ya Amina amade ye!",
+  "ar": "🎉 السيرة الذاتية لأمينة جاهزة!"
+ },
+ "fin_body": {
+  "it": "<p>Hai imparato a:</p><ul><li>fare un <strong>titolo</strong> e dei <strong>sottotitoli</strong></li><li>centrare, usare <strong>grassetto</strong>, <em>corsivo</em> e colore</li><li>fare <strong>elenchi puntati</strong></li><li><strong>copiare e incollare</strong> una frase</li><li><strong>stampare</strong> o salvare in <strong>PDF</strong></li></ul><p class=\"ask\"><strong>Adesso tocca a te: premi «Scrivi il tuo CV» e scrivi il tuo.</strong></p><p class=\"real\">🔒 Il CV non viene salvato. Prima di chiudere la pagina, salvalo in PDF o stampalo.</p>",
+  "en": "<p>You learned to:</p><ul><li>make a <strong>title</strong> and <strong>headings</strong></li><li>centre, and use <strong>bold</strong>, <em>italic</em> and colour</li><li>make <strong>bulleted lists</strong></li><li><strong>copy and paste</strong> a sentence</li><li><strong>print</strong> or save as <strong>PDF</strong></li></ul><p class=\"ask\"><strong>Now it is your turn: press «Scrivi il tuo CV» (Write your own CV) and write yours.</strong></p><p class=\"real\">🔒 The CV is not saved. Before you close the page, save it as a PDF or print it.</p>",
+  "fr": "<p>Tu as appris à :</p><ul><li>faire un <strong>titre</strong> et des <strong>sous-titres</strong></li><li>centrer, et utiliser le <strong>gras</strong>, l'<em>italique</em> et la couleur</li><li>faire des <strong>listes à puces</strong></li><li><strong>copier-coller</strong> une phrase</li><li><strong>imprimer</strong> ou enregistrer en <strong>PDF</strong></li></ul><p class=\"ask\"><strong>Maintenant, c'est ton tour : appuie sur «Scrivi il tuo CV» (Écris ton CV) et écris le tien.</strong></p><p class=\"real\">🔒 Le CV n'est pas enregistré. Avant de fermer la page, enregistre-le en PDF ou imprime-le.</p>",
+  "ckb": "<p>تۆ فێربوویت:</p><ul><li>ناونیشان و <strong>ژێرناونیشان</strong> دروست بکەیت</li><li>بیخەیتە ناوەڕاست، و <strong>ئەستوور</strong>، <em>لار</em> و ڕەنگ بەکاربهێنیت</li><li><strong>لیستی خاڵدار</strong> دروست بکەیت</li><li>ڕستەیەک <strong>کۆپی و پەیست</strong> بکەیت</li><li><strong>چاپ</strong> بکەیت یان وەک <strong>PDF</strong> پاشەکەوت بکەیت</li></ul><p class=\"ask\"><strong>ئێستا نۆرەی تۆیە: «Scrivi il tuo CV» (سیڤییەکەی خۆت بنووسە) دابگرە و ئی خۆت بنووسە.</strong></p><p class=\"real\">🔒 سیڤییەکە پاشەکەوت ناکرێت. پێش داخستنی لاپەڕەکە، وەک PDF پاشەکەوتی بکە یان چاپی بکە.</p>",
+  "kmr": "<p>Te fêr bû ku:</p><ul><li><strong>sernivîs</strong> û <strong>binsernivîs</strong> çêkî</li><li>bixî navîn, û <strong>qalind</strong>, <em>xwar</em> û reng bi kar bînî</li><li><strong>lîsteyên xalî</strong> çêkî</li><li>hevokekê <strong>kopî û pêve</strong> bikî</li><li><strong>çap</strong> bikî an wekî <strong>PDF</strong> tomar bikî</li></ul><p class=\"ask\"><strong>Niha tora te ye: «Scrivi il tuo CV» (CV'ya xwe binivîse) bitikîne û yê xwe binivîse.</strong></p><p class=\"real\">🔒 CV tê tomar kirin nabe. Beriya girtina rûpelê, wê wekî PDF tomar bike an çap bike.</p>",
+  "ar": "<p>لقد تعلمتِ:</p><ul><li>عمل <strong>عنوان</strong> و<strong>عناوين فرعية</strong></li><li>التوسيط واستخدام <strong>الخط الغامق</strong> و<em>المائل</em> واللون</li><li>عمل <strong>قوائم نقطية</strong></li><li><strong>نسخ ولصق</strong> جملة</li><li><strong>الطباعة</strong> أو الحفظ بصيغة <strong>PDF</strong></li></ul><p class=\"ask\"><strong>الآن جاء دوركِ: اضغطي على «Scrivi il tuo CV» (اكتبي سيرتكِ الذاتية) واكتبي سيرتكِ.</strong></p><p class=\"real\">🔒 السيرة الذاتية لا تُحفظ. قبل إغلاق الصفحة، احفظيها بصيغة PDF أو اطبعيها.</p>"
+ },
+ "fin_free": {
+  "it": "<p>Sostituisci il testo con i tuoi dati: seleziona una riga (3 clic) e scrivi. Quando hai finito, premi <strong>Stampa / PDF</strong>.</p><p class=\"real\">🔒 Il CV non viene salvato: salvalo in PDF o stampalo prima di chiudere la pagina.</p>",
+  "en": "<p>Replace the text with your own details: select a line (3 clicks) and write. When you are done, press <strong>Stampa / PDF</strong> (Print / PDF).</p><p class=\"real\">🔒 The CV is not saved: save it as a PDF or print it before you close the page.</p>",
+  "fr": "<p>Remplace le texte par tes informations : sélectionne une ligne (3 clics) et écris. Quand tu as fini, appuie sur <strong>Stampa / PDF</strong> (Imprimer / PDF).</p><p class=\"real\">🔒 Le CV n'est pas enregistré : enregistre-le en PDF ou imprime-le avant de fermer la page.</p>",
+  "ckb": "<p>دەقەکە بگۆڕە بە زانیارییەکانی خۆت: دێڕێک دیاری بکە (3 کرتە) و بنووسە. کە تەواو بوویت، <strong>Stampa / PDF</strong> (چاپ / PDF) دابگرە.</p><p class=\"real\">🔒 سیڤییەکە پاشەکەوت ناکرێت: پێش داخستنی لاپەڕەکە وەک PDF پاشەکەوتی بکە یان چاپی بکە.</p>",
+  "kmr": "<p>Nivîsê bi agahiyên xwe biguherîne: rêzekê hilbijêre (3 tikandin) û binivîse. Gava te xelas kir, <strong>Stampa / PDF</strong> (Çap / PDF) bitikîne.</p><p class=\"real\">🔒 CV tê tomar kirin nabe: beriya girtina rûpelê wê wekî PDF tomar bike an çap bike.</p>",
+  "ar": "<p>استبدلي النص ببياناتكِ: حدّدي سطراً (3 ضغطات) واكتبي. عندما تنتهين اضغطي على <strong>Stampa / PDF</strong> (طباعة / PDF).</p><p class=\"real\">🔒 السيرة الذاتية لا تُحفظ: احفظيها بصيغة PDF أو اطبعيها قبل إغلاق الصفحة.</p>"
+ }
+}

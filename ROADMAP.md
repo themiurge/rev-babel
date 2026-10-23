@@ -93,6 +93,31 @@ shared computer.
   call, no localStorage. No score. **Unverified:** ckb/kmr/ar/fr/en text is
   machine-translated and unreviewed; driven end to end in headless Chromium
   (it and ar), not yet on the classroom machines.
+- **Lesson 5 has a second tutorial: "Il CV di Amina"** (`/games/cv`, new tab,
+  `templates/games/cv.html`, `static/lessons/lezione-5/cv/tutorial.js`,
+  `cv_tutorial_strings.json`). Amina Hassan is invented, and so is every
+  name, address, phone number and email on her CV (`.example` domain,
+  `000` phone). Her plain text is already in the page; 14 steps turn it
+  into a real CV: title, centring, headings, bold, italic, three bullet
+  lists, colour, typing one more skill, **copying the GDPR sentence out of
+  the instruction pane and pasting it** below the list, then
+  **Stampa / PDF**. The arrow adapts to the state: it points at the line
+  to click until the selection is right, then at the button, then at the
+  open menu's item, and scrolls an off-screen line into view. PDF is the
+  browser's print dialog ("Salva come PDF" or a printer) with an A4 print
+  stylesheet - no PDF library, text stays sharp, verified as one clean A4
+  page. At the end "Scrivi il tuo CV" swaps in a blank, pre-styled
+  skeleton for the student's own details; like everything here it stays
+  in the browser (nothing stored or sent), so the page tells them to save
+  the PDF or print before closing. The arrow/step engine is now shared:
+  `static/lessons/guided-editor.js` + `templates/games/_guided_editor.html`
+  (the first tutorial was moved onto it and re-verified), UI strings in
+  `guided_editor_ui_strings.json`. Same caveat: ckb/kmr/ar/fr/en text is
+  unreviewed machine-assisted translation.
+- **`scripts/translate.py`** calls the Google Cloud Translation API
+  (`GOOGLE_TRANSLATE_API_KEY` in `.env`): `--from it-IT --to en-US "..."`,
+  `--format html` keeps tags. Tested against the real API (it/en/fr/ar/
+  ckb/kmr). Course text only - it leaves the machine.
 - **Lesson 4 (SPID) has two decks**, five languages, and a "Lezione 4" entry
   in the course menu, plus the game below. `lezione-4-spid.json` (24 slides): SPID
   as a key and not a website, the six-step login with a "Dove siamo?" mockup
