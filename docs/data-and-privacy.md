@@ -44,6 +44,12 @@ not negotiable — see `overview.md` for the full teaching context.
   photograph of any user at all, on the server or off it — this rule now
   describes the design rather than restraining it.
 - No transcript, real or sample, in this repository.
+- Nothing a student types into the lesson 5 word-processor tutorials
+  (`/games/documento`, `/games/cv`): no network call, no cookie, no
+  `localStorage`. The text lives in the page until it is closed, which is
+  why the page tells the student to print or save a PDF first. Students
+  may type their own details into the CV skeleton for exactly this reason;
+  Amina's CV itself is invented (`.example` addresses, `000` phone).
 
 ## Repository rules (binding on every future contributor)
 
@@ -57,6 +63,9 @@ not negotiable — see `overview.md` for the full teaching context.
   keys. Non-secret configuration — hostnames, ports, paths, model names —
   may carry its real value there, since there is nothing to protect and a
   wrong one costs a lesson.
+- **`scripts/translate.py` sends its text to Google.** Use it for course
+  material only - never for anything a student wrote or anything that
+  names a student. Its key is `GOOGLE_TRANSLATE_API_KEY`, in `.env` only.
 - **Nothing identifying the course provider, venue, or address.**
 - `.gitignore` blocks `data/`, `.env`, `*.wav`, `*.mp3`, `*.ogg`, `*.webm`,
   `models/`, and `*.db`. If a change needs a new category of local or

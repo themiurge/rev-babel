@@ -35,14 +35,15 @@ screen. Ten lessons, six users, and then it stops. It is not a product and
 does not scale past this room; see
 [`docs/overview.md`](docs/overview.md).
 
-## Where we are now  *(2026-09-24)*
+## Where we are now  *(2026-10-23)*
 
 **Lesson 1 happened (17 September) and went well** — the slide mirror
 (Slide Sync Lite) was, per the maintainer, the most helpful thing in the
 room. Ten lessons, Thursdays 16:30–18:00, through 19 November. **Lesson 2
 (24 September) covers "Il proprio account"**: creating or recovering a
 Google account, choosing and keeping a password safely, behaving on a
-shared computer.
+shared computer. Since then lessons 3-5 got their materials: email, SPID,
+and two guided word-processor tutorials (below, newest first).
 
 - **Lesson 2's third deck: a 12-question scam-recognition quiz**
   (`lezione-2-truffe-quiz.json`, 24 slides, all five languages) — a
@@ -493,6 +494,18 @@ Lead times and physical presence, which is why they are listed apart.
   [`plans/README.md`](plans/README.md).
 
 ## Revision log
+
+- **v0.17 — 2026-10-23** — Lesson 5 built: "Scrivi un documento" (16-step
+  guided word-processor tutorial) and "Il CV di Amina" (14 steps, ends in
+  print / save as PDF and a blank skeleton for the student's own CV), both
+  on a new shared engine (`static/lessons/guided-editor.js`) with Quill
+  2.0.3 vendored under `static/vendor/quill/`. Added `scripts/translate.py`
+  (Google Cloud Translation, tested live). Verified by driving both
+  tutorials end to end in headless Chromium (it, ar) and checking the
+  printed CV as a one-page A4 PDF; **not** yet tried on the classroom
+  machines, a phone, or a real printer. Translations unreviewed. Updated
+  `docs/data-and-privacy.md` (editor stores nothing; translate script sends
+  course text to Google) and the stale `static/README.md`.
 
 - **v0.16 — 2026-09-24** — Renamed the password game from "Cifra la
   password" to "Password in codice" - "cifra" tested as too hard a word
