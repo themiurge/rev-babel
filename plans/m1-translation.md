@@ -17,25 +17,25 @@ and `apps/web` (M5) forwards it.
 
 ```python
 class Segment:
-    lesson_id: str      # opaque id, not derived from anything personal
-    seq: int            # monotonic within a lesson, gapless
+    lesson_id: str  # opaque id, not derived from anything personal
+    seq: int  # monotonic within a lesson, gapless
     started_at_ms: int  # milliseconds from lesson start
     ended_at_ms: int
-    source_lang: str    # "it" | "en" | "mixed" | "und"
+    source_lang: str  # "it" | "en" | "mixed" | "und"
     text: str
 ```
 
 ```python
 class Caption:
     lesson_id: str
-    seq: int            # the Segment.seq this translates
+    seq: int  # the Segment.seq this translates
     source_lang: str
-    source_text: str    # carried through, so the client can show both (ADR 0008)
-    target_lang: str    # "en" | "fr" | "ar" | ...
+    source_text: str  # carried through, so the client can show both (ADR 0008)
+    target_lang: str  # "en" | "fr" | "ar" | ...
     text: str
-    engine: str         # which backend produced it, for the record
+    engine: str  # which backend produced it, for the record
     latency_ms: int
-    degraded: bool      # true when translation failed and the client should show Italian only
+    degraded: bool  # true when translation failed and the client should show Italian only
 ```
 
 Wire format is JSON Lines, one object per line, UTF-8. It is the same

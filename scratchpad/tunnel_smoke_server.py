@@ -216,8 +216,8 @@ async def audio_ingest(ws: WebSocket):
                 if chunks % 20 == 0:
                     secs = now - started
                     print(
-                        f"[audio] {chunks} chunks · {bytes_in/1024:.1f} KiB · "
-                        f"{bytes_in*8/secs/1000:.1f} kbps · {secs:.0f}s"
+                        f"[audio] {chunks} chunks · {bytes_in / 1024:.1f} KiB · "
+                        f"{bytes_in * 8 / secs / 1000:.1f} kbps · {secs:.0f}s"
                     )
     except (WebSocketDisconnect, asyncio.CancelledError, RuntimeError):
         pass
@@ -228,9 +228,9 @@ async def audio_ingest(ws: WebSocket):
         gaps_sorted = sorted(gaps)
         med = gaps_sorted[len(gaps_sorted) // 2] if gaps_sorted else 0
         print(
-            f"[audio] CLOSED {chunks} chunks · {bytes_in/1024:.1f} KiB · "
-            f"{secs:.1f}s · {bytes_in*8/secs/1000:.1f} kbps · "
-            f"chunk gap median {med*1000:.0f} ms max {max(gaps or [0])*1000:.0f} ms"
+            f"[audio] CLOSED {chunks} chunks · {bytes_in / 1024:.1f} KiB · "
+            f"{secs:.1f}s · {bytes_in * 8 / secs / 1000:.1f} kbps · "
+            f"chunk gap median {med * 1000:.0f} ms max {max(gaps or [0]) * 1000:.0f} ms"
         )
         if path:
             print(f"[audio] saved {path}")
@@ -246,7 +246,7 @@ async def listen_page(t: str = ""):
     files = sorted(LISTEN.glob("*.ogg")) + sorted(LISTEN.glob("*.webm"))
     rows = (
         "".join(
-            f"<div class=card><div class=n>{f.name} — {f.stat().st_size/1024:.0f} KiB</div>"
+            f"<div class=card><div class=n>{f.name} — {f.stat().st_size / 1024:.0f} KiB</div>"
             f"<audio controls preload=none style='width:100%' "
             f"src='/audio-file/{f.name}?t={t}'></audio></div>"
             for f in files
