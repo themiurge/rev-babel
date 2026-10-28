@@ -144,3 +144,31 @@ def test_lesson_4_spid_decks_have_every_language_on_every_slide() -> None:
             for lang in ("it", "en", "fr", "ckb", "ar"):
                 assert slide[lang].startswith("<h1>")
                 assert "[[P" not in slide[lang] and "{{" not in slide[lang]
+
+
+def test_lesson_5_deck_is_complete_in_every_language() -> None:
+    found = {d["slug"]: d for d in decks.list_decks()}
+    assert found["lezione-5-scrivere"]["slide_count"] == 34
+    deck = decks.get_deck("lezione-5-scrivere")
+    for number, slide in enumerate(deck["slides"], start=1):
+        for lang in ("it", "en", "fr", "ckb", "ar"):
+            assert slide.get(lang), f"slide {number} has no {lang} text"
+
+
+def test_lesson_5_deck_has_no_leaked_template_text_or_injected_styles() -> None:
+    # Regressions from building the deck: an unformatted f-string left literal
+    # "{nt(...)}" in a slide, and Google Translate's HTML mode added inline
+    # text-align/direction styles to Arabic and Sorani, which would mirror the
+    # left-to-right toolbar and print-dialog mockups.
+    deck = decks.get_deck("lezione-5-scrivere")
+    for number, slide in enumerate(deck["slides"], start=1):
+        for lang, html in slide.items():
+            assert "{nt(" not in html and "{kbd(" not in html, f"slide {number} {lang}"
+            assert 'style=";' not in html, f"slide {number} {lang}"
+
+
+def test_lesson_5_deck_keeps_keys_and_the_invented_name_untranslated() -> None:
+    slide = decks.get_slide("lezione-5-scrivere", 14, "ar")
+    assert "<kbd" in slide["translated"] and "Ctrl" in slide["translated"]
+    quiz = decks.get_slide("lezione-5-scrivere", 8, "ckb")
+    assert "Amina Hassan" in quiz["translated"]

@@ -35,7 +35,7 @@ screen. Ten lessons, six users, and then it stops. It is not a product and
 does not scale past this room; see
 [`docs/overview.md`](docs/overview.md).
 
-## Where we are now  *(2026-10-23)*
+## Where we are now  *(2026-10-28)*
 
 **Lesson 1 happened (17 September) and went well** — the slide mirror
 (Slide Sync Lite) was, per the maintainer, the most helpful thing in the
@@ -79,6 +79,31 @@ and two guided word-processor tutorials (below, newest first).
   baked-in pictures, and emoji need no translation at all. `SPID` and
   the reporting-site URL `commissariatodips.it` are protected literals;
   everything else, including institution names, translates normally.
+- **Lesson 5 now has its deck: "Scrivere al computer: documenti e CV"**
+  (`lezione-5-scrivere.json`, 34 slides, five languages). Deliberately not
+  the text-and-chips format of the earlier decks: picture-first, a
+  four-stop day-map strip on every slide (`.route`: Capire / Scrivere /
+  Il CV / Il tuo CV), and it *complements* the two tutorials rather than
+  repeating their steps. It teaches the one idea behind every button
+  ("select, then press"), how to select (1/2/3 clicks, drag), and Ctrl+Z
+  as the safety net; three "which button?" reveal pairs on a miniature
+  toolbar; comic panels for Amina's story; the parts of a CV, bad vs good
+  CV, a privacy yes/no list, and a callback to lesson 2 (a job that asks
+  you for money is a scam); copy/paste, why PDF, the print dialog; mailing
+  the PDF (callback to lesson 3); three "Ora tocca a voi" hand-off cards
+  that send students to the two tutorials and the blank CV, with time
+  estimates (about 25 min each); two optional bonus slides (a formal
+  letter) for spare time. New CSS vocabulary (`.route`, `.pic`, `.wp`,
+  `.panel`, `.mini-page`, `.handoff`, `.mock-print`, `.paper`, `.ltr`,
+  keycaps) duplicated in `style.css` and `present.html` as always;
+  mockups are forced left-to-right so the toolbar does not mirror in
+  ar/ckb. Machine-translated with `scripts/translate.py` (html mode);
+  UI-looking text, keys, digits in badges and Amina's CV stay Italian
+  via `notranslate`. **Unverified:** en/fr/ckb/ar text is unreviewed;
+  looked at only as static screenshots (headless Chromium, split view),
+  not driven through Slide Sync Lite on the classroom machines; the
+  "what not to put on a CV" list and the 25-minute estimates are the
+  author's judgement and want the maintainer's eye.
 - **Lesson 5 (writing a document) has a guided tutorial**, "Scrivi un documento",
   in a new tab at `/games/documento` (`templates/games/documento.html`,
   `static/lessons/lezione-5/documento/tutorial.js`, text in
@@ -495,6 +520,12 @@ Lead times and physical presence, which is why they are listed apart.
 
 ## Revision log
 
+- **v0.18 — 2026-10-28** — Lesson 5's deck: "Scrivere al computer:
+  documenti e CV" (34 slides, five languages), a picture-first format with
+  a day-map strip, hand-off cards to the two tutorials, and a new CSS
+  vocabulary. Tests added to `test_decks.py` (all languages present, no
+  leaked template text or injected inline styles, keys and the invented
+  name untranslated).
 - **v0.17 — 2026-10-23** — Lesson 5 built: "Scrivi un documento" (16-step
   guided word-processor tutorial) and "Il CV di Amina" (14 steps, ends in
   print / save as PDF and a blank skeleton for the student's own CV), both
