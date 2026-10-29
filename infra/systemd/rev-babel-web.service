@@ -1,0 +1,15 @@
+[Unit]
+Description=rev-babel web (loopback only; cloudflared is the way in)
+After=network-online.target
+
+[Service]
+WorkingDirectory=/home/emilio/Projects/ciac/rev-babel
+# run-web.sh sources .env (WEB_BIND=127.0.0.1, WEB_PORT=8765) and execs uvicorn.
+# Must stay a single uvicorn worker (in-memory state).
+Environment=PATH=/home/emilio/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/home/emilio/Projects/ciac/rev-babel/scripts/run-web.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
