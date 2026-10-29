@@ -133,6 +133,14 @@ LESSON5_GAMES = {
         "src": "/games/cv",
         "new_tab": True,
     },
+    # Not a tutorial: an external Google Doc the class edits together.
+    "documento-condiviso": {
+        "title": "Documento Condiviso",
+        "unit": "s",
+        "max_value": 3_600,
+        "src": "https://docs.google.com/document/d/1Ai_MmoUuhVe1D8rtULGwo_gJczlI0gy-bwPyvg9fjTA/edit?usp=sharing",
+        "new_tab": True,
+    },
 }
 
 # Games with more than one difficulty: each mode gets its own score key
