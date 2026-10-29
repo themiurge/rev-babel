@@ -1,0 +1,70 @@
+{% extends "_base.html" %}
+{% import "_macros.html" as m with context %}
+{% block main %}
+<main class="chat" {% if is_rtl %}dir="rtl"{% endif %}>
+  <div id="chat-reconnecting" class="strip" hidden>{{ tr("Riconnessione…") or "Riconnessione…" }}</div>
+  <ol id="chat-log" class="chat-log" aria-live="polite"></ol>
+  <form id="chat-form" class="chat-form" autocomplete="off">
+    <input id="chat-input" type="text" maxlength="500" required
+           placeholder="{{ tr('Scrivi un messaggio…') or 'Scrivi un messaggio…' }}">
+    <button type="submit" {{ m.title_attr("Invia") }}>Invia</button>
+  </form>
+</main>
+<script>
+  const ME = {{ me | tojson }};
+  const log = document.getElementById("chat-log");
+  const reconnecting = document.getElementById("chat-reconnecting");
+  const seen = new Set();
+
+  function colorFor(name) {
+    let h = 0;
+    for (const ch of name) h = (h * 31 + ch.codePointAt(0)) % 360;
+    return `hsl(${h} 55% 35%)`;
+  }
+
+  function addMessage(msg) {
+    if (seen.has(msg.id)) return;
+    seen.add(msg.id);
+    const stick = log.scrollTop + log.clientHeight >= log.scrollHeight - 40;
+    const li = document.createElement("li");
+    li.className = "chat-msg" + (msg.name === ME ? " mine" : "");
+    const who = document.createElement("span");
+    who.className = "chat-name";
+    who.textContent = msg.name;
+    who.style.color = colorFor(msg.name);
+    const time = document.createElement("time");
+    time.className = "chat-time";
+    time.textContent = new Date(msg.ts * 1000).toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
+    const body = document.createElement("div");
+    body.className = "chat-text";
+    body.textContent = msg.text;
+    li.append(who, time, body);
+    log.append(li);
+    if (stick || msg.name === ME) log.scrollTop = log.scrollHeight;
+  }
+
+  const es = new EventSource("/api/chat/stream");
+  es.addEventListener("history", (e) => {
+    reconnecting.hidden = true;
+    JSON.parse(e.data).forEach(addMessage);
+    log.scrollTop = log.scrollHeight;
+  });
+  es.addEventListener("message", (e) => addMessage(JSON.parse(e.data)));
+  es.onerror = () => { reconnecting.hidden = false; };
+
+  document.getElementById("chat-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const input = document.getElementById("chat-input");
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = "";
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({text}),
+    });
+    if (!response.ok) input.value = text;
+    input.focus();
+  });
+</script>
+{% endblock %}

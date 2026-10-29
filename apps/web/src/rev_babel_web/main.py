@@ -19,7 +19,7 @@ from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
 from starlette.middleware.sessions import SessionMiddleware
 
-from rev_babel_web import db, decks, i18n, live, spid_game
+from rev_babel_web import chat, db, decks, i18n, live, spid_game
 
 _HERE = os.path.dirname(__file__)
 _WEB_ROOT = os.path.abspath(os.path.join(_HERE, "..", ".."))
@@ -218,6 +218,10 @@ class LiveGotoIn(BaseModel):
 
 class LiveStatusIn(BaseModel):
     status: str
+
+
+class ChatIn(BaseModel):
+    text: str
 
 
 app = FastAPI()
@@ -640,6 +644,38 @@ def live_stream(request: Request):
         media_type="text/event-stream",
         headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
     )
+
+
+@app.get("/chat")
+def chat_page(request: Request):
+    if _current_name(request) is None:
+        return RedirectResponse("/", status_code=303)
+    context = _base_context(request)
+    context["me"] = context["name"]
+    context["is_rtl"] = context["lang"] in i18n.RTL_LANGUAGES
+    return templates.TemplateResponse(request, "chat.html", context)
+
+
+@app.get("/api/chat/stream")
+def chat_stream(request: Request):
+    if _current_name(request) is None:
+        raise HTTPException(status_code=401)
+    return StreamingResponse(
+        chat.sse_events(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
+
+
+@app.post("/api/chat")
+def chat_post(request: Request, body: ChatIn):
+    name = _current_name(request)
+    if name is None:
+        raise HTTPException(status_code=401)
+    text = chat.clean_text(body.text)
+    if text is None:
+        raise HTTPException(status_code=400, detail="Invalid message.")
+    return JSONResponse(chat.post(name, text))
 
 
 @app.get("/present")

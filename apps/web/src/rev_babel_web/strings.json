@@ -359,7 +359,7 @@
   "Invia": {
     "en": "Send",
     "fr": "Envoyer",
-    "ckb": "ناردن",
+    "ckb": "بنێرە",
     "kmr": "Bişîne",
     "ar": "إرسال"
   },
@@ -453,5 +453,19 @@
     "ckb": "بەڵگەنامەی هاوبەش",
     "kmr": "Belgeya Hevpar",
     "ar": "المستند المشترك"
+  },
+  "Chat": {
+    "en": "Chat",
+    "fr": "Discussion",
+    "ckb": "گفتوگۆ",
+    "kmr": "Sohbet",
+    "ar": "الدردشة"
+  },
+  "Scrivi un messaggio…": {
+    "en": "Write a message…",
+    "fr": "Écris un message…",
+    "ckb": "نامەیەک بنووسە…",
+    "kmr": "Peyamekê binivîse…",
+    "ar": "اكتبي رسالة…"
   }
 }

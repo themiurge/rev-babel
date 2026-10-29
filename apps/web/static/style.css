@@ -1019,3 +1019,67 @@ body {
 
 .slide-box .ltr,
 #local-slide .ltr { direction: ltr; text-align: left; }
+
+/* ---- Class chat ---- */
+
+.sidebar .chat-link {
+  margin-top: 0.5rem;
+}
+
+.chat {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.chat-log {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chat-msg {
+  padding: 0.35rem 0.5rem;
+  border-radius: 4px;
+}
+
+.chat-msg.mine {
+  background: #eef3fb;
+}
+
+.chat-name {
+  font-weight: 700;
+}
+
+.chat-time {
+  margin-inline-start: 0.5rem;
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.chat-text {
+  overflow-wrap: anywhere;
+}
+
+.chat-form {
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+}
+
+.chat-form input {
+  flex: 1 1 auto;
+  font-size: 1.1rem;
+  padding: 0.6rem;
+}
+
+.chat-form button {
+  font-size: 1.1rem;
+  padding: 0.6rem 1.2rem;
+}

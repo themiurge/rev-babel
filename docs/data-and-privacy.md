@@ -20,6 +20,10 @@ not negotiable — see `overview.md` for the full teaching context.
   any other static asset. What is stored per user is a user id, the
   avatar claimed against it, and a language preference — no name, and no
   photograph of anyone.
+- **Class chat messages** — free text typed by students, shown with the
+  author's account name ([ADR 0017](decisions/0017-class-chat.md)). Held in
+  the web process's memory only, expired after 24 hours, never written to
+  disk or the database, and a restart empties them.
 - **Eco transcripts** — TODO: retention period not yet decided. Whatever is
   decided, transcripts are of the teacher's speech only (see below), and
   none belong in this repository as sample or fixture data.

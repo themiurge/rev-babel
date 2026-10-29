@@ -16,6 +16,7 @@
         <li><a href="{{ lesson.url }}" {{ m.title_attr(lesson.title) }}>{{ lesson.title }}</a></li>
         {% endfor %}
       </ul>
+      <a href="/chat" class="chat-link" {{ m.title_attr("Chat") }}>💬 Chat</a>
       <div class="sidebar-user">{{ name }}</div>
       <a href="/logout" class="logout" {{ m.title_attr("Cambia utente") }}>Cambia utente</a>
     </nav>
