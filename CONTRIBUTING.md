@@ -1,6 +1,7 @@
 # Contributing
 
 This project currently has a single maintainer working directly on `main`.
+Every change is committed and pushed to `main`.
 The ADR process below isn't a merge gate — it exists so a future reader
 (including a future maintainer) can tell *why* the system looks the way it
 does, not just *that* it does.
