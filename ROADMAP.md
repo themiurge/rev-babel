@@ -35,15 +35,40 @@ screen. Ten lessons, six users, and then it stops. It is not a product and
 does not scale past this room; see
 [`docs/overview.md`](docs/overview.md).
 
-## Where we are now  *(2026-10-28)*
+## Where we are now  *(2026-11-02)*
 
 **Lesson 1 happened (17 September) and went well** — the slide mirror
 (Slide Sync Lite) was, per the maintainer, the most helpful thing in the
 room. Ten lessons, Thursdays 16:30–18:00, through 19 November. **Lesson 2
 (24 September) covers "Il proprio account"**: creating or recovering a
 Google account, choosing and keeping a password safely, behaving on a
-shared computer. Since then lessons 3-5 got their materials: email, SPID,
-and two guided word-processor tutorials (below, newest first).
+shared computer. Since then lessons 3-6 got their materials: email, SPID,
+two guided word-processor tutorials, and a tutor chatbot (below, newest
+first).
+
+- **Lesson 6, "L'intelligenza artificiale", has a tutor chatbot**:
+  "Impara a usare un chatbot" at `/games/tutor` (new tab), recorded as
+  [ADR 0018](docs/decisions/0018-lesson-6-tutor-chatbot.md). Seven missions
+  (what a chatbot is, a clear question, context, asking for it simpler, your
+  own language and checking a translation, checking answers and invented
+  facts, what never to write) plus a closing page of five rules. Each has a
+  bad/good example prompt with the reason, and tappable example prompts that
+  fill the box. Everything shows Italian with the student's language under
+  it (RTL for ckb/ar), and a "Rispondi in" toggle (Italiano / her language /
+  both) sets the reply language. Backend: Anthropic, `claude-sonnet-5-5`
+  (the maintainer's call), key `ANTHROPIC_API_KEY` in `.env` only, model in
+  `TUTOR_MODEL`; prompt-cached system prompt, 400-character messages, six
+  turns of history, `max_tokens` 800, 6 calls a minute and 80 a day per
+  student, `TUTOR_DAILY_LIMIT` (400) for the class. Nothing is stored or
+  logged; the tab holds the conversation; personal-data-looking messages
+  are refused before sending. With no key (today) or on any failure it
+  answers from scripted bilingual content, so the lesson works offline.
+  **Unverified:** never run against the real API (no key configured); the
+  page was checked over HTTP (offline, failure fallback, rate limit, log
+  hygiene) but **not in a browser** - this machine has no JS runtime and
+  Chromium lacks system libraries - so the page script has not executed
+  anywhere yet; en/fr/ckb/kmr/ar tutor content is machine-written by Claude
+  and unreviewed (kmr and ckb most of all).
 
 - **Lesson 2's third deck: a 12-question scam-recognition quiz**
   (`lezione-2-truffe-quiz.json`, 24 slides, all five languages) — a
@@ -519,6 +544,16 @@ Lead times and physical presence, which is why they are listed apart.
   [`plans/README.md`](plans/README.md).
 
 ## Revision log
+
+- **v0.19 — 2026-11-02** — Lesson 6 and its tutor chatbot ("Impara a usare
+  un chatbot", `/games/tutor`, ADR 0018): seven bilingual missions, a
+  reply-language toggle, Anthropic `claude-sonnet-5-5` behind length caps,
+  a personal-data filter and rate limits, scripted fallback with no key or
+  on failure, nothing stored. `anthropic` added to `apps/web`. Updated
+  `docs/data-and-privacy.md` (student text now goes to Anthropic),
+  `docs/play.md`, `docs/architecture.md`, the READMEs and `.env.example`.
+  Tests in `test_tutor.py` (mocked client). Verified over HTTP only, not in
+  a browser and not against the real API; translations unreviewed.
 
 - **v0.18 — 2026-10-28** — Lesson 5's deck: "Scrivere al computer:
   documenti e CV" (34 slides, five languages), a picture-first format with

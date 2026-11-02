@@ -68,3 +68,15 @@ their own language, both visible, each boxed at 16:9 — rendered
 server-side per slide via `GET /api/live/slide`. A three-slide sample
 (`lezione-2-account-demo.json`) exercises the mechanism; it isn't lesson
 2's real content yet.
+
+**Lesson 6's tutor chatbot** ([ADR 0018](../../docs/decisions/0018-lesson-6-tutor-chatbot.md))
+is `/games/tutor` (`templates/games/tutor.html`,
+`static/lessons/lezione-6/tutor/tutor.js`), backed by
+`rev_babel_web/tutor.py` and its bilingual content in `tutor_content.json`.
+`POST /api/tutor` sends the student's message to Anthropic
+(`claude-sonnet-5-5`, overridable with `TUTOR_MODEL`) when
+`ANTHROPIC_API_KEY` is set, and answers from the scripted content when it
+isn't or when a call fails. It stores nothing: the browser tab holds the
+conversation. Length caps, a personal-data filter and per-student and
+class-wide rate limits sit in front of every call. This is the one place the
+app calls a hosted model; it is a thin API client, not inference.

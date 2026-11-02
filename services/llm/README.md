@@ -12,6 +12,11 @@ The chat model serving Play's spoken roleplay conversations.
 
 Translation (`services/mt`), transcription (`services/asr`).
 
+Lesson 6's tutor chatbot is **not** served from here: it calls a hosted
+API (Anthropic) from `apps/web/src/rev_babel_web/tutor.py`, per
+[ADR 0018](../../docs/decisions/0018-lesson-6-tutor-chatbot.md). This
+service stays reserved for Play's local model.
+
 ## Status
 
 Placeholder, week 2+. Model size and quantisation are not yet decided —

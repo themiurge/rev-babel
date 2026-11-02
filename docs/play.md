@@ -29,6 +29,10 @@ situations. See `data-and-privacy.md` — these are not displayed to anyone
 but the student having the conversation, and are not stored as a readable
 transcript.
 
+Lesson 6's tutor chatbot ([ADR 0018](decisions/0018-lesson-6-tutor-chatbot.md))
+applies the same stance to typed chat: the current exchange is shown only
+on the student's own screen while she reads it, and nothing is kept.
+
 ## Unbuilt
 
 `services/llm` is a placeholder at this stage. Model choice, quantisation,
