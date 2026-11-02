@@ -19,7 +19,7 @@ from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
 from starlette.middleware.sessions import SessionMiddleware
 
-from rev_babel_web import chat, db, decks, i18n, live, spid_game
+from rev_babel_web import chat, db, decks, i18n, live, spid_game, tutor
 
 _HERE = os.path.dirname(__file__)
 _WEB_ROOT = os.path.abspath(os.path.join(_HERE, "..", ".."))
@@ -65,6 +65,12 @@ LESSONS = [
         "title": "Lezione 5",
         "long_title": "Scrivere un documento",
         "url": "/course/lezione-5",
+    },
+    {
+        "slug": "lezione-6",
+        "title": "Lezione 6",
+        "long_title": "L'intelligenza artificiale",
+        "url": "/course/lezione-6",
     },
 ]
 
@@ -143,6 +149,17 @@ LESSON5_GAMES = {
     },
 }
 
+# The tutor chatbot: its own tab, no score (ADR 0018).
+LESSON6_GAMES = {
+    "tutor": {
+        "title": "Impara a usare un chatbot",
+        "unit": "s",
+        "max_value": 3_600,
+        "src": "/games/tutor",
+        "new_tab": True,
+    },
+}
+
 # Games with more than one difficulty: each mode gets its own score key
 # (its own row in game_scores) so easy and hard are tracked separately,
 # but they still share one lesson-page entry and one iframe.
@@ -168,6 +185,7 @@ LESSON_GAMES = {
     "lezione-3": LESSON3_GAMES,
     "lezione-4": LESSON4_GAMES,
     "lezione-5": LESSON5_GAMES,
+    "lezione-6": LESSON6_GAMES,
 }
 
 
@@ -222,6 +240,20 @@ class LiveStatusIn(BaseModel):
 
 class ChatIn(BaseModel):
     text: str
+
+
+class TutorTurn(BaseModel):
+    role: str
+    text: str
+
+
+class TutorIn(BaseModel):
+    mission: str
+    reply_lang: str
+    message: str
+    # Bounded here as well as in tutor.clean_history, so an oversized body is
+    # refused before anything walks it.
+    history: list[TutorTurn] = Field(default_factory=list, max_length=20)
 
 
 app = FastAPI()
@@ -676,6 +708,46 @@ def chat_post(request: Request, body: ChatIn):
     if text is None:
         raise HTTPException(status_code=400, detail="Invalid message.")
     return JSONResponse(chat.post(name, text))
+
+
+@app.get("/games/tutor")
+def game_tutor(request: Request):
+    student = _current_student(request)
+    if student is None:
+        return RedirectResponse("/", status_code=303)
+    lang = student["language"]
+    context = _base_context(request)
+    config = {
+        "lang": lang,
+        "rtl": lang in i18n.RTL_LANGUAGES,
+        "langName": i18n.LANGUAGES.get(lang, ""),
+        "live": tutor.is_live(),
+        "maxLength": tutor.MAX_MESSAGE_LENGTH,
+        "historyTurns": tutor.MAX_HISTORY_TURNS,
+        "maxTurn": tutor.MAX_TURN_LENGTH,
+        "content": tutor.localized(lang),
+    }
+    # "</" would end the <script> block this JSON is embedded in.
+    context["tutor_json"] = json.dumps(config, ensure_ascii=False).replace("</", "<\\/")
+    return templates.TemplateResponse(request, "games/tutor.html", context)
+
+
+@app.post("/api/tutor")
+def tutor_post(request: Request, body: TutorIn):
+    student = _current_student(request)
+    if student is None:
+        raise HTTPException(status_code=401)
+    if body.mission not in tutor.MISSIONS:
+        raise HTTPException(status_code=400, detail="Unknown mission.")
+    reply_lang = tutor.clean_reply_lang(body.reply_lang, student["language"])
+    message = tutor.clean_text(body.message)
+    history = tutor.clean_history([turn.model_dump() for turn in body.history])
+    if reply_lang is None or message is None or history is None:
+        raise HTTPException(status_code=400, detail="Invalid message.")
+    status, payload = tutor.reply(
+        student["id"], student["language"], body.mission, reply_lang, message, history
+    )
+    return JSONResponse(payload, status_code=status)
 
 
 @app.get("/present")

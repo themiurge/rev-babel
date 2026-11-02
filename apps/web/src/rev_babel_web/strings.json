@@ -467,5 +467,26 @@
     "ckb": "نامەیەک بنووسە…",
     "kmr": "Peyamekê binivîse…",
     "ar": "اكتبي رسالة…"
+  },
+  "Lezione 6": {
+    "en": "Lesson 6",
+    "fr": "Leçon 6",
+    "ckb": "وانەی 6",
+    "kmr": "Ders 6",
+    "ar": "الدرس 6"
+  },
+  "L'intelligenza artificiale": {
+    "en": "Artificial intelligence",
+    "fr": "L'intelligence artificielle",
+    "ckb": "زیرەکیی دەستکرد",
+    "kmr": "Zekaya çêkirî",
+    "ar": "الذكاء الاصطناعي"
+  },
+  "Impara a usare un chatbot": {
+    "en": "Learn to use a chatbot",
+    "fr": "Apprends à utiliser un chatbot",
+    "ckb": "فێربە چۆن چاتبۆت بەکاربهێنیت",
+    "kmr": "Fêr bibe ka çawa chatbotê bi kar bînî",
+    "ar": "تعلّمي استخدام روبوت الدردشة"
   }
 }
