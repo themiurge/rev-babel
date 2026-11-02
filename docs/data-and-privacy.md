@@ -24,6 +24,16 @@ not negotiable — see `overview.md` for the full teaching context.
   author's account name ([ADR 0017](decisions/0017-class-chat.md)). Held in
   the web process's memory only, expired after 24 hours, never written to
   disk or the database, and a restart empties them.
+- **Lesson 6 tutor chatbot messages** — free text typed by students at
+  `/games/tutor` ([ADR 0018](decisions/0018-lesson-6-tutor-chatbot.md)).
+  **Sent to Anthropic** (a third party, under its API data-retention terms)
+  when `ANTHROPIC_API_KEY` is set: the current message plus at most the last
+  six turns of the current mission. Not stored by the app at all - not on
+  disk, in the database, or in logs; the conversation lives in the browser
+  tab and is cleared on mission change, "Cancella la chat", or closing the
+  tab. No one but the student sees it, on her own screen. Messages that look
+  like passwords, email addresses, codice fiscale, IBANs, long numbers or ID
+  numbers are refused before sending. Without a key nothing is sent anywhere.
 - **Eco transcripts** — TODO: retention period not yet decided. Whatever is
   decided, transcripts are of the teacher's speech only (see below), and
   none belong in this repository as sample or fixture data.
@@ -70,6 +80,11 @@ not negotiable — see `overview.md` for the full teaching context.
 - **`scripts/translate.py` sends its text to Google.** Use it for course
   material only - never for anything a student wrote or anything that
   names a student. Its key is `GOOGLE_TRANSLATE_API_KEY`, in `.env` only.
+- **The lesson 6 tutor sends student text to Anthropic.** Its key is
+  `ANTHROPIC_API_KEY`, in `.env` only. Never log message contents (log the
+  error type, not the error message), never add a transcript, history view
+  or export, and test it with a mocked client and invented practice
+  sentences only.
 - **Nothing identifying the course provider, venue, or address.**
 - `.gitignore` blocks `data/`, `.env`, `*.wav`, `*.mp3`, `*.ogg`, `*.webm`,
   `models/`, and `*.db`. If a change needs a new category of local or
