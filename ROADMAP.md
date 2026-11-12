@@ -35,7 +35,7 @@ screen. Ten lessons, six users, and then it stops. It is not a product and
 does not scale past this room; see
 [`docs/overview.md`](docs/overview.md).
 
-## Where we are now  *(2026-11-02)*
+## Where we are now  *(2026-11-12)*
 
 **Lesson 1 happened (17 September) and went well** — the slide mirror
 (Slide Sync Lite) was, per the maintainer, the most helpful thing in the
@@ -43,8 +43,20 @@ room. Ten lessons, Thursdays 16:30–18:00, through 19 November. **Lesson 2
 (24 September) covers "Il proprio account"**: creating or recovering a
 Google account, choosing and keeping a password safely, behaving on a
 shared computer. Since then lessons 3-6 got their materials: email, SPID,
-two guided word-processor tutorials, and a tutor chatbot (below, newest
-first).
+two guided word-processor tutorials, a tutor chatbot, and a Python page
+(below, newest first).
+
+- **Lesson 7, "Programmare con Python", has a Python page with an
+  assistant**: "Python con l'assistente" at `/games/python` (new tab),
+  recorded as [ADR 0019](docs/decisions/0019-lesson-7-python-in-the-browser.md).
+  Seven short steps (print, words, a variable, `for`, a list, `input` and
+  `if`, her own welcome card) with Italian error explanations and a
+  14-slide deck. Python runs in the browser (Pyodide, fetched by `make
+  pyodide`, gitignored); the assistant reuses the tutor's backend and falls
+  back to scripted advice with no key. Verified: the runner and routes
+  under pytest and over HTTP. **Not verified:** never run in a browser,
+  Pyodide load time on the classroom network, the assistant against the
+  real API.
 
 - **Lesson 6, "L'intelligenza artificiale", has a tutor chatbot**:
   "Impara a usare un chatbot" at `/games/tutor` (new tab), recorded as
@@ -544,6 +556,14 @@ Lead times and physical presence, which is why they are listed apart.
   [`plans/README.md`](plans/README.md).
 
 ## Revision log
+
+- **v0.20 — 2026-11-12** — Lesson 7 and its Python page ("Python con
+  l'assistente", `/games/python`, ADR 0019): Pyodide in a Web Worker, a
+  pure-Python runner tested under CPython, seven steps, Italian error
+  explanations, an assistant on the tutor's backend (scripted without a key),
+  a 14-slide deck, `scripts/fetch-pyodide.py`. Tests in
+  `test_python_runner.py` and `test_python_lesson.py`. Verified over HTTP
+  only, not in a browser and not against the real API.
 
 - **v0.19 — 2026-11-02** — Lesson 6 and its tutor chatbot ("Impara a usare
   un chatbot", `/games/tutor`, ADR 0018): seven bilingual missions, a

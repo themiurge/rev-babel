@@ -34,6 +34,17 @@ not negotiable — see `overview.md` for the full teaching context.
   tab. No one but the student sees it, on her own screen. Messages that look
   like passwords, email addresses, codice fiscale, IBANs, long numbers or ID
   numbers are refused before sending. Without a key nothing is sent anywhere.
+- **Lesson 7 Python page** (`/games/python`,
+  [ADR 0019](decisions/0019-lesson-7-python-in-the-browser.md)) - the
+  code a student writes runs **in her browser** (Pyodide); the code, its
+  output and her answers to `input()` are never sent anywhere and live in
+  the tab until she closes it. Only when she presses an assistant button
+  are the step, the button, her question (<= 200 characters), her code
+  (<= 2,000) and the last error line (<= 400) **sent to Anthropic** through
+  the app server, under the tutor's filter, limits and nothing-stored
+  rule. Never the program's output or her `input()` answers. Not stored
+  by the app at all. Without a key nothing is sent beyond the app server,
+  which answers from scripted advice and keeps nothing.
 - **Eco transcripts** — TODO: retention period not yet decided. Whatever is
   decided, transcripts are of the teacher's speech only (see below), and
   none belong in this repository as sample or fixture data.
@@ -58,6 +69,8 @@ not negotiable — see `overview.md` for the full teaching context.
   photograph of any user at all, on the server or off it — this rule now
   describes the design rather than restraining it.
 - No transcript, real or sample, in this repository.
+- Nothing a student's program does at `/games/python`: running code makes
+  no network call and uses no cookie or `localStorage`.
 - Nothing a student types into the lesson 5 word-processor tutorials
   (`/games/documento`, `/games/cv`): no network call, no cookie, no
   `localStorage`. The text lives in the page until it is closed, which is
@@ -80,11 +93,13 @@ not negotiable — see `overview.md` for the full teaching context.
 - **`scripts/translate.py` sends its text to Google.** Use it for course
   material only - never for anything a student wrote or anything that
   names a student. Its key is `GOOGLE_TRANSLATE_API_KEY`, in `.env` only.
-- **The lesson 6 tutor sends student text to Anthropic.** Its key is
+- **The lesson 6 tutor and the lesson 7 Python assistant send student text to
+  Anthropic.** Their key is
   `ANTHROPIC_API_KEY`, in `.env` only. Never log message contents (log the
   error type, not the error message), never add a transcript, history view
   or export, and test it with a mocked client and invented practice
-  sentences only.
+  sentences only. Test fixtures for the Python page are invented code
+  (`studente@example.com`, `piatto = "cuscus"`), never a student's program.
 - **Nothing identifying the course provider, venue, or address.**
 - `.gitignore` blocks `data/`, `.env`, `*.wav`, `*.mp3`, `*.ogg`, `*.webm`,
   `models/`, and `*.db`. If a change needs a new category of local or

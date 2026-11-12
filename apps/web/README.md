@@ -80,3 +80,12 @@ isn't or when a call fails. It stores nothing: the browser tab holds the
 conversation. Length caps, a personal-data filter and per-student and
 class-wide rate limits sit in front of every call. This is the one place the
 app calls a hosted model; it is a thin API client, not inference.
+
+**Lesson 7's Python page** ([ADR 0019](../../docs/decisions/0019-lesson-7-python-in-the-browser.md))
+is `/games/python` (`templates/games/python.html`,
+`static/lessons/lezione-7/python/`: `runner.py`, which is tested under
+CPython, plus `worker.js` and `python.js`). Student code runs in the browser
+with Pyodide; the server never executes it. `rev_babel_web/python_helper.py`
+and `python_lesson.json` hold the seven steps and the assistant, and
+`POST /api/python-helper` reuses the tutor's model, personal-data filter and
+rate limits. Pyodide itself is fetched by `make pyodide`.

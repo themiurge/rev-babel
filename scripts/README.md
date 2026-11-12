@@ -9,3 +9,6 @@ belong inside a specific service or app.
 - `translate.py` — `scripts/translate.py --from it-IT --to en-US "testo"`
   calls the Google Cloud Translation API (key in `GOOGLE_TRANSLATE_API_KEY`).
   Course material only: the text is sent to Google.
+- `fetch-pyodide.py` - downloads Pyodide's core for lesson 7 into
+  `apps/web/static/vendor/pyodide/`, checks SHA-256 sums. Run once per
+  checkout (`make pyodide`).

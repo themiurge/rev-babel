@@ -31,10 +31,12 @@
   ([ADR 0006](decisions/0006-dedicated-translation-model.md)).
 - **`services/llm`** — the conversational model behind Play. Not needed
   until later in the course — see `../ROADMAP.md`.
-- **Anthropic API (external)** — lesson 6's tutor chatbot only. `apps/web`
+- **Anthropic API (external)** — lesson 6's tutor chatbot and lesson 7's Python assistant only (ADRs 0018, 0019). `apps/web`
   calls it directly over HTTPS, outside the GPU budget; it is the one
   place student text leaves the machine
   ([ADR 0018](decisions/0018-lesson-6-tutor-chatbot.md)).
+  Lesson 7's Python runs in the student's browser (Pyodide, served from
+  `static/vendor/pyodide/`); the server never executes student code.
 - **`services/encoder`** — placeholder for later; whether it is served at
   all is an open question (see `open-questions.md`).
 - **`packages/contracts`** — the data shapes passed between services (e.g.
