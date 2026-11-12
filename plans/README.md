@@ -21,6 +21,15 @@ corresponding doc is updated and the plan step is ticked, not deleted.
 | 5 | [Frontend and backend](m5-frontend-backend.md) | avatar picker, per-user language, lesson history | M4 |
 | 6 | [End to end](m6-end-to-end.md) | one command, a runbook, a dress rehearsal | all |
 
+## Lesson plans
+
+Plans for a single lesson's material, written by a designer for one
+implementer's session.
+
+| Lesson | Plan | Produces | ADR it obliges |
+|---|---|---|---|
+| 7 | [Python con l'assistente](lezione-7-python.md) | `/games/python` (Pyodide in the browser, seven steps, a coding assistant on the lesson 6 tutor's backend) and a 14-slide deck | 0019 |
+
 ## The calendar problem
 
 The course starts **Thursday 17 September 2026** — twelve days from the
