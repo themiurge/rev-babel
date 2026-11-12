@@ -19,7 +19,7 @@ from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
 from starlette.middleware.sessions import SessionMiddleware
 
-from rev_babel_web import chat, db, decks, i18n, live, spid_game, tutor
+from rev_babel_web import chat, db, decks, i18n, live, python_helper, spid_game, tutor
 
 _HERE = os.path.dirname(__file__)
 _WEB_ROOT = os.path.abspath(os.path.join(_HERE, "..", ".."))
@@ -71,6 +71,12 @@ LESSONS = [
         "title": "Lezione 6",
         "long_title": "L'intelligenza artificiale",
         "url": "/course/lezione-6",
+    },
+    {
+        "slug": "lezione-7",
+        "title": "Lezione 7",
+        "long_title": "Programmare con Python",
+        "url": "/course/lezione-7",
     },
 ]
 
@@ -160,6 +166,17 @@ LESSON6_GAMES = {
     },
 }
 
+# Python in the browser plus the assistant: its own tab, no score (ADR 0019).
+LESSON7_GAMES = {
+    "python": {
+        "title": "Python con l'assistente",
+        "unit": "s",
+        "max_value": 3_600,
+        "src": "/games/python",
+        "new_tab": True,
+    },
+}
+
 # Games with more than one difficulty: each mode gets its own score key
 # (its own row in game_scores) so easy and hard are tracked separately,
 # but they still share one lesson-page entry and one iframe.
@@ -186,6 +203,7 @@ LESSON_GAMES = {
     "lezione-4": LESSON4_GAMES,
     "lezione-5": LESSON5_GAMES,
     "lezione-6": LESSON6_GAMES,
+    "lezione-7": LESSON7_GAMES,
 }
 
 
@@ -254,6 +272,16 @@ class TutorIn(BaseModel):
     # Bounded here as well as in tutor.clean_history, so an oversized body is
     # refused before anything walks it.
     history: list[TutorTurn] = Field(default_factory=list, max_length=20)
+
+
+class PythonHelpIn(BaseModel):
+    step: str
+    ask: str
+    # Generous pydantic bounds refuse absurd bodies early (422); the exact
+    # limits are enforced by python_helper.clean_* (400).
+    question: str = Field(default="", max_length=python_helper.MAX_QUESTION * 2)
+    code: str = Field(default="", max_length=python_helper.MAX_CODE * 2)
+    error: str = Field(default="", max_length=python_helper.MAX_ERROR * 2)
 
 
 app = FastAPI()
@@ -747,6 +775,58 @@ def tutor_post(request: Request, body: TutorIn):
     status, payload = tutor.reply(
         student["id"], student["language"], body.mission, reply_lang, message, history
     )
+    return JSONResponse(payload, status_code=status)
+
+
+PYODIDE_DIR = os.path.join(_WEB_ROOT, "static", "vendor", "pyodide")
+
+
+def _pyodide_installed() -> bool:
+    return all(os.path.isfile(os.path.join(PYODIDE_DIR, n)) for n in python_helper.PYODIDE_FILES)
+
+
+@app.get("/games/python")
+def game_python(request: Request):
+    if _current_student(request) is None:
+        return RedirectResponse("/", status_code=303)
+    context = _base_context(request)
+    v = templates.env.globals["static_version"]
+    config = {
+        "live": tutor.is_live(),
+        "pythonInstalled": _pyodide_installed(),
+        "pyodideUrl": "/static/vendor/pyodide/",
+        "workerUrl": f"/static/lessons/lezione-7/python/worker.js?v={v}",
+        "runnerUrl": f"/static/lessons/lezione-7/python/runner.py?v={v}",
+        "runTimeoutMs": 8000,
+        "bootTimeoutMs": 120000,
+        "limits": {
+            "code": python_helper.MAX_CODE,
+            "question": python_helper.MAX_QUESTION,
+            "error": python_helper.MAX_ERROR,
+            "editor": 3000,
+        },
+        "content": python_helper.page_content(),
+    }
+    # "</" would end the <script> block this JSON is embedded in.
+    context["py_json"] = json.dumps(config, ensure_ascii=False).replace("</", "<\\/")
+    return templates.TemplateResponse(request, "games/python.html", context)
+
+
+@app.post("/api/python-helper")
+def python_helper_post(request: Request, body: PythonHelpIn):
+    student = _current_student(request)
+    if student is None:
+        raise HTTPException(status_code=401)
+    if body.step not in python_helper.STEPS or body.ask not in python_helper.ASKS:
+        raise HTTPException(status_code=400, detail="Unknown step or ask.")
+    question = python_helper.clean_question(body.question)
+    code = python_helper.clean_code(body.code)
+    error = python_helper.clean_error(body.error)
+    if question is None or code is None or error is None:
+        raise HTTPException(status_code=400, detail="Invalid request.")
+    if body.ask == "libera" and not question:
+        raise HTTPException(status_code=400, detail="A question is needed.")
+    status, payload = python_helper.reply(student["id"], body.step, body.ask, question, code, error)
     return JSONResponse(payload, status_code=status)
 
 

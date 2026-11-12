@@ -1,4 +1,4 @@
-.PHONY: install lint test fmt precommit-install
+.PHONY: install lint test fmt precommit-install pyodide
 
 install:
 	uv sync
@@ -15,3 +15,6 @@ fmt:
 
 test:
 	uv run pytest
+
+pyodide:
+	python3 -I scripts/fetch-pyodide.py

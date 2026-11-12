@@ -1083,3 +1083,32 @@ body {
   font-size: 1.1rem;
   padding: 0.6rem 1.2rem;
 }
+
+/* ---- Lesson 7 deck vocabulary: code and its result ---- */
+.slide-box .code-rows,
+#local-slide .code-rows { display: flex; flex-direction: column; gap: 0.5rem; margin: 1rem 0; }
+.slide-box .code-row,
+#local-slide .code-row { display: flex; align-items: center; justify-content: center; gap: 0.8rem; flex-wrap: wrap; direction: ltr; }
+.slide-box .code-row small,
+#local-slide .code-row small { color: #8a1c1c; font-weight: 700; }
+.slide-box .code-card,
+#local-slide .code-card { direction: ltr; unicode-bidi: isolate; text-align: left; white-space: pre;
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "DejaVu Sans Mono", monospace;
+  background: #1e2330; color: #f4f6fa; border-radius: 10px; padding: 0.5rem 1rem; font-size: 1.05em; }
+.slide-box .code-card .str,
+#local-slide .code-card .str { color: #a5e8a0; }
+.slide-box .code-card .kw,
+#local-slide .code-card .kw { color: #ffb86c; }
+.slide-box .code-card.good,
+#local-slide .code-card.good { box-shadow: 0 0 0 4px #8fcb9f; }
+.slide-box .code-card.bad,
+#local-slide .code-card.bad { box-shadow: 0 0 0 4px #e3a0a0; }
+.slide-box .code-out,
+#local-slide .code-out { direction: ltr; unicode-bidi: isolate; white-space: pre; background: #000; color: #e8ffe8;
+  font-family: ui-monospace, Consolas, monospace; border-radius: 10px; padding: 0.5rem 1rem; font-size: 1.05em; }
+.slide-box .code-arrow,
+#local-slide .code-arrow { font-size: 1.6em; color: #888; }
+.slide-box .code-verdict,
+#local-slide .code-verdict { font-size: 1.5em; }
+.slide-box .run-btn,
+#local-slide .run-btn { display: inline-block; background: #1e7a3c; color: #fff; border-radius: 10px; padding: 0.2rem 0.8rem; font-weight: 700; }

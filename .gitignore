@@ -26,3 +26,9 @@ build/
 scratchpad/token.txt
 scratchpad/captures/
 scratchpad/listen/
+
+# Pyodide (lesson 7) is fetched by scripts/fetch-pyodide.py, not committed
+apps/web/static/vendor/pyodide/*
+!apps/web/static/vendor/pyodide/README.md
+!apps/web/static/vendor/pyodide/SHA256SUMS
+!apps/web/static/vendor/pyodide/LICENSE

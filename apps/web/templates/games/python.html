@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python con l'assistente</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 20px; line-height: 1.45; background: #dde3ec; color: #1b1f24; }
+  [hidden] { display: none !important; }
+  button { font: inherit; }
+  .mono { font-family: ui-monospace, "Cascadia Mono", Consolas, "DejaVu Sans Mono", monospace; }
+
+  /* ---- top bar ---- */
+  .top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 8px 14px; background: #1d2b4a; color: #fff; }
+  .top a { color: #fff; font-weight: 700; text-decoration: none; padding: 6px 10px; border-radius: 8px; background: #2f4170; }
+  .top a:hover { background: #3c5290; }
+  .top h1 { margin: 0; font-size: 1.15rem; flex: 1 1 12rem; }
+  .status { font-size: 0.9rem; font-weight: 600; color: #ffe9b0; }
+  .status.ok { color: #b8f0c6; }
+
+  /* ---- step strip ---- */
+  .strip { display: flex; gap: 6px; overflow-x: auto; padding: 8px 14px; background: #f4f6fa; border-bottom: 1px solid #c3cad8; }
+  .strip button { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; border-radius: 99px; border: 2px solid #c3cad8; background: #fff; cursor: pointer; font-weight: 700; }
+  .strip button.done { border-color: #1e7a3c; color: #1e7a3c; }
+  .strip button[aria-current="step"] { background: #1a56c4; border-color: #1a56c4; color: #fff; }
+
+  /* ---- two parts: the guide, the bench ---- */
+  .main { display: grid; grid-template-columns: minmax(0, 30rem) minmax(0, 1fr); gap: 10px; padding: 10px; align-items: start; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.12); overflow: hidden; }
+  .guide-body { padding: 16px; }
+  .count { font-size: 0.85rem; font-weight: 700; color: #4b5563; text-transform: uppercase; letter-spacing: .03em; }
+  .s-title { font-size: 1.5rem; font-weight: 800; margin: 4px 0 8px; }
+  .goal { margin: 0 0 10px; font-weight: 600; }
+  .lbl { font-weight: 800; font-size: 0.9rem; color: #243b6b; margin: 10px 0 4px; }
+  .do { margin: 0; padding-left: 1.5rem; }
+  .do li { margin-bottom: 4px; }
+  .expected { margin: 0; padding: 8px 12px; background: #111; color: #e8ffe8; border-radius: 8px; font-size: 0.9rem; white-space: pre-wrap; }
+  .hints { margin-top: 10px; }
+  .hint-btn { padding: 6px 14px; border-radius: 8px; border: 2px solid #f5b800; background: #fff8d6; cursor: pointer; font-weight: 700; }
+  .hint { background: #fff8d6; border: 1px solid #f5b800; border-radius: 10px; padding: 6px 12px; margin-top: 8px; }
+  .hint b { display: block; font-size: 0.8rem; }
+  .bonus { background: #eef2fb; border-radius: 10px; padding: 8px 12px; margin-top: 10px; }
+  .guide-foot { display: flex; justify-content: space-between; gap: 10px; padding: 10px 16px; border-top: 1px solid #e0e4ec; }
+  .btn { padding: 10px 18px; border-radius: 12px; border: 0; background: #1a56c4; color: #fff; font-weight: 700; cursor: pointer; }
+  .btn:hover { background: #12419a; }
+  .btn.alt { background: #fff; color: #1a56c4; border: 2px solid #1a56c4; }
+  .btn:disabled { background: #9aa7bf; cursor: not-allowed; }
+  .rules { padding-left: 1.5rem; }
+  .rules li { margin-bottom: 8px; font-weight: 600; }
+
+  /* ---- assistant ---- */
+  .assistant { border-top: 2px solid #c3cad8; padding: 12px 16px 16px; background: #f8f9fc; }
+  .assistant h2 { margin: 0 0 6px; font-size: 1.1rem; }
+  .privacy { font-weight: 700; color: #8a1c1c; font-size: 0.85rem; margin: 4px 0; }
+  .local { color: #4b5563; font-size: 0.85rem; margin: 4px 0; }
+  .offline { padding: 6px 10px; background: #fff4e5; border: 1px solid #f5b800; border-radius: 8px; font-size: 0.9rem; font-weight: 600; margin: 6px 0; }
+  .chips { display: grid; gap: 6px; margin: 8px 0; }
+  .chip { text-align: left; padding: 10px 14px; border-radius: 12px; border: 2px solid #1a56c4; background: #f3f7ff; color: #12306e; cursor: pointer; font-weight: 600; min-height: 44px; }
+  .chip:hover:not(:disabled) { background: #dfe9ff; }
+  .chip:disabled { border-color: #c3cad8; color: #8a93a3; background: #f1f3f7; cursor: not-allowed; }
+  .ask-form { display: flex; gap: 6px; }
+  .ask-form input { flex: 1; min-width: 0; padding: 8px 10px; font: inherit; font-size: 0.9rem; border: 2px solid #9aa7bf; border-radius: 10px; }
+  .ask-form .btn { padding: 8px 14px; }
+  .thinking { font-style: italic; color: #6b7280; margin-top: 8px; }
+  .bubble { margin-top: 10px; padding: 10px 14px; background: #fff; border: 1px solid #d3d9e6; border-radius: 12px; box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+  .bubble p { margin: 0 0 8px; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .bubble pre { margin: 0 0 8px; padding: 8px 12px; background: #1e2330; color: #f4f6fa; border-radius: 8px; font-size: 0.95rem; overflow-x: auto; direction: ltr; text-align: left; font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; }
+  .bubble .notice { padding: 6px 10px; border-radius: 8px; background: #fff8d6; font-size: 0.9rem; }
+  .bubble.warn { background: #fdecec; border-color: #d64545; }
+  .bubble .check { font-size: 0.8rem; font-style: italic; color: #4b5563; margin: 4px 0 0; }
+
+  /* ---- the bench: editor, buttons, results ---- */
+  .bench { padding: 12px; }
+  .keys { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 8px; }
+  .keys .klabel { font-weight: 700; font-size: 0.9rem; margin-right: 4px; }
+  .keys button { min-width: 44px; min-height: 44px; padding: 4px 10px; border-radius: 8px; border: 2px solid #9aa7bf; background: #f4f6fa; cursor: pointer; font-weight: 700; font-size: 1.05rem; font-family: ui-monospace, Consolas, monospace; }
+  .keys button:hover { background: #dfe9ff; border-color: #1a56c4; }
+  .editor { display: flex; border: 2px solid #9aa7bf; border-radius: 10px; overflow: hidden; background: #fbfcfe; height: 15rem; }
+  .editor:focus-within { border-color: #1a56c4; box-shadow: 0 0 0 3px rgba(26,86,196,.2); }
+  .gutter, #code { font-family: ui-monospace, "Cascadia Mono", Consolas, "DejaVu Sans Mono", monospace; font-size: 22px; line-height: 1.5; padding: 8px 0; margin: 0; }
+  .gutter { flex: 0 0 auto; min-width: 2.6rem; padding-left: 6px; padding-right: 8px; text-align: right; color: #8a93a3; background: #eef1f6; overflow: hidden; white-space: pre; user-select: none; }
+  #code { flex: 1; min-width: 0; border: 0; outline: none; resize: none; padding-left: 10px; padding-right: 10px; background: transparent; color: #1b1f24; white-space: pre; overflow: auto; tab-size: 4; direction: ltr; text-align: left; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0; align-items: center; }
+  .run { min-width: 56px; min-height: 56px; padding: 8px 28px; border: 0; border-radius: 14px; background: #1e7a3c; color: #fff; font-weight: 800; font-size: 1.3rem; cursor: pointer; }
+  .run:hover:not(:disabled) { background: #176030; }
+  .run:disabled { background: #9aa7bf; cursor: not-allowed; }
+  .stop { min-height: 56px; padding: 8px 20px; border: 0; border-radius: 14px; background: #c0392b; color: #fff; font-weight: 800; font-size: 1.1rem; cursor: pointer; }
+  .reset { min-height: 56px; padding: 8px 16px; border-radius: 14px; border: 2px solid #1a56c4; background: #fff; color: #1a56c4; font-weight: 700; cursor: pointer; }
+  .ask-input { margin: 8px 0; padding: 10px 12px; background: #eaf2ff; border: 2px solid #1a56c4; border-radius: 10px; }
+  .ask-input .prompt { font-weight: 700; margin-bottom: 6px; }
+  .ask-input form { display: flex; gap: 8px; }
+  .ask-input input { flex: 1; min-width: 0; padding: 8px 10px; font: inherit; font-size: 1.1rem; border: 2px solid #9aa7bf; border-radius: 10px; }
+  .error-box { margin: 8px 0; padding: 10px 14px; border: 2px solid #d64545; background: #fdecec; border-radius: 10px; }
+  .error-box .e-title { font-weight: 800; }
+  .error-box .e-text { font-size: 1.1em; font-weight: 700; margin: 4px 0; }
+  .error-box .e-code { display: inline-block; margin: 2px 0 6px; padding: 2px 10px; background: #fff; border-radius: 6px; font-family: ui-monospace, Consolas, monospace; direction: ltr; }
+  .error-box .e-orig { font-size: 0.8rem; color: #6b7280; }
+  .error-box .e-orig code { font-family: ui-monospace, Consolas, monospace; direction: ltr; unicode-bidi: isolate; }
+  .note-box { margin: 8px 0; padding: 8px 12px; background: #fff8d6; border: 1px solid #f5b800; border-radius: 10px; font-weight: 600; }
+  .output-label { font-weight: 800; font-size: 0.9rem; color: #243b6b; margin-top: 8px; }
+  .output { margin: 4px 0 0; min-height: 12rem; max-height: 22rem; overflow: auto; padding: 10px 14px; background: #111; color: #e8ffe8; border-radius: 10px; font-family: ui-monospace, "Cascadia Mono", Consolas, "DejaVu Sans Mono", monospace; font-size: 22px; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .output .empty { color: #8fb08f; font-style: italic; font-size: 0.8em; }
+  .output .ln { display: block; unicode-bidi: plaintext; }
+
+  .done-banner { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 20; width: min(92vw, 34rem); padding: 14px 18px; background: #e6f6ea; border: 3px solid #1e7a3c; border-radius: 16px; box-shadow: 0 8px 28px rgba(0,0,0,.3); text-align: center; animation: pop .35s ease-out; }
+  .done-banner .d-title { font-size: 1.5rem; font-weight: 800; color: #176030; }
+  .done-banner .d-joy { margin: 4px 0 10px; font-weight: 600; }
+  .done-banner .btn { background: #1e7a3c; }
+  @keyframes pop { from { transform: translateX(-50%) scale(.7); opacity: 0; } to { transform: translateX(-50%) scale(1); opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .done-banner { animation: none; } }
+
+  /* Phones and narrow windows: one column, the bench first. */
+  @media (max-width: 900px) {
+    body { font-size: 18px; }
+    .main { grid-template-columns: 1fr; }
+    .bench { order: -1; }
+    .output, #code, .gutter { font-size: 18px; }
+  }
+
+  /* Printing the welcome card (step 7): only the result box, big and centred. */
+  @media print {
+    body { background: #fff; }
+    .top, .strip, .guide, .keys, .editor, .actions, .ask-input, .error-box, .note-box, .output-label, .done-banner { display: none !important; }
+    .main { display: block; padding: 0; }
+    .card.bench { box-shadow: none; padding: 0; }
+    .output { background: #fff; color: #000; max-height: none; min-height: 0; font-size: 34px; text-align: center; border: 4px solid #000; border-radius: 20px; padding: 40px; margin: 40px auto; width: 90%; }
+    .output .ln { text-align: center; }
+  }
+</style>
+</head>
+<body>
+  <header class="top">
+    <a href="/course/lezione-7" id="back"></a>
+    <h1 id="title"></h1>
+    <span id="status" class="status" aria-live="polite"></span>
+  </header>
+  <nav class="strip" id="strip" aria-label="Passi"></nav>
+
+  <div class="main">
+    <section class="card guide" aria-label="Passo">
+      <div class="guide-body" id="guide"></div>
+      <div class="guide-foot" id="guide-foot"></div>
+      <section class="assistant" id="assistant" aria-label="Assistente"></section>
+    </section>
+
+    <section class="card bench" aria-label="Codice">
+      <div class="keys" id="keys"></div>
+      <div class="editor"><div class="gutter" id="gutter" aria-hidden="true"></div><textarea id="code" wrap="off" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" dir="ltr" aria-label="Il tuo codice"></textarea></div>
+      <div class="actions">
+        <button id="run" class="run" disabled></button>
+        <button id="stop" class="stop" hidden></button>
+        <button id="reset" class="reset"></button>
+        <button id="print" class="btn alt" hidden></button>
+      </div>
+      <div class="ask-input" id="ask-input" hidden></div>
+      <div class="error-box" id="error" hidden></div>
+      <div class="note-box" id="note" hidden></div>
+      <div class="output-wrap"><div class="output-label" id="output-label"></div>
+        <pre class="output" id="output" aria-live="polite"></pre></div>
+    </section>
+  </div>
+  <div class="done-banner" id="done" hidden></div>
+
+  <script id="py-config" type="application/json">{{ py_json | safe }}</script>
+  <script src="/static/lessons/lezione-7/python/python.js?v={{ static_version }}"></script>
+</body>
+</html>

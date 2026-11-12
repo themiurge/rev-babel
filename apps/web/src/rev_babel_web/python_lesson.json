@@ -1,0 +1,257 @@
+{
+ "_note": "Lesson 7: 'Python con l'assistente'. Italian only. Page labels, the seven steps, and the assistant's scripted answers used when it is offline. 'focus' is English, for the model's system prompt only. Step ids must match runner.check_step. See python_helper.py and ADR 0019.",
+ "ui": {
+  "title": "Python con l'assistente",
+  "back": "← Lezione 7",
+  "step_n": "Passo @@N@@ di @@T@@",
+  "do_label": "Cosa fare",
+  "expected_label": "Vedrai più o meno così:",
+  "hint_btn": "💡 Aiuto",
+  "hint_n": "Aiuto @@N@@",
+  "bonus_label": "⭐ Se hai tempo",
+  "done_title": "🎉 Bravissima!",
+  "next": "Avanti ➜",
+  "prev": "← Indietro",
+  "finish": "Hai finito! 🎉",
+  "code_label": "Il tuo codice",
+  "keys_label": "Tasti difficili:",
+  "spaces_key": "⇥ 4 spazi",
+  "run": "▶ Esegui",
+  "stop": "⏹ Ferma",
+  "reset": "↺ Ricomincia",
+  "reset_confirm": "Vuoi tornare al codice di partenza di questo passo?",
+  "output_label": "Risultato",
+  "output_empty": "(Il programma non ha scritto niente. Ti serve un print?)",
+  "loading": "🐍 Python si sta preparando… La prima volta ci vuole un po'.",
+  "loading_slow": "Ancora un momento… (@@N@@ secondi)",
+  "load_failed": "Python non è partito. Ricarica la pagina (tasto F5). Se ancora non va, alza la mano.",
+  "not_installed": "Python non è installato su questo computer. Alza la mano. (Per l'insegnante: eseguire scripts/fetch-pyodide.py)",
+  "running": "Il computer sta lavorando…",
+  "timeout": "⏱️ Il programma ci metteva troppo e l'ho fermato. Forse una ripetizione che non finisce mai?",
+  "crashed": "Python si è bloccato. Lo sto facendo ripartire: aspetta un momento e premi di nuovo ▶ Esegui.",
+  "input_label": "Il computer ti chiede:",
+  "input_send": "Invia ⏎",
+  "error_title": "🐞 Python non ha capito",
+  "error_line": "Guarda la riga @@N@@:",
+  "error_original": "Messaggio di Python, in inglese:",
+  "assistant_title": "🤖 Chiedi all'assistente",
+  "ask_errore": "😕 Cosa vuol dire l'errore?",
+  "ask_prossimo": "👉 Cosa cambio adesso?",
+  "ask_riga": "🔍 Spiegami il codice",
+  "ask_idea": "💡 Dammi un'idea",
+  "ask_placeholder": "Oppure scrivi la tua domanda…",
+  "ask_send": "Chiedi",
+  "assistant_privacy": "🔒 Quando chiedi, il tuo codice e la tua domanda vanno all'assistente, sul computer di un'azienda. Nel codice usa nomi inventati. Mai password o numeri veri.",
+  "assistant_local": "💻 ▶ Esegui invece non manda niente: resta tutto sul tuo computer.",
+  "assistant_check": "L'assistente può sbagliare: prova sempre con ▶ Esegui.",
+  "assistant_thinking": "L'assistente sta pensando…",
+  "offline_banner": "L'assistente non è collegato. Vedrai consigli già pronti.",
+  "code_too_long": "Il codice è troppo lungo per l'assistente. Chiedi su un pezzo più piccolo.",
+  "run_first": "Prima premi ▶ Esegui: così l'assistente vede l'errore.",
+  "notice_offline": "Consiglio già pronto: l'assistente non è collegato.",
+  "notice_error": "L'assistente non risponde adesso. Ecco un consiglio già pronto.",
+  "notice_limited": "Hai chiesto tante volte. Aspetta un minuto e riprova.",
+  "notice_blocked": "✋ Fermati! Nel codice o nella domanda c'è qualcosa che sembra un dato personale: una password, un numero lungo, un'email o un codice. Non l'ho mandato. Usa dati inventati.",
+  "notice_invalid": "La domanda è troppo lunga. Scrivi una frase più corta.",
+  "offline_free": "Adesso l'assistente non è collegato, quindi non posso rispondere alla tua domanda. Un aiuto per questo passo:",
+  "offline_errore": "Adesso l'assistente non è collegato. Leggi il riquadro rosso: spiega l'errore in italiano. Poi:",
+  "print_btn": "🖨️ Stampa il biglietto",
+  "rules_title": "Programmare con l'IA: 5 regole"
+ },
+ "rules": [
+  "Prova sempre il codice: premi ▶ Esegui.",
+  "Chiedi una cosa alla volta, chiara: «Errore alla riga 2: cosa vuol dire?»",
+  "Leggi il codice che ti dà l'IA. Capisci cosa fa?",
+  "Nel codice che mandi usa dati inventati.",
+  "Sbagliare è normale. Anche per chi programma da anni."
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "icon": "🗣️",
+   "title": "Il computer parla",
+   "goal": "Dai il primo ordine al computer.",
+   "do": [
+    "Guarda il codice: print vuol dire «scrivi».",
+    "Premi il pulsante verde ▶ Esegui."
+   ],
+   "start": "print(\"Ciao!\")",
+   "expected": "Ciao!",
+   "hints": [
+    "Il pulsante ▶ Esegui è sotto il codice. È verde.",
+    "Il pulsante è grigio? Python si sta ancora preparando. Aspetta un momento."
+   ],
+   "bonus": "",
+   "joy": "Hai dato il tuo primo ordine al computer. E lui ha obbedito!",
+   "focus": "Step 1, 'Il computer parla': run print(\"Ciao!\") and see the output. Concept: print shows text on the screen.",
+   "assistant": {
+    "errore": "Il codice di partenza è giusto. Se hai cambiato qualcosa, premi ↺ Ricomincia e poi ▶ Esegui.",
+    "prossimo": "Premi ▶ Esegui. Poi premi Avanti ➜ per il passo 2.",
+    "riga": "Riga 1: print(\"Ciao!\") vuol dire: scrivi sullo schermo Ciao!. Il testo sta tra le virgolette.",
+    "idea": "Nel passo 2 scriverai le tue parole. Vai avanti!"
+   }
+  },
+  {
+   "id": "s2",
+   "icon": "✏️",
+   "title": "Le tue parole",
+   "goal": "Fai scrivere al computer quello che vuoi tu.",
+   "do": [
+    "Cancella ___ e scrivi una parola. Per esempio: Bologna.",
+    "Lascia le virgolette \" \" e le parentesi ( ).",
+    "Premi ▶ Esegui."
+   ],
+   "start": "print(\"Buongiorno, ___!\")",
+   "expected": "Buongiorno, Bologna!",
+   "hints": [
+    "Le parole stanno tra le virgolette: \"come qui\".",
+    "Puoi scrivere anche nella tua lingua, o un'emoji 🌞.",
+    "Hai cancellato una virgoletta o una parentesi? Premi ↺ Ricomincia."
+   ],
+   "bonus": "Vuoi due righe? Sotto, scrivi un altro print(\"...\").",
+   "joy": "Il computer scrive quello che decidi tu. In qualsiasi lingua! 🌍",
+   "focus": "Step 2, 'Le tue parole': replace ___ inside the string with her own words. Concept: text goes between quotes.",
+   "assistant": {
+    "errore": "Di solito manca una virgoletta \" o una parentesi ). La riga deve essere così: print(\"le tue parole\")",
+    "prossimo": "Scrivi un'altra riga sotto: print(\"Come stai?\"). Poi premi ▶ Esegui.",
+    "riga": "print( ) scrive sullo schermo. Quello che è tra le virgolette viene scritto uguale, lettera per lettera.",
+    "idea": "Scrivi tre righe: un saluto in italiano, uno nella tua lingua, uno con un'emoji."
+   }
+  },
+  {
+   "id": "s3",
+   "icon": "📦",
+   "title": "Una scatola con un nome",
+   "goal": "Usa una variabile: una scatola dove metti una parola.",
+   "do": [
+    "piatto è il nome della scatola. Dentro c'è \"pizza\".",
+    "Cambia pizza con il tuo piatto preferito.",
+    "Premi ▶ Esegui: cambia in tutte e due le righe!"
+   ],
+   "start": "piatto = \"pizza\"\nprint(\"Il mio piatto preferito è\", piatto)\nprint(\"Stasera mangio\", piatto)",
+   "expected": "Il mio piatto preferito è cuscus\nStasera mangio cuscus",
+   "hints": [
+    "Cambia solo la riga 1: la parola tra le virgolette.",
+    "Nelle righe 2 e 3 la parola piatto è senza virgolette: è il nome della scatola.",
+    "Python è preciso: piatto e piato sono due nomi diversi."
+   ],
+   "bonus": "Aggiungi una riga: print(\"Domani mangio ancora\", piatto)",
+   "joy": "Cambi una volta, cambia dappertutto. Questa è una variabile! 📦",
+   "focus": "Step 3, 'Una scatola con un nome': change the value of the variable piatto and see both lines change. Concept: a variable is a named box.",
+   "assistant": {
+    "errore": "Spesso il nome della scatola è scritto in due modi: piatto in una riga e piato in un'altra. Devono essere uguali.",
+    "prossimo": "Fai una seconda scatola: bevanda = \"tè\". Poi scrivi: print(\"Bevo\", bevanda)",
+    "riga": "Riga 1: metti \"pizza\" nella scatola piatto. Righe 2 e 3: scrivi una frase e poi quello che c'è nella scatola.",
+    "idea": "Fai una scatola citta e scrivi: print(\"Vivo a\", citta). Puoi usare una città inventata."
+   }
+  },
+  {
+   "id": "s4",
+   "icon": "🔁",
+   "title": "Ripeti!",
+   "goal": "Fai ripetere una cosa al computer, tante volte.",
+   "do": [
+    "range(3) vuol dire: 3 volte.",
+    "Cambia 3 con un altro numero. Prova 10!",
+    "Premi ▶ Esegui."
+   ],
+   "start": "for volta in range(3):\n    print(\"Ciao! 👋\")",
+   "expected": "Ciao! 👋\nCiao! 👋\nCiao! 👋\n… (10 volte)",
+   "hints": [
+    "Cambia solo il numero dentro range( ).",
+    "La riga 2 ha 4 spazi davanti. Non cancellarli: vogliono dire «dentro la ripetizione».",
+    "Alla fine della riga 1 ci sono i due punti :"
+   ],
+   "bonus": "Prova un numero enorme, come 1000. Cosa succede? Poi aggiungi dentro: print(volta). Il computer conta, e parte da 0!",
+   "joy": "Il computer non si stanca mai. Tu scrivi una riga, lui la fa 10 volte! 🔁",
+   "focus": "Step 4, 'Ripeti!': change range(3) to another number. Concept: a for loop repeats the indented lines; indentation matters.",
+   "assistant": {
+    "errore": "Controlla due cose: i due punti : alla fine della riga for, e i 4 spazi davanti a print.",
+    "prossimo": "Aggiungi un'altra riga dentro, con 4 spazi davanti: print(\"Come stai?\")",
+    "riga": "Riga 1: ripeti 3 volte; volta conta le volte. Riga 2, con gli spazi davanti: è quello che si ripete.",
+    "idea": "Dentro la ripetizione scrivi print(volta, \"🌸\"). Vedrai i numeri: il computer conta da 0."
+   }
+  },
+  {
+   "id": "s5",
+   "icon": "🛒",
+   "title": "La lista della spesa",
+   "goal": "Metti tante parole in una lista. Il computer le scrive una per una.",
+   "do": [
+    "La lista sta tra le parentesi quadre [ ].",
+    "Aggiungi una cosa da comprare, dopo \"mele\". Per esempio: , \"riso\"",
+    "Premi ▶ Esegui."
+   ],
+   "start": "spesa = [\"pane\", \"latte\", \"mele\"]\nfor cosa in spesa:\n    print(\"🛒\", cosa)",
+   "expected": "🛒 pane\n🛒 latte\n🛒 mele\n🛒 riso",
+   "hints": [
+    "Ogni cosa ha le sue virgolette: \"riso\".",
+    "Tra una cosa e l'altra c'è una virgola ,",
+    "Le parentesi [ ] sono nei pulsanti sopra il codice."
+   ],
+   "bonus": "Scrivi alla fine, senza spazi davanti: print(\"Cose da comprare:\", len(spesa))",
+   "joy": "Ecco la tua lista! Una lista più una ripetizione: il computer lavora per te. 🛒",
+   "focus": "Step 5, 'La lista della spesa': add an item to the list spesa. Concept: a list in square brackets, items in quotes separated by commas, looped with for. A missing comma between two strings silently joins them.",
+   "assistant": {
+    "errore": "Nelle liste gli errori più comuni sono: manca una virgola tra due cose, manca una virgoletta, oppure manca la parentesi ] alla fine.",
+    "prossimo": "Aggiungi un'altra cosa alla lista, con la virgola prima: , \"pomodori\"",
+    "riga": "Riga 1: la scatola spesa contiene una lista di cose. Riga 2: per ogni cosa della lista… Riga 3: …scrivi il carrello e la cosa.",
+    "idea": "Fai una seconda lista, per esempio i tuoi colori preferiti, e scrivila con un for."
+   }
+  },
+  {
+   "id": "s6",
+   "icon": "❓",
+   "title": "Il computer fa una domanda",
+   "goal": "Il computer ti chiede una cosa, e decide cosa rispondere.",
+   "do": [
+    "Premi ▶ Esegui.",
+    "Il computer ti fa una domanda: scrivi si o no nel riquadro e premi Invio.",
+    "Poi premi di nuovo ▶ Esegui e prova l'altra risposta."
+   ],
+   "start": "risposta = input(\"Hai fame? Scrivi si o no: \")\nif risposta == \"si\":\n    print(\"Allora mangiamo! 🍝\")\nelse:\n    print(\"Va bene, mangiamo dopo.\")",
+   "expected": "Hai fame? Scrivi si o no: si\nAllora mangiamo! 🍝",
+   "hints": [
+    "input( ) fa una domanda e aspetta la tua risposta.",
+    "if vuol dire «se». else vuol dire «altrimenti».",
+    "== vuol dire «è uguale a?». Un solo = mette una cosa nella scatola."
+   ],
+   "bonus": "Prova a rispondere Si, con la S grande. Cosa succede? Per il computer si e Si sono diversi! Per accettare tutte e due, cambia la riga 2 così: if risposta.lower() == \"si\":",
+   "joy": "Il tuo programma ascolta e decide. Come un piccolo robot! 🤖",
+   "focus": "Step 6, 'Il computer fa una domanda': run a program that asks with input() and branches with if/else. The page asks her the question in a box. Concept: input, ==, if/else, and that 'Si' is not equal to 'si'.",
+   "assistant": {
+    "errore": "Controlla: i due punti : dopo if e dopo else, i 4 spazi davanti a print, e == (due uguali) nella riga if.",
+    "prossimo": "Cambia la domanda e le risposte. Per esempio: input(\"Hai sonno? \")",
+    "riga": "Riga 1: fa la domanda e mette la risposta nella scatola risposta. Riga 2: se la risposta è uguale a \"si\"… Riga 3: …scrivi questo. Riga 4: altrimenti… Riga 5: …scrivi quest'altro.",
+    "idea": "Fai una domanda sui colori: input(\"Ti piace il blu? \") e due risposte diverse."
+   }
+  },
+  {
+   "id": "s7",
+   "icon": "🌸",
+   "title": "Il tuo programma",
+   "goal": "Scrivi il tuo biglietto di benvenuto per la classe.",
+   "do": [
+    "Aggiungi alla lista «ciao» nella tua lingua.",
+    "Cambia la frase finale come vuoi.",
+    "Chiedi un'idea all'assistente 🤖. Poi provala con ▶ Esegui."
+   ],
+   "start": "# Il mio biglietto di benvenuto\nsaluti = [\"Ciao\", \"Hello\", \"Bonjour\", \"Salam\"]\nfor saluto in saluti:\n    print(\"🌸\", saluto, \"🌸\")\nprint(\"Benvenute nella nostra classe!\")",
+   "expected": "🌸 Ciao 🌸\n🌸 Hello 🌸\n🌸 Bonjour 🌸\n🌸 Salam 🌸\n…\nBenvenute nella nostra classe!",
+   "hints": [
+    "Le righe che iniziano con # sono note per te: il computer non le legge.",
+    "Usa quello che sai: print, scatole, liste, for, input, if.",
+    "L'assistente ti ha dato un'idea? Provala sempre con ▶ Esegui."
+   ],
+   "bonus": "Fai una domanda con input all'inizio, e usa la risposta nel biglietto.",
+   "joy": "Hai scritto un programma tutto tuo. Sei una programmatrice! 🎉",
+   "focus": "Step 7, 'Il tuo programma': her own welcome card for the class, starting from a list of greetings printed with a for loop. Free creation with what she learned today (print, variables, lists, for, input, if). Encourage small additions one at a time.",
+   "assistant": {
+    "errore": "Leggi il riquadro rosso: ti dice la riga. Confronta la riga con gli esempi dei passi di prima.",
+    "prossimo": "Aggiungi un saluto alla lista, con la virgola prima: , \"Merhaba\"",
+    "riga": "Riga 1: una nota, il computer non la legge. Riga 2: la lista dei saluti. Righe 3 e 4: per ogni saluto, scrivi il saluto tra due fiori. Riga 5: la frase finale.",
+    "idea": "Fai una domanda con input, per esempio «Come ti senti oggi?», e poi scrivi la risposta dentro il biglietto."
+   }
+  }
+ ]
+}
