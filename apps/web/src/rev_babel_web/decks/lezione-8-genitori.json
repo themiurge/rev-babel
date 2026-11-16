@@ -1,0 +1,95 @@
+{
+ "title": "Genitori e social media: come accompagnare i figli",
+ "slides": [
+  {
+   "id": "G01",
+   "it": "<div class=\"big-emoji\">👩‍👦📱</div><h1>Genitori e social media: come accompagnare i figli</h1><p class=\"lead\">Non da soli: insieme.</p>",
+   "notes": "35-45 minutes. Parents do not need to be more technical than their children. Research points to involvement and 'supportive engagement' over pure control (studies summarised in JAMA Network Open in 2026). Framing for the whole session: in migrant families children are often the family's translators and tech helpers, so reassure parents that what they know about life and danger is what children need; be honest that the science is debated; no panic; concrete risks such as sextortion get clear action plans; no photos of real children."
+  },
+  {
+   "id": "G02",
+   "it": "<h1>Non serve essere esperti di tecnologia</h1><div class=\"pic-grid\"><div class=\"pic blue\"><span class=\"pic-emoji\">📱</span>I figli conoscono le app.</div><div class=\"pic green\"><span class=\"pic-emoji\">🧭</span>Voi conoscete la vita, le persone, i pericoli.</div></div><p class=\"note strong\">Servono entrambe le cose.</p>",
+   "notes": "Open with a question: 'I vostri figli vi aiutano con il telefono?' Acknowledge the role reversal without judgment."
+  },
+  {
+   "id": "G03",
+   "it": "<h1>Cosa dice la legge</h1><div class=\"age-bar\"><div class=\"age-fill\"></div><span class=\"age-mark m14\"><span class=\"notranslate\" translate=\"no\">14</span></span><span class=\"age-mark m15\"><span class=\"notranslate\" translate=\"no\">15</span></span></div><div class=\"age-ends\"><span><span class=\"notranslate\" translate=\"no\">0</span></span><span><span class=\"notranslate\" translate=\"no\">18</span></span></div><div class=\"ticks\"><div class=\"tick\"><span class=\"tick-mark\">⚖️</span><span>Oggi in Italia: sotto i 14 anni serve il consenso dei genitori per iscriversi a un social.</span></div><div class=\"tick\"><span class=\"tick-mark\">👀</span><span>Ma nessuno controlla davvero l'età.</span></div><div class=\"tick\"><span class=\"tick-mark\">🗳️</span><span>Si discute di vietare i social sotto i 15 anni, in Italia e in Europa.</span></div></div>",
+   "notes": "Under the Italian privacy code, under-14s may use social media only with explicit parental consent, but nothing verifies it. Several Italian bills are under discussion; a base text in a Senate committee proposes banning accounts for under-15s. At EU level, the proposed KIDS Act would set 15 as the minimum age for an autonomous account, with parent-controlled 'mini accounts' for 13 to 15. France has passed an under-15 ban. Say 'si discute', never 'è legge', unless re-checked.",
+   "verify": [
+    "VERIFY before class (flagged 2026-11-16, from the maintainer's research brief, not re-checked): status of the Italian Senate base text and any government bill on a minimum age for social media.",
+    "VERIFY before class (flagged 2026-11-16, from the maintainer's research brief, not re-checked): stage of the EU KIDS Act proposal and of the Digital Fairness Act.",
+    "VERIFY before class (flagged 2026-11-16, from the maintainer's research brief, not re-checked): the French under-15 law."
+   ]
+  },
+  {
+   "id": "G04",
+   "it": "<h1>Cosa dice la scienza</h1><p class=\"lead\">Gli esperti non sono tutti d'accordo su quanto i social facciano male.</p><p class=\"note strong\">Sono d'accordo su:</p><div class=\"ticks\"><div class=\"tick\"><span class=\"tick-mark\">😴</span><span>Il sonno è importante.</span></div><div class=\"tick\"><span class=\"tick-mark\">⚠️</span><span>Alcuni rischi sono reali.</span></div><div class=\"tick\"><span class=\"tick-mark\">🗣️</span><span>Il dialogo aiuta.</span></div></div>",
+   "notes": "Psychologist Jonathan Haidt argues social media is a major cause of worse youth mental health; psychologist Candice Odgers argues the evidence shows correlation more than cause, and that teens who already struggle use social media more or differently. Present both fairly: one app will not ruin a child, and it is not 'nothing to worry about' either."
+  },
+  {
+   "id": "G05",
+   "it": "<h1>I quattro tipi di rischio</h1><div class=\"pic-grid\"><div class=\"pic blue\"><span class=\"pic-emoji\">👁️</span>Contenuti<small>cosa vedono</small></div><div class=\"pic orange\"><span class=\"pic-emoji\">📩</span>Contatti<small>chi li contatta</small></div><div class=\"pic purple\"><span class=\"pic-emoji\">🧍</span>Comportamenti<small>cosa fanno loro, anche agli altri</small></div><div class=\"pic green\"><span class=\"pic-emoji\">💳</span>Soldi<small>acquisti nelle app, pubblicità, influencer</small></div></div>",
+   "notes": "The '4 Cs' of EU Kids Online. Content: violent videos, extreme diet content. Contact: strangers, adults pretending to be peers. Conduct: cyberbullying, sharing photos of others. Commercial: in-game purchases, hidden advertising."
+  },
+  {
+   "id": "G06",
+   "it": "<div class=\"big-emoji\">🌙🛏️📵</div><h1>Il sonno prima di tutto</h1><p class=\"big\">Telefoni fuori dalla camera di notte.</p><p class=\"note strong\">Anche per i genitori.</p>",
+   "notes": "A household rule limiting phones at night has been linked to lower social media addiction scores and less time on social media in children. Researchers stress that parents should follow the plan too."
+  },
+  {
+   "id": "G07",
+   "it": "<h1>Parlare, non solo controllare</h1><div class=\"ticks\"><div class=\"tick\"><span class=\"tick-mark\">💬</span><span class=\"bubble\">Cosa hai visto di divertente oggi?</span></div><div class=\"tick\"><span class=\"tick-mark\">💬</span><span class=\"bubble\">E di strano?</span></div><div class=\"tick\"><span class=\"tick-mark\">💬</span><span class=\"bubble\">Di fastidioso?</span></div></div><div class=\"handoff\"><div class=\"handoff-title\">✍️ In coppia</div><span class=\"handoff-time\">3 minuti</span><p>Scrivete una domanda da fare a vostro figlio questa settimana.</p></div>",
+   "notes": "Paediatrician Jenny Radesky suggests asking about the posts they see: funny, strange, creepy, cool, frustrating. Curiosity, not interrogation. If a child mentions something worrying, stay calm, or they stop telling. Activity, 3 min, in pairs."
+  },
+  {
+   "id": "G08",
+   "it": "<h1>Un piano di famiglia</h1><div class=\"pic-grid many\"><div class=\"pic blue\"><span class=\"pic-emoji\">🕐</span>Quando</div><div class=\"pic green\"><span class=\"pic-emoji\">📍</span>Dove</div><div class=\"pic purple\"><span class=\"pic-emoji\">⏳</span>Quanto</div><div class=\"pic orange\"><span class=\"pic-emoji\">📱</span>Quali app</div></div><div class=\"ticks\"><div class=\"tick\"><span class=\"tick-mark\">🤝</span><span>Regole decise insieme.</span></div><div class=\"tick\"><span class=\"tick-mark\">📝</span><span>Scritte e appese.</span></div><div class=\"tick\"><span class=\"tick-mark\">👨‍👩‍👧</span><span>Valgono per tutti.</span></div></div>",
+   "notes": "The American Academy of Pediatrics recommends a family media plan (healthychildren.org has a free online tool). Rules make sense when children help write them.",
+   "verify": [
+    "VERIFY before class (flagged 2026-11-16, from the maintainer's research brief, not re-checked): whether healthychildren.org's family media plan has an Italian version."
+   ]
+  },
+  {
+   "id": "G09",
+   "it": "<h1>Gli strumenti dei genitori</h1><div class=\"ticks\"><div class=\"tick\"><span class=\"tick-mark\">🤖</span><span><span class=\"notranslate\" translate=\"no\">Google Family Link</span> (<span class=\"notranslate\" translate=\"no\">Android</span>)</span></div><div class=\"tick\"><span class=\"tick-mark\">📱</span><span>Tempo di utilizzo (<span class=\"notranslate\" translate=\"no\">iPhone</span>)</span></div><div class=\"tick\"><span class=\"tick-mark\">👦</span><span>Account per ragazzi su <span class=\"notranslate\" translate=\"no\">Instagram</span> e <span class=\"notranslate\" translate=\"no\">TikTok</span></span></div></div><p class=\"note strong\">Aiutano. Ma non sostituiscono il dialogo.</p>",
+   "notes": "Tools help, but they do not replace the conversation, and teens can get around them. Optionally demo one on the projector.",
+   "verify": [
+    "VERIFY before class (flagged 2026-11-16, from the maintainer's research brief, not re-checked): current names and features of Google Family Link, iPhone Screen Time ('Tempo di utilizzo'), Instagram Teen Accounts and TikTok Family Pairing."
+   ]
+  },
+  {
+   "id": "G10",
+   "it": "<div class=\"big-emoji\">📱⚠️</div><h1>Sextortion: cos'è</h1><div class=\"panels\"><div class=\"panel\"><span class=\"panel-n\"><span class=\"notranslate\" translate=\"no\">1</span></span><div class=\"panel-art sm\">🎭</div><div class=\"panel-cap\">Un profilo finto, che sembra un ragazzo o una ragazza, chiede foto intime.</div></div><div class=\"panel\"><span class=\"panel-n\"><span class=\"notranslate\" translate=\"no\">2</span></span><div class=\"panel-art sm\">💬</div><div class=\"panel-cap\">Poi minaccia: «Paga o le mando a tutti.»</div></div><div class=\"panel\"><span class=\"panel-n\"><span class=\"notranslate\" translate=\"no\">3</span></span><div class=\"panel-art sm\">⏱️</div><div class=\"panel-cap\">Succede in poche ore.</div></div></div><p class=\"note strong\">Colpisce soprattutto i ragazzi maschi.</p>",
+   "notes": "Polizia Postale reports young people contacted by profiles of apparent peers who ask for sexual images and then threaten them. In 2025 it handled 1,225 sextortion cases in Italy, 1,092 with male victims (adults and minors together). Demands often arrive within 24 hours of first contact. AI can now make fake nude images from normal photos, so a child may be blackmailed without ever sending anything. No images of people on this slide, on purpose.",
+   "verify": [
+    "VERIFY before class (flagged 2026-11-16, from the maintainer's research brief, not re-checked): Polizia Postale 2025 sextortion figures (1,225 cases, 1,092 male victims)."
+   ]
+  },
+  {
+   "id": "G11",
+   "it": "<h1>Sextortion: cosa fare</h1><div class=\"ticks\"><div class=\"tick\"><span class=\"tick-mark\">🚫</span><span>Non pagare.</span></div><div class=\"tick\"><span class=\"tick-mark\">📸</span><span>Non cancellare: fare screenshot.</span></div><div class=\"tick\"><span class=\"tick-mark\">⛔</span><span>Bloccare.</span></div><div class=\"tick\"><span class=\"tick-mark\">🛡️</span><span>Segnalare su <span class=\"notranslate\" translate=\"no\">commissariatodips.it</span>.</span></div><div class=\"tick\"><span class=\"tick-mark\">🤗</span><span>E dire al figlio: «Non sei nei guai. Ti aiuto io.»</span></div></div>",
+   "notes": "The most important prevention is telling children, before anything happens, that they can always come to you without being punished. Shame and fear are what offenders count on. Help lines: 114 Emergenza Infanzia, Telefono Azzurro 19696.",
+   "verify": [
+    "VERIFY before class (flagged 2026-11-16, from the maintainer's research brief, not re-checked): commissariatodips.it; 114 Emergenza Infanzia; Telefono Azzurro 19696."
+   ]
+  },
+  {
+   "id": "G12",
+   "it": "<h1>Segnali da notare</h1><div class=\"ticks\"><div class=\"tick\"><span class=\"tick-mark\">🌧️</span><span>Cambiamenti improvvisi di umore.</span></div><div class=\"tick\"><span class=\"tick-mark\">🚪</span><span>Si chiude, evita il telefono o non lo lascia mai.</span></div><div class=\"tick\"><span class=\"tick-mark\">🕵️</span><span>Account nuovi e segreti.</span></div><div class=\"tick\"><span class=\"tick-mark\">🎁</span><span>Soldi o regali che non si spiegano.</span></div></div>",
+   "notes": "Children often signal indirectly, through withdrawal or behaviour changes, rather than by telling. Unexplained gifts, money or new accounts can be signs of grooming (an adult building trust with a child online to abuse or exploit them) or sextortion."
+  },
+  {
+   "id": "G13",
+   "it": "<h1>Anche noi pubblichiamo i nostri figli</h1><p class=\"lead\">Prima di pubblicare una foto:</p><div class=\"ticks\"><div class=\"tick\"><span class=\"tick-mark\">🏫</span><span>Si vede la scuola?</span></div><div class=\"tick\"><span class=\"tick-mark\">🏠</span><span>La casa?</span></div><div class=\"tick\"><span class=\"tick-mark\">🧒</span><span>Mio figlio sarebbe d'accordo tra 10 anni?</span></div><div class=\"tick\"><span class=\"tick-mark\">🔒</span><span>Meglio i gruppi privati della famiglia.</span></div></div>",
+   "notes": "This is called 'sharenting'. Parents' posts are often a child's first digital footprint. Ties back to slide 7 of the main deck."
+  },
+  {
+   "id": "G14",
+   "it": "<h1>Numeri utili</h1><div class=\"num-grid\"><div class=\"num-card\"><span class=\"num-label\">🛡️ Polizia Postale</span><span class=\"num-big notranslate\" translate=\"no\">commissariatodips.it</span></div><div class=\"num-card\"><span class=\"num-label\">🧒 Emergenza Infanzia</span><span class=\"num-big notranslate\" translate=\"no\">114</span></div><div class=\"num-card\"><span class=\"num-label\">💙 Telefono Azzurro</span><span class=\"num-big notranslate\" translate=\"no\">19696</span></div><div class=\"num-card\"><span class=\"num-label\">🚨 Emergenza</span><span class=\"num-big notranslate\" translate=\"no\">112</span></div></div><p class=\"note strong\">📸 Fate una foto a questa slide.</p>",
+   "notes": "Suggest a photo of this slide.",
+   "verify": [
+    "VERIFY before class (flagged 2026-11-16, from the maintainer's research brief, not re-checked): commissariatodips.it; 114; 19696; 112."
+   ]
+  }
+ ]
+}
