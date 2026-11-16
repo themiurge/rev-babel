@@ -11,6 +11,8 @@ models/
 *.db
 cert.pem
 infra/tunnel/*.json
+# Lesson 8 teacher-provided materials (photos, screenshots, voice) - ADR 0020
+data/materials/
 
 # Python
 __pycache__/
