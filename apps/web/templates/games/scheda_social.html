@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ c.title.it }}</title>
+<style>
+  :root { --accent: #1f6feb; --accent2: #c2410c; --ink: #111; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--ink); background: #f3f4f6; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; padding: 0.8rem 1rem; background: #fff; border-bottom: 1px solid #ddd; }
+  .toolbar button { font: inherit; font-size: 1.1rem; padding: 0.5rem 1.2rem; border-radius: 8px; border: 2px solid var(--accent); background: var(--accent); color: #fff; cursor: pointer; }
+  .toolbar p { margin: 0; font-size: 1rem; }
+  .sheet { display: flex; width: 297mm; max-width: 100%; margin: 1rem auto; background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,.2); }
+  .card { flex: 1 1 50%; padding: 8mm 9mm; min-height: 190mm; position: relative; }
+  .card + .card { border-left: 2px dashed #888; }
+  h1 { font-size: 1.55rem; margin: 0 0 0.3rem; border-bottom: 4px solid var(--accent); padding-bottom: 0.3rem; }
+  h2 { font-size: 1.15rem; margin: 0.9rem 0 0.4rem; color: var(--accent); }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { display: flex; gap: 0.6rem; align-items: flex-start; margin: 0.35rem 0; font-size: 1.15rem; line-height: 1.25; }
+  li .emoji { font-size: 1.6rem; line-height: 1; flex: none; width: 2rem; text-align: center; }
+  .second { display: block; font-size: 0.95rem; color: #444; font-weight: normal; }
+  .rule { margin-top: 1rem; padding: 0.6rem 0.8rem; border: 3px solid var(--accent2); border-radius: 10px; font-size: 1.35rem; font-weight: 700; }
+  .rule .second { font-weight: 600; }
+  .num .value { display: block; font-size: 1.7rem; font-weight: 700; letter-spacing: 0.02em; unicode-bidi: isolate; }
+  .num .label { font-size: 1.05rem; }
+  .bank { margin-top: 1.6rem; font-size: 1.15rem; font-weight: 600; }
+  .line { border-bottom: 2px solid #000; height: 2.4rem; margin-top: 0.2rem; }
+  [dir="rtl"] { text-align: right; }
+  .pagebreak { display: none; }
+  @media print {
+    @page { size: A4 landscape; margin: 8mm; }
+    body { background: #fff; }
+    .toolbar { display: none; }
+    .sheet { box-shadow: none; margin: 0; width: auto; max-width: none; break-after: page; page-break-after: always; }
+    .sheet:last-of-type { break-after: auto; page-break-after: auto; }
+    .card { min-height: 0; height: 190mm; }
+  }
+</style>
+</head>
+<body>
+{% macro tr(obj) -%}
+  {%- if second and obj[lang] is defined %}<span class="second" lang="{{ lang }}"{% if rtl %} dir="rtl"{% endif %}>{{ obj[lang] }}</span>{% endif -%}
+{%- endmacro %}
+<div class="toolbar">
+  <button type="button" onclick="window.print()">{{ c.ui.print.it }}</button>
+  <p>{{ c.ui.howto.it }}{{ tr(c.ui.howto) }}</p>
+</div>
+
+<section class="sheet" aria-label="Lato 1">
+{% for _ in range(2) %}
+  <article class="card">
+    <h1>{{ c.side1.title.it }}{{ tr(c.side1.title) }}</h1>
+    <h2>{{ c.side1.questionsTitle.it }}{{ tr(c.side1.questionsTitle) }}</h2>
+    <ul>
+    {% for q in c.side1.questions %}
+      <li><span class="emoji" aria-hidden="true">{{ q.emoji }}</span><span>{{ q.it }}{{ tr(q) }}</span></li>
+    {% endfor %}
+    </ul>
+    <h2>{{ c.side1.signalsTitle.it }}{{ tr(c.side1.signalsTitle) }}</h2>
+    <ul>
+    {% for s in c.side1.signals %}
+      <li><span class="emoji" aria-hidden="true">{{ s.emoji }}</span><span>{{ s.it }}{{ tr(s) }}</span></li>
+    {% endfor %}
+    </ul>
+    <p class="rule">{{ c.side1.rule.it }}{{ tr(c.side1.rule) }}</p>
+  </article>
+{% endfor %}
+</section>
+
+<section class="sheet" aria-label="Lato 2">
+{% for _ in range(2) %}
+  <article class="card">
+    <h1>{{ c.side2.title.it }}{{ tr(c.side2.title) }}</h1>
+    <ul>
+    {% for n in c.side2.numbers %}
+      <li class="num"><span class="emoji" aria-hidden="true">{{ n.emoji }}</span><span><span class="label">{{ n.label.it }}{{ tr(n.label) }}</span><span class="value" dir="ltr">{{ n.value }}</span></span></li>
+    {% endfor %}
+    </ul>
+    <p class="bank">{{ c.side2.bank.it }}{{ tr(c.side2.bank) }}</p>
+    <div class="line"></div>
+    <div class="line"></div>
+  </article>
+{% endfor %}
+</section>
+</body>
+</html>

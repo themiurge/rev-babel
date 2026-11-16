@@ -1,0 +1,97 @@
+{
+ "title": {
+  "it": "Social media: la scheda da portare a casa"
+ },
+ "side1": {
+  "title": {
+   "it": "Prima di credere o condividere"
+  },
+  "questionsTitle": {
+   "it": "Quattro domande"
+  },
+  "questions": [
+   {
+    "emoji": "✋",
+    "it": "Fermati."
+   },
+   {
+    "emoji": "👤",
+    "it": "Chi l'ha pubblicato?"
+   },
+   {
+    "emoji": "📰",
+    "it": "Cosa dicono altre fonti?"
+   },
+   {
+    "emoji": "🔍",
+    "it": "Dov'è l'originale?"
+   }
+  ],
+  "signalsTitle": {
+   "it": "Tre segnali di truffa"
+  },
+  "signals": [
+   {
+    "emoji": "⏱️",
+    "it": "Fretta: «Subito!»"
+   },
+   {
+    "emoji": "💓",
+    "it": "Un'emozione forte: paura, amore, guadagno facile."
+   },
+   {
+    "emoji": "🔒",
+    "it": "Un pagamento strano o segreto."
+   }
+  ],
+  "rule": {
+   "it": "Fretta + soldi = mi fermo e chiamo."
+  }
+ },
+ "side2": {
+  "title": {
+   "it": "Numeri utili"
+  },
+  "numbers": [
+   {
+    "emoji": "🛡️",
+    "label": {
+     "it": "Polizia Postale"
+    },
+    "value": "commissariatodips.it"
+   },
+   {
+    "emoji": "🚨",
+    "label": {
+     "it": "Emergenza"
+    },
+    "value": "112"
+   },
+   {
+    "emoji": "🧒",
+    "label": {
+     "it": "Emergenza Infanzia"
+    },
+    "value": "114"
+   },
+   {
+    "emoji": "💙",
+    "label": {
+     "it": "Telefono Azzurro"
+    },
+    "value": "19696"
+   }
+  ],
+  "bank": {
+   "it": "La mia banca:"
+  }
+ },
+ "ui": {
+  "print": {
+   "it": "🖨️ Stampa"
+  },
+  "howto": {
+   "it": "Stampa fronte e retro, sul lato corto. Poi taglia a metà: due schede."
+  }
+ }
+}
