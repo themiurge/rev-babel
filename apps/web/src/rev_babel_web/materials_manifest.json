@@ -254,35 +254,6 @@
    ]
   },
   {
-   "id": "I4",
-   "artifact": "game",
-   "where": "Gioco · Foto · I4",
-   "title": "Una tua foto vecchia e vera, con una didascalia falsa",
-   "kind": "image",
-   "needed": "required",
-   "noFaces": true,
-   "answer": "verificare",
-   "alt": "Foto di una strada con neve o acqua",
-   "instructions": [
-    "Una tua foto di qualche anno fa che sembra una notizia: neve, pioggia forte, una strada allagata, una coda lunga.",
-    "La didascalia dice «oggi»: è falsa. Puoi cambiarla qui sotto.",
-    "Diversa dalla foto della slide 28."
-   ],
-   "safety": [
-    "Nessun volto, nessuna targa, niente vicino a casa tua."
-   ],
-   "fields": [
-    {
-     "key": "caption",
-     "label": "Didascalia falsa (dice «oggi»)",
-     "required": false,
-     "max": 120,
-     "placeholder": "OGGI in città. Guardate che disastro! 😱 Condividete!",
-     "type": "text"
-    }
-   ]
-  },
-  {
    "id": "V1",
    "artifact": "game",
    "where": "Gioco · Video · V1",
@@ -334,34 +305,6 @@
      "required": false,
      "max": 120,
      "placeholder": "Guardate che scena incredibile! 😍",
-     "type": "text"
-    }
-   ]
-  },
-  {
-   "id": "V3",
-   "artifact": "game",
-   "where": "Gioco · Video · V3",
-   "title": "Un tuo video vero, con una didascalia sbagliata",
-   "kind": "video",
-   "needed": "required",
-   "noFaces": true,
-   "answer": "verificare",
-   "alt": "Video di una strada",
-   "instructions": [
-    "Un tuo video di un altro giorno o di un'altra città.",
-    "La didascalia lo fa sembrare di oggi: puoi cambiarla qui sotto."
-   ],
-   "safety": [
-    "Nessuna persona riconoscibile, nessuna targa."
-   ],
-   "fields": [
-    {
-     "key": "caption",
-     "label": "Didascalia falsa (dice «oggi»)",
-     "required": false,
-     "max": 120,
-     "placeholder": "Ecco cosa succede OGGI in centro! 😱",
      "type": "text"
     }
    ]

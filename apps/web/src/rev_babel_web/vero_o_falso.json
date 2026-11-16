@@ -97,8 +97,7 @@
    "items": [
     "I1",
     "I2",
-    "I3",
-    "I4"
+    "I3"
    ]
   },
   {
@@ -114,8 +113,7 @@
    },
    "items": [
     "V1",
-    "V2",
-    "V3"
+    "V2"
    ]
   },
   {
@@ -307,45 +305,6 @@
    "teachingLink": "S27-Q2"
   },
   {
-   "id": "I4",
-   "category": "foto",
-   "media": {
-    "type": "image",
-    "slot": "I4"
-   },
-   "mock": null,
-   "invented": false,
-   "caption": {
-    "it": "OGGI in città. Guardate che disastro! 😱 Condividete!",
-    "en": "TODAY in the city. Look at this mess! 😱 Share!",
-    "fr": "Aujourd'hui en ville. Quel désordre ! 😱 Partagez !",
-    "ckb": "ئەمڕۆ لە شار. سەیری ئەم گێژاوە بکەن! 😱 شەیری بکە!",
-    "kmr": "ÎRO li bajêr. Li vê tevliheviyê binêre! 😱 Parve bike!",
-    "ar": "اليوم في المدينة. انظروا إلى هذه الفوضى! 😱 شاركوا!"
-   },
-   "answer": "verificare",
-   "onlyVerifiable": true,
-   "hardToJudge": true,
-   "clue": {
-    "it": "La foto è vera, ma è vecchia: «oggi» è falso. Guardando non si può capire.",
-    "en": "The photo is real, but it's old: \"today\" is fake. You can't tell by looking.",
-    "fr": "La photo est authentique, mais elle est ancienne : la mention « aujourd’hui » est fausse. On ne peut pas le deviner au premier coup d’œil.",
-    "ckb": "وێنەکە ڕاستەقینە، بەڵام کۆنە: \"ئەمڕۆ\" ساختەیە. بە سەیرکردن ناتوانیت بزانیت.",
-    "kmr": "Wêne rast e, lê kevn e: \"îro\" sexte ye. Mirov bi nihêrînê nikare bibêje.",
-    "ar": "الصورة حقيقية، لكنها قديمة: صورة \"اليوم\" مزيفة. لا يمكنك معرفة ذلك بمجرد النظر."
-   },
-   "action": {
-    "it": "Cerca la foto con Google Lens: trovi quando e dove è nata.",
-    "en": "Search for the photo with Google Lens: find out when and where it was taken.",
-    "fr": "Recherchez la photo avec Google Lens : découvrez quand et où elle a été prise.",
-    "ckb": "بە عەدەسەی گووگڵ بەدوای وێنەکەدا بگەڕێ: بزانە کەی و لە کوێ گیراوە.",
-    "kmr": "Bi Google Lens li wêneyê bigere: bibîne kengî û li ku hatiye kişandin.",
-    "ar": "ابحث عن الصورة باستخدام عدسة جوجل: اكتشف متى وأين تم التقاطها."
-   },
-   "source_note": "teacher's own old photo with a false caption",
-   "teachingLink": "S27-Q4"
-  },
-  {
    "id": "V1",
    "category": "video",
    "media": {
@@ -422,45 +381,6 @@
    },
    "source_note": "AI video made by the teacher",
    "teachingLink": "S27-Q3"
-  },
-  {
-   "id": "V3",
-   "category": "video",
-   "media": {
-    "type": "video",
-    "slot": "V3"
-   },
-   "mock": null,
-   "invented": false,
-   "caption": {
-    "it": "Ecco cosa succede OGGI in centro! 😱",
-    "en": "Here's what's happening downtown TODAY! 😱",
-    "fr": "Voici ce qui se passe en centre-ville AUJOURD'HUI ! 😱",
-    "ckb": "لێرەدا ئەوەی ئەمڕۆ لە ناوەندی شار ڕوودەدات! 😱",
-    "kmr": "Îro li navenda bajêr çi diqewime! 😱",
-    "ar": "إليكم ما يحدث في وسط المدينة اليوم! 😱"
-   },
-   "answer": "verificare",
-   "onlyVerifiable": true,
-   "hardToJudge": true,
-   "clue": {
-    "it": "Il video è vero, ma è di un altro giorno o di un altro posto. Guardando non si capisce.",
-    "en": "The video is real, but it's from another day or another place. It's hard to tell by looking.",
-    "fr": "La vidéo est authentique, mais elle date d'un autre jour ou d'un autre lieu. Difficile à dire à première vue.",
-    "ckb": "ڤیدیۆکە ڕاستەقینەیە، بەڵام لە ڕۆژێکی ترەوە یان شوێنێکی ترە. سەختە بە سەیرکردن بزانیت.",
-    "kmr": "Vîdyo rast e, lê ji rojek din an cîhek din e. Bi nihêrînê zehmet e ku meriv fêm bike.",
-    "ar": "الفيديو حقيقي، لكنه من يوم آخر أو مكان آخر. يصعب التأكد من ذلك بمجرد النظر."
-   },
-   "action": {
-    "it": "Dov'è l'originale? Cerca il video prima di condividere.",
-    "en": "Where's the original? Search for the video before sharing.",
-    "fr": "Où est la vidéo originale ? Veuillez la rechercher avant de la partager.",
-    "ckb": "ئەسڵی لە کوێیە؟ پێش ئەوەی بڵاوی بکەیتەوە بەدوای ڤیدیۆکەدا بگەڕێ.",
-    "kmr": "Vîdyoya orjînal li ku ye? Berî parvekirinê li vîdyoyê bigere.",
-    "ar": "أين النسخة الأصلية؟ ابحث عن الفيديو قبل مشاركته."
-   },
-   "source_note": "teacher's own video with a misleading caption",
-   "teachingLink": "S27-Q4"
   },
   {
    "id": "A1",

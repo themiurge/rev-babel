@@ -41,7 +41,7 @@ def upload(slot_id: str, data: bytes) -> dict:
 
 def test_manifest_is_valid():
     assert m.validate_manifest(m.manifest()) == []
-    assert len(m.manifest()["slots"]) == 25
+    assert len(m.manifest()["slots"]) == 23
 
 
 def test_broken_manifest_gives_errors():

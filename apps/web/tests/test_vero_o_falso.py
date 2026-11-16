@@ -31,13 +31,13 @@ def _status(slot, family="image", skipped=False, fields=None):
 
 def test_content_is_valid_with_the_planned_mix():
     assert vof.validate(DATA) == []
-    assert len(DATA["items"]) == 20
+    assert len(DATA["items"]) == 18
     mix = {}
     for item in DATA["items"]:
         mix.setdefault(item["category"], []).append(item["answer"])
     count = {c: sorted(a) for c, a in mix.items()}
-    assert count["foto"] == ["falso_ia", "verificare", "vero", "vero"]
-    assert count["video"] == ["falso_ia", "verificare", "vero"]
+    assert count["foto"] == ["falso_ia", "vero", "vero"]
+    assert count["video"] == ["falso_ia", "vero"]
     assert count["voci"] == ["falso_ia", "vero"]
     assert count["messaggi"] == ["truffa"] * 3 + ["vero"] * 2
     assert count["post"] == ["falso_ia", "falso_ia", "vero"]
@@ -76,7 +76,7 @@ def test_page_config_without_materials():
     assert items["I1"]["mockHtml"] is None
     assert items["M1"]["usesFallback"] and items["M1"]["invented"]
     assert items["P2"]["invented"] and not items["P2"]["usesFallback"]
-    assert [i["id"] for i in cfg["items"][:4]] == ["I1", "I2", "I3", "I4"]
+    assert [i["id"] for i in cfg["items"][:3]] == ["I1", "I2", "I3"]
     assert cfg["langs"][0] == "it"
     assert len(cfg["answers"]) == 4
 
