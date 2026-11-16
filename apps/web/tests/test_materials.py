@@ -58,7 +58,7 @@ def test_shipped_manifest_is_valid(monkeypatch):
     shipped = Path(m.__file__).parent / "materials_manifest.json"
     data = json.loads(shipped.read_text(encoding="utf-8"))
     assert m.validate_manifest(data) == []
-    assert len(data["slots"]) == 17
+    assert len(data["slots"]) == 16
 
 
 def test_broken_manifest_gives_errors():

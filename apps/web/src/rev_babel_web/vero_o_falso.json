@@ -131,7 +131,6 @@
     "M1",
     "M4",
     "M2",
-    "M5",
     "M3"
    ]
   },
@@ -475,38 +474,6 @@
    },
    "source_note": "real legitimate SMS, else invented (fictional bank)",
    "teachingLink": "S06"
-  },
-  {
-   "id": "M5",
-   "category": "messaggi",
-   "media": {
-    "type": "image",
-    "slot": "M5"
-   },
-   "mock": "<div class='mock-phone'><div class='mock-phone-header'><span class='mock-sender'>💬 Corso di computer</span></div><div class='mock-bubble'>Ciao a tutte! Giovedì la lezione è alle 16:30, come sempre. Se avete le cuffie, portatele. A giovedì! 😊</div></div>",
-   "invented": false,
-   "caption": {},
-   "answer": "vero",
-   "onlyVerifiable": false,
-   "hardToJudge": true,
-   "clue": {
-    "it": "Messaggio vero: un gruppo che conosciamo. Nessuna fretta, nessun soldo, nessun link.",
-    "en": "The real message: a group we know. No rush, no money, no links.",
-    "fr": "Le vrai message : un groupe que nous connaissons. Pas de précipitation, pas d’argent, pas de liens.",
-    "ckb": "پەیامی ڕاستەقینە: گروپێک کە دەیناسین. نە پەلەکردن، نە پارە، نە لینک.",
-    "kmr": "Peyama rast: komek ku em nas dikin. Ne lez, ne pere, ne girêdan.",
-    "ar": "الرسالة الحقيقية: مجموعة نعرفها. لا داعي للعجلة، ولا للمال، ولا للروابط."
-   },
-   "action": {
-    "it": "Hai un dubbio? Chiedi di persona agli operatori.",
-    "en": "Have a question? Ask the operators in person.",
-    "fr": "Vous avez une question ? Posez-la directement aux opérateurs.",
-    "ckb": "پرسیارێکتان هەیە؟ بە شێوەیەکی ڕاستەوخۆ پرسیار لە بەڕێوەبەرەکان بکە.",
-    "kmr": "Pirsek we heye? Bi şexsî ji operatoran bipirsin.",
-    "ar": "هل لديك سؤال؟ اسأل الموظفين مباشرة."
-   },
-   "source_note": "real message shared with permission, else invented",
-   "teachingLink": "S27-Q2"
   },
   {
    "id": "P2",

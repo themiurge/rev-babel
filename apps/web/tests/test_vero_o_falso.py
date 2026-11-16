@@ -8,7 +8,7 @@ from rev_babel_web import vero_o_falso as vof
 
 DATA = vof.load()
 ITEMS = {i["id"]: i for i in DATA["items"]}
-MOCK_ONLY = {"M1", "M2", "M3", "M4", "M5", "P2", "P3"}
+MOCK_ONLY = {"M1", "M2", "M3", "M4", "P2", "P3"}
 
 
 def _cfg(statuses=None, render=lambda h: h):
@@ -31,16 +31,16 @@ def _status(slot, family="image", skipped=False, fields=None):
 
 def test_content_is_valid_with_the_planned_mix():
     assert vof.validate(DATA) == []
-    assert len(DATA["items"]) == 12
+    assert len(DATA["items"]) == 11
     mix = {}
     for item in DATA["items"]:
         mix.setdefault(item["category"], []).append(item["answer"])
     count = {c: sorted(a) for c, a in mix.items()}
     assert count["foto"] == ["falso_ia", "vero", "vero"]
     assert count["video"] == ["falso_ia", "vero"]
-    assert count["messaggi"] == ["truffa"] * 3 + ["vero"] * 2
+    assert count["messaggi"] == ["truffa"] * 3 + ["vero"]
     assert count["post"] == ["falso_ia", "falso_ia"]
-    assert sum(1 for i in DATA["items"] if i["answer"] == "vero") == 5
+    assert sum(1 for i in DATA["items"] if i["answer"] == "vero") == 4
 
 
 def test_validate_catches_problems():

@@ -385,26 +385,6 @@
     "Copri codici, nomi, numeri e indirizzi."
    ],
    "fields": []
-  },
-  {
-   "id": "M5",
-   "artifact": "game",
-   "where": "Gioco · Messaggi · M5",
-   "title": "Screenshot di un messaggio WhatsApp vero di un ente",
-   "kind": "screenshot",
-   "needed": "fallback",
-   "noFaces": true,
-   "answer": "vero",
-   "alt": "Screenshot di un messaggio WhatsApp",
-   "instructions": [
-    "Per esempio dagli operatori del corso o da una scuola.",
-    "Chiedi il permesso a chi l'ha mandato.",
-    "Senza screenshot, il gioco usa un esempio inventato."
-   ],
-   "safety": [
-    "Copri nomi, numeri e foto."
-   ],
-   "fields": []
   }
  ]
 }
