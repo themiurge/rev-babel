@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Materiali · Lezione 8</title>
+  <style>
+    [hidden] { display: none !important; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 0 0.8rem 4rem; background: #f4f6fa; color: #1b2233;
+      font: 18px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    main { max-width: 40rem; margin: 0 auto; }
+    h1 { font-size: 1.4rem; margin: 1rem 0 0.6rem; }
+    h2 { font-size: 1.15rem; margin: 1.6rem 0 0.5rem; padding-bottom: 0.2rem; border-bottom: 2px solid #d5dbe8; }
+    h3.divider { font-size: 0.95rem; color: #667; margin: 1.2rem 0 0.4rem; font-weight: 600; }
+    button, .btn {
+      font: inherit; border: 1px solid #b7c0d3; background: #fff; color: #1b2233; border-radius: 10px;
+      padding: 0.55rem 0.9rem; cursor: pointer; min-height: 2.75rem; display: inline-flex;
+      align-items: center; gap: 0.4rem;
+    }
+    button:disabled { opacity: 0.5; cursor: default; }
+    button.primary { background: #1a56c4; border-color: #1a56c4; color: #fff; }
+    button.danger { border-color: #c0392b; color: #c0392b; }
+    input[type=text], input[type=url], input[type=password] {
+      font: inherit; width: 100%; padding: 0.55rem 0.7rem; border: 1px solid #b7c0d3; border-radius: 10px; background: #fff;
+    }
+    .keybox { max-width: 22rem; margin: 3rem auto; background: #fff; padding: 1.2rem; border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,.1); }
+    .keybox label { display: block; margin-bottom: 0.6rem; font-weight: 700; }
+    .keybox .err { color: #c0392b; font-weight: 700; margin: 0.6rem 0 0; }
+    .keybox button { margin-top: 0.8rem; }
+    .progress-list { display: grid; gap: 0.35rem; margin: 0.4rem 0 0.8rem; }
+    .progress-row { display: grid; grid-template-columns: 6.5rem 1fr auto; align-items: center; gap: 0.6rem; font-size: 0.9rem; }
+    .progress-row.done { grid-template-columns: 6.5rem 1fr; }
+    .bar { height: 0.7rem; background: #dde3ef; border-radius: 99px; overflow: hidden; }
+    .bar > span { display: block; height: 100%; background: #22a35a; }
+    .tabs { position: sticky; top: 0; z-index: 5; display: flex; gap: 0.5rem; padding: 0.5rem 0; background: #f4f6fa; }
+    .tabs button[aria-pressed=true] { background: #1d2b4a; border-color: #1d2b4a; color: #fff; }
+    .warn { background: #fff4c2; border: 1px solid #e6c84a; border-radius: 10px; padding: 0.6rem 0.8rem; font-size: 0.9rem; margin: 0.6rem 0; }
+    .card { background: #fff; border: 2px solid #dde3ef; border-radius: 14px; margin: 0.7rem 0; padding: 0.7rem 0.8rem; outline: none; }
+    .card.active, .card:focus { border-color: #1a56c4; }
+    .card.dragover { border-color: #1a56c4; background: #eef4ff; }
+    .card-head { width: 100%; background: none; border: 0; padding: 0; text-align: start; display: flex; align-items: center; gap: 0.6rem; min-height: 0; }
+    .card-head .meta { flex: 1 1 auto; min-width: 0; font-size: 0.85rem; color: #556; }
+    .card-head .meta strong { color: #1b2233; }
+    .badge { flex: 0 0 auto; font-size: 0.8rem; font-weight: 700; white-space: nowrap; }
+    .thumb { flex: 0 0 auto; width: 2.6rem; height: 2.6rem; object-fit: cover; border-radius: 6px; background: #e9ecf1; display: inline-flex; align-items: center; justify-content: center; }
+    .card.folded .card-body { display: none; }
+    .card-title { font-weight: 700; margin: 0.5rem 0 0.3rem; }
+    .card ul { margin: 0.2rem 0 0.5rem; padding-inline-start: 1.2rem; }
+    .safety { background: #fff0d6; border-radius: 8px; padding: 0.4rem 0.6rem; margin: 0.4rem 0; font-size: 0.92rem; }
+    .safety p { margin: 0.15rem 0; }
+    .nofaces { display: inline-block; background: #fde8e7; color: #a02a1f; font-weight: 700; border-radius: 8px; padding: 0.15rem 0.6rem; font-size: 0.9rem; margin: 0.2rem 0; }
+    .answer { font-size: 0.9rem; margin: 0.3rem 0; font-weight: 600; }
+    .drop {
+      display: block; border: 3px dashed #9fb0d0; border-radius: 14px; padding: 1.1rem 0.6rem; margin: 0.6rem 0;
+      text-align: center; font-weight: 700; background: #f6f9ff; cursor: pointer;
+    }
+    .drop small { display: block; font-weight: 400; color: #667; font-size: 0.8rem; margin-top: 0.2rem; }
+    .drop-emoji { display: block; font-size: 2rem; line-height: 1.2; }
+    .actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.4rem 0; }
+    .uploadbar { height: 0.8rem; background: #dde3ef; border-radius: 99px; overflow: hidden; margin: 0.4rem 0; }
+    .uploadbar > span { display: block; height: 100%; width: 0; background: #1a56c4; }
+    .error { color: #c0392b; font-weight: 700; margin: 0.4rem 0; }
+    .preview img, .preview video { display: block; max-width: 100%; max-height: 16rem; margin: 0.4rem auto; border-radius: 10px; background: #000; }
+    .preview audio { width: 100%; margin: 0.4rem 0; }
+    .fileinfo { font-size: 0.85rem; color: #556; margin: 0.2rem 0; }
+    .field { margin: 0.6rem 0; }
+    .field label { display: block; font-weight: 600; font-size: 0.92rem; margin-bottom: 0.2rem; }
+    .saved { color: #1c7c43; font-size: 0.85rem; margin-inline-start: 0.4rem; }
+    .skip { display: flex; align-items: center; gap: 0.5rem; margin: 0.6rem 0 0.2rem; font-size: 0.95rem; }
+    .skip input { width: 1.3rem; height: 1.3rem; }
+    .danger-zone { margin-top: 2.5rem; padding-top: 1rem; border-top: 2px solid #d5dbe8; font-size: 0.9rem; color: #556; }
+    .danger-zone .row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0.5rem 0; }
+    .danger-zone input { flex: 1 1 8rem; }
+    .toast { position: fixed; left: 50%; bottom: 1rem; transform: translateX(-50%); background: #1d2b4a; color: #fff; padding: 0.6rem 1rem; border-radius: 10px; z-index: 20; max-width: 90vw; }
+    .recorder { margin: 0.4rem 0; }
+  </style>
+</head>
+<body>
+<main>
+{% if needs_key %}
+  <form class="keybox" method="post" action="/materiali/chiave">
+    <h1>🔑 Chiave dei materiali</h1>
+    <label for="key">Scrivi la chiave per entrare.</label>
+    <input id="key" name="key" type="password" autocomplete="current-password" required autofocus>
+    <button class="primary" type="submit">Entra</button>
+    {% if key_error %}<p class="err">Chiave sbagliata.</p>{% endif %}
+  </form>
+{% else %}
+  <h1>📦 Materiali · Lezione 8</h1>
+  <div id="app" data-key-configured="{{ 'true' if key_configured else 'false' }}">
+    <p>Caricamento…</p>
+  </div>
+  <noscript><p class="error">Serve JavaScript per usare questa pagina.</p></noscript>
+  <script src="/static/lessons/lezione-8/materiali/materiali.js?v={{ static_version }}"></script>
+{% endif %}
+</main>
+</body>
+</html>
