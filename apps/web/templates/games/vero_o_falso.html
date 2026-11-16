@@ -1,0 +1,115 @@
+{% from "games/_vof_icons.html" import icon %}
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vero o falso?</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: max(24px, 2vw); line-height: 1.35; background: #14213d; color: #fff; }
+  [hidden] { display: none !important; }
+  button { font: inherit; cursor: pointer; }
+  a { color: #ffd166; }
+  #app { min-height: 100vh; display: flex; flex-direction: column; padding: 0.6em 0.9em; gap: 0.6em; }
+  h1 { font-size: 2.2em; margin: 0.2em 0; }
+  h2 { font-size: 1.4em; margin: 0.2em 0; }
+  .l2 { display: block; font-size: 0.7em; opacity: 0.85; font-weight: 500; }
+  .center { text-align: center; }
+  .btn { border: 0; border-radius: 0.5em; padding: 0.45em 0.9em; font-weight: 800; background: #2f4170; color: #fff; }
+  .btn:hover { background: #3c5290; }
+  .btn.primary { background: #ffb347; color: #1b1f24; }
+  .btn.primary:hover { background: #ffc66e; }
+  .btn.small { font-size: 0.6em; padding: 0.35em 0.7em; }
+  .seg { display: inline-flex; gap: 0.3em; flex-wrap: wrap; }
+  .seg button { border: 2px solid #8ea3d6; background: transparent; color: #fff; border-radius: 99px; padding: 0.15em 0.8em; font-weight: 700; }
+  .seg button[aria-pressed="true"] { background: #ffb347; border-color: #ffb347; color: #1b1f24; }
+  input[type=text] { font: inherit; padding: 0.2em 0.4em; border-radius: 0.3em; border: 2px solid #8ea3d6; width: 9em; }
+  .row { display: flex; flex-wrap: wrap; gap: 0.5em 1em; align-items: center; margin: 0.35em 0; }
+  .row > .lbl { font-weight: 800; min-width: 7em; }
+  .note { background: #1d2b4a; border: 2px solid #8ea3d6; border-radius: 0.5em; padding: 0.4em 0.8em; margin: 0.4em 0; font-size: 0.8em; }
+  .note.warn { border-color: #f5b800; }
+
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6em; }
+  .tile { background: #1d2b4a; border: 3px solid #8ea3d6; border-radius: 0.7em; padding: 0.5em; text-align: center; }
+  .tile > .go { width: 100%; background: transparent; border: 0; color: #fff; font-weight: 800; padding: 0.2em; }
+  .tile .emoji { display: block; font-size: 2.2em; }
+  .tile .count { display: block; font-size: 0.7em; opacity: 0.85; font-weight: 500; }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.3em; justify-content: center; margin-top: 0.3em; }
+  .chip { font-size: 0.6em; padding: 0.2em 0.6em; border-radius: 99px; border: 2px solid #8ea3d6; background: transparent; color: #fff; font-weight: 700; }
+  .chip[aria-pressed="false"] { opacity: 0.45; text-decoration: line-through; }
+  .chip:disabled { opacity: 0.45; cursor: not-allowed; }
+
+  .topbar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4em 1em; }
+  .topbar .grow { flex: 1; }
+  .timer { font-size: 2.2em; font-weight: 800; min-width: 2.4em; text-align: center; background: #1d2b4a; border-radius: 0.4em; padding: 0 0.3em; }
+  .timer.vote { font-size: 1.3em; background: #f5b800; color: #1b1f24; }
+  .stage { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5em; min-height: 0; text-align: center; }
+  .caption { font-size: 1.2em; font-weight: 700; max-width: 30em; }
+  .stage img, .stage video { max-width: 100%; max-height: 58vh; border-radius: 0.5em; background: #000; }
+  .stage.small img, .stage.small video { max-height: 22vh; }
+  .stage.small .mock-wrap { transform: scale(0.8); transform-origin: top center; }
+  .playbtn { width: 30vh; height: 30vh; border-radius: 50%; border: 0; background: #ffb347; color: #1b1f24; font-size: 1.2em; font-weight: 800; }
+  .tag { font-size: 0.6em; background: #f5b800; color: #1b1f24; border-radius: 99px; padding: 0.15em 0.8em; font-weight: 800; }
+  .reminders { display: flex; gap: 0.5em; }
+  .reminder, .vote-btn { display: flex; align-items: center; gap: 0.4em; border-radius: 0.5em; padding: 0.2em 0.6em; font-weight: 800; }
+  .reminder { flex: 1; justify-content: center; font-size: 0.8em; }
+  .reminder svg, .vote-btn svg { width: 1.4em; height: 1.4em; flex: 0 0 auto; }
+  .c-green { background: #1e7a3c; color: #fff; }
+  .c-red { background: #b42318; color: #fff; }
+  .c-yellow { background: #f5b800; color: #1b1f24; }
+  .c-blue { background: #1a56c4; color: #fff; }
+  .teamrow { display: flex; align-items: center; gap: 0.5em; flex-wrap: wrap; }
+  .teamrow .tname { min-width: 6em; font-weight: 800; }
+  .vote-btn { border: 3px solid transparent; font-size: 0.6em; opacity: 0.6; }
+  .vote-btn[aria-pressed="true"] { opacity: 1; border-color: #fff; }
+  .controls { display: flex; gap: 0.6em; justify-content: center; flex-wrap: wrap; }
+
+  .answer-panel { border-radius: 0.8em; padding: 0.5em 1em; display: flex; align-items: center; justify-content: center; gap: 0.8em; }
+  .answer-panel svg { width: 3em; height: 3em; }
+  .answer-panel .big { font-size: 2em; font-weight: 800; }
+  .answer-panel .sub { font-size: 0.7em; }
+  .info { font-size: 0.95em; max-width: 36em; text-align: start; }
+  .info p { margin: 0.25em 0; }
+  .bars { display: grid; gap: 0.5em; margin: 0.8em auto; width: min(34em, 100%); text-align: start; }
+  .bar { background: #1d2b4a; border-radius: 0.4em; overflow: hidden; }
+  .bar > div { background: #ffb347; color: #1b1f24; font-weight: 800; padding: 0.2em 0.6em; white-space: nowrap; min-width: 6em; }
+  .habits { list-style: none; padding: 0; margin: 0.5em auto; max-width: 30em; text-align: start; }
+  .habits li { font-size: 1.1em; margin: 0.35em 0; }
+
+  /* mock-ups of messages, posts and profiles (invented content) */
+  .mock-wrap { width: 100%; max-width: 30rem; margin: 0 auto; font-size: 0.8em; }
+  .mock-phone { max-width: 26rem; margin: 0 auto; background: #eef1f6; color: #111; border-radius: 18px; padding: 0.6rem; text-align: start; }
+  .mock-phone-header { padding: 0.3rem 0.5rem; border-bottom: 1px solid #c8ced9; font-weight: 700; }
+  .mock-sender { font-size: 0.9em; }
+  .mock-bubble { background: #fff; border-radius: 14px; padding: 0.6rem 0.8rem; margin: 0.6rem 0.3rem; box-shadow: 0 1px 2px rgba(0,0,0,.2); }
+  .mock-post { max-width: 28rem; margin: 0 auto; background: #fff; color: #111; border-radius: 14px; padding: 0.7rem 0.9rem; text-align: start; }
+  .post-head { display: flex; align-items: center; gap: 0.6rem; }
+  .post-avatar { width: 2.6rem; height: 2.6rem; border-radius: 50%; background: #e8f0fe; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex: 0 0 auto; }
+  .post-page { font-weight: 800; }
+  .post-meta { display: block; font-weight: 400; font-size: 0.75em; color: #555; }
+  .post-body { margin: 0.6rem 0; }
+  .post-bar { display: flex; gap: 1.2rem; color: #444; font-size: 0.85em; border-top: 1px solid #ddd; padding-top: 0.4rem; }
+  .blur { filter: blur(5px); }
+  .mock-profile { max-width: 26rem; margin: 0 auto; background: #fff; color: #111; border-radius: 14px; padding: 0.8rem 1rem; text-align: start; }
+  .profile-head { display: flex; gap: 0.8rem; align-items: center; }
+  .profile-avatar { width: 4.5rem; height: 4.5rem; border-radius: 50%; overflow: hidden; background: #e8f0fe; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+  .profile-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; box-shadow: none; max-height: none; }
+  .profile-avatar .slot-media { margin: 0; }
+  .profile-avatar-emoji { font-size: 2.6rem; }
+  .profile-name { font-weight: 800; font-size: 1.2em; }
+  .profile-bio { color: #555; font-size: 0.85em; }
+  .profile-stats { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; margin: 0.6rem 0; font-size: 0.85em; color: #333; }
+</style>
+</head>
+<body>
+<div id="app" aria-live="polite"></div>
+<template id="icon-vero">{{ icon("vero") }}</template>
+<template id="icon-falso_ia">{{ icon("falso_ia") }}</template>
+<template id="icon-truffa">{{ icon("truffa") }}</template>
+<template id="icon-verificare">{{ icon("verificare") }}</template>
+<script id="vof-config" type="application/json">{{ game_json | safe }}</script>
+<script src="/static/lessons/lezione-8/vero-o-falso/game.js?v={{ static_version }}"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{% from "games/_vof_icons.html" import icon %}
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vero o falso? - carte per rispondere</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: #e5e7eb; color: #1b1f24; }
+  .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding: 12px 16px; background: #1d2b4a; color: #fff; font-size: 1rem; }
+  .toolbar button, .toolbar a.copies { font: inherit; font-weight: 700; padding: 8px 16px; border-radius: 8px; border: 0; cursor: pointer; background: #ffb347; color: #1b1f24; text-decoration: none; }
+  .toolbar a.copies { background: #2f4170; color: #fff; padding: 6px 12px; }
+  .toolbar a.copies[aria-current="true"] { background: #fff; color: #1d2b4a; }
+  .card { width: 21cm; height: 29.7cm; margin: 16px auto; padding: 1.2cm 1cm; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,.25); break-after: page; page-break-after: always; -webkit-print-color-adjust: exact; print-color-adjust: exact; overflow: hidden; }
+  .card.green { background: #1e7a3c; color: #fff; }
+  .card.red { background: #b42318; color: #fff; }
+  .card.yellow { background: #f5b800; color: #1b1f24; }
+  .card.blue { background: #1a56c4; color: #fff; }
+  .disc { width: 9cm; height: 9cm; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; margin-bottom: 0.8cm; }
+  .green .disc { color: #1e7a3c; }
+  .red .disc { color: #b42318; }
+  .yellow .disc { color: #8a6500; }
+  .blue .disc { color: #1a56c4; }
+  .disc svg { width: 6.4cm; height: 6.4cm; }
+  .word { font-size: 80pt; font-weight: 800; line-height: 1.05; }
+  .sub { font-size: 24pt; margin-top: 0.3cm; }
+  .tr { margin-top: 0.5cm; }
+  .tr .w { font-size: 36pt; font-weight: 700; line-height: 1.1; }
+  .tr .s { font-size: 18pt; }
+  @media print {
+    @page { size: A4 portrait; margin: 0; }
+    body { background: none; }
+    .toolbar { display: none; }
+    .card { margin: 0; box-shadow: none; }
+    .card:last-of-type { break-after: auto; page-break-after: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <button type="button" onclick="window.print()">🖨️ Stampa</button>
+  <span>Copie:</span>
+  {% for n in range(1, 5) %}<a class="copies" href="?copie={{ n }}"{% if n == copies %} aria-current="true"{% endif %}>{{ n }}</a>{% endfor %}
+  <span>Stampa su A4, una carta per pagina.</span>
+</div>
+{% for _ in range(copies) %}
+{% for c in cards %}
+<section class="card {{ c.color }}">
+  <div class="disc">{{ icon(c.id) }}</div>
+  <div class="word">{{ c.word.it }}</div>
+  <div class="sub">{{ c.sub.it }}</div>
+  {% for lang in langs %}
+  <div class="tr"{% if lang in rtl %} dir="rtl"{% endif %} lang="{{ lang }}">
+    <div class="w">{{ c.word[lang] }}</div>
+    <div class="s">{{ c.sub[lang] }}</div>
+  </div>
+  {% endfor %}
+</section>
+{% endfor %}
+{% endfor %}
+</body>
+</html>

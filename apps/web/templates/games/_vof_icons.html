@@ -1,0 +1,14 @@
+{# The four answer icons of "Vero o falso?": used by the game page and the answer cards. #}
+{% macro icon(name) -%}
+<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+{%- if name == "vero" -%}
+<polyline points="18,54 42,76 84,26"/>
+{%- elif name == "falso_ia" -%}
+<rect x="20" y="32" width="60" height="48" rx="10"/><circle cx="38" cy="54" r="5" fill="currentColor"/><circle cx="62" cy="54" r="5" fill="currentColor"/><line x1="38" y1="68" x2="62" y2="68"/><line x1="50" y1="32" x2="50" y2="16"/><circle cx="50" cy="12" r="4" fill="currentColor"/>
+{%- elif name == "truffa" -%}
+<circle cx="62" cy="12" r="6"/><path d="M62 18 V62 A20 20 0 0 1 22 62 V50"/><path d="M22 50 L14 62 M22 50 L30 62"/>
+{%- elif name == "verificare" -%}
+<circle cx="42" cy="42" r="26"/><line x1="61" y1="61" x2="86" y2="86"/>
+{%- endif -%}
+</svg>
+{%- endmacro %}
