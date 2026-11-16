@@ -29,6 +29,7 @@ implementer's session.
 | Lesson | Plan | Produces | ADR it obliges |
 |---|---|---|---|
 | 7 | [Python con l'assistente](lezione-7-python.md) | `/games/python` (Pyodide in the browser, seven steps, a coding assistant on the lesson 6 tutor's backend) and a 14-slide deck | 0019 |
+| 8 | [I social network](lezione-8-social.md) | two decks with presenter notes (35 + 14 slides), a teacher-only materials page (`/materiali`, files in gitignored `data/materials/`, metadata stripped), the projector game `/vero-o-falso` with printable cards, a take-home card; nine parallel work packages | 0020 |
 
 ## The calendar problem
 
