@@ -1112,3 +1112,99 @@ body {
 #local-slide .code-verdict { font-size: 1.5em; }
 .slide-box .run-btn,
 #local-slide .run-btn { display: inline-block; background: #1e7a3c; color: #fff; border-radius: 10px; padding: 0.2rem 0.8rem; font-weight: 700; }
+
+/* ---- Lesson 8 deck vocabulary: material slots, A/B pairs, social posts,
+   phone numbers, an age bar. Material is rendered server-side into
+   rb-slot (ADR 0020). ---- */
+.slide-box rb-slot,
+#local-slide rb-slot { display: block; }
+.slide-box .slot-media,
+#local-slide .slot-media { margin: 0.5rem auto; text-align: center; }
+.slide-box .slot-img,
+#local-slide .slot-img { display: block; max-width: 100%; max-height: 13em; margin: 0 auto; border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18); object-fit: contain; }
+.slide-box .slot-video,
+#local-slide .slot-video { display: block; max-width: 100%; max-height: 13em; margin: 0 auto; border-radius: 10px; background: #000; }
+.slide-box .slot-audio,
+#local-slide .slot-audio { width: 100%; max-width: 22rem; }
+.slide-box .slot-missing,
+#local-slide .slot-missing { max-width: 22rem; margin: 0.5rem auto; padding: 1.1rem 1rem; border: 3px dashed #b9c2d0;
+  border-radius: 14px; background: #f5f7fb; color: #556; text-align: center; font-weight: 700; }
+.slide-box .slot-missing-emoji,
+#local-slide .slot-missing-emoji { display: block; font-size: 2.2em; line-height: 1.2; }
+.slide-box .slot-missing small,
+#local-slide .slot-missing small { display: block; font-weight: 400; color: #889; font-size: 0.7em; }
+.slide-box .pair,
+#local-slide .pair { display: flex; gap: 1rem; align-items: flex-start; justify-content: center; margin: 0.8rem 0; }
+.slide-box .pair-col,
+#local-slide .pair-col { flex: 1 1 0; min-width: 0; text-align: center; }
+.slide-box .pair .slot-img,
+#local-slide .pair .slot-img { max-height: 11em; }
+.slide-box .pair-tag,
+#local-slide .pair-tag { display: inline-flex; align-items: center; justify-content: center; width: 1.8em; height: 1.8em;
+  border-radius: 50%; background: #1d2b4a; color: #fff; font-weight: 800; margin-bottom: 0.3rem; flex: 0 0 auto; }
+.slide-box .pic-grid.many .pic,
+#local-slide .pic-grid.many .pic { flex: 1 1 22%; min-width: 5.5rem; }
+.slide-box .pic.stop,
+#local-slide .pic.stop { background: #fdf1f0; border-color: #f3c9c4; }
+.slide-box .pic.red,
+#local-slide .pic.red { background: #fde8e7; border-color: #f2b8b5; }
+.slide-box .pic.yellow,
+#local-slide .pic.yellow { background: #fff6d6; border-color: #f5d76e; }
+.slide-box .mock-post,
+#local-slide .mock-post { max-width: 24rem; margin: 0.6rem auto; background: #fff; border: 1px solid #dde1e7; border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); text-align: start; overflow: hidden; font-size: 0.8em; }
+.slide-box .post-head,
+#local-slide .post-head { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.7rem; }
+.slide-box .post-avatar,
+#local-slide .post-avatar { flex: 0 0 auto; width: 2.2em; height: 2.2em; border-radius: 50%; background: #e8f0fe;
+  display: flex; align-items: center; justify-content: center; font-size: 1.1em; overflow: hidden; }
+.slide-box .post-page,
+#local-slide .post-page { font-weight: 700; color: #111; }
+.slide-box .post-meta,
+#local-slide .post-meta { display: block; font-size: 0.75em; color: #777; font-weight: 400; }
+.slide-box .post-body,
+#local-slide .post-body { padding: 0 0.7rem 0.5rem; line-height: 1.4; }
+.slide-box .post-media,
+#local-slide .post-media { background: #e9ecf1; color: #556; text-align: center; padding: 1.1rem 0.5rem; font-size: 1.6em; }
+.slide-box .post-bar,
+#local-slide .post-bar { display: flex; gap: 1rem; flex-wrap: wrap; padding: 0.4rem 0.7rem; border-top: 1px solid #eee; color: #666; font-size: 0.8em; }
+.slide-box .post-comment,
+#local-slide .post-comment { margin: 0.4rem 0.7rem 0.6rem; background: #f0f2f5; border-radius: 12px; padding: 0.4rem 0.7rem; }
+.slide-box .post-verdict,
+#local-slide .post-verdict { margin: 0.3rem 0.7rem 0.6rem; padding: 0.3rem 0.6rem; border-radius: 8px; background: #fdece6;
+  color: #c0392b; font-weight: 700; }
+.slide-box .post-row,
+#local-slide .post-row { display: flex; gap: 0.6rem; align-items: stretch; }
+.slide-box .post-row .mock-post,
+#local-slide .post-row .mock-post { flex: 1 1 0; min-width: 0; margin: 0.4rem 0; }
+.slide-box .ai-label,
+#local-slide .ai-label { display: inline-block; margin: 0.4rem 0.7rem 0.6rem; padding: 0.15rem 0.6rem; border-radius: 999px;
+  background: #eef0f3; color: #333; font-size: 0.85em; font-weight: 700; }
+.slide-box .num-grid,
+#local-slide .num-grid { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1rem 0; }
+.slide-box .num-card,
+#local-slide .num-card { flex: 1 1 40%; min-width: 9rem; box-sizing: border-box; padding: 0.7rem 0.9rem; border-radius: 14px;
+  background: #f5f7fb; border: 1px solid #dfe5f1; text-align: center; }
+.slide-box .num-label,
+#local-slide .num-label { display: block; font-weight: 600; }
+.slide-box .num-big,
+#local-slide .num-big { display: block; font-size: 1.5em; font-weight: 800; color: #1a56c4; direction: ltr; unicode-bidi: isolate;
+  overflow-wrap: anywhere; }
+.slide-box .num-card small,
+#local-slide .num-card small { display: block; font-size: 0.7em; color: #555; }
+.slide-box .age-bar,
+#local-slide .age-bar { position: relative; height: 1.2em; margin: 2em 0.6em 0.3em; border-radius: 999px; background: #e9ecf1; direction: ltr; }
+.slide-box .age-fill,
+#local-slide .age-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 77.8%; border-radius: 999px 0 0 999px; background: #f8cdbc; }
+.slide-box .age-mark,
+#local-slide .age-mark { position: absolute; top: -1.7em; transform: translateX(-50%); font-weight: 800; color: #1d2b4a; }
+.slide-box .age-mark::after,
+#local-slide .age-mark::after { content: ""; position: absolute; left: 50%; top: 1.4em; width: 3px; height: 1.7em;
+  margin-left: -1.5px; background: currentColor; }
+.slide-box .age-mark.m14,
+#local-slide .age-mark.m14 { left: 77.8%; }
+.slide-box .age-mark.m15,
+#local-slide .age-mark.m15 { left: 83.3%; color: #c0472b; }
+.slide-box .age-ends,
+#local-slide .age-ends { display: flex; justify-content: space-between; margin: 0 0.6em 0.8rem; font-size: 0.7em; color: #777; direction: ltr; }

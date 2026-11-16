@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>rev-babel — telecomando</title>
+  <style>
+    /* Teacher-only phone remote: notes, VERIFY flags, missing materials and
+       big previous/next buttons for the local deck on /present. No external
+       assets; every piece of text is written with textContent. */
+    [hidden] { display: none !important; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: #111;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      font-size: 1rem;
+    }
+    .dot { width: 0.8rem; height: 0.8rem; border-radius: 50%; background: #666; display: inline-block; flex: 0 0 auto; }
+    .dot.ok { background: #22c55e; }
+    .dot.bad { background: #ef4444; }
+    header {
+      flex: 0 0 auto; display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.6rem 0.9rem; background: #1c1c1c; border-bottom: 1px solid #333; font-weight: 700;
+    }
+    #counter { margin-inline-start: auto; font-size: 1.2rem; }
+    #info { flex: 1 1 auto; overflow-y: auto; padding: 0.7rem 0.9rem; line-height: 1.5; }
+    #slide-id { font-weight: 700; color: #aaa; }
+    #deck-title { color: #888; font-size: 0.85rem; margin-bottom: 0.4rem; }
+    .verify { background: #3a3000; color: #ffd84d; border-radius: 6px; padding: 0.45rem 0.7rem; margin: 0.5rem 0; }
+    #notes-text { white-space: pre-wrap; margin: 0.5rem 0; }
+    .missing { color: #ff7b72; margin: 0.4rem 0; font-weight: 600; }
+    .missing a { color: inherit; }
+    #idle { color: #ccc; padding: 1rem 0; }
+    .nav { flex: 0 0 auto; display: flex; gap: 0.6rem; padding: 0.5rem 0.9rem; }
+    .nav button {
+      flex: 1 1 0; min-height: 22vh; font-size: 3rem; border-radius: 14px; border: 1px solid #444;
+      background: #2c2c2c; color: #eee; cursor: pointer; touch-action: manipulation;
+    }
+    .nav button:active { background: #3d3d3d; }
+    .nav button:disabled, .tools button:disabled { opacity: 0.35; cursor: default; }
+    .tools { flex: 0 0 auto; display: flex; gap: 0.6rem; padding: 0.2rem 0.9rem 0.9rem; flex-wrap: wrap; }
+    .tools button, .tools a {
+      flex: 1 1 0; min-width: 7rem; box-sizing: border-box; text-align: center; text-decoration: none;
+      padding: 0.8rem 0.5rem; font-size: 1rem; border-radius: 10px; border: 1px solid #444;
+      background: #2c2c2c; color: #eee; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="dot" id="dot"></span>
+    <span>Telecomando</span>
+    <span id="counter">—</span>
+  </header>
+  <div id="info">
+    <div id="idle" hidden>Nessuna presentazione locale in corso. Avviala da /present.</div>
+    <div id="slide-id"></div>
+    <div id="deck-title"></div>
+    <div id="verify-box"></div>
+    <div id="notes-text"></div>
+    <div id="missing-box"></div>
+  </div>
+  <div class="nav">
+    <button id="prev" aria-label="Indietro" disabled>◀</button>
+    <button id="next" aria-label="Avanti" disabled>▶</button>
+  </div>
+  <div class="tools">
+    <button id="pause" disabled>⏸ Pausa</button>
+    <a href="/materiali" target="_blank" rel="noopener">📦 Materiali</a>
+    <a href="/vero-o-falso" target="_blank" rel="noopener">🎮 Gioco</a>
+  </div>
+
+  <script>
+    let current = null; // the last /admin/api/live/notes payload
+    let busy = false;
+
+    function setDot(ok) {
+      document.getElementById("dot").className = ok ? "dot ok" : "dot bad";
+    }
+
+    function addDiv(parent, className, text) {
+      const div = document.createElement("div");
+      div.className = className;
+      div.textContent = text;
+      parent.appendChild(div);
+      return div;
+    }
+
+    function isLocalLive(state) {
+      return !!state && state.source === "local" && state.status !== "ended";
+    }
+
+    function paint(data) {
+      current = data;
+      const state = data.state;
+      const local = isLocalLive(state);
+      const slide = local ? data.slide : null;
+      document.getElementById("idle").hidden = local;
+      document.getElementById("counter").textContent = local ? `${state.index} / ${state.slide_count}` : "—";
+      document.getElementById("deck-title").textContent = local ? (state.title || "") : "";
+      document.getElementById("slide-id").textContent = slide && slide.id
+        ? slide.id + (slide.optional ? " · facoltativa" : "") : "";
+      const verifyBox = document.getElementById("verify-box");
+      verifyBox.textContent = "";
+      for (const line of (slide && slide.verify) || []) addDiv(verifyBox, "verify", line);
+      document.getElementById("notes-text").textContent = (slide && slide.notes) || "";
+      const missingBox = document.getElementById("missing-box");
+      missingBox.textContent = "";
+      for (const item of (slide && slide.missing) || []) {
+        const row = document.createElement("div");
+        row.className = "missing";
+        const link = document.createElement("a");
+        link.href = "/materiali";
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = `📦 Manca ${item.id}`;
+        row.appendChild(link);
+        if (item.needed === "fallback") row.appendChild(document.createTextNode(" (c'è un esempio)"));
+        missingBox.appendChild(row);
+      }
+      document.getElementById("prev").disabled = !local;
+      document.getElementById("next").disabled = !local;
+      const pause = document.getElementById("pause");
+      pause.disabled = !local;
+      pause.textContent = local && state.status === "blank" ? "▶ Riprendi" : "⏸ Pausa";
+    }
+
+    async function refresh() {
+      try {
+        const response = await fetch("/admin/api/live/notes");
+        if (!response.ok) throw new Error(String(response.status));
+        paint(await response.json());
+        setDot(true);
+      } catch (e) {
+        setDot(false);
+      }
+    }
+
+    async function post(path, body) {
+      if (busy) return;
+      busy = true;
+      try {
+        const response = await fetch("/admin/api/live" + path, {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(body),
+        });
+        if (!response.ok) throw new Error(String(response.status));
+        setDot(true);
+      } catch (e) {
+        setDot(false);
+      } finally {
+        busy = false;
+      }
+      await refresh();
+    }
+
+    function step(delta) {
+      if (!current || !isLocalLive(current.state)) return;
+      // The server clamps the index into the deck.
+      post("/goto", {index: current.state.index + delta});
+    }
+
+    document.getElementById("prev").addEventListener("click", () => step(-1));
+    document.getElementById("next").addEventListener("click", () => step(1));
+    document.getElementById("pause").addEventListener("click", () => {
+      if (!current || !isLocalLive(current.state)) return;
+      post("/status", {status: current.state.status === "blank" ? "live" : "blank"});
+    });
+
+    refresh();
+    setInterval(refresh, 2000);
+  </script>
+</body>
+</html>
