@@ -3,12 +3,11 @@
 import copy
 import json
 import struct
-from pathlib import Path
 import zlib
+from pathlib import Path
 
 import pytest
 from rev_babel_web import materials as m
-
 
 # The store is generic (audio slots, link fields, optional slots), so these
 # tests run on the full 25-slot manifest kept as a fixture, even though the
