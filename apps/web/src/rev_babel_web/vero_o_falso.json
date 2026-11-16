@@ -1,177 +1,1261 @@
 {
  "version": 1,
  "answers": {
-  "vero": {"emoji": "✅", "color": "green", "word": {"it": "VERO"}, "sub": {"it": "vero o affidabile"}},
-  "falso_ia": {"emoji": "🤖", "color": "red", "word": {"it": "FALSO / IA"}, "sub": {"it": "falso, fatto con l'IA o modificato"}},
-  "truffa": {"emoji": "🎣", "color": "yellow", "word": {"it": "TRUFFA"}, "sub": {"it": "vuole soldi o dati"}},
-  "verificare": {"emoji": "🔍", "color": "blue", "word": {"it": "DEVO VERIFICARE"}, "sub": {"it": "guardando non si capisce"}}
+  "vero": {
+   "emoji": "✅",
+   "color": "green",
+   "word": {
+    "it": "VERO",
+    "en": "REAL",
+    "fr": "RÉEL",
+    "ckb": "ڕاستەقینە",
+    "kmr": "RAST",
+    "ar": "حقيقي"
+   },
+   "sub": {
+    "it": "vero o affidabile",
+    "en": "true or reliable",
+    "fr": "vrai ou fiable",
+    "ckb": "ڕاستە یان جێی متمانەیە",
+    "kmr": "rast an pêbawer",
+    "ar": "صحيح أو موثوق"
+   }
+  },
+  "falso_ia": {
+   "emoji": "🤖",
+   "color": "red",
+   "word": {
+    "it": "FALSO / IA",
+    "en": "FALSE / IA",
+    "fr": "FAUX / IA",
+    "ckb": "هەڵە / IA",
+    "kmr": "ŞAŞ / IA",
+    "ar": "خطأ / IA"
+   },
+   "sub": {
+    "it": "falso, fatto con l'IA o modificato",
+    "en": "fake, AI-made, or modified",
+    "fr": "faux, créé par IA ou modifié",
+    "ckb": "ساختە، دروستکراوی AI، یان دەستکاریکراو",
+    "kmr": "sexte, ji hêla AI ve hatî çêkirin, an guherandî",
+    "ar": "مزيف، أو مصنوع بواسطة الذكاء الاصطناعي، أو معدل"
+   }
+  },
+  "truffa": {
+   "emoji": "🎣",
+   "color": "yellow",
+   "word": {
+    "it": "TRUFFA",
+    "en": "FRAUD",
+    "fr": "FRAUDE",
+    "ckb": "ساختە",
+    "kmr": "QELPEZANÎ",
+    "ar": "احتيال"
+   },
+   "sub": {
+    "it": "vuole soldi o dati",
+    "en": "wants money or data",
+    "fr": "veut de l'argent ou des données",
+    "ckb": "پارە یان داتا دەوێت",
+    "kmr": "pere an daneyan dixwaze",
+    "ar": "يريد المال أو البيانات"
+   }
+  },
+  "verificare": {
+   "emoji": "🔍",
+   "color": "blue",
+   "word": {
+    "it": "DEVO VERIFICARE",
+    "en": "I NEED TO CHECK",
+    "fr": "JE DOIS VÉRIFIER",
+    "ckb": "پێویستە پشکنین بکەم",
+    "kmr": "PÊDIVÎ BI KONTROLÊ BIKIM",
+    "ar": "أحتاج إلى التحقق"
+   },
+   "sub": {
+    "it": "guardando non si capisce",
+    "en": "looking you can't tell",
+    "fr": "À première vue, on ne peut pas le dire.",
+    "ckb": "سەیرکردن ناتوانیت بزانیت",
+    "kmr": "dinihêrî tu nikarî bibêjî",
+    "ar": "بالنظر لا يمكنك معرفة"
+   }
+  }
  },
  "categories": [
-  {"id": "foto", "emoji": "📷", "label": {"it": "Foto"}, "items": ["I1", "I2", "I3", "I4"]},
-  {"id": "video", "emoji": "🎬", "label": {"it": "Video"}, "items": ["V1", "V2", "V3"]},
-  {"id": "voci", "emoji": "🎙️", "label": {"it": "Voci"}, "items": ["A1", "A2"]},
-  {"id": "messaggi", "emoji": "💬", "label": {"it": "Messaggi"}, "items": ["M1", "M4", "M2", "M5", "M3"]},
-  {"id": "post", "emoji": "📰", "label": {"it": "Post"}, "items": ["P1", "P2", "P3"]},
-  {"id": "profili", "emoji": "👤", "label": {"it": "Profili"}, "items": ["F1", "F2", "F3"]}
+  {
+   "id": "foto",
+   "emoji": "📷",
+   "label": {
+    "it": "Foto",
+    "en": "Photo",
+    "fr": "Photo",
+    "ckb": "وێنە",
+    "kmr": "Wêne",
+    "ar": "صورة"
+   },
+   "items": [
+    "I1",
+    "I2",
+    "I3",
+    "I4"
+   ]
+  },
+  {
+   "id": "video",
+   "emoji": "🎬",
+   "label": {
+    "it": "Video",
+    "en": "Video",
+    "fr": "Vidéo",
+    "ckb": "ڤیدیۆ",
+    "kmr": "Vîdyo",
+    "ar": "فيديو"
+   },
+   "items": [
+    "V1",
+    "V2",
+    "V3"
+   ]
+  },
+  {
+   "id": "voci",
+   "emoji": "🎙️",
+   "label": {
+    "it": "Voci",
+    "en": "Voices",
+    "fr": "Voix",
+    "ckb": "دەنگەکان",
+    "kmr": "Deng",
+    "ar": "أصوات"
+   },
+   "items": [
+    "A1",
+    "A2"
+   ]
+  },
+  {
+   "id": "messaggi",
+   "emoji": "💬",
+   "label": {
+    "it": "Messaggi",
+    "en": "Messages",
+    "fr": "Messages",
+    "ckb": "پەیامەکان",
+    "kmr": "Peyam",
+    "ar": "رسائل"
+   },
+   "items": [
+    "M1",
+    "M4",
+    "M2",
+    "M5",
+    "M3"
+   ]
+  },
+  {
+   "id": "post",
+   "emoji": "📰",
+   "label": {
+    "it": "Post",
+    "en": "Post",
+    "fr": "Poste",
+    "ckb": "پۆست",
+    "kmr": "Koz",
+    "ar": "بريد"
+   },
+   "items": [
+    "P1",
+    "P2",
+    "P3"
+   ]
+  },
+  {
+   "id": "profili",
+   "emoji": "👤",
+   "label": {
+    "it": "Profili",
+    "en": "Profiles",
+    "fr": "Profils",
+    "ckb": "پڕۆفایلی",
+    "kmr": "Profîl",
+    "ar": "الملفات الشخصية"
+   },
+   "items": [
+    "F1",
+    "F2",
+    "F3"
+   ]
+  }
  ],
  "items": [
-  {"id": "I1", "category": "foto", "media": {"type": "image", "slot": "I1"}, "mock": null, "invented": false,
-   "caption": {"it": "Mercato del sabato mattina 🍅"}, "answer": "vero", "onlyVerifiable": false, "hardToJudge": true,
-   "clue": {"it": "È una foto vera: l'ha fatta l'insegnante con il telefono."},
-   "action": {"it": "Chi l'ha pubblicata? Una persona che conosciamo: possiamo chiederle."},
-   "source_note": "teacher's own photo", "teachingLink": "S27-Q2"},
-  {"id": "I2", "category": "foto", "media": {"type": "image", "slot": "I2"}, "mock": null, "invented": false,
-   "caption": {"it": "Mercato del sabato mattina 🍅"}, "answer": "falso_ia", "onlyVerifiable": false, "hardToJudge": true,
-   "clue": {"it": "L'ha creata l'IA in pochi secondi. A volte si vedono piccoli errori, ma non sempre."},
-   "action": {"it": "Guardare non basta: chiediti da dove viene la foto."},
-   "source_note": "AI image made by the teacher", "teachingLink": "S26"},
-  {"id": "I3", "category": "foto", "media": {"type": "image", "slot": "I3"}, "mock": null, "invented": false,
-   "caption": {"it": "Tramonto di ieri sera 🌅"}, "answer": "vero", "onlyVerifiable": false, "hardToJudge": true,
-   "clue": {"it": "Foto vera, senza filtri. Bella non vuol dire falsa."},
-   "action": {"it": "Non giudicare dalla bellezza: guarda chi l'ha pubblicata."},
-   "source_note": "teacher's own photo", "teachingLink": "S27-Q2"},
-  {"id": "I4", "category": "foto", "media": {"type": "image", "slot": "I4"}, "mock": null, "invented": false,
-   "caption": {"it": "OGGI in città. Guardate che disastro! 😱 Condividete!"}, "answer": "verificare", "onlyVerifiable": true, "hardToJudge": true,
-   "clue": {"it": "La foto è vera, ma è vecchia: «oggi» è falso. Guardando non si può capire."},
-   "action": {"it": "Cerca la foto con Google Lens: trovi quando e dove è nata."},
-   "source_note": "teacher's own old photo with a false caption", "teachingLink": "S27-Q4"},
-  {"id": "V1", "category": "video", "media": {"type": "video", "slot": "V1"}, "mock": null, "invented": false,
-   "caption": {"it": "Una passeggiata oggi pomeriggio"}, "answer": "vero", "onlyVerifiable": false, "hardToJudge": true,
-   "clue": {"it": "Video vero, fatto con il telefono."},
-   "action": {"it": "Chi l'ha pubblicato? Se lo conosci, puoi chiedere."},
-   "source_note": "teacher's own video", "teachingLink": "S27-Q2"},
-  {"id": "V2", "category": "video", "media": {"type": "video", "slot": "V2"}, "mock": null, "invented": false,
-   "caption": {"it": "Guardate che scena incredibile! 😍"}, "answer": "falso_ia", "onlyVerifiable": false, "hardToJudge": true,
-   "clue": {"it": "Video creato con l'IA. Oggi questi video sembrano veri."},
-   "action": {"it": "Cerca altre fonti: se è vero, ne parlano anche altri."},
-   "source_note": "AI video made by the teacher", "teachingLink": "S27-Q3"},
-  {"id": "V3", "category": "video", "media": {"type": "video", "slot": "V3"}, "mock": null, "invented": false,
-   "caption": {"it": "Ecco cosa succede OGGI in centro! 😱"}, "answer": "verificare", "onlyVerifiable": true, "hardToJudge": true,
-   "clue": {"it": "Il video è vero, ma è di un altro giorno o di un altro posto. Guardando non si capisce."},
-   "action": {"it": "Dov'è l'originale? Cerca il video prima di condividere."},
-   "source_note": "teacher's own video with a misleading caption", "teachingLink": "S27-Q4"},
-  {"id": "A1", "category": "voci", "media": {"type": "audio", "slot": "A1"}, "mock": null, "invented": false,
-   "caption": {"it": "🎙️ Messaggio vocale"}, "answer": "vero", "onlyVerifiable": false, "hardToJudge": true,
-   "clue": {"it": "È la voce vera dell'insegnante, registrata con il telefono."},
-   "action": {"it": "Ti chiede aiuto? Richiama la persona al suo numero di sempre."},
-   "source_note": "teacher's own voice", "teachingLink": "S22"},
-  {"id": "A2", "category": "voci", "media": {"type": "audio", "slot": "A2"}, "mock": null, "invented": false,
-   "caption": {"it": "🎙️ Messaggio vocale"}, "answer": "falso_ia", "onlyVerifiable": false, "hardToJudge": true,
-   "clue": {"it": "Voce copiata con l'IA da pochi secondi di registrazione. Sembra quasi uguale."},
-   "action": {"it": "Chiedi la parola segreta di famiglia. Oppure richiama tu, al numero di sempre."},
-   "source_note": "the teacher's own voice cloned with his consent", "teachingLink": "S22"},
-  {"id": "M1", "category": "messaggi", "media": {"type": "image", "slot": "M1"},
+  {
+   "id": "I1",
+   "category": "foto",
+   "media": {
+    "type": "image",
+    "slot": "I1"
+   },
+   "mock": null,
+   "invented": false,
+   "caption": {
+    "it": "Mercato del sabato mattina 🍅",
+    "en": "Saturday morning market 🍅",
+    "fr": "Marché du samedi matin 🍅",
+    "ckb": "بازاڕی بەیانی شەممە 🍅",
+    "kmr": "Bazara roja Şemiyê ya sibê 🍅",
+    "ar": "سوق صباح السبت 🍅"
+   },
+   "answer": "vero",
+   "onlyVerifiable": false,
+   "hardToJudge": true,
+   "clue": {
+    "it": "È una foto vera: l'ha fatta l'insegnante con il telefono.",
+    "en": "It's a real photo: the teacher took it with her phone.",
+    "fr": "C'est une vraie photo : l'enseignante l'a prise avec son téléphone.",
+    "ckb": "وێنەیەکی ڕاستەقینەیە: مامۆستاکە بە مۆبایلەکەی گرتووە.",
+    "kmr": "Ew wêneyekî rastîn e: mamosteyê ew bi telefona xwe kişandiye.",
+    "ar": "إنها صورة حقيقية: التقطتها المعلمة بهاتفها."
+   },
+   "action": {
+    "it": "Chi l'ha pubblicata? Una persona che conosciamo: possiamo chiederle.",
+    "en": "Who published it? Someone we know; we can ask them.",
+    "fr": "Qui l'a publié ? Quelqu'un que nous connaissons ; nous pouvons lui demander.",
+    "ckb": "کێ بڵاوی کردۆتەوە؟ کەسێک کە دەیناسین؛ دەتوانین پرسیاریان لێ بکەین.",
+    "kmr": "Kê ew weşandiye? Kesekî ku em nas dikin; em dikarin ji wî bipirsin.",
+    "ar": "من نشرها؟ شخص نعرفه؛ يمكننا سؤاله."
+   },
+   "source_note": "teacher's own photo",
+   "teachingLink": "S27-Q2"
+  },
+  {
+   "id": "I2",
+   "category": "foto",
+   "media": {
+    "type": "image",
+    "slot": "I2"
+   },
+   "mock": null,
+   "invented": false,
+   "caption": {
+    "it": "Mercato del sabato mattina 🍅",
+    "en": "Saturday morning market 🍅",
+    "fr": "Marché du samedi matin 🍅",
+    "ckb": "بازاڕی بەیانی شەممە 🍅",
+    "kmr": "Bazara roja Şemiyê ya sibê 🍅",
+    "ar": "سوق صباح السبت 🍅"
+   },
+   "answer": "falso_ia",
+   "onlyVerifiable": false,
+   "hardToJudge": true,
+   "clue": {
+    "it": "L'ha creata l'IA in pochi secondi. A volte si vedono piccoli errori, ma non sempre.",
+    "en": "AI created it in seconds. Sometimes you see small errors, but not always.",
+    "fr": "L'IA l'a créé en quelques secondes. On peut parfois apercevoir de petites erreurs, mais pas systématiquement.",
+    "ckb": "AI لە چەند چرکەیەکدا دروستی کردووە. هەندێک جار هەڵەی بچووک دەبینیت، بەڵام هەمیشە نا.",
+    "kmr": "AI ew di çend saniyan de afirand. Carinan hûn xeletiyên piçûk dibînin, lê ne her gav.",
+    "ar": "تم إنشاؤه بواسطة الذكاء الاصطناعي في ثوانٍ. أحيانًا تظهر أخطاء صغيرة، ولكن ليس دائمًا."
+   },
+   "action": {
+    "it": "Guardare non basta: chiediti da dove viene la foto.",
+    "en": "Looking isn't enough: ask yourself where the photo comes from.",
+    "fr": "Regarder ne suffit pas : demandez-vous d'où vient la photo.",
+    "ckb": "سەیرکردن بەس نییە: لە خۆت بپرسە وێنەکە لە کوێوە هاتووە؟",
+    "kmr": "Li xwe nihêrîn têrê nake: ji xwe bipirse ka wêne ji ku tê.",
+    "ar": "لا يكفي مجرد النظر: اسأل نفسك من أين أتت الصورة."
+   },
+   "source_note": "AI image made by the teacher",
+   "teachingLink": "S26"
+  },
+  {
+   "id": "I3",
+   "category": "foto",
+   "media": {
+    "type": "image",
+    "slot": "I3"
+   },
+   "mock": null,
+   "invented": false,
+   "caption": {
+    "it": "Tramonto di ieri sera 🌅",
+    "en": "Sunset last night 🌅",
+    "fr": "Coucher de soleil hier soir 🌅",
+    "ckb": "خۆرئاوابوونی دوێنێ شەو 🌅",
+    "kmr": "Rojavabûna şevê din 🌅",
+    "ar": "غروب الشمس الليلة الماضية 🌅"
+   },
+   "answer": "vero",
+   "onlyVerifiable": false,
+   "hardToJudge": true,
+   "clue": {
+    "it": "Foto vera, senza filtri. Bella non vuol dire falsa.",
+    "en": "Real photo, no filters. Beautiful doesn't mean fake.",
+    "fr": "Photo authentique, sans filtre. La beauté n'est pas synonyme de faux.",
+    "ckb": "وێنەی ڕاستەقینە، بێ فلتەر. جوان بە مانای ساختە نییە.",
+    "kmr": "Wêneyê rastîn, bê fîlter. Xweşik nayê wê wateyê ku sexte ye.",
+    "ar": "صورة حقيقية، بدون فلاتر. الجمال لا يعني بالضرورة التزييف."
+   },
+   "action": {
+    "it": "Non giudicare dalla bellezza: guarda chi l'ha pubblicata.",
+    "en": "Don't judge by beauty: look who posted it.",
+    "fr": "Ne jugez pas sur l'apparence : regardez qui l'a postée.",
+    "ckb": "بە جوانی حوکم مەدە: سەیرکە کێ پۆستی کردووە.",
+    "kmr": "Li gor bedewiyê dadbar neke: binêre kê ew şandiye.",
+    "ar": "لا تحكم على الناس من خلال جمال الصورة: انظر من نشرها."
+   },
+   "source_note": "teacher's own photo",
+   "teachingLink": "S27-Q2"
+  },
+  {
+   "id": "I4",
+   "category": "foto",
+   "media": {
+    "type": "image",
+    "slot": "I4"
+   },
+   "mock": null,
+   "invented": false,
+   "caption": {
+    "it": "OGGI in città. Guardate che disastro! 😱 Condividete!",
+    "en": "TODAY in the city. Look at this mess! 😱 Share!",
+    "fr": "Aujourd'hui en ville. Quel désordre ! 😱 Partagez !",
+    "ckb": "ئەمڕۆ لە شار. سەیری ئەم گێژاوە بکەن! 😱 شەیری بکە!",
+    "kmr": "ÎRO li bajêr. Li vê tevliheviyê binêre! 😱 Parve bike!",
+    "ar": "اليوم في المدينة. انظروا إلى هذه الفوضى! 😱 شاركوا!"
+   },
+   "answer": "verificare",
+   "onlyVerifiable": true,
+   "hardToJudge": true,
+   "clue": {
+    "it": "La foto è vera, ma è vecchia: «oggi» è falso. Guardando non si può capire.",
+    "en": "The photo is real, but it's old: \"today\" is fake. You can't tell by looking.",
+    "fr": "La photo est authentique, mais elle est ancienne : la mention « aujourd’hui » est fausse. On ne peut pas le deviner au premier coup d’œil.",
+    "ckb": "وێنەکە ڕاستەقینە، بەڵام کۆنە: \"ئەمڕۆ\" ساختەیە. بە سەیرکردن ناتوانیت بزانیت.",
+    "kmr": "Wêne rast e, lê kevn e: \"îro\" sexte ye. Mirov bi nihêrînê nikare bibêje.",
+    "ar": "الصورة حقيقية، لكنها قديمة: صورة \"اليوم\" مزيفة. لا يمكنك معرفة ذلك بمجرد النظر."
+   },
+   "action": {
+    "it": "Cerca la foto con Google Lens: trovi quando e dove è nata.",
+    "en": "Search for the photo with Google Lens: find out when and where it was taken.",
+    "fr": "Recherchez la photo avec Google Lens : découvrez quand et où elle a été prise.",
+    "ckb": "بە عەدەسەی گووگڵ بەدوای وێنەکەدا بگەڕێ: بزانە کەی و لە کوێ گیراوە.",
+    "kmr": "Bi Google Lens li wêneyê bigere: bibîne kengî û li ku hatiye kişandin.",
+    "ar": "ابحث عن الصورة باستخدام عدسة جوجل: اكتشف متى وأين تم التقاطها."
+   },
+   "source_note": "teacher's own old photo with a false caption",
+   "teachingLink": "S27-Q4"
+  },
+  {
+   "id": "V1",
+   "category": "video",
+   "media": {
+    "type": "video",
+    "slot": "V1"
+   },
+   "mock": null,
+   "invented": false,
+   "caption": {
+    "it": "Una passeggiata oggi pomeriggio",
+    "en": "A walk this afternoon",
+    "fr": "Une promenade cet après-midi",
+    "ckb": "پیاسەیەک ئەمڕۆ پاشنیوەڕۆ",
+    "kmr": "Meşek îro piştî nîvro",
+    "ar": "نزهة بعد ظهر اليوم"
+   },
+   "answer": "vero",
+   "onlyVerifiable": false,
+   "hardToJudge": true,
+   "clue": {
+    "it": "Video vero, fatto con il telefono.",
+    "en": "Real video, made with the phone.",
+    "fr": "Vidéo authentique, réalisée avec un téléphone.",
+    "ckb": "ڤیدیۆی ڕاستەقینە، بە مۆبایلەکە دروستکراوە.",
+    "kmr": "Vîdyoyek rastîn, bi telefonê hatiye çêkirin.",
+    "ar": "فيديو حقيقي، تم تصويره بالهاتف."
+   },
+   "action": {
+    "it": "Chi l'ha pubblicato? Se lo conosci, puoi chiedere.",
+    "en": "Who published it? If you know, you can ask.",
+    "fr": "Qui l'a publié ? Si vous le savez, vous pouvez demander.",
+    "ckb": "کێ بڵاوی کردۆتەوە؟ ئەگەر دەزانن دەتوانن پرسیار بکەن.",
+    "kmr": "Kê weşandiye? Heke hûn dizanin, hûn dikarin bipirsin.",
+    "ar": "من قام بنشره؟ إذا كنت تعرف، يمكنك السؤال."
+   },
+   "source_note": "teacher's own video",
+   "teachingLink": "S27-Q2"
+  },
+  {
+   "id": "V2",
+   "category": "video",
+   "media": {
+    "type": "video",
+    "slot": "V2"
+   },
+   "mock": null,
+   "invented": false,
+   "caption": {
+    "it": "Guardate che scena incredibile! 😍",
+    "en": "Look at this incredible scene! 😍",
+    "fr": "Admirez cette scène incroyable ! 😍",
+    "ckb": "سەیری ئەم دیمەنە باوەڕپێنەکراوە بکەن! 😍",
+    "kmr": "Li vê dîmena bêhempa binêre! 😍",
+    "ar": "انظروا إلى هذا المشهد الرائع! 😍"
+   },
+   "answer": "falso_ia",
+   "onlyVerifiable": false,
+   "hardToJudge": true,
+   "clue": {
+    "it": "Video creato con l'IA. Oggi questi video sembrano veri.",
+    "en": "Video created with AI. Today, these videos look real.",
+    "fr": "Vidéo créée par intelligence artificielle. Aujourd'hui, ces vidéos paraissent réelles.",
+    "ckb": "ڤیدیۆ دروستکراوە بە AI. ئەمڕۆ ئەم ڤیدیۆیانە ڕاستەقینە دەردەکەون.",
+    "kmr": "Vîdyo bi AI hatiye çêkirin. Îro, ev vîdyo rast xuya dikin.",
+    "ar": "فيديوهات تم إنشاؤها باستخدام الذكاء الاصطناعي. اليوم، تبدو هذه الفيديوهات حقيقية."
+   },
+   "action": {
+    "it": "Cerca altre fonti: se è vero, ne parlano anche altri.",
+    "en": "Look for other sources: if it's true, others are talking about it too.",
+    "fr": "Cherchez d'autres sources : si c'est vrai, d'autres en parlent aussi.",
+    "ckb": "بەدوای سەرچاوەی تردا بگەڕێ: ئەگەر ڕاست بێت، ئەوانی تریش باسی دەکەن.",
+    "kmr": "Li çavkaniyên din bigere: eger rast be, yên din jî li ser diaxivin.",
+    "ar": "ابحث عن مصادر أخرى: إذا كان الأمر صحيحاً، فسيتحدث عنه آخرون أيضاً."
+   },
+   "source_note": "AI video made by the teacher",
+   "teachingLink": "S27-Q3"
+  },
+  {
+   "id": "V3",
+   "category": "video",
+   "media": {
+    "type": "video",
+    "slot": "V3"
+   },
+   "mock": null,
+   "invented": false,
+   "caption": {
+    "it": "Ecco cosa succede OGGI in centro! 😱",
+    "en": "Here's what's happening downtown TODAY! 😱",
+    "fr": "Voici ce qui se passe en centre-ville AUJOURD'HUI ! 😱",
+    "ckb": "لێرەدا ئەوەی ئەمڕۆ لە ناوەندی شار ڕوودەدات! 😱",
+    "kmr": "Îro li navenda bajêr çi diqewime! 😱",
+    "ar": "إليكم ما يحدث في وسط المدينة اليوم! 😱"
+   },
+   "answer": "verificare",
+   "onlyVerifiable": true,
+   "hardToJudge": true,
+   "clue": {
+    "it": "Il video è vero, ma è di un altro giorno o di un altro posto. Guardando non si capisce.",
+    "en": "The video is real, but it's from another day or another place. It's hard to tell by looking.",
+    "fr": "La vidéo est authentique, mais elle date d'un autre jour ou d'un autre lieu. Difficile à dire à première vue.",
+    "ckb": "ڤیدیۆکە ڕاستەقینەیە، بەڵام لە ڕۆژێکی ترەوە یان شوێنێکی ترە. سەختە بە سەیرکردن بزانیت.",
+    "kmr": "Vîdyo rast e, lê ji rojek din an cîhek din e. Bi nihêrînê zehmet e ku meriv fêm bike.",
+    "ar": "الفيديو حقيقي، لكنه من يوم آخر أو مكان آخر. يصعب التأكد من ذلك بمجرد النظر."
+   },
+   "action": {
+    "it": "Dov'è l'originale? Cerca il video prima di condividere.",
+    "en": "Where's the original? Search for the video before sharing.",
+    "fr": "Où est la vidéo originale ? Veuillez la rechercher avant de la partager.",
+    "ckb": "ئەسڵی لە کوێیە؟ پێش ئەوەی بڵاوی بکەیتەوە بەدوای ڤیدیۆکەدا بگەڕێ.",
+    "kmr": "Vîdyoya orjînal li ku ye? Berî parvekirinê li vîdyoyê bigere.",
+    "ar": "أين النسخة الأصلية؟ ابحث عن الفيديو قبل مشاركته."
+   },
+   "source_note": "teacher's own video with a misleading caption",
+   "teachingLink": "S27-Q4"
+  },
+  {
+   "id": "A1",
+   "category": "voci",
+   "media": {
+    "type": "audio",
+    "slot": "A1"
+   },
+   "mock": null,
+   "invented": false,
+   "caption": {
+    "it": "🎙️ Messaggio vocale",
+    "en": "🎙️ Voice message",
+    "fr": "🎙️ Message vocal",
+    "ckb": "🎙️ پەیامی دەنگی",
+    "kmr": "🎙️ Peyama dengî",
+    "ar": "🎙️ رسالة صوتية"
+   },
+   "answer": "vero",
+   "onlyVerifiable": false,
+   "hardToJudge": true,
+   "clue": {
+    "it": "È la voce vera dell'insegnante, registrata con il telefono.",
+    "en": "It's the teacher's real voice, recorded with the phone.",
+    "fr": "C'est la vraie voix du professeur, enregistrée avec le téléphone.",
+    "ckb": "دەنگی ڕاستەقینەی مامۆستایە، بە تەلەفۆن تۆمار کراوە.",
+    "kmr": "Ew dengê rastîn ê mamoste ye, ku bi telefonê hatiye tomarkirin.",
+    "ar": "إنه صوت المعلم الحقيقي، تم تسجيله بالهاتف."
+   },
+   "action": {
+    "it": "Ti chiede aiuto? Richiama la persona al suo numero di sempre.",
+    "en": "Are they asking for help? Call them back on their usual number.",
+    "fr": "Ont-ils besoin d'aide ? Rappelez-les à leur numéro habituel.",
+    "ckb": "ئایا داوای یارمەتی دەکەن؟ پەیوەندییان پێوە بکەنەوە بە ژمارەی ئاسایی خۆیان.",
+    "kmr": "Ma ew alîkariyê dixwazin? Li ser jimareya wan a asayî dîsa telefonî wan bikin.",
+    "ar": "هل يطلبون المساعدة؟ اتصل بهم على رقمهم المعتاد."
+   },
+   "source_note": "teacher's own voice",
+   "teachingLink": "S22"
+  },
+  {
+   "id": "A2",
+   "category": "voci",
+   "media": {
+    "type": "audio",
+    "slot": "A2"
+   },
+   "mock": null,
+   "invented": false,
+   "caption": {
+    "it": "🎙️ Messaggio vocale",
+    "en": "🎙️ Voice message",
+    "fr": "🎙️ Message vocal",
+    "ckb": "🎙️ پەیامی دەنگی",
+    "kmr": "🎙️ Peyama dengî",
+    "ar": "🎙️ رسالة صوتية"
+   },
+   "answer": "falso_ia",
+   "onlyVerifiable": false,
+   "hardToJudge": true,
+   "clue": {
+    "it": "Voce copiata con l'IA da pochi secondi di registrazione. Sembra quasi uguale.",
+    "en": "Voice copied with AI from a few seconds of recording. Sounds almost identical.",
+    "fr": "Voix copiée par IA à partir de quelques secondes d'enregistrement. Le résultat est quasi identique.",
+    "ckb": "دەنگێک کە بە AI کۆپی کراوە لە چەند چرکەیەک لە تۆمارکردن. دەنگەکان نزیکەی یەکسانن.",
+    "kmr": "Deng ji çend saniyeyên tomarkirinê bi AI-ê hatiye kopîkirin. Deng hema bêje yek e.",
+    "ar": "تم نسخ الصوت باستخدام الذكاء الاصطناعي من تسجيل مدته بضع ثوانٍ. يبدو الصوت متطابقاً تقريباً."
+   },
+   "action": {
+    "it": "Chiedi la parola segreta di famiglia. Oppure richiama tu, al numero di sempre.",
+    "en": "Ask for the family secret password. Or call us back at our usual number.",
+    "fr": "Demandez le mot de passe secret de la famille. Ou rappelez-nous à notre numéro habituel.",
+    "ckb": "داوای وشەی نهێنی نهێنی خێزان بکە. یان پەیوەندیمان پێوە بکەنەوە بە ژمارە ئاساییەکەمان.",
+    "kmr": "Şîfreya veşartî ya malbatê bipirsin. An jî bi jimareya me ya asayî telefonî me bikin.",
+    "ar": "اطلب كلمة المرور السرية للعائلة. أو اتصل بنا على رقمنا المعتاد."
+   },
+   "source_note": "the teacher's own voice cloned with his consent",
+   "teachingLink": "S22"
+  },
+  {
+   "id": "M1",
+   "category": "messaggi",
+   "media": {
+    "type": "image",
+    "slot": "M1"
+   },
    "mock": "<div class='mock-phone'><div class='mock-phone-header'><span class='mock-sender'>💬 Numero sconosciuto</span></div><div class='mock-bubble'>Ciao mamma, questo è il mio nuovo numero. Il telefono vecchio si è rotto. Mi serve un favore urgente 🙏</div></div>",
-   "invented": false, "caption": {}, "answer": "truffa", "onlyVerifiable": false, "hardToJudge": false,
-   "clue": {"it": "Numero nuovo + fretta + presto chiederà soldi: è la truffa «Ciao mamma»."},
-   "action": {"it": "Chiama tuo figlio o tua figlia al numero vecchio. Poi blocca e segnala."},
-   "source_note": "real redacted screenshot, else invented", "teachingLink": "S20"},
-  {"id": "M2", "category": "messaggi", "media": {"type": "image", "slot": "M2"},
+   "invented": false,
+   "caption": {},
+   "answer": "truffa",
+   "onlyVerifiable": false,
+   "hardToJudge": false,
+   "clue": {
+    "it": "Numero nuovo + fretta + presto chiederà soldi: è la truffa «Ciao mamma».",
+    "en": "New number + rush + soon to ask for money: it's the \"Hi Mom\" scam.",
+    "fr": "Nouveau numéro + urgence + demande d'argent imminente : c'est l'arnaque « Salut maman ».",
+    "ckb": "ژمارەیەکی نوێ + پەلەکردن + بەم زووانە داوای پارە: ئەوە فێڵەکەی \"سڵاو دایکە\".",
+    "kmr": "Hejmareke nû + lez û bez + di demek nêzîk de daxwaza pereyan: ew xapandina \"Silav Dayê\" ye.",
+    "ar": "رقم جديد + استعجال + طلب المال قريباً: إنها عملية احتيال \"مرحباً أمي\"."
+   },
+   "action": {
+    "it": "Chiama tuo figlio o tua figlia al numero vecchio. Poi blocca e segnala.",
+    "en": "Call your son or daughter on the old number. Then block and report it.",
+    "fr": "Appelez votre fils ou votre fille sur l'ancien numéro. Ensuite, bloquez-le et signalez-le.",
+    "ckb": "بە ژمارە کۆنەکە پەیوەندی بە کوڕەکەتەوە یان کچەکەتەوە بکە. پاشان بلۆک و ڕاپۆرتی بکە.",
+    "kmr": "Bi jimareya kevin telefonî kur an keça xwe bike. Piştre asteng bike û rapor bike.",
+    "ar": "اتصل بابنك أو ابنتك على الرقم القديم. ثم قم بحظره والإبلاغ عنه."
+   },
+   "source_note": "real redacted screenshot, else invented",
+   "teachingLink": "S20"
+  },
+  {
+   "id": "M2",
+   "category": "messaggi",
+   "media": {
+    "type": "image",
+    "slot": "M2"
+   },
    "mock": "<div class='mock-phone'><div class='mock-phone-header'><span class='mock-sender'>✉️ LampoPacchi</span></div><div class='mock-bubble'>Il tuo pacco è fermo in magazzino. Paga 1,99 € entro oggi per la consegna: <span class='blur'>lampopacchi-consegna</span></div></div>",
-   "invented": false, "caption": {}, "answer": "truffa", "onlyVerifiable": false, "hardToJudge": false,
-   "clue": {"it": "Fretta + un piccolo pagamento + un link: vogliono i dati della carta."},
-   "action": {"it": "Non toccare il link. Controlla nell'app o sul sito ufficiale del corriere."},
-   "source_note": "real redacted screenshot, else invented (fictional courier)", "teachingLink": "S20"},
-  {"id": "M3", "category": "messaggi", "media": {"type": "image", "slot": "M3"},
+   "invented": false,
+   "caption": {},
+   "answer": "truffa",
+   "onlyVerifiable": false,
+   "hardToJudge": false,
+   "clue": {
+    "it": "Fretta + un piccolo pagamento + un link: vogliono i dati della carta.",
+    "en": "Rush + a small payment + a link: they want your card details.",
+    "fr": "Prévoyez une course rapide, un petit paiement et un lien : ils veulent vos coordonnées bancaires.",
+    "ckb": "پەلە + پارەیەکی کەم + بەستەرێک: وردەکاری کارتەکەتیان دەوێت.",
+    "kmr": "Rush + dravdanek piçûk + lînkek: ew dixwazin hûrguliyên karta we hebin.",
+    "ar": "استعجال + دفعة صغيرة + رابط: إنهم يريدون تفاصيل بطاقتك."
+   },
+   "action": {
+    "it": "Non toccare il link. Controlla nell'app o sul sito ufficiale del corriere.",
+    "en": "Don't touch the link. Check the app or the courier's official website.",
+    "fr": "Ne cliquez pas sur le lien. Consultez l'application ou le site web officiel du transporteur.",
+    "ckb": "دەست لە بەستەرەکە مەدە. ئەپەکە یان ماڵپەڕی فەرمی کوریەرەکە بپشکنە.",
+    "kmr": "Destê xwe nede lînkê. Serlêdanê an malpera fermî ya kargoyê kontrol bike.",
+    "ar": "لا تلمس الرابط. تحقق من التطبيق أو الموقع الإلكتروني الرسمي لشركة الشحن."
+   },
+   "source_note": "real redacted screenshot, else invented (fictional courier)",
+   "teachingLink": "S20"
+  },
+  {
+   "id": "M3",
+   "category": "messaggi",
+   "media": {
+    "type": "image",
+    "slot": "M3"
+   },
    "mock": "<div class='mock-phone'><div class='mock-phone-header'><span class='mock-sender'>💬 Numero sconosciuto</span></div><div class='mock-bubble'>Ciao! 😊 Cerchiamo persone per lavoro da casa: metti «mi piace» ai video e guadagni da 50 a 200 € al giorno 💰 Scrivimi su Telegram!</div></div>",
-   "invented": false, "caption": {}, "answer": "truffa", "onlyVerifiable": false, "hardToJudge": false,
-   "clue": {"it": "Guadagno facile da uno sconosciuto. Prima ti pagano poco, poi ti chiedono soldi."},
-   "action": {"it": "Non rispondere. Blocca e segnala."},
-   "source_note": "real redacted screenshot, else invented", "teachingLink": "S20"},
-  {"id": "M4", "category": "messaggi", "media": {"type": "image", "slot": "M4"},
+   "invented": false,
+   "caption": {},
+   "answer": "truffa",
+   "onlyVerifiable": false,
+   "hardToJudge": false,
+   "clue": {
+    "it": "Guadagno facile da uno sconosciuto. Prima ti pagano poco, poi ti chiedono soldi.",
+    "en": "Easy money from a stranger. First they pay you little, then they ask for money.",
+    "fr": "De l'argent facile venant d'un inconnu. D'abord, il vous donne une petite somme, puis il vous réclame de l'argent.",
+    "ckb": "پارەی ئاسان لە کەسێکی نامۆ. سەرەتا پارەیەکی کەمت پێدەدەن، دواتر داوای پارە دەکەن.",
+    "kmr": "Pereyê hêsan ji kesekî xerîb. Pêşî hindik didin te, paşê pere dixwazin.",
+    "ar": "ربح سهل من شخص غريب. في البداية يدفعون لك مبلغاً زهيداً، ثم يطلبون المال."
+   },
+   "action": {
+    "it": "Non rispondere. Blocca e segnala.",
+    "en": "Don't respond. Block and report.",
+    "fr": "Ne répondez pas. Bloquez et signalez.",
+    "ckb": "وەڵام مەدەرەوە. بلۆک و ڕاپۆرت.",
+    "kmr": "Bersiv nede. Asteng bike û rapor bide.",
+    "ar": "لا ترد. احظر الحساب وقم بالإبلاغ عنه."
+   },
+   "source_note": "real redacted screenshot, else invented",
+   "teachingLink": "S20"
+  },
+  {
+   "id": "M4",
+   "category": "messaggi",
+   "media": {
+    "type": "image",
+    "slot": "M4"
+   },
    "mock": "<div class='mock-phone'><div class='mock-phone-header'><span class='mock-sender'>✉️ LaMiaBanca</span></div><div class='mock-bubble'>Il codice per entrare nell'app è <span class='blur'>482913</span>. Non darlo a nessuno, nemmeno a chi dice di lavorare in banca.</div></div>",
-   "invented": false, "caption": {}, "answer": "vero", "onlyVerifiable": false, "hardToJudge": true,
-   "clue": {"it": "Messaggio vero: è il codice che hai chiesto tu. Non chiede niente, non ha link."},
-   "action": {"it": "Il codice non si dà a nessuno, mai."},
-   "source_note": "real legitimate SMS, else invented (fictional bank)", "teachingLink": "S06"},
-  {"id": "M5", "category": "messaggi", "media": {"type": "image", "slot": "M5"},
+   "invented": false,
+   "caption": {},
+   "answer": "vero",
+   "onlyVerifiable": false,
+   "hardToJudge": true,
+   "clue": {
+    "it": "Messaggio vero: è il codice che hai chiesto tu. Non chiede niente, non ha link.",
+    "en": "Real message: It's the code you requested. It doesn't ask for anything, it has no link.",
+    "fr": "Message réel : Voici le code que vous avez demandé. Il ne demande rien et ne contient aucun lien.",
+    "ckb": "پەیامی ڕاستەقینە: ئەو کۆدەیە کە داوای کردووە. داوای هیچ ناکات، هیچ لینکی نییە.",
+    "kmr": "Peyama rast: Ew koda ku te xwestiye ye. Tiştekî napirse, lînka wê tune ye.",
+    "ar": "الرسالة الحقيقية: هذا هو الكود الذي طلبته. لا يطلب أي شيء، وليس له أي رابط."
+   },
+   "action": {
+    "it": "Il codice non si dà a nessuno, mai.",
+    "en": "The code is never given to anyone, ever.",
+    "fr": "Le code n'est jamais communiqué à personne, jamais.",
+    "ckb": "کۆدەکە هەرگیز بە کەس نادرێت، هەرگیز.",
+    "kmr": "Kod qet, qet û qet ji kesî re nayê dayîn.",
+    "ar": "لا يتم إعطاء الشفرة لأي شخص على الإطلاق."
+   },
+   "source_note": "real legitimate SMS, else invented (fictional bank)",
+   "teachingLink": "S06"
+  },
+  {
+   "id": "M5",
+   "category": "messaggi",
+   "media": {
+    "type": "image",
+    "slot": "M5"
+   },
    "mock": "<div class='mock-phone'><div class='mock-phone-header'><span class='mock-sender'>💬 Corso di computer</span></div><div class='mock-bubble'>Ciao a tutte! Giovedì la lezione è alle 16:30, come sempre. Se avete le cuffie, portatele. A giovedì! 😊</div></div>",
-   "invented": false, "caption": {}, "answer": "vero", "onlyVerifiable": false, "hardToJudge": true,
-   "clue": {"it": "Messaggio vero: un gruppo che conosciamo. Nessuna fretta, nessun soldo, nessun link."},
-   "action": {"it": "Hai un dubbio? Chiedi di persona agli operatori."},
-   "source_note": "real message shared with permission, else invented", "teachingLink": "S27-Q2"},
-  {"id": "P1", "category": "post", "media": {"type": "image", "slot": "P1"}, "mock": null, "invented": false,
-   "caption": {}, "answer": "vero", "onlyVerifiable": false, "hardToJudge": true,
-   "clue": {"it": "Notizia vera, di un giornale conosciuto. La stessa notizia c'è anche su altri giornali."},
-   "action": {"it": "Apri il sito del giornale: trovi la notizia, con la data."},
-   "source_note": "real headline with its link", "teachingLink": "S27-Q3"},
-  {"id": "P2", "category": "post", "media": null,
+   "invented": false,
+   "caption": {},
+   "answer": "vero",
+   "onlyVerifiable": false,
+   "hardToJudge": true,
+   "clue": {
+    "it": "Messaggio vero: un gruppo che conosciamo. Nessuna fretta, nessun soldo, nessun link.",
+    "en": "The real message: a group we know. No rush, no money, no links.",
+    "fr": "Le vrai message : un groupe que nous connaissons. Pas de précipitation, pas d’argent, pas de liens.",
+    "ckb": "پەیامی ڕاستەقینە: گروپێک کە دەیناسین. نە پەلەکردن، نە پارە، نە لینک.",
+    "kmr": "Peyama rast: komek ku em nas dikin. Ne lez, ne pere, ne girêdan.",
+    "ar": "الرسالة الحقيقية: مجموعة نعرفها. لا داعي للعجلة، ولا للمال، ولا للروابط."
+   },
+   "action": {
+    "it": "Hai un dubbio? Chiedi di persona agli operatori.",
+    "en": "Have a question? Ask the operators in person.",
+    "fr": "Vous avez une question ? Posez-la directement aux opérateurs.",
+    "ckb": "پرسیارێکتان هەیە؟ بە شێوەیەکی ڕاستەوخۆ پرسیار لە بەڕێوەبەرەکان بکە.",
+    "kmr": "Pirsek we heye? Bi şexsî ji operatoran bipirsin.",
+    "ar": "هل لديك سؤال؟ اسأل الموظفين مباشرة."
+   },
+   "source_note": "real message shared with permission, else invented",
+   "teachingLink": "S27-Q2"
+  },
+  {
+   "id": "P1",
+   "category": "post",
+   "media": {
+    "type": "image",
+    "slot": "P1"
+   },
+   "mock": null,
+   "invented": false,
+   "caption": {},
+   "answer": "vero",
+   "onlyVerifiable": false,
+   "hardToJudge": true,
+   "clue": {
+    "it": "Notizia vera, di un giornale conosciuto. La stessa notizia c'è anche su altri giornali.",
+    "en": "True news, from a well-known newspaper. The same story appears in other newspapers as well.",
+    "fr": "Information véridique, provenant d'un journal réputé. La même information a été publiée dans d'autres journaux.",
+    "ckb": "هەواڵێکی ڕاست، لە ڕۆژنامەیەکی ناسراوەوە. هەمان چیرۆک لە ڕۆژنامەکانی دیکەشدا دەردەکەوێت.",
+    "kmr": "Nûçeyek rast, ji rojnameyeke navdar. Heman çîrok di rojnameyên din de jî derdikeve.",
+    "ar": "خبر صحيح، من صحيفة معروفة. وقد نُشرت القصة نفسها في صحف أخرى أيضاً."
+   },
+   "action": {
+    "it": "Apri il sito del giornale: trovi la notizia, con la data.",
+    "en": "Open the newspaper's website: you'll find the news, with the date.",
+    "fr": "Ouvrez le site web du journal : vous y trouverez l'article, avec la date.",
+    "ckb": "ماڵپەڕی ڕۆژنامەکە بکەرەوە: هەواڵەکە دەدۆزیتەوە، لەگەڵ بەروارەکەی.",
+    "kmr": "Malpera rojnameyê veke: tu dê nûçeyê bi dîrokê re bibînî.",
+    "ar": "افتح موقع الصحيفة الإلكتروني: ستجد الأخبار مع التاريخ."
+   },
+   "source_note": "real headline with its link",
+   "teachingLink": "S27-Q3"
+  },
+  {
+   "id": "P2",
+   "category": "post",
+   "media": null,
    "mock": "<div class='mock-post'><div class='post-head'><span class='post-avatar'>⚡</span><span class='post-page'>Notizie Shock 24<span class='post-meta'>1 ora fa · 🌍</span></span></div><div class='post-body'>VERGOGNA!!! 😡 Il pane costa 5 EURO al chilo!!! Ci stanno RUBANDO tutto!!! CONDIVIDI prima che lo cancellino!!!</div><div class='post-bar'><span>👍 3.412</span><span>💬 1.987</span><span>↗️ 5.230</span></div></div>",
-   "invented": true, "caption": {}, "answer": "falso_ia", "onlyVerifiable": false, "hardToJudge": false,
-   "clue": {"it": "Parole forti, maiuscole, tanti «!!!» e «condividi prima che lo cancellino»: vuole la nostra rabbia. Nessuna fonte."},
-   "action": {"it": "Fermati. Cerca la notizia su un giornale."},
-   "source_note": "invented for the course (fictional page)", "teachingLink": "S17"},
-  {"id": "P3", "category": "post", "media": null,
+   "invented": true,
+   "caption": {},
+   "answer": "falso_ia",
+   "onlyVerifiable": false,
+   "hardToJudge": false,
+   "clue": {
+    "it": "Parole forti, maiuscole, tanti «!!!» e «condividi prima che lo cancellino»: vuole la nostra rabbia. Nessuna fonte.",
+    "en": "Strong words, capital letters, lots of \"!!!\"s and \"share before they delete\"s: it's meant to pique our anger. No source.",
+    "fr": "Des mots crus, des majuscules, des tonnes de « !!! » et de « partagez avant qu'ils ne suppriment » : tout est fait pour nous indigner. Aucune source.",
+    "ckb": "وشەی بەهێز، پیتی گەورە، زۆرێک لە \"!!!\" و \"شێر پێش ئەوەی بسڕنەوە\": مەبەست لێی وروژاندنی توڕەیی ئێمەیە. هیچ سەرچاوەیەک نییە.",
+    "kmr": "Peyvên tund, tîpên mezin, gelek \"!!!\" û \"berî ku ew jê bibin parve bikin\": armanca wan ew e ku hêrsa me zêde bikin. Çavkanî tune.",
+    "ar": "كلمات قوية، حروف كبيرة، الكثير من علامات التعجب \"!!!\" وعبارات \"شارك قبل أن يحذفوا\": الهدف هو إثارة غضبنا. بدون مصدر."
+   },
+   "action": {
+    "it": "Fermati. Cerca la notizia su un giornale.",
+    "en": "Stop. Look up the news in a newspaper.",
+    "fr": "Stop. Consultez les actualités dans un journal.",
+    "ckb": "وەستان. لە ڕۆژنامەیەکدا سەیری هەواڵەکان بکە.",
+    "kmr": "Raweste. Li nûçeyan di rojnameyê de binêre.",
+    "ar": "توقف. ابحث عن الأخبار في إحدى الصحف."
+   },
+   "source_note": "invented for the course (fictional page)",
+   "teachingLink": "S17"
+  },
+  {
+   "id": "P3",
+   "category": "post",
+   "media": null,
    "mock": "<div class='mock-post'><div class='post-head'><span class='post-avatar'>🚗</span><span class='post-page'>Automobilisti Arrabbiati<span class='post-meta'>3 ore fa · 🌍</span></span></div><div class='post-body'>I CICLISTI rovinano la città! 🚲 LORO non pagano niente, NOI paghiamo tutto. Basta! Metti ❤️ se sei d'accordo e condividi!</div><div class='post-bar'><span>❤️ 2.104</span><span>💬 3.560</span><span>↗️ 1.200</span></div></div>",
-   "invented": true, "caption": {}, "answer": "falso_ia", "onlyVerifiable": false, "hardToJudge": false,
-   "clue": {"it": "«Noi contro loro»: divide le persone in due squadre e cerca la rabbia."},
-   "action": {"it": "Non commentare: ogni commento lo fa vedere a più persone."},
-   "source_note": "invented for the course (fictional page)", "teachingLink": "S16"},
-  {"id": "F1", "category": "profili", "media": {"type": "image", "slot": "F1"}, "mock": null, "invented": false,
-   "caption": {}, "answer": "vero", "onlyVerifiable": false, "hardToJudge": true,
-   "clue": {"it": "Profilo vero: post da tanti anni, contatti e indirizzo che si possono controllare."},
-   "action": {"it": "Controlla sul sito ufficiale: c'è il link allo stesso profilo?"},
-   "source_note": "screenshot of a real organisation's profile", "teachingLink": "S27-Q2"},
-  {"id": "F2", "category": "profili", "media": null,
+   "invented": true,
+   "caption": {},
+   "answer": "falso_ia",
+   "onlyVerifiable": false,
+   "hardToJudge": false,
+   "clue": {
+    "it": "«Noi contro loro»: divide le persone in due squadre e cerca la rabbia.",
+    "en": "“Us versus them”: divides people into two teams and seeks anger.",
+    "fr": "« Nous contre eux » : divise les gens en deux camps et suscite la colère.",
+    "ckb": "\"ئێمە بەرامبەر ئەوان\": خەڵک دابەش دەکات بۆ دوو تیم و بەدوای توڕەیی دەگەڕێت.",
+    "kmr": "\"Em li dijî wan\": mirovan dike du tîman û li hêrsê digere.",
+    "ar": "\"نحن ضدّهم\": يقسم الناس إلى فريقين ويسعى إلى إثارة الغضب."
+   },
+   "action": {
+    "it": "Non commentare: ogni commento lo fa vedere a più persone.",
+    "en": "Don't comment: every comment makes it seen by more people.",
+    "fr": "Ne commentez pas : chaque commentaire augmente le nombre de personnes qui le voient.",
+    "ckb": "کۆمێنت مەکە: هەر کۆمێنتێک وا دەکات زیاتر کەس بیبینێت.",
+    "kmr": "Şîrove neke: her şîroveyek wê ji hêla bêtir kesan ve dibîne.",
+    "ar": "لا تعلق: فكل تعليق يزيد من عدد الأشخاص الذين يرون المنشور."
+   },
+   "source_note": "invented for the course (fictional page)",
+   "teachingLink": "S16"
+  },
+  {
+   "id": "F1",
+   "category": "profili",
+   "media": {
+    "type": "image",
+    "slot": "F1"
+   },
+   "mock": null,
+   "invented": false,
+   "caption": {},
+   "answer": "vero",
+   "onlyVerifiable": false,
+   "hardToJudge": true,
+   "clue": {
+    "it": "Profilo vero: post da tanti anni, contatti e indirizzo che si possono controllare.",
+    "en": "Real profile: posts for many years, contact information and address that can be verified.",
+    "fr": "Profil authentique : publications depuis de nombreuses années, informations de contact et adresse vérifiables.",
+    "ckb": "پرۆفایلی ڕاستەقینە: پۆستەکانی چەندین ساڵە، زانیاری پەیوەندی و ناونیشان کە دەتوانرێت پشتڕاست بکرێتەوە.",
+    "kmr": "Profîla rastîn: nivîsên ji bo gelek salan, agahdariya têkiliyê û navnîşana ku dikare were verast kirin.",
+    "ar": "ملف تعريف حقيقي: منشورات لسنوات عديدة، ومعلومات اتصال وعنوان يمكن التحقق منهما."
+   },
+   "action": {
+    "it": "Controlla sul sito ufficiale: c'è il link allo stesso profilo?",
+    "en": "Check the official website: is there a link to the same profile?",
+    "fr": "Consultez le site officiel : existe-t-il un lien vers le même profil ?",
+    "ckb": "ماڵپەڕی فەرمی بزانە: ئایا لینکی هەمان پڕۆفایلی هەیە؟",
+    "kmr": "Malpera fermî kontrol bike: gelo girêdanek ji bo heman profîlê heye?",
+    "ar": "تحقق من الموقع الرسمي: هل يوجد رابط لنفس الملف الشخصي؟"
+   },
+   "source_note": "screenshot of a real organisation's profile",
+   "teachingLink": "S27-Q2"
+  },
+  {
+   "id": "F2",
+   "category": "profili",
+   "media": null,
    "mock": "<div class='mock-profile'><div class='profile-head'><span class='profile-avatar'><rb-slot data-slot='F2'><span class='profile-avatar-emoji'>👤</span></rb-slot></span><div><div class='profile-name'>Sofia Bellini</div><div class='profile-bio'>💎 Esperta di investimenti</div></div></div><div class='profile-stats'><span class='stat'>📅 Account creato 3 settimane fa</span><span class='stat'>📝 4 post</span><span class='stat'>👥 2.300 amici</span></div><div class='post-body'>Ho guadagnato 5.000 € in un mese! 💰 Scrivimi in privato e ti spiego come.</div></div>",
-   "invented": true, "caption": {}, "answer": "falso_ia", "onlyVerifiable": false, "hardToJudge": false,
-   "clue": {"it": "Account nuovo, pochi post, tantissimi amici e promesse di soldi: è un profilo falso. Spesso anche la foto è fatta con l'IA."},
-   "action": {"it": "Non accettare l'amicizia. Non scrivere. Segnala il profilo."},
-   "source_note": "invented for the course (fictional person; optional AI face from slot F2)", "teachingLink": "S17"},
-  {"id": "F3", "category": "profili", "media": {"type": "image", "slot": "F3"},
+   "invented": true,
+   "caption": {},
+   "answer": "falso_ia",
+   "onlyVerifiable": false,
+   "hardToJudge": false,
+   "clue": {
+    "it": "Account nuovo, pochi post, tantissimi amici e promesse di soldi: è un profilo falso. Spesso anche la foto è fatta con l'IA.",
+    "en": "A new account, few posts, tons of friends, and promises of money: it's a fake profile. Often, even the photo is taken with AI.",
+    "fr": "Un compte récent, peu de publications, des tonnes d'amis et des promesses d'argent : c'est un faux profil. Souvent, même la photo est prise par intelligence artificielle.",
+    "ckb": "ئەکاونتێکی نوێ، چەند پۆستێک، تەنێک هاوڕێ، و بەڵێنی پارە: ئەوە پڕۆفایلی ساختەیە. زۆرجار، تەنانەت وێنەکەش بە AI گیراوە.",
+    "kmr": "Hesabêkî nû, çend post, gelek heval û sozên pereyan: ew profîlek sexte ye. Gelek caran, heta wêne jî bi AI tê kişandin.",
+    "ar": "حساب جديد، منشورات قليلة، عدد كبير من الأصدقاء، ووعود بالمال: إنه حساب مزيف. في كثير من الأحيان، حتى الصورة يتم التقاطها باستخدام الذكاء الاصطناعي."
+   },
+   "action": {
+    "it": "Non accettare l'amicizia. Non scrivere. Segnala il profilo.",
+    "en": "Don't accept friendship. Don't write. Report the profile.",
+    "fr": "N'acceptez pas d'ami. N'écrivez pas. Signalez le profil.",
+    "ckb": "هاوڕێیەتی قبوڵ مەکە. مەنوسە. ڕاپۆرتی پڕۆفایلی.",
+    "kmr": "Dostaniyê qebûl neke. Nenivîse. Profîlê rapor bike.",
+    "ar": "لا تقبل الصداقة. لا تراسل. أبلغ عن الملف الشخصي."
+   },
+   "source_note": "invented for the course (fictional person; optional AI face from slot F2)",
+   "teachingLink": "S17"
+  },
+  {
+   "id": "F3",
+   "category": "profili",
+   "media": {
+    "type": "image",
+    "slot": "F3"
+   },
    "mock": "<div class='mock-profile'><div class='profile-head'><span class='profile-avatar'><span class='profile-avatar-emoji'>🏛️</span></span><div><div class='profile-name'>Ufficio Bonus Famiglie ✔️</div><div class='profile-bio'>Pagina ufficiale · Bonus e rimborsi</div></div></div><div class='profile-stats'><span class='stat'>📅 Pagina creata 5 giorni fa</span><span class='stat'>👥 312 follower</span></div><div class='post-body'>Ricevi 500 € di bonus spesa! Scrivi in privato il tuo IBAN e una foto del documento. Solo per oggi! ⏰</div></div>",
-   "invented": false, "caption": {}, "answer": "truffa", "onlyVerifiable": false, "hardToJudge": false,
-   "clue": {"it": "Una pagina che finge di essere un ufficio: è nuova, ha pochi follower e chiede IBAN e documento in privato. Gli uffici veri non lo fanno."},
-   "action": {"it": "Cerca il sito ufficiale dell'ente. Non mandare mai documenti in chat. Segnala la pagina."},
-   "source_note": "real public alert screenshot, else invented (fictional office)", "teachingLink": "S20"}
+   "invented": false,
+   "caption": {},
+   "answer": "truffa",
+   "onlyVerifiable": false,
+   "hardToJudge": false,
+   "clue": {
+    "it": "Una pagina che finge di essere un ufficio: è nuova, ha pochi follower e chiede IBAN e documento in privato. Gli uffici veri non lo fanno.",
+    "en": "A page pretending to be an office: it's new, has few followers, and asks for IBAN and ID in private. Real offices don't do this.",
+    "fr": "Une page se faisant passer pour un bureau : elle est récente, a peu d’abonnés et demande l’IBAN et une pièce d’identité en privé. Les vrais bureaux ne procèdent pas ainsi.",
+    "ckb": "پەیجێک وا خۆی وەک ئۆفیس نیشان دەدات: تازەیە، فۆڵۆوەری کەمی هەیە، و بە تایبەتی داوای IBAN و ID دەکات. ئۆفیسە ڕاستەقینەکان ئەم کارە ناکەن.",
+    "kmr": "Rûpelek ku xwe wek ofîsekê nîşan dide: ew nû ye, şopînerên wê kêm in, û bi awayekî taybet IBAN û nasnameyê dixwaze. Ofîsên rastîn vê yekê nakin.",
+    "ar": "صفحة تتظاهر بأنها مكتب: إنها جديدة، ولديها عدد قليل من المتابعين، وتطلب رقم الحساب المصرفي الدولي (IBAN) وبطاقة الهوية بشكل خاص. المكاتب الحقيقية لا تفعل ذلك."
+   },
+   "action": {
+    "it": "Cerca il sito ufficiale dell'ente. Non mandare mai documenti in chat. Segnala la pagina.",
+    "en": "Find the organization's official website. Never send documents via chat. Report the page.",
+    "fr": "Trouvez le site web officiel de l'organisation. N'envoyez jamais de documents par messagerie instantanée. Signalez la page.",
+    "ckb": "ماڵپەڕی فەرمی ڕێکخراوەکە بدۆزەرەوە. هەرگیز بەڵگەنامەکان لە ڕێگەی چاتەوە مەنێرن. ڕاپۆرتی پەیجەکە بکە.",
+    "kmr": "Malpera fermî ya rêxistinê bibîne. Qet belgeyan bi rêya sohbetê neşîne. Rûpelê rapor bike.",
+    "ar": "ابحث عن الموقع الإلكتروني الرسمي للمنظمة. لا ترسل المستندات عبر الدردشة مطلقاً. أبلغ عن الصفحة."
+   },
+   "source_note": "real public alert screenshot, else invented (fictional office)",
+   "teachingLink": "S20"
+  }
  ],
  "habits": [
-  {"emoji": "📲", "it": "Verifica in due passaggi attiva."},
-  {"emoji": "🔕", "it": "Notifiche inutili spente."},
-  {"emoji": "🤐", "it": "Alla rabbia non rispondo."},
-  {"emoji": "⏱️", "it": "Fretta + soldi = mi fermo e chiamo."},
-  {"emoji": "🔍", "it": "Prima di condividere: da dove viene?"}
+  {
+   "emoji": "📲",
+   "it": "Verifica in due passaggi attiva.",
+   "en": "Two-step verification enabled.",
+   "fr": "Vérification en deux étapes activée.",
+   "ckb": "پشتڕاستکردنەوەی دوو هەنگاو چالاک کراوە.",
+   "kmr": "Verastkirina du-qonaxî çalak e.",
+   "ar": "تم تفعيل التحقق بخطوتين."
+  },
+  {
+   "emoji": "🔕",
+   "it": "Notifiche inutili spente.",
+   "en": "Useless notifications turned off.",
+   "fr": "Notifications inutiles désactivées.",
+   "ckb": "ئاگادارکردنەوە بێسوودەکان کوژانەوە.",
+   "kmr": "Agahiyên bêkêr hatin girtin.",
+   "ar": "تم إيقاف الإشعارات غير الضرورية."
+  },
+  {
+   "emoji": "🤐",
+   "it": "Alla rabbia non rispondo.",
+   "en": "I don't respond to anger.",
+   "fr": "Je ne réagis pas à la colère.",
+   "ckb": "وەڵامی توڕەیی نادەمەوە.",
+   "kmr": "Ez ji hêrsê re bersivê nadim.",
+   "ar": "أنا لا أستجيب للغضب."
+  },
+  {
+   "emoji": "⏱️",
+   "it": "Fretta + soldi = mi fermo e chiamo.",
+   "en": "Hurry + money = I'll stop and call.",
+   "fr": "Dépêche-toi + argent = je m'arrêterai et j'appellerai.",
+   "ckb": "پەلە بکە + پارە = دەوەستم و تەلەفۆن دەکەم.",
+   "kmr": "Bilezîne + pere = Ez ê rawestim û telefon bikim.",
+   "ar": "استعجل + مال = سأتوقف وأتصل."
+  },
+  {
+   "emoji": "🔍",
+   "it": "Prima di condividere: da dove viene?",
+   "en": "Before sharing: where does this come from?",
+   "fr": "Avant de partager : d'où cela vient-il ?",
+   "ckb": "پێش ئەوەی بڵاوی بکەینەوە: ئەمە لە کوێوە سەرچاوە دەگرێت؟",
+   "kmr": "Berî parvekirinê: ev ji ku derê tê?",
+   "ar": "قبل المشاركة: من أين يأتي هذا؟"
+  }
  ],
  "ui": {
-  "title": {"it": "Vero o falso?"},
-  "subtitle": {"it": "Gioco a squadre"},
-  "teams": {"it": "Squadre"},
-  "team1": {"it": "Sole ☀️"},
-  "team2": {"it": "Luna 🌙"},
-  "team3": {"it": "Stelle ⭐"},
-  "timer": {"it": "Tempo per pensare"},
-  "seconds": {"it": "secondi"},
-  "scoring": {"it": "Punti sullo schermo"},
-  "scoringOn": {"it": "Sì"},
-  "scoringOff": {"it": "No, alla lavagna"},
-  "language": {"it": "Lingua"},
-  "start": {"it": "Inizia"},
-  "resume": {"it": "Riprendi la partita"},
-  "newGame": {"it": "Nuova partita"},
-  "preparing": {"it": "Preparo foto, video e voci…"},
-  "menu": {"it": "Scegli una categoria"},
-  "missing": {"it": "Manca il materiale"},
-  "fallbackTag": {"it": "Esempio del corso"},
-  "invented": {"it": "Esempio creato per il corso"},
-  "done": {"it": "Fatto"},
-  "think": {"it": "Pensate…"},
-  "vote": {"it": "Votate! Alzate un cartoncino."},
-  "paused": {"it": "In pausa"},
-  "reveal": {"it": "Mostra la risposta"},
-  "skip": {"it": "Salta"},
-  "next": {"it": "Avanti"},
-  "back": {"it": "Rivedi"},
-  "clue": {"it": "Indizio"},
-  "action": {"it": "Cosa fare"},
-  "source": {"it": "Fonte"},
-  "categoryDone": {"it": "Categoria finita!"},
-  "points": {"it": "punti"},
-  "toMenu": {"it": "Torna alle categorie"},
-  "finish": {"it": "Fine del gioco"},
-  "final": {"it": "Bravissime! Fine del gioco."},
-  "habitsTitle": {"it": "Cinque abitudini da portare a casa"},
-  "listen": {"it": "Ascolta"},
-  "replay": {"it": "Di nuovo"},
-  "whoVoted": {"it": "Cosa ha votato ogni squadra?"}
+  "title": {
+   "it": "Vero o falso?",
+   "en": "True or false?",
+   "fr": "Vrai ou faux ?",
+   "ckb": "ڕاستە یان درۆ؟",
+   "kmr": "Rast e an derew?",
+   "ar": "صحيح أم خطأ؟"
+  },
+  "subtitle": {
+   "it": "Gioco a squadre",
+   "en": "Team game",
+   "fr": "Jeu d'équipe",
+   "ckb": "یاری تیمی",
+   "kmr": "Lîstika tîmê",
+   "ar": "لعبة جماعية"
+  },
+  "teams": {
+   "it": "Squadre",
+   "en": "Teams",
+   "fr": "Équipes",
+   "ckb": "تیمەکان",
+   "kmr": "Tîm",
+   "ar": "الفرق"
+  },
+  "team1": {
+   "it": "Sole ☀️",
+   "en": "Sun ☀️",
+   "fr": "Soleil ☀️",
+   "ckb": "خۆر ☀️",
+   "kmr": "Roj ☀️",
+   "ar": "الشمس ☀️"
+  },
+  "team2": {
+   "it": "Luna 🌙",
+   "en": "Moon 🌙",
+   "fr": "Lune 🌙",
+   "ckb": "مانگ 🌙",
+   "kmr": "Heyv 🌙",
+   "ar": "القمر 🌙"
+  },
+  "team3": {
+   "it": "Stelle ⭐",
+   "en": "Stars ⭐",
+   "fr": "Étoiles ⭐",
+   "ckb": "ئەستێرەکان ⭐",
+   "kmr": "Stêrk ⭐",
+   "ar": "نجوم ⭐"
+  },
+  "timer": {
+   "it": "Tempo per pensare",
+   "en": "Time to think",
+   "fr": "Il est temps de réfléchir",
+   "ckb": "کاتی بیرکردنەوە",
+   "kmr": "Dem hatiye ku meriv bifikire",
+   "ar": "حان وقت التفكير"
+  },
+  "seconds": {
+   "it": "secondi",
+   "en": "seconds",
+   "fr": "secondes",
+   "ckb": "چرکە",
+   "kmr": "çirke",
+   "ar": "ثوانٍ"
+  },
+  "scoring": {
+   "it": "Punti sullo schermo",
+   "en": "Points on the screen",
+   "fr": "Points sur l'écran",
+   "ckb": "خاڵەکان لەسەر شاشەکە",
+   "kmr": "Xalên li ser ekranê",
+   "ar": "نقاط على الشاشة"
+  },
+  "scoringOn": {
+   "it": "Sì",
+   "en": "Yes",
+   "fr": "Oui",
+   "ckb": "بەڵێ",
+   "kmr": "Erê",
+   "ar": "نعم"
+  },
+  "scoringOff": {
+   "it": "No, alla lavagna",
+   "en": "No, on the blackboard",
+   "fr": "Non, sur le tableau noir",
+   "ckb": "نەخێر، لەسەر تەختە ڕەشەکە",
+   "kmr": "Na, li ser textê reş",
+   "ar": "لا، على السبورة"
+  },
+  "language": {
+   "it": "Lingua",
+   "en": "Tongue",
+   "fr": "Langue",
+   "ckb": "زمان",
+   "kmr": "Ziman",
+   "ar": "لسان"
+  },
+  "start": {
+   "it": "Inizia",
+   "en": "Start",
+   "fr": "Commencer",
+   "ckb": "دەستپێکردن",
+   "kmr": "Destpêkirin",
+   "ar": "يبدأ"
+  },
+  "resume": {
+   "it": "Riprendi la partita",
+   "en": "Resume the game",
+   "fr": "Reprenez la partie",
+   "ckb": "دەستپێکردنەوەی یارییەکە",
+   "kmr": "Lîstikê ji nû ve dest pê bike",
+   "ar": "استأنف اللعبة"
+  },
+  "newGame": {
+   "it": "Nuova partita",
+   "en": "New game",
+   "fr": "Nouveau jeu",
+   "ckb": "یاری نوێ",
+   "kmr": "Lîstikek nû",
+   "ar": "لعبة جديدة"
+  },
+  "preparing": {
+   "it": "Preparo foto, video e voci…",
+   "en": "I prepare photos, videos and voices…",
+   "fr": "Je prépare des photos, des vidéos et des voix…",
+   "ckb": "وێنە و ڤیدیۆ و دەنگەکان ئامادە دەکەم...",
+   "kmr": "Ez wêne, vîdyo û dengan amade dikim…",
+   "ar": "أقوم بإعداد الصور والفيديوهات والتسجيلات الصوتية..."
+  },
+  "menu": {
+   "it": "Scegli una categoria",
+   "en": "Choose a category",
+   "fr": "Choisissez une catégorie",
+   "ckb": "پۆلێک هەڵبژێرە",
+   "kmr": "Kategoriyek hilbijêre",
+   "ar": "اختر فئة"
+  },
+  "missing": {
+   "it": "Manca il materiale",
+   "en": "The material is missing",
+   "fr": "Le matériel est manquant.",
+   "ckb": "مادەکە نەماوە",
+   "kmr": "Materyal wenda ye",
+   "ar": "المادة مفقودة"
+  },
+  "fallbackTag": {
+   "it": "Esempio del corso",
+   "en": "Course Example",
+   "fr": "Exemple de cours",
+   "ckb": "نموونەی کۆرس",
+   "kmr": "Nimûneya Kursê",
+   "ar": "مثال على الدورة"
+  },
+  "invented": {
+   "it": "Esempio creato per il corso",
+   "en": "Example created for the course",
+   "fr": "Exemple créé pour le cours",
+   "ckb": "نموونەیەک بۆ کۆرسەکە دروستکراوە",
+   "kmr": "Nimûneyek ji bo qursê hatî çêkirin",
+   "ar": "مثال تم إنشاؤه للدورة"
+  },
+  "done": {
+   "it": "Fatto",
+   "en": "Done",
+   "fr": "Fait",
+   "ckb": "تەواو",
+   "kmr": "Qediya",
+   "ar": "منتهي"
+  },
+  "think": {
+   "it": "Pensate…",
+   "en": "Think…",
+   "fr": "Pense…",
+   "ckb": "بیرکردنەوە…",
+   "kmr": "Ponijîn…",
+   "ar": "يفكر…"
+  },
+  "vote": {
+   "it": "Votate! Alzate un cartoncino.",
+   "en": "Vote! Raise a card.",
+   "fr": "Votez ! Levez une carte.",
+   "ckb": "دەنگ بدە! کارتێک بەرز بکەرەوە.",
+   "kmr": "Deng bide! Kartek bilind bike.",
+   "ar": "صوّت! ارفع بطاقة."
+  },
+  "paused": {
+   "it": "In pausa",
+   "en": "On break",
+   "fr": "En pause",
+   "ckb": "لە پشوودا",
+   "kmr": "Di navberê de",
+   "ar": "في استراحة"
+  },
+  "reveal": {
+   "it": "Mostra la risposta",
+   "en": "Show answer",
+   "fr": "Afficher la réponse",
+   "ckb": "وەڵام پیشان بدە",
+   "kmr": "Bersivê nîşan bide",
+   "ar": "إظهار الإجابة"
+  },
+  "skip": {
+   "it": "Salta",
+   "en": "Jump",
+   "fr": "Saut",
+   "ckb": "بازدان",
+   "kmr": "Helperkîn",
+   "ar": "اقفز"
+  },
+  "next": {
+   "it": "Avanti",
+   "en": "After you",
+   "fr": "Après vous",
+   "ckb": "دوای تۆ",
+   "kmr": "Piştî te",
+   "ar": "بعدك"
+  },
+  "back": {
+   "it": "Rivedi",
+   "en": "Review",
+   "fr": "Revoir",
+   "ckb": "پێداچوونەوە",
+   "kmr": "Axaftin",
+   "ar": "مراجعة"
+  },
+  "clue": {
+   "it": "Indizio",
+   "en": "Clue",
+   "fr": "Indice",
+   "ckb": "بەڵگە",
+   "kmr": "Agah",
+   "ar": "فكرة"
+  },
+  "action": {
+   "it": "Cosa fare",
+   "en": "What to do",
+   "fr": "Ce qu'il faut faire",
+   "ckb": "چی بکەین",
+   "kmr": "Çi bikin",
+   "ar": "ما يجب القيام به"
+  },
+  "source": {
+   "it": "Fonte",
+   "en": "Source",
+   "fr": "Source",
+   "ckb": "سەرچاوە",
+   "kmr": "Kanî",
+   "ar": "مصدر"
+  },
+  "categoryDone": {
+   "it": "Categoria finita!",
+   "en": "Category finished!",
+   "fr": "Catégorie terminée !",
+   "ckb": "پۆل تەواو بوو!",
+   "kmr": "Kategori qediya! (Kategorî qediya!)",
+   "ar": "تم الانتهاء من الفئة!"
+  },
+  "points": {
+   "it": "punti",
+   "en": "points",
+   "fr": "points",
+   "ckb": "خاڵەکان",
+   "kmr": "xal",
+   "ar": "نقاط"
+  },
+  "toMenu": {
+   "it": "Torna alle categorie",
+   "en": "Back to categories",
+   "fr": "Retour aux catégories",
+   "ckb": "گەڕانەوە بۆ پۆلەکان",
+   "kmr": "Vegere kategoriyan",
+   "ar": "العودة إلى التصنيفات"
+  },
+  "finish": {
+   "it": "Fine del gioco",
+   "en": "End of the game",
+   "fr": "Fin du jeu",
+   "ckb": "کۆتایی یارییەکە",
+   "kmr": "Dawiya lîstikê",
+   "ar": "نهاية اللعبة"
+  },
+  "final": {
+   "it": "Bravissime! Fine del gioco.",
+   "en": "Well done! Game over.",
+   "fr": "Bravo ! Fin de la partie.",
+   "ckb": "ئافەرین! یاری کۆتایی هات.",
+   "kmr": "Aferîn! Lîstik bi dawî bû.",
+   "ar": "أحسنت! انتهت اللعبة."
+  },
+  "habitsTitle": {
+   "it": "Cinque abitudini da portare a casa",
+   "en": "Five habits to take home",
+   "fr": "Cinq habitudes à adopter à la maison",
+   "ckb": "پێنج خوو بۆ ئەوەی بیبەیتەوە ماڵەوە",
+   "kmr": "Pênc adetên ku hûn dikarin bibin malê",
+   "ar": "خمس عادات يجب تطبيقها في المنزل"
+  },
+  "listen": {
+   "it": "Ascolta",
+   "en": "Listen",
+   "fr": "Écouter",
+   "ckb": "گوێگرتن",
+   "kmr": "Gûhdarkirin",
+   "ar": "يستمع"
+  },
+  "replay": {
+   "it": "Di nuovo",
+   "en": "Again",
+   "fr": "Encore",
+   "ckb": "دووبارە",
+   "kmr": "Dîsa",
+   "ar": "مرة أخرى"
+  },
+  "whoVoted": {
+   "it": "Cosa ha votato ogni squadra?",
+   "en": "What did each team vote for?",
+   "fr": "Pour quoi chaque équipe a-t-elle voté ?",
+   "ckb": "هەر تیپێک دەنگی بە چی داوە؟",
+   "kmr": "Her tîmekê ji bo çi deng da?",
+   "ar": "ماذا صوّت كل فريق؟"
+  }
+ },
+ "translation": {
+  "by": "Google Cloud Translation",
+  "reviewed": false,
+  "date": "2026-11-16"
  }
 }

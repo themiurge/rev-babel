@@ -26,10 +26,13 @@ def test_every_text_has_italian_and_the_four_numbers():
 
 
 def test_unknown_or_untranslated_language_falls_back_to_italian():
-    for lang in ("ar", "xx", "it", ""):
+    for lang in ("xx", "it", ""):
         ctx = scheda_social.context(lang)
         assert ctx["lang"] == "it" and ctx["second"] is False
-    assert scheda_social.langs() == ["it"]
+    # the machine translations cover the whole card in every course language
+    assert scheda_social.langs() == ["it", "ar", "ckb", "en", "fr", "kmr"]
+    assert scheda_social.context("ar")["rtl"] and scheda_social.context("ckb")["rtl"]
+    assert not scheda_social.context("fr")["rtl"]
 
 
 def test_second_language_needs_every_string(monkeypatch):
@@ -40,6 +43,8 @@ def test_second_language_needs_every_string(monkeypatch):
 
         d = copy.deepcopy(data)
         for t in scheda_social._texts(d):
+            for lang in [k for k in t if k not in ("it", "emoji")]:
+                del t[lang]
             t["en"] = t["it"] + " (en)"
         return d
 

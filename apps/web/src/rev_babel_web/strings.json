@@ -488,5 +488,19 @@
     "ckb": "فێربە چۆن چاتبۆت بەکاربهێنیت",
     "kmr": "Fêr bibe ka çawa chatbotê bi kar bînî",
     "ar": "تعلّمي استخدام روبوت الدردشة"
+  },
+  "I social network": {
+    "en": "Social networks",
+    "fr": "réseaux sociaux",
+    "ckb": "تۆڕە کۆمەڵایەتیەکان",
+    "kmr": "Torên civakî",
+    "ar": "الشبكات الاجتماعية"
+  },
+  "Scheda da portare a casa": {
+    "en": "Take-home card",
+    "fr": "Carte à emporter",
+    "ckb": "کارتی بردنە ماڵەوە",
+    "kmr": "Karta birinê malê",
+    "ar": "بطاقة تذكارية"
   }
 }

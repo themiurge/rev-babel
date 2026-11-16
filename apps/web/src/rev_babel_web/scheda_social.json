@@ -1,97 +1,202 @@
 {
  "title": {
-  "it": "Social media: la scheda da portare a casa"
+  "it": "Social media: la scheda da portare a casa",
+  "en": "Social media: the take-home card",
+  "fr": "Réseaux sociaux : la carte à emporter",
+  "ckb": "سۆشیال میدیا: کارتی بردنە ماڵەوە",
+  "kmr": "Medyaya civakî: karta birinê",
+  "ar": "وسائل التواصل الاجتماعي: البطاقة التي يجب أخذها إلى المنزل"
  },
  "side1": {
   "title": {
-   "it": "Prima di credere o condividere"
+   "it": "Prima di credere o condividere",
+   "en": "Before believing or sharing",
+   "fr": "Avant de croire ou de partager",
+   "ckb": "پێش باوەڕکردن یان هاوبەشیکردن",
+   "kmr": "Berî bawerkirin an parvekirinê",
+   "ar": "قبل التصديق أو المشاركة"
   },
   "questionsTitle": {
-   "it": "Quattro domande"
+   "it": "Quattro domande",
+   "en": "Four questions",
+   "fr": "Quatre questions",
+   "ckb": "چوار پرسیار",
+   "kmr": "Çar pirs",
+   "ar": "أربعة أسئلة"
   },
   "questions": [
    {
     "emoji": "✋",
-    "it": "Fermati."
+    "it": "Fermati.",
+    "en": "Stop.",
+    "fr": "Arrêt.",
+    "ckb": "وەستان.",
+    "kmr": "Rawestan.",
+    "ar": "قف."
    },
    {
     "emoji": "👤",
-    "it": "Chi l'ha pubblicato?"
+    "it": "Chi l'ha pubblicato?",
+    "en": "Who published it?",
+    "fr": "Qui l'a publié ?",
+    "ckb": "کێ بڵاوی کردۆتەوە؟",
+    "kmr": "Kê ew weşandiye?",
+    "ar": "من قام بنشره؟"
    },
    {
     "emoji": "📰",
-    "it": "Cosa dicono altre fonti?"
+    "it": "Cosa dicono altre fonti?",
+    "en": "What do other sources say?",
+    "fr": "Que disent les autres sources ?",
+    "ckb": "سەرچاوەکانی تر چی دەڵێن؟",
+    "kmr": "Çavkaniyên din çi dibêjin?",
+    "ar": "ماذا تقول المصادر الأخرى؟"
    },
    {
     "emoji": "🔍",
-    "it": "Dov'è l'originale?"
+    "it": "Dov'è l'originale?",
+    "en": "Where is the original?",
+    "fr": "Où se trouve l'original ?",
+    "ckb": "ئەسڵی لە کوێیە؟",
+    "kmr": "Orjînal li ku ye?",
+    "ar": "أين النسخة الأصلية؟"
    }
   ],
   "signalsTitle": {
-   "it": "Tre segnali di truffa"
+   "it": "Tre segnali di truffa",
+   "en": "Three signs of a scam",
+   "fr": "Trois signes d'une arnaque",
+   "ckb": "سێ نیشانەی فێڵکردن",
+   "kmr": "Sê nîşanên xapandinê",
+   "ar": "ثلاث علامات تدل على عملية احتيال"
   },
   "signals": [
    {
     "emoji": "⏱️",
-    "it": "Fretta: «Subito!»"
+    "it": "Fretta: «Subito!»",
+    "en": "Hurry: «Right away!»",
+    "fr": "Dépêchez-vous : « Tout de suite ! »",
+    "ckb": "پەلە بکە: «یەکسەر!»",
+    "kmr": "Bilezîne: «Ya rast!»",
+    "ar": "أسرع: «على الفور!»"
    },
    {
     "emoji": "💓",
-    "it": "Un'emozione forte: paura, amore, guadagno facile."
+    "it": "Un'emozione forte: paura, amore, guadagno facile.",
+    "en": "A strong emotion: fear, love, easy money.",
+    "fr": "Une émotion forte : la peur, l'amour, l'argent facile.",
+    "ckb": "هەستێکی بەهێز: ترس، خۆشەویستی، دەستکەوتێکی ئاسان.",
+    "kmr": "Hesteke bihêz: tirs, evîn, pereyê hêsan.",
+    "ar": "مشاعر قوية: الخوف، الحب، المال السهل."
    },
    {
     "emoji": "🔒",
-    "it": "Un pagamento strano o segreto."
+    "it": "Un pagamento strano o segreto.",
+    "en": "A strange or secret payment.",
+    "fr": "Un paiement étrange ou secret.",
+    "ckb": "پارەیەکی سەیر یان نهێنی.",
+    "kmr": "Peredaneke ecêb an veşartî.",
+    "ar": "دفعة غريبة أو سرية."
    }
   ],
   "rule": {
-   "it": "Fretta + soldi = mi fermo e chiamo."
+   "it": "Fretta + soldi = mi fermo e chiamo.",
+   "en": "Hurry + money = I'll stop and call.",
+   "fr": "Dépêche-toi + argent = je m'arrêterai et j'appellerai.",
+   "ckb": "پەلە بکە + پارە = دەوەستم و تەلەفۆن دەکەم.",
+   "kmr": "Bilezîne + pere = Ez ê rawestim û telefon bikim.",
+   "ar": "أسرع + مال = سأتوقف وأتصل."
   }
  },
  "side2": {
   "title": {
-   "it": "Numeri utili"
+   "it": "Numeri utili",
+   "en": "Useful numbers",
+   "fr": "Chiffres utiles",
+   "ckb": "ژمارەی بەسوود",
+   "kmr": "Hejmarên bikêrhatî",
+   "ar": "أرقام مفيدة"
   },
   "numbers": [
    {
     "emoji": "🛡️",
     "label": {
-     "it": "Polizia Postale"
+     "it": "Polizia Postale",
+     "en": "Postal Police",
+     "fr": "Police postale",
+     "ckb": "پۆلیسی پۆست",
+     "kmr": "Polîsên Postayê",
+     "ar": "شرطة البريد"
     },
     "value": "commissariatodips.it"
    },
    {
     "emoji": "🚨",
     "label": {
-     "it": "Emergenza"
+     "it": "Emergenza",
+     "en": "Emergency",
+     "fr": "Urgence",
+     "ckb": "فریاکەوتن",
+     "kmr": "Acîlîyet",
+     "ar": "طارئ"
     },
     "value": "112"
    },
    {
     "emoji": "🧒",
     "label": {
-     "it": "Emergenza Infanzia"
+     "it": "Emergenza Infanzia",
+     "en": "Childhood Emergency",
+     "fr": "Urgence infantile",
+     "ckb": "فریاگوزاری منداڵی",
+     "kmr": "Rewşa Awarte ya Zarokan",
+     "ar": "حالات الطوارئ لدى الأطفال"
     },
     "value": "114"
    },
    {
     "emoji": "💙",
     "label": {
-     "it": "Telefono Azzurro"
+     "it": "Telefono Azzurro",
+     "en": "Blue Telephone",
+     "fr": "Téléphone bleu",
+     "ckb": "تەلەفۆنی شین",
+     "kmr": "Telefona Şîn",
+     "ar": "الهاتف الأزرق"
     },
     "value": "19696"
    }
   ],
   "bank": {
-   "it": "La mia banca:"
+   "it": "La mia banca:",
+   "en": "My bank:",
+   "fr": "Ma banque :",
+   "ckb": "بانکەکەم:",
+   "kmr": "Banka min:",
+   "ar": "بنكي:"
   }
  },
  "ui": {
   "print": {
-   "it": "🖨️ Stampa"
+   "it": "🖨️ Stampa",
+   "en": "🖨️ Print",
+   "fr": "🖨️ Imprimer",
+   "ckb": "🖨️ چاپ",
+   "kmr": "🖨️ Çap bike",
+   "ar": "🖨️ طباعة"
   },
   "howto": {
-   "it": "Stampa fronte e retro, sul lato corto. Poi taglia a metà: due schede."
+   "it": "Stampa fronte e retro, sul lato corto. Poi taglia a metà: due schede.",
+   "en": "Print on both sides, on the short edge. Then cut in half: two cards.",
+   "fr": "Imprimez sur les deux faces, sur le bord court. Puis coupez en deux : vous obtenez deux cartes.",
+   "ckb": "لە هەردوو لا، لە لێواری کورت چاپ بکە. پاشان بیبڕە بۆ نیوە: دوو کارت.",
+   "kmr": "Li herdu aliyan, li kêleka kurt çap bike. Paşê bike du kart: du.",
+   "ar": "اطبع على كلا الجانبين، على الحافة القصيرة. ثم قصها إلى نصفين: بطاقتان."
   }
+ },
+ "translation": {
+  "by": "Google Cloud Translation",
+  "reviewed": false,
+  "date": "2026-11-16"
  }
 }
