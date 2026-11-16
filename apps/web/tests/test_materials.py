@@ -5,7 +5,6 @@ import struct
 import zlib
 
 import pytest
-
 from rev_babel_web import materials as m
 
 
@@ -193,7 +192,10 @@ def test_render_slots_fields_are_escaped_and_default_shows():
 
 
 def test_slots_in_html():
-    page = '<rb-slot data-slot="S11-A"></rb-slot><rb-slot data-slot=\'I1\' data-field="caption">x</rb-slot>'
+    page = (
+        '<rb-slot data-slot="S11-A"></rb-slot>'
+        "<rb-slot data-slot='I1' data-field=\"caption\">x</rb-slot>"
+    )
     assert m.slots_in_html(page) == {"S11-A", "I1"}
 
 

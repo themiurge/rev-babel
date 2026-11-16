@@ -4,7 +4,6 @@ import struct
 import zlib
 
 import pytest
-
 from rev_babel_web import media_clean as mc
 
 
