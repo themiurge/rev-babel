@@ -7,19 +7,33 @@ permanent-account and language-preference model.
 
 from __future__ import annotations
 
+import hmac
 import json
 import os
 import time
 from typing import Callable
 
 from fastapi import FastAPI, Form, HTTPException, Request, Response
-from fastapi.responses import JSONResponse, RedirectResponse, StreamingResponse
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
+from starlette.concurrency import run_in_threadpool
 from starlette.middleware.sessions import SessionMiddleware
 
-from rev_babel_web import chat, db, decks, i18n, live, python_helper, spid_game, tutor
+from rev_babel_web import (
+    chat,
+    db,
+    decks,
+    i18n,
+    live,
+    materials,
+    python_helper,
+    scheda_social,
+    spid_game,
+    tutor,
+    vero_o_falso,
+)
 
 _HERE = os.path.dirname(__file__)
 _WEB_ROOT = os.path.abspath(os.path.join(_HERE, "..", ".."))
@@ -77,6 +91,12 @@ LESSONS = [
         "title": "Lezione 7",
         "long_title": "Programmare con Python",
         "url": "/course/lezione-7",
+    },
+    {
+        "slug": "lezione-8",
+        "title": "Lezione 8",
+        "long_title": "I social network",
+        "url": "/course/lezione-8",
     },
 ]
 
@@ -177,6 +197,17 @@ LESSON7_GAMES = {
     },
 }
 
+# The take-home card: a printable page, its own tab, no score (ADR 0020).
+LESSON8_GAMES = {
+    "scheda": {
+        "title": "Scheda da portare a casa",
+        "unit": "s",
+        "max_value": 3_600,
+        "src": "/games/scheda-social",
+        "new_tab": True,
+    },
+}
+
 # Games with more than one difficulty: each mode gets its own score key
 # (its own row in game_scores) so easy and hard are tracked separately,
 # but they still share one lesson-page entry and one iframe.
@@ -204,6 +235,7 @@ LESSON_GAMES = {
     "lezione-5": LESSON5_GAMES,
     "lezione-6": LESSON6_GAMES,
     "lezione-7": LESSON7_GAMES,
+    "lezione-8": LESSON8_GAMES,  # not added to GAMES (no score)
 }
 
 
@@ -236,6 +268,62 @@ def _require_capture_host(request: Request) -> None:
             status_code=403,
             detail=f"This page is only served on {CAPTURE_HOST}.",
         )
+
+
+# Lesson 8's materials page writes what students see, so on top of the
+# capture-host gate it honours an optional key (ADR 0020). Read through the
+# module global at call time so tests can monkeypatch it.
+MATERIALS_KEY = os.environ.get("MATERIALS_KEY", "")
+
+
+def _materials_ok(request: Request) -> bool:
+    return not MATERIALS_KEY or bool(request.session.get("materials_ok"))
+
+
+def _require_materials_access(request: Request) -> None:
+    _require_capture_host(request)
+    if not _materials_ok(request):
+        raise HTTPException(status_code=401, detail="Serve la chiave dei materiali.")
+
+
+def _key_matches(key: str) -> bool:
+    return bool(MATERIALS_KEY) and hmac.compare_digest(
+        key.encode("utf-8"), MATERIALS_KEY.encode("utf-8")
+    )
+
+
+class MaterialFieldsIn(BaseModel):
+    fields: dict[str, str] = Field(max_length=10)
+
+
+class MaterialSkipIn(BaseModel):
+    skipped: bool
+
+
+class MaterialDeleteAllIn(BaseModel):
+    confirm: str
+
+
+def _material_call(func: Callable, *args):
+    try:
+        return func(*args)
+    except materials.MaterialError as exc:
+        raise HTTPException(status_code=exc.status, detail=exc.message) from exc
+
+
+def _slide_missing(slug: str, index: int) -> list[dict]:
+    """Slots of the Italian slide that still have no usable file."""
+    raw = decks.get_raw_slide(slug, index)
+    if raw is None:
+        return []
+    missing = []
+    for slot_id in sorted(materials.slots_in_html(raw.get("it", ""))):
+        st = materials.status(slot_id)
+        if st["file"] is None or st["skipped"]:
+            missing.append(
+                {"id": slot_id, "needed": (materials.slot(slot_id) or {}).get("needed", "")}
+            )
+    return missing
 
 
 class LiveStartIn(BaseModel):
@@ -692,7 +780,38 @@ def live_local_slide(request: Request, index: int):
     slide = decks.get_slide(state["deck_slug"], index, _current_lang(request))
     if slide is None:
         raise HTTPException(status_code=404)
+    slide["it"] = materials.render_slots(slide["it"], "student")
+    if slide.get("translated"):
+        slide["translated"] = materials.render_slots(slide["translated"], "student")
     return JSONResponse(slide)
+
+
+@app.get("/api/live/material/{slot_id}")
+def live_material(request: Request, slot_id: str):
+    if _current_name(request) is None:
+        raise HTTPException(status_code=401)
+    state = live.get_state()
+    if (
+        state.get("source") != "local"
+        or state.get("status") != "live"
+        or not state.get("deck_slug")
+    ):
+        raise HTTPException(status_code=404)
+    raw = decks.get_raw_slide(state["deck_slug"], int(state.get("index") or 0))
+    if raw is None:
+        raise HTTPException(status_code=404)
+    text = "\n".join(str(raw.get(k) or "") for k in decks.LANG_KEYS)
+    if slot_id not in materials.slots_in_html(text):
+        raise HTTPException(status_code=404)
+    found = materials.file_for(slot_id)
+    if found is None:
+        raise HTTPException(status_code=404)
+    path, mime = found
+    return FileResponse(
+        path,
+        media_type=mime,
+        headers={"Cache-Control": "private, max-age=3600", "X-Content-Type-Options": "nosniff"},
+    )
 
 
 @app.get("/api/live/stream")
@@ -863,7 +982,29 @@ def admin_deck_slide(request: Request, slug: str, index: int):
     slide = decks.get_slide(slug, index, "it")
     if slide is None:
         raise HTTPException(status_code=404)
+    slide["it"] = materials.render_slots(slide["it"], "admin")
+    slide.update(decks.get_slide_meta(slug, index) or {})
+    slide["missing"] = _slide_missing(slug, index)
     return JSONResponse(slide)
+
+
+@app.get("/admin/api/live/notes")
+def admin_live_notes(request: Request):
+    _require_capture_host(request)
+    state = live.get_state()
+    slide = None
+    if state.get("source") == "local" and state.get("deck_slug"):
+        index = int(state.get("index") or 0)
+        meta = decks.get_slide_meta(state["deck_slug"], index)
+        if meta is not None:
+            slide = {**meta, "missing": _slide_missing(state["deck_slug"], index)}
+    return JSONResponse({"state": state, "slide": slide})
+
+
+@app.get("/present/telecomando")
+def present_remote(request: Request):
+    _require_capture_host(request)
+    return templates.TemplateResponse(request, "present_remote.html", {})
 
 
 @app.post("/admin/api/live/goto")
@@ -907,4 +1048,152 @@ def submit_score(request: Request, score: ScoreIn):
             "best": db.personal_best(student["id"], score.game),
             "last": db.last_score(student["id"], score.game),
         }
+    )
+
+
+# ---- Lesson 8: materials page and API (capture host only, ADR 0020) ----
+
+
+def _materials_page(request: Request, needs_key: bool, key_error: bool = False):
+    return templates.TemplateResponse(
+        request,
+        "materials.html",
+        {
+            "needs_key": needs_key,
+            "key_error": key_error,
+            "key_configured": bool(MATERIALS_KEY),
+        },
+    )
+
+
+@app.get("/materiali")
+def materials_page(request: Request, k: str | None = None):
+    _require_capture_host(request)
+    if k is not None and MATERIALS_KEY:
+        if _key_matches(k):
+            request.session["materials_ok"] = True
+            return RedirectResponse("/materiali", status_code=303)
+        return _materials_page(request, needs_key=True, key_error=True)
+    return _materials_page(request, needs_key=not _materials_ok(request))
+
+
+@app.post("/materiali/chiave")
+def materials_key(request: Request, key: str = Form("")):
+    _require_capture_host(request)
+    if _key_matches(key):
+        request.session["materials_ok"] = True
+        return RedirectResponse("/materiali", status_code=303)
+    return _materials_page(request, needs_key=bool(MATERIALS_KEY), key_error=True)
+
+
+@app.get("/admin/api/materials")
+def admin_materials(request: Request):
+    _require_materials_access(request)
+    return JSONResponse({**materials.page_data(), "keyConfigured": bool(MATERIALS_KEY)})
+
+
+@app.post("/admin/api/materials/delete-all")
+def admin_materials_delete_all(request: Request, body: MaterialDeleteAllIn):
+    _require_materials_access(request)
+    if body.confirm != "ELIMINA":
+        raise HTTPException(status_code=400, detail="Scrivi ELIMINA per confermare.")
+    materials.delete_all()
+    return JSONResponse({"ok": True})
+
+
+@app.post("/admin/api/materials/{slot_id}/file")
+async def admin_materials_upload(request: Request, slot_id: str):
+    _require_materials_access(request)
+    if materials.slot(slot_id) is None:
+        raise HTTPException(status_code=404, detail="Materiale sconosciuto.")
+    cap = materials.limit_for(slot_id)
+    too_big = HTTPException(
+        status_code=413, detail=f"File troppo grande: massimo {cap // 2**20} MB."
+    )
+    declared = request.headers.get("content-length", "")
+    if declared.isdigit() and int(declared) > cap:
+        raise too_big
+    tmp = materials.new_tmp_path()
+    try:
+        total = 0
+        with open(tmp, "wb") as out:
+            async for chunk in request.stream():
+                total += len(chunk)
+                if total > cap:
+                    raise too_big
+                out.write(chunk)
+        if total == 0:
+            raise HTTPException(status_code=400, detail="File vuoto.")
+        status = await run_in_threadpool(_material_call, materials.store_upload, slot_id, tmp)
+    finally:
+        tmp.unlink(missing_ok=True)
+    return JSONResponse(status)
+
+
+@app.delete("/admin/api/materials/{slot_id}/file")
+def admin_materials_delete_file(request: Request, slot_id: str):
+    _require_materials_access(request)
+    return JSONResponse(_material_call(materials.delete_file, slot_id))
+
+
+@app.post("/admin/api/materials/{slot_id}/fields")
+def admin_materials_fields(request: Request, slot_id: str, body: MaterialFieldsIn):
+    _require_materials_access(request)
+    return JSONResponse(_material_call(materials.set_fields, slot_id, body.fields))
+
+
+@app.post("/admin/api/materials/{slot_id}/skip")
+def admin_materials_skip(request: Request, slot_id: str, body: MaterialSkipIn):
+    _require_materials_access(request)
+    return JSONResponse(_material_call(materials.set_skipped, slot_id, body.skipped))
+
+
+@app.get("/admin/materials/{slot_id}/file")
+def admin_material_file(request: Request, slot_id: str):
+    # Host gate only (no key): /present and the game run on the classroom PC.
+    _require_capture_host(request)
+    found = materials.file_for(slot_id, include_skipped=True)
+    if found is None:
+        raise HTTPException(status_code=404)
+    path, mime = found
+    return FileResponse(
+        path,
+        media_type=mime,
+        headers={"Cache-Control": "private, max-age=86400", "X-Content-Type-Options": "nosniff"},
+    )
+
+
+# ---- Lesson 8: the game on the projector and the take-home card ----
+
+
+@app.get("/vero-o-falso")
+def vero_o_falso_page(request: Request):
+    _require_capture_host(request)
+    statuses = {st["id"]: st for st in materials.all_status()}
+    config = vero_o_falso.page_config(
+        statuses, lambda html_text: materials.render_slots(html_text, "admin")
+    )
+    game_json = json.dumps(config, ensure_ascii=False).replace("</", "<\\/")
+    return templates.TemplateResponse(request, "games/vero_o_falso.html", {"game_json": game_json})
+
+
+@app.get("/vero-o-falso/carte")
+def vero_o_falso_cards(request: Request, copie: int = 3):
+    _require_capture_host(request)
+    return templates.TemplateResponse(
+        request, "games/vero_o_falso_carte.html", vero_o_falso.cards_context(copie)
+    )
+
+
+@app.get("/games/scheda-social")
+def game_scheda_social(request: Request, lang: str | None = None):
+    host = request.headers.get("host", "").split(":")[0]
+    if CAPTURE_HOST and host == CAPTURE_HOST:
+        chosen = lang or "it"
+    elif _current_student(request) is None:
+        return RedirectResponse("/", status_code=303)
+    else:
+        chosen = _current_lang(request)
+    return templates.TemplateResponse(
+        request, "games/scheda_social.html", scheda_social.context(chosen)
     )
