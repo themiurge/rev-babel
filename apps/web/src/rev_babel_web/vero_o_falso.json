@@ -117,22 +117,6 @@
    ]
   },
   {
-   "id": "voci",
-   "emoji": "🎙️",
-   "label": {
-    "it": "Voci",
-    "en": "Voices",
-    "fr": "Voix",
-    "ckb": "دەنگەکان",
-    "kmr": "Deng",
-    "ar": "أصوات"
-   },
-   "items": [
-    "A1",
-    "A2"
-   ]
-  },
-  {
    "id": "messaggi",
    "emoji": "💬",
    "label": {
@@ -163,26 +147,8 @@
     "ar": "بريد"
    },
    "items": [
-    "P1",
     "P2",
     "P3"
-   ]
-  },
-  {
-   "id": "profili",
-   "emoji": "👤",
-   "label": {
-    "it": "Profili",
-    "en": "Profiles",
-    "fr": "Profils",
-    "ckb": "پڕۆفایلی",
-    "kmr": "Profîl",
-    "ar": "الملفات الشخصية"
-   },
-   "items": [
-    "F1",
-    "F2",
-    "F3"
    ]
   }
  ],
@@ -383,84 +349,6 @@
    "teachingLink": "S27-Q3"
   },
   {
-   "id": "A1",
-   "category": "voci",
-   "media": {
-    "type": "audio",
-    "slot": "A1"
-   },
-   "mock": null,
-   "invented": false,
-   "caption": {
-    "it": "🎙️ Messaggio vocale",
-    "en": "🎙️ Voice message",
-    "fr": "🎙️ Message vocal",
-    "ckb": "🎙️ پەیامی دەنگی",
-    "kmr": "🎙️ Peyama dengî",
-    "ar": "🎙️ رسالة صوتية"
-   },
-   "answer": "vero",
-   "onlyVerifiable": false,
-   "hardToJudge": true,
-   "clue": {
-    "it": "È la voce vera dell'insegnante, registrata con il telefono.",
-    "en": "It's the teacher's real voice, recorded with the phone.",
-    "fr": "C'est la vraie voix du professeur, enregistrée avec le téléphone.",
-    "ckb": "دەنگی ڕاستەقینەی مامۆستایە، بە تەلەفۆن تۆمار کراوە.",
-    "kmr": "Ew dengê rastîn ê mamoste ye, ku bi telefonê hatiye tomarkirin.",
-    "ar": "إنه صوت المعلم الحقيقي، تم تسجيله بالهاتف."
-   },
-   "action": {
-    "it": "Ti chiede aiuto? Richiama la persona al suo numero di sempre.",
-    "en": "Are they asking for help? Call them back on their usual number.",
-    "fr": "Ont-ils besoin d'aide ? Rappelez-les à leur numéro habituel.",
-    "ckb": "ئایا داوای یارمەتی دەکەن؟ پەیوەندییان پێوە بکەنەوە بە ژمارەی ئاسایی خۆیان.",
-    "kmr": "Ma ew alîkariyê dixwazin? Li ser jimareya wan a asayî dîsa telefonî wan bikin.",
-    "ar": "هل يطلبون المساعدة؟ اتصل بهم على رقمهم المعتاد."
-   },
-   "source_note": "teacher's own voice",
-   "teachingLink": "S22"
-  },
-  {
-   "id": "A2",
-   "category": "voci",
-   "media": {
-    "type": "audio",
-    "slot": "A2"
-   },
-   "mock": null,
-   "invented": false,
-   "caption": {
-    "it": "🎙️ Messaggio vocale",
-    "en": "🎙️ Voice message",
-    "fr": "🎙️ Message vocal",
-    "ckb": "🎙️ پەیامی دەنگی",
-    "kmr": "🎙️ Peyama dengî",
-    "ar": "🎙️ رسالة صوتية"
-   },
-   "answer": "falso_ia",
-   "onlyVerifiable": false,
-   "hardToJudge": true,
-   "clue": {
-    "it": "Voce copiata con l'IA da pochi secondi di registrazione. Sembra quasi uguale.",
-    "en": "Voice copied with AI from a few seconds of recording. Sounds almost identical.",
-    "fr": "Voix copiée par IA à partir de quelques secondes d'enregistrement. Le résultat est quasi identique.",
-    "ckb": "دەنگێک کە بە AI کۆپی کراوە لە چەند چرکەیەک لە تۆمارکردن. دەنگەکان نزیکەی یەکسانن.",
-    "kmr": "Deng ji çend saniyeyên tomarkirinê bi AI-ê hatiye kopîkirin. Deng hema bêje yek e.",
-    "ar": "تم نسخ الصوت باستخدام الذكاء الاصطناعي من تسجيل مدته بضع ثوانٍ. يبدو الصوت متطابقاً تقريباً."
-   },
-   "action": {
-    "it": "Chiedi la parola segreta di famiglia. Oppure richiama tu, al numero di sempre.",
-    "en": "Ask for the family secret password. Or call us back at our usual number.",
-    "fr": "Demandez le mot de passe secret de la famille. Ou rappelez-nous à notre numéro habituel.",
-    "ckb": "داوای وشەی نهێنی نهێنی خێزان بکە. یان پەیوەندیمان پێوە بکەنەوە بە ژمارە ئاساییەکەمان.",
-    "kmr": "Şîfreya veşartî ya malbatê bipirsin. An jî bi jimareya me ya asayî telefonî me bikin.",
-    "ar": "اطلب كلمة المرور السرية للعائلة. أو اتصل بنا على رقمنا المعتاد."
-   },
-   "source_note": "the teacher's own voice cloned with his consent",
-   "teachingLink": "S22"
-  },
-  {
    "id": "M1",
    "category": "messaggi",
    "media": {
@@ -621,38 +509,6 @@
    "teachingLink": "S27-Q2"
   },
   {
-   "id": "P1",
-   "category": "post",
-   "media": {
-    "type": "image",
-    "slot": "P1"
-   },
-   "mock": null,
-   "invented": false,
-   "caption": {},
-   "answer": "vero",
-   "onlyVerifiable": false,
-   "hardToJudge": true,
-   "clue": {
-    "it": "Notizia vera, di un giornale conosciuto. La stessa notizia c'è anche su altri giornali.",
-    "en": "True news, from a well-known newspaper. The same story appears in other newspapers as well.",
-    "fr": "Information véridique, provenant d'un journal réputé. La même information a été publiée dans d'autres journaux.",
-    "ckb": "هەواڵێکی ڕاست، لە ڕۆژنامەیەکی ناسراوەوە. هەمان چیرۆک لە ڕۆژنامەکانی دیکەشدا دەردەکەوێت.",
-    "kmr": "Nûçeyek rast, ji rojnameyeke navdar. Heman çîrok di rojnameyên din de jî derdikeve.",
-    "ar": "خبر صحيح، من صحيفة معروفة. وقد نُشرت القصة نفسها في صحف أخرى أيضاً."
-   },
-   "action": {
-    "it": "Apri il sito del giornale: trovi la notizia, con la data.",
-    "en": "Open the newspaper's website: you'll find the news, with the date.",
-    "fr": "Ouvrez le site web du journal : vous y trouverez l'article, avec la date.",
-    "ckb": "ماڵپەڕی ڕۆژنامەکە بکەرەوە: هەواڵەکە دەدۆزیتەوە، لەگەڵ بەروارەکەی.",
-    "kmr": "Malpera rojnameyê veke: tu dê nûçeyê bi dîrokê re bibînî.",
-    "ar": "افتح موقع الصحيفة الإلكتروني: ستجد الأخبار مع التاريخ."
-   },
-   "source_note": "real headline with its link",
-   "teachingLink": "S27-Q3"
-  },
-  {
    "id": "P2",
    "category": "post",
    "media": null,
@@ -709,99 +565,6 @@
    },
    "source_note": "invented for the course (fictional page)",
    "teachingLink": "S16"
-  },
-  {
-   "id": "F1",
-   "category": "profili",
-   "media": {
-    "type": "image",
-    "slot": "F1"
-   },
-   "mock": null,
-   "invented": false,
-   "caption": {},
-   "answer": "vero",
-   "onlyVerifiable": false,
-   "hardToJudge": true,
-   "clue": {
-    "it": "Profilo vero: post da tanti anni, contatti e indirizzo che si possono controllare.",
-    "en": "Real profile: posts for many years, contact information and address that can be verified.",
-    "fr": "Profil authentique : publications depuis de nombreuses années, informations de contact et adresse vérifiables.",
-    "ckb": "پرۆفایلی ڕاستەقینە: پۆستەکانی چەندین ساڵە، زانیاری پەیوەندی و ناونیشان کە دەتوانرێت پشتڕاست بکرێتەوە.",
-    "kmr": "Profîla rastîn: nivîsên ji bo gelek salan, agahdariya têkiliyê û navnîşana ku dikare were verast kirin.",
-    "ar": "ملف تعريف حقيقي: منشورات لسنوات عديدة، ومعلومات اتصال وعنوان يمكن التحقق منهما."
-   },
-   "action": {
-    "it": "Controlla sul sito ufficiale: c'è il link allo stesso profilo?",
-    "en": "Check the official website: is there a link to the same profile?",
-    "fr": "Consultez le site officiel : existe-t-il un lien vers le même profil ?",
-    "ckb": "ماڵپەڕی فەرمی بزانە: ئایا لینکی هەمان پڕۆفایلی هەیە؟",
-    "kmr": "Malpera fermî kontrol bike: gelo girêdanek ji bo heman profîlê heye?",
-    "ar": "تحقق من الموقع الرسمي: هل يوجد رابط لنفس الملف الشخصي؟"
-   },
-   "source_note": "screenshot of a real organisation's profile",
-   "teachingLink": "S27-Q2"
-  },
-  {
-   "id": "F2",
-   "category": "profili",
-   "media": null,
-   "mock": "<div class='mock-profile'><div class='profile-head'><span class='profile-avatar'><rb-slot data-slot='F2'><span class='profile-avatar-emoji'>👤</span></rb-slot></span><div><div class='profile-name'>Sofia Bellini</div><div class='profile-bio'>💎 Esperta di investimenti</div></div></div><div class='profile-stats'><span class='stat'>📅 Account creato 3 settimane fa</span><span class='stat'>📝 4 post</span><span class='stat'>👥 2.300 amici</span></div><div class='post-body'>Ho guadagnato 5.000 € in un mese! 💰 Scrivimi in privato e ti spiego come.</div></div>",
-   "invented": true,
-   "caption": {},
-   "answer": "falso_ia",
-   "onlyVerifiable": false,
-   "hardToJudge": false,
-   "clue": {
-    "it": "Account nuovo, pochi post, tantissimi amici e promesse di soldi: è un profilo falso. Spesso anche la foto è fatta con l'IA.",
-    "en": "A new account, few posts, tons of friends, and promises of money: it's a fake profile. Often, even the photo is taken with AI.",
-    "fr": "Un compte récent, peu de publications, des tonnes d'amis et des promesses d'argent : c'est un faux profil. Souvent, même la photo est prise par intelligence artificielle.",
-    "ckb": "ئەکاونتێکی نوێ، چەند پۆستێک، تەنێک هاوڕێ، و بەڵێنی پارە: ئەوە پڕۆفایلی ساختەیە. زۆرجار، تەنانەت وێنەکەش بە AI گیراوە.",
-    "kmr": "Hesabêkî nû, çend post, gelek heval û sozên pereyan: ew profîlek sexte ye. Gelek caran, heta wêne jî bi AI tê kişandin.",
-    "ar": "حساب جديد، منشورات قليلة، عدد كبير من الأصدقاء، ووعود بالمال: إنه حساب مزيف. في كثير من الأحيان، حتى الصورة يتم التقاطها باستخدام الذكاء الاصطناعي."
-   },
-   "action": {
-    "it": "Non accettare l'amicizia. Non scrivere. Segnala il profilo.",
-    "en": "Don't accept friendship. Don't write. Report the profile.",
-    "fr": "N'acceptez pas d'ami. N'écrivez pas. Signalez le profil.",
-    "ckb": "هاوڕێیەتی قبوڵ مەکە. مەنوسە. ڕاپۆرتی پڕۆفایلی.",
-    "kmr": "Dostaniyê qebûl neke. Nenivîse. Profîlê rapor bike.",
-    "ar": "لا تقبل الصداقة. لا تراسل. أبلغ عن الملف الشخصي."
-   },
-   "source_note": "invented for the course (fictional person; optional AI face from slot F2)",
-   "teachingLink": "S17"
-  },
-  {
-   "id": "F3",
-   "category": "profili",
-   "media": {
-    "type": "image",
-    "slot": "F3"
-   },
-   "mock": "<div class='mock-profile'><div class='profile-head'><span class='profile-avatar'><span class='profile-avatar-emoji'>🏛️</span></span><div><div class='profile-name'>Ufficio Bonus Famiglie ✔️</div><div class='profile-bio'>Pagina ufficiale · Bonus e rimborsi</div></div></div><div class='profile-stats'><span class='stat'>📅 Pagina creata 5 giorni fa</span><span class='stat'>👥 312 follower</span></div><div class='post-body'>Ricevi 500 € di bonus spesa! Scrivi in privato il tuo IBAN e una foto del documento. Solo per oggi! ⏰</div></div>",
-   "invented": false,
-   "caption": {},
-   "answer": "truffa",
-   "onlyVerifiable": false,
-   "hardToJudge": false,
-   "clue": {
-    "it": "Una pagina che finge di essere un ufficio: è nuova, ha pochi follower e chiede IBAN e documento in privato. Gli uffici veri non lo fanno.",
-    "en": "A page pretending to be an office: it's new, has few followers, and asks for IBAN and ID in private. Real offices don't do this.",
-    "fr": "Une page se faisant passer pour un bureau : elle est récente, a peu d’abonnés et demande l’IBAN et une pièce d’identité en privé. Les vrais bureaux ne procèdent pas ainsi.",
-    "ckb": "پەیجێک وا خۆی وەک ئۆفیس نیشان دەدات: تازەیە، فۆڵۆوەری کەمی هەیە، و بە تایبەتی داوای IBAN و ID دەکات. ئۆفیسە ڕاستەقینەکان ئەم کارە ناکەن.",
-    "kmr": "Rûpelek ku xwe wek ofîsekê nîşan dide: ew nû ye, şopînerên wê kêm in, û bi awayekî taybet IBAN û nasnameyê dixwaze. Ofîsên rastîn vê yekê nakin.",
-    "ar": "صفحة تتظاهر بأنها مكتب: إنها جديدة، ولديها عدد قليل من المتابعين، وتطلب رقم الحساب المصرفي الدولي (IBAN) وبطاقة الهوية بشكل خاص. المكاتب الحقيقية لا تفعل ذلك."
-   },
-   "action": {
-    "it": "Cerca il sito ufficiale dell'ente. Non mandare mai documenti in chat. Segnala la pagina.",
-    "en": "Find the organization's official website. Never send documents via chat. Report the page.",
-    "fr": "Trouvez le site web officiel de l'organisation. N'envoyez jamais de documents par messagerie instantanée. Signalez la page.",
-    "ckb": "ماڵپەڕی فەرمی ڕێکخراوەکە بدۆزەرەوە. هەرگیز بەڵگەنامەکان لە ڕێگەی چاتەوە مەنێرن. ڕاپۆرتی پەیجەکە بکە.",
-    "kmr": "Malpera fermî ya rêxistinê bibîne. Qet belgeyan bi rêya sohbetê neşîne. Rûpelê rapor bike.",
-    "ar": "ابحث عن الموقع الإلكتروني الرسمي للمنظمة. لا ترسل المستندات عبر الدردشة مطلقاً. أبلغ عن الصفحة."
-   },
-   "source_note": "real public alert screenshot, else invented (fictional office)",
-   "teachingLink": "S20"
   }
  ],
  "habits": [

@@ -1,17 +1,28 @@
 """Tests for the lesson 8 materials store, on invented bytes in a temp dir."""
 
 import copy
+import json
 import struct
+from pathlib import Path
 import zlib
 
 import pytest
 from rev_babel_web import materials as m
 
 
+# The store is generic (audio slots, link fields, optional slots), so these
+# tests run on the full 25-slot manifest kept as a fixture, even though the
+# shipped manifest dropped some slots to fit the time before class.
+FULL_MANIFEST = Path(__file__).parent / "data" / "materials_manifest_full.json"
+
+
 @pytest.fixture(autouse=True)
 def store(tmp_path, monkeypatch):
     monkeypatch.setattr(m, "MATERIALS_DIR", tmp_path / "materials")
-    return tmp_path / "materials"
+    monkeypatch.setattr(m, "MANIFEST_PATH", FULL_MANIFEST)
+    m.manifest.cache_clear()
+    yield tmp_path / "materials"
+    m.manifest.cache_clear()
 
 
 def png_chunk(ctype: bytes, data: bytes) -> bytes:
@@ -41,7 +52,14 @@ def upload(slot_id: str, data: bytes) -> dict:
 
 def test_manifest_is_valid():
     assert m.validate_manifest(m.manifest()) == []
-    assert len(m.manifest()["slots"]) == 23
+    assert len(m.manifest()["slots"]) == 25
+
+
+def test_shipped_manifest_is_valid(monkeypatch):
+    shipped = Path(m.__file__).parent / "materials_manifest.json"
+    data = json.loads(shipped.read_text(encoding="utf-8"))
+    assert m.validate_manifest(data) == []
+    assert len(data["slots"]) == 17
 
 
 def test_broken_manifest_gives_errors():

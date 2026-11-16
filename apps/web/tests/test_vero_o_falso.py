@@ -8,7 +8,7 @@ from rev_babel_web import vero_o_falso as vof
 
 DATA = vof.load()
 ITEMS = {i["id"]: i for i in DATA["items"]}
-MOCK_ONLY = {"M1", "M2", "M3", "M4", "M5", "P2", "P3", "F2", "F3"}
+MOCK_ONLY = {"M1", "M2", "M3", "M4", "M5", "P2", "P3"}
 
 
 def _cfg(statuses=None, render=lambda h: h):
@@ -31,18 +31,16 @@ def _status(slot, family="image", skipped=False, fields=None):
 
 def test_content_is_valid_with_the_planned_mix():
     assert vof.validate(DATA) == []
-    assert len(DATA["items"]) == 18
+    assert len(DATA["items"]) == 12
     mix = {}
     for item in DATA["items"]:
         mix.setdefault(item["category"], []).append(item["answer"])
     count = {c: sorted(a) for c, a in mix.items()}
     assert count["foto"] == ["falso_ia", "vero", "vero"]
     assert count["video"] == ["falso_ia", "vero"]
-    assert count["voci"] == ["falso_ia", "vero"]
     assert count["messaggi"] == ["truffa"] * 3 + ["vero"] * 2
-    assert count["post"] == ["falso_ia", "falso_ia", "vero"]
-    assert count["profili"] == ["falso_ia", "truffa", "vero"]
-    assert sum(1 for i in DATA["items"] if i["answer"] == "vero") == 8
+    assert count["post"] == ["falso_ia", "falso_ia"]
+    assert sum(1 for i in DATA["items"] if i["answer"] == "vero") == 5
 
 
 def test_validate_catches_problems():
@@ -85,7 +83,6 @@ def test_page_config_with_statuses_and_render():
     st = {
         "I1": _status("I1", fields={"caption": "Mia didascalia"}),
         "M1": _status("M1", skipped=True),
-        "P1": _status("P1", fields={"link": "https://example.org/x"}),
     }
     items = _by_id(_cfg(st, render=lambda h: "R:" + h))
     assert items["I1"]["available"] and items["I1"]["mediaType"] == "image"
@@ -94,7 +91,6 @@ def test_page_config_with_statuses_and_render():
     assert items["I1"]["alt"] == "Mia didascalia"
     assert items["M1"]["invented"]  # skipped: back to the mock
     assert items["M1"]["mediaType"] is None and items["M1"]["mockHtml"].startswith("R:")
-    assert items["P1"]["link"] == "https://example.org/x"
     assert items["M2"]["mockHtml"].startswith("R:")
 
 

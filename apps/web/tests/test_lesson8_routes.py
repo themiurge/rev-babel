@@ -261,8 +261,8 @@ def test_game_page_config() -> None:
         return json.loads(raw.group(1).replace("<\\/", "</"))
 
     cfg = config()
-    assert len(cfg["items"]) == 18
-    assert sum(1 for i in cfg["items"] if i["available"]) == 9
+    assert len(cfg["items"]) == 12
+    assert sum(1 for i in cfg["items"] if i["available"]) == 7
     t.post("/admin/api/materials/I1/file", content=_png())
     item = next(i for i in config()["items"] if i["id"] == "I1")
     assert item["available"] and "/admin/materials/I1/file?v=" in json.dumps(item)

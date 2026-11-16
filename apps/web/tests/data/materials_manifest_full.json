@@ -1,0 +1,595 @@
+{
+ "version": 1,
+ "artifacts": [
+  {
+   "id": "deck-main",
+   "title": "Lezione: Social media",
+   "deck": "lezione-8-social"
+  },
+  {
+   "id": "deck-parents",
+   "title": "Genitori e social media",
+   "deck": "lezione-8-genitori"
+  },
+  {
+   "id": "game",
+   "title": "Gioco: Vero o falso?",
+   "deck": null
+  }
+ ],
+ "slots": [
+  {
+   "id": "S11-A",
+   "artifact": "deck-main",
+   "where": "Slide 11 · Il mio feed e il tuo",
+   "title": "La pagina iniziale di YouTube: il tuo account",
+   "kind": "screenshot",
+   "needed": "required",
+   "noFaces": false,
+   "answer": null,
+   "alt": "Pagina iniziale di YouTube, account A",
+   "instructions": [
+    "Apri YouTube sul computer, con il tuo account.",
+    "Fai uno screenshot della pagina iniziale (Win + Maiusc + S) e incollalo qui con Ctrl + V.",
+    "Va bene anche dal telefono: screenshot dell'app YouTube o Instagram."
+   ],
+   "safety": [
+    "Taglia la parte in alto: niente nome, foto del profilo, notifiche.",
+    "Evita anteprime con bambini."
+   ],
+   "fields": []
+  },
+  {
+   "id": "S11-B",
+   "artifact": "deck-main",
+   "where": "Slide 11 · Il mio feed e il tuo",
+   "title": "La pagina iniziale di YouTube: un altro account",
+   "kind": "screenshot",
+   "needed": "required",
+   "noFaces": false,
+   "answer": null,
+   "alt": "Pagina iniziale di YouTube, account B",
+   "instructions": [
+    "Apri YouTube in una finestra in incognito (Ctrl + Maiusc + N), senza account: vedrai un feed diverso.",
+    "Oppure l'account di un familiare, solo se è d'accordo.",
+    "Stessa app e stessa grandezza della schermata A."
+   ],
+   "safety": [
+    "Niente nomi, foto del profilo o notifiche.",
+    "Evita anteprime con bambini."
+   ],
+   "fields": []
+  },
+  {
+   "id": "S21",
+   "artifact": "deck-main",
+   "where": "Slide 21 · «Ciao mamma, ho cambiato numero»",
+   "title": "Uno screenshot vero della truffa «Ciao mamma»",
+   "kind": "screenshot",
+   "needed": "fallback",
+   "noFaces": true,
+   "answer": null,
+   "alt": "Screenshot di un messaggio truffa «Ciao mamma, ho cambiato numero»",
+   "instructions": [
+    "Dal tuo telefono, da un amico che è d'accordo, o da un avviso pubblico della Polizia Postale o del CERT-AgID.",
+    "Se non ce l'hai, la slide mostra un esempio disegnato."
+   ],
+   "safety": [
+    "Copri il numero di telefono e la foto del profilo (app Foto ➜ Modifica ➜ pennarello).",
+    "Niente nomi veri."
+   ],
+   "fields": []
+  },
+  {
+   "id": "S25-A",
+   "artifact": "deck-main",
+   "where": "Slide 25 · Quale foto è vera? (foto A)",
+   "title": "Una foto vera, fatta da te",
+   "kind": "image",
+   "needed": "required",
+   "noFaces": true,
+   "answer": null,
+   "alt": "Foto A",
+   "instructions": [
+    "Una scena di tutti i giorni: un piatto, una strada, un mercato, un parco.",
+    "Meglio se un po' strana o imperfetta: così la sorpresa funziona.",
+    "Diversa dalle foto del gioco (I1, I3), per non rovinare il gioco."
+   ],
+   "safety": [
+    "Nessun volto, nessuna targa, nessun indirizzo o insegna vicino a casa tua."
+   ],
+   "fields": []
+  },
+  {
+   "id": "S25-B",
+   "artifact": "deck-main",
+   "where": "Slide 25 · Quale foto è vera? (foto B)",
+   "title": "Un'immagine creata con l'IA, simile alla foto A",
+   "kind": "image",
+   "needed": "required",
+   "noFaces": true,
+   "answer": null,
+   "alt": "Foto B",
+   "instructions": [
+    "Con Gemini o ChatGPT: «Crea una foto realistica, fatta con il telefono, di …» (la stessa scena della foto A).",
+    "Scegli il risultato più realistico."
+   ],
+   "safety": [
+    "Nessuna persona vera, nessun marchio."
+   ],
+   "fields": []
+  },
+  {
+   "id": "S28",
+   "artifact": "deck-main",
+   "where": "Slide 28 · Proviamo: da dove viene questa foto?",
+   "title": "Una foto vecchia e vera, che Google Lens ritrova",
+   "kind": "image",
+   "needed": "required",
+   "noFaces": true,
+   "answer": null,
+   "alt": "Foto da cercare con Google Lens",
+   "instructions": [
+    "Una foto di una notizia di qualche anno fa (neve, alluvione, grandine) che si trova facilmente online.",
+    "Prova prima sul PC del corso: tasto destro sulla foto ➜ «Cerca immagine con Google». Deve trovare l'originale.",
+    "Se vuoi, cambia qui sotto la didascalia falsa (come se fosse di oggi)."
+   ],
+   "safety": [
+    "Niente volti riconoscibili, niente bambini."
+   ],
+   "fields": [
+    {
+     "key": "caption",
+     "label": "Didascalia falsa (come se fosse di oggi)",
+     "required": false,
+     "max": 200,
+     "placeholder": "Guardate cosa è successo OGGI in città! 😱 Condividete!",
+     "type": "text"
+    }
+   ]
+  },
+  {
+   "id": "S29",
+   "artifact": "deck-main",
+   "where": "Slide 29 · L'etichetta «Creato con IA» (facoltativa)",
+   "title": "Uno screenshot con l'etichetta «Creato con IA»",
+   "kind": "screenshot",
+   "needed": "fallback",
+   "noFaces": true,
+   "answer": null,
+   "alt": "Post con l'etichetta che dice che è fatto con l'IA",
+   "instructions": [
+    "Su Instagram, TikTok o YouTube trova un post con l'etichetta dell'IA (per esempio «Info sull'IA» o «Creato con IA»).",
+    "Ritaglia: si deve vedere bene l'etichetta.",
+    "Se non lo trovi, la slide mostra un esempio disegnato."
+   ],
+   "safety": [
+    "Copri nome e foto di chi ha pubblicato."
+   ],
+   "fields": []
+  },
+  {
+   "id": "I1",
+   "artifact": "game",
+   "where": "Gioco · Foto · I1",
+   "title": "Una tua foto vera, recente",
+   "kind": "image",
+   "needed": "required",
+   "noFaces": true,
+   "answer": "vero",
+   "alt": "Foto di una scena di tutti i giorni",
+   "instructions": [
+    "Mercato, cibo, una strada, un parco. Fotografala adesso o sceglila dalla galleria.",
+    "Poi crea l'immagine I2: la stessa scena, fatta con l'IA.",
+    "Se il soggetto non è un mercato, cambia la didascalia."
+   ],
+   "safety": [
+    "Nessun volto, nessuna targa, niente vicino a casa tua."
+   ],
+   "fields": [
+    {
+     "key": "caption",
+     "label": "Didascalia",
+     "required": false,
+     "max": 120,
+     "placeholder": "Mercato del sabato mattina 🍅",
+     "type": "text"
+    }
+   ]
+  },
+  {
+   "id": "I2",
+   "artifact": "game",
+   "where": "Gioco · Foto · I2",
+   "title": "Un'immagine fatta con l'IA, simile alla tua foto I1",
+   "kind": "image",
+   "needed": "required",
+   "noFaces": true,
+   "answer": "falso_ia",
+   "alt": "Immagine di una scena di tutti i giorni",
+   "instructions": [
+    "In Gemini o ChatGPT: «Crea una foto realistica, fatta con il telefono, di un mercato all'aperto il sabato mattina» (adatta alla tua foto I1).",
+    "Usa la stessa didascalia di I1: così la coppia è più difficile."
+   ],
+   "safety": [
+    "Nessuna persona vera, nessun marchio."
+   ],
+   "fields": [
+    {
+     "key": "caption",
+     "label": "Didascalia",
+     "required": false,
+     "max": 120,
+     "placeholder": "Mercato del sabato mattina 🍅",
+     "type": "text"
+    }
+   ]
+  },
+  {
+   "id": "I3",
+   "artifact": "game",
+   "where": "Gioco · Foto · I3",
+   "title": "Una tua foto vera «troppo perfetta»",
+   "kind": "image",
+   "needed": "required",
+   "noFaces": true,
+   "answer": "vero",
+   "alt": "Foto molto bella",
+   "instructions": [
+    "Un tramonto, un piatto bellissimo, un cielo incredibile. Senza filtri.",
+    "Serve a capire che bello non vuol dire falso."
+   ],
+   "safety": [
+    "Nessun volto, niente vicino a casa tua."
+   ],
+   "fields": [
+    {
+     "key": "caption",
+     "label": "Didascalia",
+     "required": false,
+     "max": 120,
+     "placeholder": "Tramonto di ieri sera 🌅",
+     "type": "text"
+    }
+   ]
+  },
+  {
+   "id": "I4",
+   "artifact": "game",
+   "where": "Gioco · Foto · I4",
+   "title": "Una tua foto vecchia e vera, con una didascalia falsa",
+   "kind": "image",
+   "needed": "required",
+   "noFaces": true,
+   "answer": "verificare",
+   "alt": "Foto di una strada con neve o acqua",
+   "instructions": [
+    "Una tua foto di qualche anno fa che sembra una notizia: neve, pioggia forte, una strada allagata, una coda lunga.",
+    "La didascalia dice «oggi»: è falsa. Puoi cambiarla qui sotto.",
+    "Diversa dalla foto della slide 28."
+   ],
+   "safety": [
+    "Nessun volto, nessuna targa, niente vicino a casa tua."
+   ],
+   "fields": [
+    {
+     "key": "caption",
+     "label": "Didascalia falsa (dice «oggi»)",
+     "required": false,
+     "max": 120,
+     "placeholder": "OGGI in città. Guardate che disastro! 😱 Condividete!",
+     "type": "text"
+    }
+   ]
+  },
+  {
+   "id": "V1",
+   "artifact": "game",
+   "where": "Gioco · Video · V1",
+   "title": "Un tuo video vero, corto (5-10 secondi)",
+   "kind": "video",
+   "needed": "required",
+   "noFaces": true,
+   "answer": "vero",
+   "alt": "Video di una strada o di un parco",
+   "instructions": [
+    "Una strada, un parco, la pioggia, il mare.",
+    "Registra in 1080p, non in 4K: il file è più piccolo (massimo 90 MB)."
+   ],
+   "safety": [
+    "Nessuna persona riconoscibile, nessuna targa, niente vicino a casa tua."
+   ],
+   "fields": [
+    {
+     "key": "caption",
+     "label": "Didascalia",
+     "required": false,
+     "max": 120,
+     "placeholder": "Una passeggiata oggi pomeriggio",
+     "type": "text"
+    }
+   ]
+  },
+  {
+   "id": "V2",
+   "artifact": "game",
+   "where": "Gioco · Video · V2",
+   "title": "Un video corto fatto con l'IA",
+   "kind": "video",
+   "needed": "required",
+   "noFaces": true,
+   "answer": "falso_ia",
+   "alt": "Video di una scena con animali o natura",
+   "instructions": [
+    "Con Gemini (Veo), Sora o simili: animali, una strada, la natura.",
+    "5-10 secondi bastano."
+   ],
+   "safety": [
+    "Niente persone vere, niente marchi."
+   ],
+   "fields": [
+    {
+     "key": "caption",
+     "label": "Didascalia",
+     "required": false,
+     "max": 120,
+     "placeholder": "Guardate che scena incredibile! 😍",
+     "type": "text"
+    }
+   ]
+  },
+  {
+   "id": "V3",
+   "artifact": "game",
+   "where": "Gioco · Video · V3",
+   "title": "Un tuo video vero, con una didascalia sbagliata",
+   "kind": "video",
+   "needed": "required",
+   "noFaces": true,
+   "answer": "verificare",
+   "alt": "Video di una strada",
+   "instructions": [
+    "Un tuo video di un altro giorno o di un'altra città.",
+    "La didascalia lo fa sembrare di oggi: puoi cambiarla qui sotto."
+   ],
+   "safety": [
+    "Nessuna persona riconoscibile, nessuna targa."
+   ],
+   "fields": [
+    {
+     "key": "caption",
+     "label": "Didascalia falsa (dice «oggi»)",
+     "required": false,
+     "max": 120,
+     "placeholder": "Ecco cosa succede OGGI in centro! 😱",
+     "type": "text"
+    }
+   ]
+  },
+  {
+   "id": "A1",
+   "artifact": "game",
+   "where": "Gioco · Voci · A1",
+   "title": "Un tuo messaggio vocale vero",
+   "kind": "audio",
+   "needed": "required",
+   "noFaces": true,
+   "answer": "vero",
+   "alt": "Messaggio vocale",
+   "instructions": [
+    "Premi 🎙️ Registra qui sotto, oppure registra con il telefono e carica il file.",
+    "Di': «Ciao, sono [il tuo nome]. Ho un problema, mi richiami appena puoi?»",
+    "Voce normale, circa 5 secondi."
+   ],
+   "safety": [
+    "Solo la tua voce. Nessun'altra persona in sottofondo.",
+    "Dopo la lezione cancellalo da qui (pulsante Elimina)."
+   ],
+   "fields": []
+  },
+  {
+   "id": "A2",
+   "artifact": "game",
+   "where": "Gioco · Voci · A2",
+   "title": "La stessa frase, con la tua voce copiata dall'IA",
+   "kind": "audio",
+   "needed": "required",
+   "noFaces": true,
+   "answer": "falso_ia",
+   "alt": "Messaggio vocale",
+   "instructions": [
+    "Usa un servizio di copia della voce con la tua voce e il tuo consenso.",
+    "Fai dire la stessa frase di A1.",
+    "Subito dopo, cancella la voce copiata dal servizio."
+   ],
+   "safety": [
+    "Solo la TUA voce. Mai la voce di una corsista, di un collega o di chiunque altro.",
+    "Dopo la lezione cancellalo anche da qui."
+   ],
+   "fields": []
+  },
+  {
+   "id": "M1",
+   "artifact": "game",
+   "where": "Gioco · Messaggi · M1",
+   "title": "Screenshot vero della truffa «Ciao mamma, ho cambiato numero»",
+   "kind": "screenshot",
+   "needed": "fallback",
+   "noFaces": true,
+   "answer": "truffa",
+   "alt": "Screenshot di un messaggio",
+   "instructions": [
+    "Diverso da quello della slide 21, se puoi. Se ne hai uno solo, mettilo qui e lascia vuota la slide 21.",
+    "Senza screenshot, il gioco usa un esempio inventato."
+   ],
+   "safety": [
+    "Copri numeri, nomi e foto del profilo."
+   ],
+   "fields": []
+  },
+  {
+   "id": "M2",
+   "artifact": "game",
+   "where": "Gioco · Messaggi · M2",
+   "title": "Screenshot vero di un SMS falso (pacco o pedaggio)",
+   "kind": "screenshot",
+   "needed": "fallback",
+   "noFaces": true,
+   "answer": "truffa",
+   "alt": "Screenshot di un SMS",
+   "instructions": [
+    "Dal tuo telefono, da un amico, o da un avviso pubblico (Polizia Postale, CERT-AgID).",
+    "Senza screenshot, il gioco usa un esempio inventato."
+   ],
+   "safety": [
+    "Copri numeri e link: nessun link deve essere leggibile."
+   ],
+   "fields": []
+  },
+  {
+   "id": "M3",
+   "artifact": "game",
+   "where": "Gioco · Messaggi · M3",
+   "title": "Screenshot vero di «lavoro facile: metti like e guadagni»",
+   "kind": "screenshot",
+   "needed": "fallback",
+   "noFaces": true,
+   "answer": "truffa",
+   "alt": "Screenshot di un messaggio",
+   "instructions": [
+    "Dal tuo telefono, da un amico, o da un avviso pubblico.",
+    "Senza screenshot, il gioco usa un esempio inventato."
+   ],
+   "safety": [
+    "Copri numeri, nomi e link."
+   ],
+   "fields": []
+  },
+  {
+   "id": "M4",
+   "artifact": "game",
+   "where": "Gioco · Messaggi · M4",
+   "title": "Screenshot di un SMS vero e onesto",
+   "kind": "screenshot",
+   "needed": "fallback",
+   "noFaces": true,
+   "answer": "vero",
+   "alt": "Screenshot di un SMS",
+   "instructions": [
+    "Per esempio un avviso di consegna di un corriere vero, o un codice della banca che hai chiesto tu.",
+    "Deve essere davvero un messaggio vero.",
+    "Senza screenshot, il gioco usa un esempio inventato."
+   ],
+   "safety": [
+    "Copri codici, nomi, numeri e indirizzi."
+   ],
+   "fields": []
+  },
+  {
+   "id": "M5",
+   "artifact": "game",
+   "where": "Gioco · Messaggi · M5",
+   "title": "Screenshot di un messaggio WhatsApp vero di un ente",
+   "kind": "screenshot",
+   "needed": "fallback",
+   "noFaces": true,
+   "answer": "vero",
+   "alt": "Screenshot di un messaggio WhatsApp",
+   "instructions": [
+    "Per esempio dagli operatori del corso o da una scuola.",
+    "Chiedi il permesso a chi l'ha mandato.",
+    "Senza screenshot, il gioco usa un esempio inventato."
+   ],
+   "safety": [
+    "Copri nomi, numeri e foto."
+   ],
+   "fields": []
+  },
+  {
+   "id": "P1",
+   "artifact": "game",
+   "where": "Gioco · Post · P1",
+   "title": "Screenshot di un titolo vero di un giornale affidabile, con il link",
+   "kind": "screenshot",
+   "needed": "required",
+   "noFaces": true,
+   "answer": "vero",
+   "alt": "Titolo di un giornale",
+   "instructions": [
+    "Un giornale italiano conosciuto, una notizia tranquilla: meteo, sport, cultura, scienza.",
+    "Niente politica, migrazione, religione.",
+    "Incolla il link qui sotto: lo mostriamo con la risposta."
+   ],
+   "safety": [
+    "Se c'è una foto con volti, ritaglia solo il titolo."
+   ],
+   "fields": [
+    {
+     "key": "link",
+     "label": "Link della notizia",
+     "required": true,
+     "max": 500,
+     "placeholder": "https://",
+     "type": "url"
+    }
+   ]
+  },
+  {
+   "id": "F1",
+   "artifact": "game",
+   "where": "Gioco · Profili · F1",
+   "title": "Screenshot del profilo social vero dell'ente che organizza il corso",
+   "kind": "screenshot",
+   "needed": "required",
+   "noFaces": true,
+   "answer": "vero",
+   "alt": "Screenshot di un profilo social",
+   "instructions": [
+    "Oppure di un altro ente vero e conosciuto (una biblioteca, un museo).",
+    "Si devono vedere: il nome, il numero di post, da quanto tempo esiste."
+   ],
+   "safety": [
+    "Copri i volti nelle foto dei post."
+   ],
+   "fields": []
+  },
+  {
+   "id": "F2",
+   "artifact": "game",
+   "where": "Gioco · Profili · F2 (la foto del profilo falso)",
+   "title": "(Facoltativo) Un volto inventato, fatto con l'IA",
+   "kind": "image",
+   "needed": "optional",
+   "noFaces": false,
+   "answer": "falso_ia",
+   "alt": "Foto del profilo",
+   "instructions": [
+    "Con Gemini o ChatGPT: «Ritratto realistico di una donna inventata, stile foto del profilo».",
+    "Senza, il profilo falso mostra un'icona."
+   ],
+   "safety": [
+    "Solo un volto inventato. Mai la foto di una persona vera."
+   ],
+   "fields": []
+  },
+  {
+   "id": "F3",
+   "artifact": "game",
+   "where": "Gioco · Profili · F3",
+   "title": "Esempio vero di una pagina che finge di essere un'azienda o un ufficio",
+   "kind": "screenshot",
+   "needed": "fallback",
+   "noFaces": true,
+   "answer": "truffa",
+   "alt": "Screenshot di una pagina falsa",
+   "instructions": [
+    "Da un avviso pubblico (Polizia Postale, CERT-AgID, la tua banca).",
+    "Senza screenshot, il gioco usa un esempio inventato."
+   ],
+   "safety": [
+    "Copri link, numeri e codici: niente deve essere usabile."
+   ],
+   "fields": []
+  }
+ ]
+}
