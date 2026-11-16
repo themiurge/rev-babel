@@ -7,6 +7,10 @@ voice, which seeds the read-aloud evaluation corpus that `plans/` calls
 for. No student is ever recorded. Avatar art is not personal data and does not live here —
 see [ADR 0010](../docs/decisions/0010-avatar-picker.md).
 
+`materials/` holds lesson 8's teacher-provided materials
+([ADR 0020](../docs/decisions/0020-lesson-8-materials-store-and-game.md)),
+managed from `/materiali`.
+
 See `docs/data-and-privacy.md` for what is and is not retained, and for how
 long.
 

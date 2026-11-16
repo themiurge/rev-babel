@@ -37,6 +37,9 @@
   ([ADR 0018](decisions/0018-lesson-6-tutor-chatbot.md)).
   Lesson 7's Python runs in the student's browser (Pyodide, served from
   `static/vendor/pyodide/`); the server never executes student code.
+  Lesson 8's materials (teacher-provided photos, videos, voice) live in
+  `data/materials/`, uploaded only on the capture host and cleaned of
+  metadata on upload ([ADR 0020](decisions/0020-lesson-8-materials-store-and-game.md)).
 - **`services/encoder`** — placeholder for later; whether it is served at
   all is an open question (see `open-questions.md`).
 - **`packages/contracts`** — the data shapes passed between services (e.g.

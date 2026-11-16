@@ -13,6 +13,10 @@ There is no frontend build step: files are served as authored.
   conversation in memory only - no cookie, no `localStorage`.
 - `lessons/lezione-7/python/` - lesson 7's Python page. `runner.py` is Python
   executed in the browser by Pyodide and imported by the tests.
+- `lessons/lezione-8/materiali/materiali.js` - the teacher's materials page
+  (canvas re-encoding, recorder, uploads); no storage APIs.
+  `lessons/lezione-8/vero-o-falso/game.js` is the projector game; it keeps
+  team names and points in `localStorage` on the teacher's browser only.
 - `vendor/pyodide/` - Pyodide 314.0.7 (MPL-2.0), fetched by
   `scripts/fetch-pyodide.py` and gitignored; `SHA256SUMS` and `LICENSE` are
   committed. Refresh by bumping the version and hashes in the script and

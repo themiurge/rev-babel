@@ -45,6 +45,23 @@ not negotiable — see `overview.md` for the full teaching context.
   rule. Never the program's output or her `input()` answers. Not stored
   by the app at all. Without a key nothing is sent beyond the app server,
   which answers from scripted advice and keeps nothing.
+- **Lesson 8 materials** (`/materiali` on the capture host,
+  [ADR 0020](decisions/0020-lesson-8-materials-store-and-game.md)) -
+  files the **teacher** provides for the lesson 8 decks and game: his own
+  photos and short videos of everyday scenes with no faces, images and
+  videos he generated with AI, real scam screenshots with numbers, names
+  and links covered, a public news headline, and two recordings of his
+  own voice (one real, one an AI copy he made with his consent). Stored in
+  `data/materials/` on his machine, never in git; hidden data (GPS, EXIF)
+  is removed on upload; the original file name is not kept. Shown on the
+  capture host, and to a logged-in student only while the slide that
+  uses it is live. Kept until he deletes them (one by one, or "Elimina
+  tutto"); the voice recordings are deleted after the lesson and the
+  whole store at the end of the course. Never a student's photo, voice
+  or message.
+- **Lesson 8 game** (`/vero-o-falso`) - runs in the teacher's browser on
+  the projector. It keeps team names and points in that browser's
+  `localStorage` only. Nothing about any student is entered or stored.
 - **Eco transcripts** — TODO: retention period not yet decided. Whatever is
   decided, transcripts are of the teacher's speech only (see below), and
   none belong in this repository as sample or fixture data.
@@ -63,11 +80,15 @@ not negotiable — see `overview.md` for the full teaching context.
 ## What is deliberately not stored
 
 - No recordings of any kind, of anyone, beyond what a fallback mechanism
-  requires transiently (if any — TODO, see `operations.md`).
+  requires transiently (if any — TODO, see `operations.md`), **except**
+  the teacher's own voice for lesson 8's game (ADR 0020), which he records
+  and deletes himself. Never a student's or the assistant's voice.
 - No photograph anywhere in version control. Since
   [ADR 0010](decisions/0010-avatar-picker.md) the system holds no
   photograph of any user at all, on the server or off it — this rule now
-  describes the design rather than restraining it.
+  describes the design rather than restraining it. Lesson 8's materials
+  store (ADR 0020) holds the teacher's own photos of everyday scenes,
+  without faces, on his machine only; never a student's.
 - No transcript, real or sample, in this repository.
 - Nothing a student's program does at `/games/python`: running code makes
   no network call and uses no cookie or `localStorage`.
@@ -100,8 +121,12 @@ not negotiable — see `overview.md` for the full teaching context.
   or export, and test it with a mocked client and invented practice
   sentences only. Test fixtures for the Python page are invented code
   (`studente@example.com`, `piatto = "cuscus"`), never a student's program.
+- **Lesson 8 materials are never committed**, not even as fixtures:
+  tests build images, videos and audio from bytes. Every committed
+  lesson 8 file uses "il corso" / "gli operatori" / "l'insegnante": no
+  provider, venue, city, teacher or assistant name.
 - **Nothing identifying the course provider, venue, or address.**
-- `.gitignore` blocks `data/`, `.env`, `*.wav`, `*.mp3`, `*.ogg`, `*.webm`,
+- `.gitignore` blocks `data/` (including `data/materials/`), `.env`, `*.wav`, `*.mp3`, `*.ogg`, `*.webm`,
   `models/`, and `*.db`. If a change needs a new category of local or
   runtime data, extend `.gitignore` before adding the file that needs it —
   do not commit first and clean up after.
