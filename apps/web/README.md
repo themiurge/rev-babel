@@ -89,3 +89,15 @@ with Pyodide; the server never executes it. `rev_babel_web/python_helper.py`
 and `python_lesson.json` hold the seven steps and the assistant, and
 `POST /api/python-helper` reuses the tutor's model, personal-data filter and
 rate limits. Pyodide itself is fetched by `make pyodide`.
+
+**Lesson 8, "I social network"** ([ADR 0020](../../docs/decisions/0020-lesson-8-materials-store-and-game.md))
+adds a teacher-only materials store and three pages, all on the capture
+host except the card. `rev_babel_web/materials.py` (with `media_clean.py`
+and `materials_manifest.json`) keeps the teacher's photos, screenshots and
+voice under `data/materials/`, stripped of metadata; `/materiali` is its
+page, and the optional `MATERIALS_KEY` adds a session key on top of the host
+gate. Two decks (`lezione-8-social`, `lezione-8-genitori`) carry presenter
+notes that `/present` and the phone remote `/present/telecomando` show and
+students never receive. `/vero-o-falso` is the projector game (cards at
+`/vero-o-falso/carte`); `/games/scheda-social` is the printable take-home
+card. Routes are wired in `main.py`; tests in `test_lesson8_routes.py`.

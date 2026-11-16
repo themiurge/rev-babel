@@ -46,6 +46,21 @@ shared computer. Since then lessons 3-6 got their materials: email, SPID,
 two guided word-processor tutorials, a tutor chatbot, and a Python page
 (below, newest first).
 
+- **Lesson 8, "I social network", has a materials store, two decks, a
+  projector game and a take-home card**
+  ([ADR 0020](docs/decisions/0020-lesson-8-materials-store-and-game.md)):
+  `/materiali` (capture host, optional `MATERIALS_KEY`) takes the teacher's
+  photos, screenshots and voice, strips their metadata and shows them on the
+  slides and in the game; a 35-slide deck and a 14-slide parents' deck carry
+  presenter notes (`/present`, phone remote `/present/telecomando`, never sent
+  to students); "Vero o falso?" at `/vero-o-falso` (cards at
+  `/vero-o-falso/carte`) and the card at `/games/scheda-social`. Verified:
+  tests (`test_lesson8_routes.py` and the packages' own) and a scratch server
+  over HTTP (upload, Range, all 35 slides, host gating). **Not verified:**
+  anything in a browser or on the phone, large video uploads through the
+  tunnel, the facts flagged "VERIFY before class", the privacy grep (it needs
+  the gitignored `data/private-words.txt`, so it is skipped in CI).
+
 - **Lesson 7, "Programmare con Python", has a Python page with an
   assistant**: "Python con l'assistente" at `/games/python` (new tab),
   recorded as [ADR 0019](docs/decisions/0019-lesson-7-python-in-the-browser.md).
@@ -556,6 +571,15 @@ Lead times and physical presence, which is why they are listed apart.
   [`plans/README.md`](plans/README.md).
 
 ## Revision log
+
+- **v0.21 — 2026-11-16** — Lesson 8 and its materials store (ADR 0020):
+  `materials.py`, `media_clean.py`, `/materiali` and `/admin/api/materials*`
+  (capture host, optional `MATERIALS_KEY`), two decks with presenter notes
+  and a phone remote, the game "Vero o falso?" with its answer cards, the
+  take-home card, `render_slots` for teacher media on slides. Tests in
+  `test_materials.py`, `test_media_clean.py`, `test_lesson8_*`,
+  `test_vero_o_falso.py`, `test_scheda_social.py`. Verified over HTTP on a
+  scratch server only, not in a browser.
 
 - **v0.20 — 2026-11-12** — Lesson 7 and its Python page ("Python con
   l'assistente", `/games/python`, ADR 0019): Pyodide in a Web Worker, a
